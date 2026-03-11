@@ -15,7 +15,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-03-11T14:28:34.006260",
+    "last_updated": "2026-03-11T15:27:14.071789",
     "data_range_days": 7,
     "extended_range_days": 28,
     "version": "3.78"
@@ -334,7 +334,7 @@
     "p_max": null,
     "power_model_source": "unavailable",
     "vo2max": null,
-    "calculation_timestamp": "2026-03-11T14:28:34.005503",
+    "calculation_timestamp": "2026-03-11T15:27:14.071044",
     "data_quality": {
       "hrv_data_points": 0,
       "rhr_data_points": 5,
@@ -349,10 +349,10 @@
   },
   "recent_activities": [
     {
-      "id": "i131121937",
+      "id": "i131226139",
       "date": "2026-03-11T11:51:11",
       "type": "WeightTraining",
-      "name": "IntervalCoach - Lower Body Strength",
+      "name": "Back Day",
       "duration_hours": 0.86,
       "distance_km": 0.0,
       "tss": 26,
@@ -379,7 +379,7 @@
       "hrrc": null,
       "elevation_m": null,
       "feel": null,
-      "rpe": null,
+      "rpe": 6,
       "zone_distribution": {
         "hr_zones": {
           "z1_time": 2910,
