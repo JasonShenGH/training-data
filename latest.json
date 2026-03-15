@@ -15,7 +15,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-03-15T15:47:19.064121",
+    "last_updated": "2026-03-15T16:40:23.361502",
     "data_range_days": 7,
     "extended_range_days": 28,
     "version": "3.78"
@@ -338,7 +338,7 @@
     "p_max": null,
     "power_model_source": "unavailable",
     "vo2max": null,
-    "calculation_timestamp": "2026-03-15T15:47:19.063239",
+    "calculation_timestamp": "2026-03-15T16:40:23.360748",
     "data_quality": {
       "hrv_data_points": 0,
       "rhr_data_points": 6,
@@ -745,6 +745,17 @@
       "duration_formatted": "1h",
       "workout_summary": null,
       "description": "Warmup\n- Morning Jason! Endurance ride today. 9m ramp 45-75%\n\nMain Set\n- Settle In 11m 65-67%\n- Build 11m 67-70%\n- Upper Z2 11m 70-74%\n- Cruise 12m 74-70%\n\nCooldown\n- Great job, Jason! Easy spinning now. 6m ramp 65-45%\n\n[Weekly Plan - Build]"
+    },
+    {
+      "id": 98637484,
+      "date": "2026-03-23",
+      "name": "IntervalCoach - Lower Body Strength",
+      "type": "WORKOUT",
+      "planned_tss": null,
+      "duration_hours": 0.75,
+      "duration_formatted": "45m",
+      "workout_summary": null,
+      "description_preview": "Lower Body Strength\nLeg strength for cycling power and running economy\n1. Goblet Squat: 3 sets \u00d7 12 reps (Weight at chest, sit back into heels) [Rest: 60 sec]"
     }
   ],
   "workout_summary_stats": {
@@ -752,7 +763,7 @@
     "success": 0,
     "patternA": 0,
     "patternB": 0,
-    "bail_no_workout_doc": 3,
+    "bail_no_workout_doc": 4,
     "bail_no_match": 2
   },
   "weekly_summary": {
