@@ -34,7 +34,7 @@ The athlete currently balances endurance development with strength training depe
 
 ## Seasonal Training Strategy
 
-### Summer Focus
+### Summer Focus (Apr. to Nov.)
 Primary goal: Improve aerobic capacity.
 
 Key training priorities:
@@ -48,7 +48,7 @@ Training emphasis:
 - Occasional tempo / sweet spot work
 - Low to moderate intensity volume progression
 
-### Winter Focus
+### Winter Focus (Nov. to Mar.)
 Primary goal: Build muscle and strength.
 
 Training emphasis:

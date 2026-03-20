@@ -1,0 +1,577 @@
+Workout list, each line is an entry of workout, it includes type, date, duration in minutes, average HR, max HR, RPE, HR zone distribution (Zone 0-5 percentages). If power data is available, it includes average power, max power, and power zone distribution (Z1-Z7 percentages based on FTP). If cadence data is available, it includes average cadence and max cadence. It may include move distance in kilometer unit. All values are comma separated. If strength training contains detail, the detail is described inside [], it contains each exercise name, weight, sets * reps.
+Type: 骑行, Date: 03-20 11:14, Duration: 74 mins, Average HR: 117, Max HR: 130, RPE: 4.0, HR Distribution: [Zone 0: 0.0%, Zone 1: 11.7%, Zone 2: 81.7%, Zone 3: 6.6%, Zone 4: 0.0%, Zone 5: 0.0%]
+Type: 力量训练, Date: 03-19 11:55, Duration: 54 mins, Average HR: 115, Max HR: 142, RPE: 6.0, HR Distribution: [Zone 0: 0.0%, Zone 1: 20.9%, Zone 2: 64.7%, Zone 3: 14.4%, Zone 4: 0.0%, Zone 5: 0.0%]
+Type: 骑行, Date: 03-18 11:01, Duration: 67 mins, Average HR: 131, Max HR: 144, RPE: 4.0, HR Distribution: [Zone 0: 0.0%, Zone 1: 3.5%, Zone 2: 14.0%, Zone 3: 82.0%, Zone 4: 0.5%, Zone 5: 0.0%]
+Type: 力量训练, Date: 03-16 11:46, Duration: 75 mins, Average HR: 113, Max HR: 140, RPE: 6.0, HR Distribution: [Zone 0: 0.2%, Zone 1: 28.4%, Zone 2: 60.1%, Zone 3: 11.3%, Zone 4: 0.0%, Zone 5: 0.0%]
+Type: 力量训练, Date: 03-15 08:03, Duration: 82 mins, Average HR: 121, Max HR: 158, RPE: 6.0, HR Distribution: [Zone 0: 0.5%, Zone 1: 14.6%, Zone 2: 48.0%, Zone 3: 29.7%, Zone 4: 7.2%, Zone 5: 0.0%]
+Type: 整理放松, Date: 03-14 20:30, Duration: 20 mins, Average HR: 89, Max HR: 103, RPE: 2.0, HR Distribution: [Zone 0: 41.2%, Zone 1: 58.8%, Zone 2: 0.0%, Zone 3: 0.0%, Zone 4: 0.0%, Zone 5: 0.0%]
+Type: 骑行, Date: 03-13 11:11, Duration: 65 mins, Average HR: 129, Max HR: 151, RPE: 5.0, HR Distribution: [Zone 0: 0.0%, Zone 1: 1.2%, Zone 2: 33.3%, Zone 3: 49.9%, Zone 4: 15.6%, Zone 5: 0.0%]
+Type: 力量训练, Date: 03-11 11:50, Duration: 52 mins, Average HR: 122, Max HR: 145, RPE: 6.0, HR Distribution: [Zone 0: 0.0%, Zone 1: 7.7%, Zone 2: 50.8%, Zone 3: 40.7%, Zone 4: 0.8%, Zone 5: 0.0%]
+Type: 力量训练, Date: 03-09 11:49, Duration: 60 mins, Average HR: 117, Max HR: 146, RPE: 6.0, HR Distribution: [Zone 0: 1.7%, Zone 1: 18.1%, Zone 2: 55.7%, Zone 3: 23.6%, Zone 4: 0.9%, Zone 5: 0.0%]
+Type: 力量训练, Date: 03-08 08:00, Duration: 62 mins, Average HR: 126, Max HR: 165, RPE: 7.0, HR Distribution: [Zone 0: 0.4%, Zone 1: 8.9%, Zone 2: 30.1%, Zone 3: 48.4%, Zone 4: 11.3%, Zone 5: 0.8%]
+Type: 骑行, Date: 03-06 11:48, Duration: 53 mins, Average HR: 123, Max HR: 143, RPE: 4.0, HR Distribution: [Zone 0: 0.0%, Zone 1: 2.5%, Zone 2: 54.2%, Zone 3: 43.0%, Zone 4: 0.3%, Zone 5: 0.0%]
+Type: 力量训练, Date: 03-05 11:54, Duration: 57 mins, Average HR: 117, Max HR: 150, RPE: 6.0, HR Distribution: [Zone 0: 0.7%, Zone 1: 19.4%, Zone 2: 51.6%, Zone 3: 27.3%, Zone 4: 1.0%, Zone 5: 0.0%]
+Type: 力量训练, Date: 03-04 11:48, Duration: 68 mins, Average HR: 112, Max HR: 138, RPE: 6.0, HR Distribution: [Zone 0: 1.0%, Zone 1: 28.1%, Zone 2: 59.8%, Zone 3: 11.1%, Zone 4: 0.0%, Zone 5: 0.0%]
+Type: 力量训练, Date: 03-02 11:58, Duration: 51 mins, Average HR: 124, Max HR: 155, RPE: 6.0, HR Distribution: [Zone 0: 0.0%, Zone 1: 7.6%, Zone 2: 42.9%, Zone 3: 41.4%, Zone 4: 8.1%, Zone 5: 0.0%]
+Type: 骑行, Date: 02-28 11:41, Duration: 55 mins, Average HR: 123, Max HR: 145, RPE: 4.0, HR Distribution: [Zone 0: 0.0%, Zone 1: 2.6%, Zone 2: 46.4%, Zone 3: 50.0%, Zone 4: 1.1%, Zone 5: 0.0%]
+Type: 力量训练, Date: 02-26 11:59, Duration: 42 mins, Average HR: 118, Max HR: 144, RPE: 6.0, HR Distribution: [Zone 0: 0.0%, Zone 1: 9.2%, Zone 2: 67.3%, Zone 3: 23.1%, Zone 4: 0.4%, Zone 5: 0.0%]
+Type: 力量训练, Date: 02-25 11:54, Duration: 62 mins, Average HR: 110, Max HR: 137, RPE: 6.0, HR Distribution: [Zone 0: 1.8%, Zone 1: 30.7%, Zone 2: 62.6%, Zone 3: 5.0%, Zone 4: 0.0%, Zone 5: 0.0%]
+Type: 力量训练, Date: 02-23 14:55, Duration: 71 mins, Average HR: 116, Max HR: 150, RPE: 6.0, HR Distribution: [Zone 0: 1.4%, Zone 1: 20.4%, Zone 2: 55.6%, Zone 3: 19.7%, Zone 4: 2.9%, Zone 5: 0.0%]
+Type: 骑行, Date: 02-22 20:13, Duration: 35 mins, Average HR: 115, Max HR: 131, RPE: 3.0, HR Distribution: [Zone 0: 0.7%, Zone 1: 16.1%, Zone 2: 67.3%, Zone 3: 15.9%, Zone 4: 0.0%, Zone 5: 0.0%], Avg Power: 69W, Max Power: 156W, Power Distribution: [Z1: 19.6%, Z2: 49.0%, Z3: 27.8%, Z4: 3.2%, Z5: 0.2%, Z6: 0.0%, Z7: 0.0%], Avg Cadence (incl. 0): 78 rpm, Avg Cadence (excl. 0): 78 rpm, Max Cadence: 88 rpm, Move distance: 11.7KM
+Type: 徒步, Date: 02-17 09:42, Duration: 321 mins, Average HR: 132, Max HR: 200, RPE: 6.0, HR Distribution: [Zone 0: 0.0%, Zone 1: 1.0%, Zone 2: 50.4%, Zone 3: 31.9%, Zone 4: 9.2%, Zone 5: 0.3%], Move distance: 9.2KM
+Type: 徒步, Date: 02-16 10:22, Duration: 9 mins, Average HR: 99, Max HR: 107, RPE: 2.0, HR Distribution: [Zone 0: 1.9%, Zone 1: 94.3%, Zone 2: 3.8%, Zone 3: 0.0%, Zone 4: 0.0%, Zone 5: 0.0%], Move distance: 0.2KM
+Type: 徒步, Date: 02-16 09:27, Duration: 30 mins, Average HR: 97, Max HR: 108, RPE: 2.0, HR Distribution: [Zone 0: 6.3%, Zone 1: 93.4%, Zone 2: 0.2%, Zone 3: 0.0%, Zone 4: 0.0%, Zone 5: 0.0%], Move distance: 1.4KM
+Type: 徒步, Date: 02-15 13:32, Duration: 81 mins, Average HR: 106, Max HR: 129, RPE: 4.0, HR Distribution: [Zone 0: 0.0%, Zone 1: 60.1%, Zone 2: 39.0%, Zone 3: 0.8%, Zone 4: 0.0%, Zone 5: 0.0%], Move distance: 2.0KM
+Type: 徒步, Date: 02-15 09:22, Duration: 88 mins, Average HR: 107, Max HR: 142, RPE: 4.0, HR Distribution: [Zone 0: 0.8%, Zone 1: 44.6%, Zone 2: 52.8%, Zone 3: 1.8%, Zone 4: 0.0%, Zone 5: 0.0%], Move distance: 3.6KM
+Type: 力量训练, Date: 02-11 11:56, Duration: 37 mins, Average HR: 118, Max HR: 145, RPE: 6.0, HR Distribution: [Zone 0: 0.0%, Zone 1: 12.5%, Zone 2: 61.7%, Zone 3: 25.5%, Zone 4: 0.2%, Zone 5: 0.0%]
+Type: 力量训练, Date: 02-09 11:43, Duration: 59 mins, Average HR: 120, Max HR: 160, RPE: 6.0, HR Distribution: [Zone 0: 0.0%, Zone 1: 9.6%, Zone 2: 60.8%, Zone 3: 28.3%, Zone 4: 1.3%, Zone 5: 0.0%]
+Type: 骑行, Date: 02-08 08:08, Duration: 43 mins, Average HR: 130, Max HR: 160, RPE: 6.0, HR Distribution: [Zone 0: 0.0%, Zone 1: 10.0%, Zone 2: 19.5%, Zone 3: 51.2%, Zone 4: 19.3%, Zone 5: 0.0%], Avg Power: 72W, Max Power: 224W, Power Distribution: [Z1: 19.7%, Z2: 46.4%, Z3: 18.5%, Z4: 11.7%, Z5: 2.4%, Z6: 1.1%, Z7: 0.2%], Avg Cadence (incl. 0): 78 rpm, Avg Cadence (excl. 0): 78 rpm, Max Cadence: 93 rpm, Move distance: 14.5KM
+Type: 力量训练, Date: 02-07 16:13, Duration: 83 mins, Average HR: 117, Max HR: 158, RPE: 6.0, HR Distribution: [Zone 0: 1.4%, Zone 1: 18.0%, Zone 2: 56.5%, Zone 3: 19.3%, Zone 4: 4.8%, Zone 5: 0.0%]
+Type: 力量训练, Date: 02-06 11:53, Duration: 53 mins, Average HR: 112, Max HR: 139, RPE: 6.0, HR Distribution: [Zone 0: 0.0%, Zone 1: 29.9%, Zone 2: 62.0%, Zone 3: 8.1%, Zone 4: 0.0%, Zone 5: 0.0%]
+Type: 力量训练, Date: 02-04 11:54, Duration: 54 mins, Average HR: 117, Max HR: 143, RPE: 6.0, HR Distribution: [Zone 0: 0.0%, Zone 1: 8.9%, Zone 2: 74.6%, Zone 3: 16.3%, Zone 4: 0.2%, Zone 5: 0.0%]
+Type: 力量训练, Date: 02-02 11:55, Duration: 51 mins, Average HR: 116, Max HR: 141, RPE: 6.0, HR Distribution: [Zone 0: 0.0%, Zone 1: 17.4%, Zone 2: 65.4%, Zone 3: 17.2%, Zone 4: 0.0%, Zone 5: 0.0%]
+Type: 羽毛球, Date: 02-01 15:59, Duration: 10 mins, Average HR: 106, Max HR: 115, RPE: 3.0, HR Distribution: [Zone 0: 0.0%, Zone 1: 56.7%, Zone 2: 43.3%, Zone 3: 0.0%, Zone 4: 0.0%, Zone 5: 0.0%], Move distance: 0.2KM
+Type: 骑行, Date: 02-01 08:19, Duration: 36 mins, Average HR: 130, Max HR: 160, RPE: 4.9, HR Distribution: [Zone 0: 0.0%, Zone 1: 3.9%, Zone 2: 13.9%, Zone 3: 75.0%, Zone 4: 7.1%, Zone 5: 0.0%], Avg Power: 71W, Max Power: 217W, Power Distribution: [Z1: 23.2%, Z2: 47.4%, Z3: 21.5%, Z4: 2.7%, Z5: 2.2%, Z6: 2.7%, Z7: 0.2%], Avg Cadence (incl. 0): 77 rpm, Avg Cadence (excl. 0): 77 rpm, Max Cadence: 101 rpm, Move distance: 12.0KM
+
+ATL(Fatigue)
+Date: 02-01, ATL: 273.0
+Date: 02-02, ATL: 281.1
+Date: 02-03, ATL: 210.8
+Date: 02-04, ATL: 239.2
+Date: 02-05, ATL: 179.4
+Date: 02-06, ATL: 213.6
+Date: 02-07, ATL: 284.5
+Date: 02-08, ATL: 278.5
+Date: 02-09, ATL: 297.1
+Date: 02-10, ATL: 222.8
+Date: 02-11, ATL: 222.1
+Date: 02-12, ATL: 166.6
+Date: 02-13, ATL: 125.0
+Date: 02-14, ATL: 93.7
+Date: 02-15, ATL: 239.3
+Date: 02-16, ATL: 199.2
+Date: 02-17, ATL: 630.4
+Date: 02-18, ATL: 472.8
+Date: 02-19, ATL: 354.6
+Date: 02-20, ATL: 265.9
+Date: 02-21, ATL: 199.5
+Date: 02-22, ATL: 176.0
+Date: 02-23, ATL: 237.8
+Date: 02-24, ATL: 178.4
+Date: 02-25, ATL: 226.0
+Date: 02-26, ATL: 231.9
+Date: 02-27, ATL: 173.9
+Date: 02-28, ATL: 185.8
+Date: 03-01, ATL: 139.4
+Date: 03-02, ATL: 181.2
+Date: 03-03, ATL: 135.9
+Date: 03-04, ATL: 203.5
+Date: 03-05, ATL: 238.1
+Date: 03-06, ATL: 231.6
+Date: 03-07, ATL: 173.7
+Date: 03-08, ATL: 237.9
+Date: 03-09, ATL: 268.7
+Date: 03-10, ATL: 201.5
+Date: 03-11, ATL: 229.0
+Date: 03-12, ATL: 171.8
+Date: 03-13, ATL: 210.3
+Date: 03-14, ATL: 167.9
+Date: 03-15, ATL: 249.4
+Date: 03-16, ATL: 298.8
+Date: 03-17, ATL: 224.1
+Date: 03-18, ATL: 234.9
+Date: 03-19, ATL: 256.8
+Date: 03-20, ATL: 266.4
+
+CTL(Fitness)
+Date: 02-01, CTL: 214.6
+Date: 02-02, CTL: 218.8
+Date: 02-03, CTL: 208.6
+Date: 02-04, CTL: 214.0
+Date: 02-05, CTL: 204.0
+Date: 02-06, CTL: 209.2
+Date: 02-07, CTL: 222.6
+Date: 02-08, CTL: 224.4
+Date: 02-09, CTL: 230.4
+Date: 02-10, CTL: 219.7
+Date: 02-11, CTL: 219.7
+Date: 02-12, CTL: 209.5
+Date: 02-13, CTL: 199.7
+Date: 02-14, CTL: 190.4
+Date: 02-15, CTL: 213.0
+Date: 02-16, CTL: 206.8
+Date: 02-17, CTL: 286.6
+Date: 02-18, CTL: 273.3
+Date: 02-19, CTL: 260.6
+Date: 02-20, CTL: 248.5
+Date: 02-21, CTL: 236.9
+Date: 02-22, CTL: 230.8
+Date: 02-23, CTL: 239.8
+Date: 02-24, CTL: 228.6
+Date: 02-25, CTL: 235.1
+Date: 02-26, CTL: 235.8
+Date: 02-27, CTL: 224.8
+Date: 02-28, CTL: 224.7
+Date: 03-01, CTL: 214.2
+Date: 03-02, CTL: 218.5
+Date: 03-03, CTL: 208.4
+Date: 03-04, CTL: 217.6
+Date: 03-05, CTL: 223.4
+Date: 03-06, CTL: 222.8
+Date: 03-07, CTL: 212.5
+Date: 03-08, CTL: 222.6
+Date: 03-09, CTL: 229.1
+Date: 03-10, CTL: 218.4
+Date: 03-11, CTL: 222.7
+Date: 03-12, CTL: 212.4
+Date: 03-13, CTL: 217.7
+Date: 03-14, CTL: 209.4
+Date: 03-15, CTL: 222.7
+Date: 03-16, CTL: 233.1
+Date: 03-17, CTL: 222.3
+Date: 03-18, CTL: 224.4
+Date: 03-19, CTL: 228.9
+Date: 03-20, CTL: 232.0
+
+Comments:
+From 02-13 to 02-18: 陕西旅游
+From 03-18 to 03-18: Average cadence 88; average power 63w
+From 03-20 to 03-20: Average cadence 87; average power 46w
+
+Sleep Session Detail:
+2026年3月19日 22:22:01 - 2026年3月20日 06:27:45
+Total: 7h 18m
+Core: 3h 30m
+Deep: 1h 1m
+REM: 2h 30m
+WakeUp: 0h 15m
+Recovery: 3h 32m
+2026年3月18日 22:33:04 - 2026年3月19日 06:15:13
+Total: 7h 24m
+Core: 2h 51m
+Deep: 1h 25m
+REM: 2h 22m
+WakeUp: 0h 44m
+Recovery: 3h 48m
+2026年3月17日 22:39:34 - 2026年3月18日 05:19:07
+Total: 6h 39m
+Core: 3h 23m
+Deep: 0h 33m
+REM: 2h 30m
+WakeUp: 0h 11m
+Recovery: 3h 4m
+2026年3月16日 22:43:46 - 2026年3月17日 06:47:13
+Total: 8h 3m
+Core: 4h 25m
+Deep: 0h 43m
+REM: 2h 8m
+WakeUp: 0h 46m
+Recovery: 2h 51m
+2026年3月15日 22:22:25 - 2026年3月16日 05:49:06
+Total: 7h 11m
+Core: 3h 1m
+Deep: 1h 11m
+REM: 2h 51m
+WakeUp: 0h 7m
+Recovery: 4h 2m
+2026年3月14日 22:11:55 - 2026年3月15日 05:34:24
+Total: 6h 40m
+Core: 3h 44m
+Deep: 1h 0m
+REM: 1h 53m
+WakeUp: 0h 1m
+Recovery: 2h 54m
+2026年3月13日 22:24:40 - 2026年3月14日 05:54:31
+Total: 6h 56m
+Core: 3h 24m
+Deep: 0h 57m
+REM: 2h 34m
+WakeUp: 0h 0m
+Recovery: 3h 31m
+2026年3月12日 22:18:54 - 2026年3月13日 06:34:21
+Total: 7h 40m
+Core: 3h 7m
+Deep: 1h 40m
+REM: 2h 47m
+WakeUp: 0h 4m
+Recovery: 4h 28m
+2026年3月11日 22:18:51 - 2026年3月12日 06:09:27
+Total: 7h 14m
+Core: 4h 5m
+Deep: 0h 41m
+REM: 2h 23m
+WakeUp: 0h 3m
+Recovery: 3h 5m
+2026年3月10日 22:35:46 - 2026年3月11日 05:55:17
+Total: 7h 19m
+Core: 3h 52m
+Deep: 0h 29m
+REM: 2h 55m
+WakeUp: 0h 1m
+Recovery: 3h 24m
+2026年3月9日 22:41:28 - 2026年3月10日 04:59:03
+Total: 6h 17m
+Core: 2h 58m
+Deep: 0h 52m
+REM: 2h 14m
+WakeUp: 0h 10m
+Recovery: 3h 7m
+2026年3月8日 21:46:23 - 2026年3月9日 06:27:22
+Total: 7h 55m
+Core: 3h 49m
+Deep: 1h 39m
+REM: 2h 19m
+WakeUp: 0h 7m
+Recovery: 3h 58m
+2026年3月7日 22:11:46 - 2026年3月8日 05:40:58
+Total: 6h 58m
+Core: 3h 20m
+Deep: 1h 35m
+REM: 2h 0m
+WakeUp: 0h 1m
+Recovery: 3h 36m
+2026年3月6日 21:53:00 - 2026年3月7日 05:57:52
+Total: 7h 18m
+Core: 3h 39m
+Deep: 1h 10m
+REM: 2h 21m
+WakeUp: 0h 6m
+Recovery: 3h 32m
+2026年3月5日 21:41:03 - 2026年3月6日 06:12:14
+Total: 7h 27m
+Core: 3h 51m
+Deep: 0h 47m
+REM: 2h 36m
+WakeUp: 0h 11m
+Recovery: 3h 24m
+2026年3月4日 21:42:21 - 2026年3月5日 06:13:16
+Total: 7h 27m
+Core: 3h 57m
+Deep: 1h 1m
+REM: 2h 9m
+WakeUp: 0h 18m
+Recovery: 3h 10m
+2026年3月3日 21:45:16 - 2026年3月4日 06:25:16
+Total: 7h 48m
+Core: 4h 37m
+Deep: 0h 42m
+REM: 2h 20m
+WakeUp: 0h 8m
+Recovery: 3h 3m
+2026年3月2日 22:52:27 - 2026年3月3日 06:59:54
+Total: 8h 7m
+Core: 3h 31m
+Deep: 1h 29m
+REM: 2h 47m
+WakeUp: 0h 18m
+Recovery: 4h 17m
+2026年3月1日 21:52:42 - 2026年3月2日 07:16:40
+Total: 8h 45m
+Core: 4h 34m
+Deep: 0h 27m
+REM: 2h 30m
+WakeUp: 1h 12m
+Recovery: 2h 58m
+2026年2月28日 22:41:51 - 2026年3月1日 07:17:46
+Total: 8h 35m
+Core: 4h 27m
+Deep: 1h 4m
+REM: 2h 50m
+WakeUp: 0h 12m
+Recovery: 3h 55m
+2026年2月27日 23:01:01 - 2026年2月28日 06:45:29
+Total: 7h 44m
+Core: 4h 36m
+Deep: 0h 38m
+REM: 2h 20m
+WakeUp: 0h 7m
+Recovery: 2h 59m
+2026年2月26日 22:47:45 - 2026年2月27日 06:15:15
+Total: 7h 27m
+Core: 4h 37m
+Deep: 0h 50m
+REM: 1h 38m
+WakeUp: 0h 19m
+Recovery: 2h 29m
+2026年2月25日 22:39:16 - 2026年2月26日 07:34:39
+Total: 8h 55m
+Core: 4h 44m
+Deep: 0h 45m
+REM: 2h 16m
+WakeUp: 1h 8m
+Recovery: 3h 2m
+2026年2月24日 22:45:05 - 2026年2月25日 06:38:03
+Total: 7h 52m
+Core: 4h 20m
+Deep: 0h 25m
+REM: 2h 55m
+WakeUp: 0h 11m
+Recovery: 3h 21m
+2026年2月23日 22:34:27 - 2026年2月24日 07:02:23
+Total: 8h 27m
+Core: 4h 56m
+Deep: 0h 46m
+REM: 2h 10m
+WakeUp: 0h 33m
+Recovery: 2h 57m
+2026年2月22日 23:18:48 - 2026年2月23日 06:34:49
+Total: 7h 16m
+Core: 4h 16m
+Deep: 0h 34m
+REM: 2h 3m
+WakeUp: 0h 20m
+Recovery: 2h 38m
+2026年2月21日 22:24:54 - 2026年2月22日 07:04:49
+Total: 8h 39m
+Core: 3h 51m
+Deep: 1h 7m
+REM: 2h 32m
+WakeUp: 1h 8m
+Recovery: 3h 39m
+2026年2月20日 22:35:56 - 2026年2月21日 07:49:19
+Total: 9h 13m
+Core: 3h 39m
+Deep: 1h 14m
+REM: 2h 7m
+WakeUp: 2h 11m
+Recovery: 3h 21m
+2026年2月19日 23:11:23 - 2026年2月20日 06:05:54
+Total: 6h 54m
+Core: 3h 18m
+Deep: 1h 20m
+REM: 2h 11m
+WakeUp: 0h 2m
+Recovery: 3h 32m
+2026年2月18日 23:43:11 - 2026年2月19日 07:29:40
+Total: 7h 46m
+Core: 4h 16m
+Deep: 1h 18m
+REM: 2h 2m
+WakeUp: 0h 8m
+Recovery: 3h 21m
+2026年2月17日 22:50:02 - 2026年2月18日 07:02:28
+Total: 8h 12m
+Core: 4h 0m
+Deep: 1h 15m
+REM: 2h 37m
+WakeUp: 0h 18m
+Recovery: 3h 53m
+2026年2月16日 22:53:22 - 2026年2月17日 05:29:55
+Total: 6h 36m
+Core: 3h 27m
+Deep: 1h 6m
+REM: 1h 57m
+WakeUp: 0h 4m
+Recovery: 3h 4m
+2026年2月15日 23:06:52 - 2026年2月16日 06:49:20
+Total: 7h 42m
+Core: 3h 41m
+Deep: 1h 27m
+REM: 2h 19m
+WakeUp: 0h 13m
+Recovery: 3h 47m
+2026年2月14日 22:33:27 - 2026年2月15日 06:19:56
+Total: 7h 46m
+Core: 4h 54m
+Deep: 0h 39m
+REM: 2h 9m
+WakeUp: 0h 1m
+Recovery: 2h 49m
+2026年2月13日 22:48:25 - 2026年2月14日 05:38:27
+Total: 6h 50m
+Core: 3h 22m
+Deep: 0h 51m
+REM: 1h 51m
+WakeUp: 0h 43m
+Recovery: 2h 43m
+2026年2月12日 23:01:47 - 2026年2月13日 07:39:42
+Total: 8h 37m
+Core: 2h 48m
+Deep: 0h 57m
+REM: 2h 18m
+WakeUp: 2h 33m
+Recovery: 3h 16m
+2026年2月11日 22:30:52 - 2026年2月12日 07:07:47
+Total: 8h 36m
+Core: 4h 0m
+Deep: 0h 53m
+REM: 2h 43m
+WakeUp: 0h 59m
+Recovery: 3h 37m
+2026年2月10日 22:33:34 - 2026年2月11日 06:53:31
+Total: 8h 19m
+Core: 5h 28m
+Deep: 0h 39m
+REM: 2h 10m
+WakeUp: 0h 1m
+Recovery: 2h 49m
+2026年2月9日 22:44:16 - 2026年2月10日 06:37:14
+Total: 7h 52m
+Core: 4h 16m
+Deep: 0h 38m
+REM: 2h 44m
+WakeUp: 0h 12m
+Recovery: 3h 23m
+2026年2月8日 22:47:31 - 2026年2月9日 06:38:29
+Total: 7h 50m
+Core: 4h 29m
+Deep: 0h 28m
+REM: 2h 32m
+WakeUp: 0h 20m
+Recovery: 3h 0m
+2026年2月7日 22:45:42 - 2026年2月8日 06:13:13
+Total: 7h 27m
+Core: 4h 9m
+Deep: 0h 56m
+REM: 1h 43m
+WakeUp: 0h 37m
+Recovery: 2h 40m
+2026年2月6日 22:32:35 - 2026年2月7日 08:04:27
+Total: 9h 31m
+Core: 4h 15m
+Deep: 1h 2m
+REM: 3h 3m
+WakeUp: 1h 9m
+Recovery: 4h 6m
+2026年2月5日 22:34:45 - 2026年2月6日 05:19:47
+Total: 6h 45m
+Core: 3h 29m
+Deep: 0h 41m
+REM: 2h 27m
+WakeUp: 0h 6m
+Recovery: 3h 9m
+2026年2月4日 22:34:45 - 2026年2月5日 06:07:14
+Total: 7h 32m
+Core: 4h 16m
+Deep: 0h 26m
+REM: 2h 25m
+WakeUp: 0h 23m
+Recovery: 2h 52m
+2026年2月3日 22:36:14 - 2026年2月4日 05:03:17
+Total: 6h 27m
+Core: 4h 0m
+Deep: 0h 42m
+REM: 1h 39m
+WakeUp: 0h 4m
+Recovery: 2h 22m
+2026年2月2日 22:47:46 - 2026年2月3日 06:23:16
+Total: 7h 35m
+Core: 4h 3m
+Deep: 0h 55m
+REM: 2h 22m
+WakeUp: 0h 13m
+Recovery: 3h 18m
+2026年2月1日 23:00:33 - 2026年2月2日 07:12:29
+Total: 8h 11m
+Core: 4h 21m
+Deep: 1h 23m
+REM: 2h 24m
+WakeUp: 0h 1m
+Recovery: 3h 48m
+2026年1月31日 22:52:29 - 2026年2月1日 06:38:28
+Total: 7h 45m
+Core: 3h 55m
+Deep: 0h 33m
+REM: 2h 34m
+WakeUp: 0h 42m
+Recovery: 3h 8m
+
+Averate HRV Value During Sleep Session:
+2026/3/20 HRV: 50.3 ms
+2026/3/19 HRV: 41.3 ms
+2026/3/18 HRV: 55.1 ms
+2026/3/17 HRV: 48.4 ms
+2026/3/16 HRV: 50.2 ms
+2026/3/15 HRV: 43.9 ms
+2026/3/14 HRV: 43.2 ms
+2026/3/13 HRV: 40.8 ms
+2026/3/12 HRV: 44.6 ms
+2026/3/11 HRV: 47.7 ms
+2026/3/10 HRV: 44.4 ms
+2026/3/9 HRV: 52.7 ms
+2026/3/8 HRV: 59.3 ms
+2026/3/7 HRV: 55.8 ms
+2026/3/6 HRV: 42.4 ms
+2026/3/5 HRV: 53.1 ms
+2026/3/4 HRV: 53.7 ms
+2026/3/3 HRV: 42.6 ms
+2026/3/2 HRV: 40.0 ms
+2026/3/1 HRV: 47.8 ms
+2026/2/28 HRV: 50.3 ms
+2026/2/27 HRV: 37.9 ms
+2026/2/26 HRV: 45.0 ms
+2026/2/25 HRV: 40.1 ms
+2026/2/24 HRV: 47.4 ms
+2026/2/23 HRV: 39.3 ms
+2026/2/22 HRV: 53.7 ms
+2026/2/21 HRV: 44.8 ms
+2026/2/20 HRV: 63.7 ms
+2026/2/19 HRV: 58.9 ms
+2026/2/18 HRV: 46.5 ms
+2026/2/17 HRV: 43.3 ms
+2026/2/16 HRV: 35.1 ms
+2026/2/15 HRV: 35.4 ms
+2026/2/14 HRV: 39.2 ms
+2026/2/13 HRV: 38.6 ms
+2026/2/12 HRV: 38.0 ms
+2026/2/11 HRV: 42.5 ms
+2026/2/10 HRV: 45.8 ms
+2026/2/9 HRV: 50.4 ms
+2026/2/8 HRV: 38.5 ms
+2026/2/7 HRV: 48.7 ms
+2026/2/6 HRV: 46.0 ms
+2026/2/5 HRV: 48.3 ms
+2026/2/4 HRV: 47.3 ms
+2026/2/3 HRV: 53.4 ms
+2026/2/2 HRV: 55.4 ms
+2026/2/1 HRV: 37.9 ms
+
+Resting Heart Rate of Each Day:
+2026/2/1: 63.0 bpm
+2026/2/2: 66.0 bpm
+2026/2/3: 63.0 bpm
+2026/2/4: 60.0 bpm
+2026/2/5: 64.0 bpm
+2026/2/6: 60.0 bpm
+2026/2/7: 61.0 bpm
+2026/2/8: 58.0 bpm
+2026/2/9: 63.0 bpm
+2026/2/10: 70.0 bpm
+2026/2/11: 63.0 bpm
+2026/2/12: 69.0 bpm
+2026/2/13: 71.0 bpm
+2026/2/14: 67.0 bpm
+2026/2/15: 67.0 bpm
+2026/2/16: 59.0 bpm
+2026/2/17: 72.0 bpm
+2026/2/18: 68.0 bpm
+2026/2/19: 59.0 bpm
+2026/2/20: 58.0 bpm
+2026/2/21: 60.0 bpm
+2026/2/22: 64.0 bpm
+2026/2/23: 60.0 bpm
+2026/2/24: 61.0 bpm
+2026/2/25: 64.0 bpm
+2026/2/26: 72.0 bpm
+2026/2/27: 74.0 bpm
+2026/2/28: 69.0 bpm
+2026/3/1: 65.0 bpm
+2026/3/2: 67.0 bpm
+2026/3/3: 66.0 bpm
+2026/3/4: 64.0 bpm
+2026/3/5: 66.0 bpm
+2026/3/6: 67.0 bpm
+2026/3/7: 66.0 bpm
+2026/3/8: 64.0 bpm
+2026/3/9: 63.0 bpm
+2026/3/10: 66.0 bpm
+2026/3/11: 67.0 bpm
+2026/3/12: 67.0 bpm
+2026/3/13: 66.0 bpm
+2026/3/14: 67.0 bpm
+2026/3/15: 67.0 bpm
+2026/3/16: 66.0 bpm
+2026/3/17: 67.0 bpm
+2026/3/18: 66.0 bpm
+2026/3/19: 67.0 bpm
+2026/3/20: 66.0 bpm

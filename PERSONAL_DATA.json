@@ -1,0 +1,1470 @@
+{
+  "workouts": [
+    {
+      "type": "骑行",
+      "date": "03-20 11:14",
+      "duration_min": 74,
+      "avg_hr": 117,
+      "max_hr": 130,
+      "rpe": 4.0,
+      "hr_distribution": {
+        "zone0": 0.0,
+        "zone1": 11.7,
+        "zone2": 81.7,
+        "zone3": 6.6,
+        "zone4": 0.0,
+        "zone5": 0.0
+      }
+    },
+    {
+      "type": "力量训练",
+      "date": "03-19 11:55",
+      "duration_min": 54,
+      "avg_hr": 115,
+      "max_hr": 142,
+      "rpe": 6.0,
+      "hr_distribution": {
+        "zone0": 0.0,
+        "zone1": 20.9,
+        "zone2": 64.7,
+        "zone3": 14.4,
+        "zone4": 0.0,
+        "zone5": 0.0
+      }
+    },
+    {
+      "type": "骑行",
+      "date": "03-18 11:01",
+      "duration_min": 67,
+      "avg_hr": 131,
+      "max_hr": 144,
+      "rpe": 4.0,
+      "hr_distribution": {
+        "zone0": 0.0,
+        "zone1": 3.5,
+        "zone2": 14.0,
+        "zone3": 82.0,
+        "zone4": 0.5,
+        "zone5": 0.0
+      }
+    },
+    {
+      "type": "力量训练",
+      "date": "03-16 11:46",
+      "duration_min": 75,
+      "avg_hr": 113,
+      "max_hr": 140,
+      "rpe": 6.0,
+      "hr_distribution": {
+        "zone0": 0.2,
+        "zone1": 28.4,
+        "zone2": 60.1,
+        "zone3": 11.3,
+        "zone4": 0.0,
+        "zone5": 0.0
+      }
+    },
+    {
+      "type": "力量训练",
+      "date": "03-15 08:03",
+      "duration_min": 82,
+      "avg_hr": 121,
+      "max_hr": 158,
+      "rpe": 6.0,
+      "hr_distribution": {
+        "zone0": 0.5,
+        "zone1": 14.6,
+        "zone2": 48.0,
+        "zone3": 29.7,
+        "zone4": 7.2,
+        "zone5": 0.0
+      }
+    },
+    {
+      "type": "整理放松",
+      "date": "03-14 20:30",
+      "duration_min": 20,
+      "avg_hr": 89,
+      "max_hr": 103,
+      "rpe": 2.0,
+      "hr_distribution": {
+        "zone0": 41.2,
+        "zone1": 58.8,
+        "zone2": 0.0,
+        "zone3": 0.0,
+        "zone4": 0.0,
+        "zone5": 0.0
+      }
+    },
+    {
+      "type": "骑行",
+      "date": "03-13 11:11",
+      "duration_min": 65,
+      "avg_hr": 129,
+      "max_hr": 151,
+      "rpe": 5.0,
+      "hr_distribution": {
+        "zone0": 0.0,
+        "zone1": 1.2,
+        "zone2": 33.3,
+        "zone3": 49.9,
+        "zone4": 15.6,
+        "zone5": 0.0
+      }
+    },
+    {
+      "type": "力量训练",
+      "date": "03-11 11:50",
+      "duration_min": 52,
+      "avg_hr": 122,
+      "max_hr": 145,
+      "rpe": 6.0,
+      "hr_distribution": {
+        "zone0": 0.0,
+        "zone1": 7.7,
+        "zone2": 50.8,
+        "zone3": 40.7,
+        "zone4": 0.8,
+        "zone5": 0.0
+      }
+    },
+    {
+      "type": "力量训练",
+      "date": "03-09 11:49",
+      "duration_min": 60,
+      "avg_hr": 117,
+      "max_hr": 146,
+      "rpe": 6.0,
+      "hr_distribution": {
+        "zone0": 1.7,
+        "zone1": 18.1,
+        "zone2": 55.7,
+        "zone3": 23.6,
+        "zone4": 0.9,
+        "zone5": 0.0
+      }
+    },
+    {
+      "type": "力量训练",
+      "date": "03-08 08:00",
+      "duration_min": 62,
+      "avg_hr": 126,
+      "max_hr": 165,
+      "rpe": 7.0,
+      "hr_distribution": {
+        "zone0": 0.4,
+        "zone1": 8.9,
+        "zone2": 30.1,
+        "zone3": 48.4,
+        "zone4": 11.3,
+        "zone5": 0.8
+      }
+    },
+    {
+      "type": "骑行",
+      "date": "03-06 11:48",
+      "duration_min": 53,
+      "avg_hr": 123,
+      "max_hr": 143,
+      "rpe": 4.0,
+      "hr_distribution": {
+        "zone0": 0.0,
+        "zone1": 2.5,
+        "zone2": 54.2,
+        "zone3": 43.0,
+        "zone4": 0.3,
+        "zone5": 0.0
+      }
+    },
+    {
+      "type": "力量训练",
+      "date": "03-05 11:54",
+      "duration_min": 57,
+      "avg_hr": 117,
+      "max_hr": 150,
+      "rpe": 6.0,
+      "hr_distribution": {
+        "zone0": 0.7,
+        "zone1": 19.4,
+        "zone2": 51.6,
+        "zone3": 27.3,
+        "zone4": 1.0,
+        "zone5": 0.0
+      }
+    },
+    {
+      "type": "力量训练",
+      "date": "03-04 11:48",
+      "duration_min": 68,
+      "avg_hr": 112,
+      "max_hr": 138,
+      "rpe": 6.0,
+      "hr_distribution": {
+        "zone0": 1.0,
+        "zone1": 28.1,
+        "zone2": 59.8,
+        "zone3": 11.1,
+        "zone4": 0.0,
+        "zone5": 0.0
+      }
+    },
+    {
+      "type": "力量训练",
+      "date": "03-02 11:58",
+      "duration_min": 51,
+      "avg_hr": 124,
+      "max_hr": 155,
+      "rpe": 6.0,
+      "hr_distribution": {
+        "zone0": 0.0,
+        "zone1": 7.6,
+        "zone2": 42.9,
+        "zone3": 41.4,
+        "zone4": 8.1,
+        "zone5": 0.0
+      }
+    },
+    {
+      "type": "骑行",
+      "date": "02-28 11:41",
+      "duration_min": 55,
+      "avg_hr": 123,
+      "max_hr": 145,
+      "rpe": 4.0,
+      "hr_distribution": {
+        "zone0": 0.0,
+        "zone1": 2.6,
+        "zone2": 46.4,
+        "zone3": 50.0,
+        "zone4": 1.1,
+        "zone5": 0.0
+      }
+    },
+    {
+      "type": "力量训练",
+      "date": "02-26 11:59",
+      "duration_min": 42,
+      "avg_hr": 118,
+      "max_hr": 144,
+      "rpe": 6.0,
+      "hr_distribution": {
+        "zone0": 0.0,
+        "zone1": 9.2,
+        "zone2": 67.3,
+        "zone3": 23.1,
+        "zone4": 0.4,
+        "zone5": 0.0
+      }
+    },
+    {
+      "type": "力量训练",
+      "date": "02-25 11:54",
+      "duration_min": 62,
+      "avg_hr": 110,
+      "max_hr": 137,
+      "rpe": 6.0,
+      "hr_distribution": {
+        "zone0": 1.8,
+        "zone1": 30.7,
+        "zone2": 62.6,
+        "zone3": 5.0,
+        "zone4": 0.0,
+        "zone5": 0.0
+      }
+    },
+    {
+      "type": "力量训练",
+      "date": "02-23 14:55",
+      "duration_min": 71,
+      "avg_hr": 116,
+      "max_hr": 150,
+      "rpe": 6.0,
+      "hr_distribution": {
+        "zone0": 1.4,
+        "zone1": 20.4,
+        "zone2": 55.6,
+        "zone3": 19.7,
+        "zone4": 2.9,
+        "zone5": 0.0
+      }
+    },
+    {
+      "type": "骑行",
+      "date": "02-22 20:13",
+      "duration_min": 35,
+      "avg_hr": 115,
+      "max_hr": 131,
+      "rpe": 3.0,
+      "hr_distribution": {
+        "zone0": 0.7,
+        "zone1": 16.1,
+        "zone2": 67.3,
+        "zone3": 15.9,
+        "zone4": 0.0,
+        "zone5": 0.0
+      },
+      "avg_power": 69,
+      "max_power": 156,
+      "power_distribution": {
+        "z1": 19.6,
+        "z2": 49.0,
+        "z3": 27.8,
+        "z4": 3.2,
+        "z5": 0.2,
+        "z6": 0.0,
+        "z7": 0.0
+      },
+      "avg_cadence_incl_0": 78,
+      "avg_cadence_excl_0": 78,
+      "max_cadence": 88,
+      "distance_km": 11.7
+    },
+    {
+      "type": "徒步",
+      "date": "02-17 09:42",
+      "duration_min": 321,
+      "avg_hr": 132,
+      "max_hr": 200,
+      "rpe": 6.0,
+      "hr_distribution": {
+        "zone0": 0.0,
+        "zone1": 1.0,
+        "zone2": 50.4,
+        "zone3": 31.9,
+        "zone4": 9.2,
+        "zone5": 0.3
+      },
+      "distance_km": 9.2
+    },
+    {
+      "type": "徒步",
+      "date": "02-16 10:22",
+      "duration_min": 9,
+      "avg_hr": 99,
+      "max_hr": 107,
+      "rpe": 2.0,
+      "hr_distribution": {
+        "zone0": 1.9,
+        "zone1": 94.3,
+        "zone2": 3.8,
+        "zone3": 0.0,
+        "zone4": 0.0,
+        "zone5": 0.0
+      },
+      "distance_km": 0.2
+    },
+    {
+      "type": "徒步",
+      "date": "02-16 09:27",
+      "duration_min": 30,
+      "avg_hr": 97,
+      "max_hr": 108,
+      "rpe": 2.0,
+      "hr_distribution": {
+        "zone0": 6.3,
+        "zone1": 93.4,
+        "zone2": 0.2,
+        "zone3": 0.0,
+        "zone4": 0.0,
+        "zone5": 0.0
+      },
+      "distance_km": 1.4
+    },
+    {
+      "type": "徒步",
+      "date": "02-15 13:32",
+      "duration_min": 81,
+      "avg_hr": 106,
+      "max_hr": 129,
+      "rpe": 4.0,
+      "hr_distribution": {
+        "zone0": 0.0,
+        "zone1": 60.1,
+        "zone2": 39.0,
+        "zone3": 0.8,
+        "zone4": 0.0,
+        "zone5": 0.0
+      },
+      "distance_km": 2.0
+    },
+    {
+      "type": "徒步",
+      "date": "02-15 09:22",
+      "duration_min": 88,
+      "avg_hr": 107,
+      "max_hr": 142,
+      "rpe": 4.0,
+      "hr_distribution": {
+        "zone0": 0.8,
+        "zone1": 44.6,
+        "zone2": 52.8,
+        "zone3": 1.8,
+        "zone4": 0.0,
+        "zone5": 0.0
+      },
+      "distance_km": 3.6
+    },
+    {
+      "type": "力量训练",
+      "date": "02-11 11:56",
+      "duration_min": 37,
+      "avg_hr": 118,
+      "max_hr": 145,
+      "rpe": 6.0,
+      "hr_distribution": {
+        "zone0": 0.0,
+        "zone1": 12.5,
+        "zone2": 61.7,
+        "zone3": 25.5,
+        "zone4": 0.2,
+        "zone5": 0.0
+      }
+    },
+    {
+      "type": "力量训练",
+      "date": "02-09 11:43",
+      "duration_min": 59,
+      "avg_hr": 120,
+      "max_hr": 160,
+      "rpe": 6.0,
+      "hr_distribution": {
+        "zone0": 0.0,
+        "zone1": 9.6,
+        "zone2": 60.8,
+        "zone3": 28.3,
+        "zone4": 1.3,
+        "zone5": 0.0
+      }
+    },
+    {
+      "type": "骑行",
+      "date": "02-08 08:08",
+      "duration_min": 43,
+      "avg_hr": 130,
+      "max_hr": 160,
+      "rpe": 6.0,
+      "hr_distribution": {
+        "zone0": 0.0,
+        "zone1": 10.0,
+        "zone2": 19.5,
+        "zone3": 51.2,
+        "zone4": 19.3,
+        "zone5": 0.0
+      },
+      "avg_power": 72,
+      "max_power": 224,
+      "power_distribution": {
+        "z1": 19.7,
+        "z2": 46.4,
+        "z3": 18.5,
+        "z4": 11.7,
+        "z5": 2.4,
+        "z6": 1.1,
+        "z7": 0.2
+      },
+      "avg_cadence_incl_0": 78,
+      "avg_cadence_excl_0": 78,
+      "max_cadence": 93,
+      "distance_km": 14.5
+    },
+    {
+      "type": "力量训练",
+      "date": "02-07 16:13",
+      "duration_min": 83,
+      "avg_hr": 117,
+      "max_hr": 158,
+      "rpe": 6.0,
+      "hr_distribution": {
+        "zone0": 1.4,
+        "zone1": 18.0,
+        "zone2": 56.5,
+        "zone3": 19.3,
+        "zone4": 4.8,
+        "zone5": 0.0
+      }
+    },
+    {
+      "type": "力量训练",
+      "date": "02-06 11:53",
+      "duration_min": 53,
+      "avg_hr": 112,
+      "max_hr": 139,
+      "rpe": 6.0,
+      "hr_distribution": {
+        "zone0": 0.0,
+        "zone1": 29.9,
+        "zone2": 62.0,
+        "zone3": 8.1,
+        "zone4": 0.0,
+        "zone5": 0.0
+      }
+    },
+    {
+      "type": "力量训练",
+      "date": "02-04 11:54",
+      "duration_min": 54,
+      "avg_hr": 117,
+      "max_hr": 143,
+      "rpe": 6.0,
+      "hr_distribution": {
+        "zone0": 0.0,
+        "zone1": 8.9,
+        "zone2": 74.6,
+        "zone3": 16.3,
+        "zone4": 0.2,
+        "zone5": 0.0
+      }
+    },
+    {
+      "type": "力量训练",
+      "date": "02-02 11:55",
+      "duration_min": 51,
+      "avg_hr": 116,
+      "max_hr": 141,
+      "rpe": 6.0,
+      "hr_distribution": {
+        "zone0": 0.0,
+        "zone1": 17.4,
+        "zone2": 65.4,
+        "zone3": 17.2,
+        "zone4": 0.0,
+        "zone5": 0.0
+      }
+    },
+    {
+      "type": "羽毛球",
+      "date": "02-01 15:59",
+      "duration_min": 10,
+      "avg_hr": 106,
+      "max_hr": 115,
+      "rpe": 3.0,
+      "hr_distribution": {
+        "zone0": 0.0,
+        "zone1": 56.7,
+        "zone2": 43.3,
+        "zone3": 0.0,
+        "zone4": 0.0,
+        "zone5": 0.0
+      },
+      "distance_km": 0.2
+    },
+    {
+      "type": "骑行",
+      "date": "02-01 08:19",
+      "duration_min": 36,
+      "avg_hr": 130,
+      "max_hr": 160,
+      "rpe": 4.9,
+      "hr_distribution": {
+        "zone0": 0.0,
+        "zone1": 3.9,
+        "zone2": 13.9,
+        "zone3": 75.0,
+        "zone4": 7.1,
+        "zone5": 0.0
+      },
+      "avg_power": 71,
+      "max_power": 217,
+      "power_distribution": {
+        "z1": 23.2,
+        "z2": 47.4,
+        "z3": 21.5,
+        "z4": 2.7,
+        "z5": 2.2,
+        "z6": 2.7,
+        "z7": 0.2
+      },
+      "avg_cadence_incl_0": 77,
+      "avg_cadence_excl_0": 77,
+      "max_cadence": 101,
+      "distance_km": 12.0
+    }
+  ],
+  "atl": [
+    {
+      "date": "02-01",
+      "atl": 273.0
+    },
+    {
+      "date": "02-02",
+      "atl": 281.1
+    },
+    {
+      "date": "02-03",
+      "atl": 210.8
+    },
+    {
+      "date": "02-04",
+      "atl": 239.2
+    },
+    {
+      "date": "02-05",
+      "atl": 179.4
+    },
+    {
+      "date": "02-06",
+      "atl": 213.6
+    },
+    {
+      "date": "02-07",
+      "atl": 284.5
+    },
+    {
+      "date": "02-08",
+      "atl": 278.5
+    },
+    {
+      "date": "02-09",
+      "atl": 297.1
+    },
+    {
+      "date": "02-10",
+      "atl": 222.8
+    },
+    {
+      "date": "02-11",
+      "atl": 222.1
+    },
+    {
+      "date": "02-12",
+      "atl": 166.6
+    },
+    {
+      "date": "02-13",
+      "atl": 125.0
+    },
+    {
+      "date": "02-14",
+      "atl": 93.7
+    },
+    {
+      "date": "02-15",
+      "atl": 239.3
+    },
+    {
+      "date": "02-16",
+      "atl": 199.2
+    },
+    {
+      "date": "02-17",
+      "atl": 630.4
+    },
+    {
+      "date": "02-18",
+      "atl": 472.8
+    },
+    {
+      "date": "02-19",
+      "atl": 354.6
+    },
+    {
+      "date": "02-20",
+      "atl": 265.9
+    },
+    {
+      "date": "02-21",
+      "atl": 199.5
+    },
+    {
+      "date": "02-22",
+      "atl": 176.0
+    },
+    {
+      "date": "02-23",
+      "atl": 237.8
+    },
+    {
+      "date": "02-24",
+      "atl": 178.4
+    },
+    {
+      "date": "02-25",
+      "atl": 226.0
+    },
+    {
+      "date": "02-26",
+      "atl": 231.9
+    },
+    {
+      "date": "02-27",
+      "atl": 173.9
+    },
+    {
+      "date": "02-28",
+      "atl": 185.8
+    },
+    {
+      "date": "03-01",
+      "atl": 139.4
+    },
+    {
+      "date": "03-02",
+      "atl": 181.2
+    },
+    {
+      "date": "03-03",
+      "atl": 135.9
+    },
+    {
+      "date": "03-04",
+      "atl": 203.5
+    },
+    {
+      "date": "03-05",
+      "atl": 238.1
+    },
+    {
+      "date": "03-06",
+      "atl": 231.6
+    },
+    {
+      "date": "03-07",
+      "atl": 173.7
+    },
+    {
+      "date": "03-08",
+      "atl": 237.9
+    },
+    {
+      "date": "03-09",
+      "atl": 268.7
+    },
+    {
+      "date": "03-10",
+      "atl": 201.5
+    },
+    {
+      "date": "03-11",
+      "atl": 229.0
+    },
+    {
+      "date": "03-12",
+      "atl": 171.8
+    },
+    {
+      "date": "03-13",
+      "atl": 210.3
+    },
+    {
+      "date": "03-14",
+      "atl": 167.9
+    },
+    {
+      "date": "03-15",
+      "atl": 249.4
+    },
+    {
+      "date": "03-16",
+      "atl": 298.8
+    },
+    {
+      "date": "03-17",
+      "atl": 224.1
+    },
+    {
+      "date": "03-18",
+      "atl": 234.9
+    },
+    {
+      "date": "03-19",
+      "atl": 256.8
+    },
+    {
+      "date": "03-20",
+      "atl": 266.4
+    }
+  ],
+  "ctl": [
+    {
+      "date": "02-01",
+      "ctl": 214.6
+    },
+    {
+      "date": "02-02",
+      "ctl": 218.8
+    },
+    {
+      "date": "02-03",
+      "ctl": 208.6
+    },
+    {
+      "date": "02-04",
+      "ctl": 214.0
+    },
+    {
+      "date": "02-05",
+      "ctl": 204.0
+    },
+    {
+      "date": "02-06",
+      "ctl": 209.2
+    },
+    {
+      "date": "02-07",
+      "ctl": 222.6
+    },
+    {
+      "date": "02-08",
+      "ctl": 224.4
+    },
+    {
+      "date": "02-09",
+      "ctl": 230.4
+    },
+    {
+      "date": "02-10",
+      "ctl": 219.7
+    },
+    {
+      "date": "02-11",
+      "ctl": 219.7
+    },
+    {
+      "date": "02-12",
+      "ctl": 209.5
+    },
+    {
+      "date": "02-13",
+      "ctl": 199.7
+    },
+    {
+      "date": "02-14",
+      "ctl": 190.4
+    },
+    {
+      "date": "02-15",
+      "ctl": 213.0
+    },
+    {
+      "date": "02-16",
+      "ctl": 206.8
+    },
+    {
+      "date": "02-17",
+      "ctl": 286.6
+    },
+    {
+      "date": "02-18",
+      "ctl": 273.3
+    },
+    {
+      "date": "02-19",
+      "ctl": 260.6
+    },
+    {
+      "date": "02-20",
+      "ctl": 248.5
+    },
+    {
+      "date": "02-21",
+      "ctl": 236.9
+    },
+    {
+      "date": "02-22",
+      "ctl": 230.8
+    },
+    {
+      "date": "02-23",
+      "ctl": 239.8
+    },
+    {
+      "date": "02-24",
+      "ctl": 228.6
+    },
+    {
+      "date": "02-25",
+      "ctl": 235.1
+    },
+    {
+      "date": "02-26",
+      "ctl": 235.8
+    },
+    {
+      "date": "02-27",
+      "ctl": 224.8
+    },
+    {
+      "date": "02-28",
+      "ctl": 224.7
+    },
+    {
+      "date": "03-01",
+      "ctl": 214.2
+    },
+    {
+      "date": "03-02",
+      "ctl": 218.5
+    },
+    {
+      "date": "03-03",
+      "ctl": 208.4
+    },
+    {
+      "date": "03-04",
+      "ctl": 217.6
+    },
+    {
+      "date": "03-05",
+      "ctl": 223.4
+    },
+    {
+      "date": "03-06",
+      "ctl": 222.8
+    },
+    {
+      "date": "03-07",
+      "ctl": 212.5
+    },
+    {
+      "date": "03-08",
+      "ctl": 222.6
+    },
+    {
+      "date": "03-09",
+      "ctl": 229.1
+    },
+    {
+      "date": "03-10",
+      "ctl": 218.4
+    },
+    {
+      "date": "03-11",
+      "ctl": 222.7
+    },
+    {
+      "date": "03-12",
+      "ctl": 212.4
+    },
+    {
+      "date": "03-13",
+      "ctl": 217.7
+    },
+    {
+      "date": "03-14",
+      "ctl": 209.4
+    },
+    {
+      "date": "03-15",
+      "ctl": 222.7
+    },
+    {
+      "date": "03-16",
+      "ctl": 233.1
+    },
+    {
+      "date": "03-17",
+      "ctl": 222.3
+    },
+    {
+      "date": "03-18",
+      "ctl": 224.4
+    },
+    {
+      "date": "03-19",
+      "ctl": 228.9
+    },
+    {
+      "date": "03-20",
+      "ctl": 232.0
+    }
+  ],
+  "comments": [
+    {
+      "from": "02-13",
+      "to": "02-18",
+      "text": "陕西旅游"
+    },
+    {
+      "from": "03-18",
+      "to": "03-18",
+      "text": "Average cadence 88; average power 63w"
+    },
+    {
+      "from": "03-20",
+      "to": "03-20",
+      "text": "Average cadence 87; average power 46w"
+    }
+  ],
+  "sleep_sessions": [
+    {
+      "start": "2026年3月19日 22:22:01",
+      "end": "2026年3月20日 06:27:45",
+      "total": "7h 18m",
+      "core": "3h 30m",
+      "deep": "1h 1m",
+      "rem": "2h 30m",
+      "wake": "0h 15m",
+      "recovery": "3h 32m"
+    },
+    {
+      "start": "2026年3月18日 22:33:04",
+      "end": "2026年3月19日 06:15:13",
+      "total": "7h 24m",
+      "core": "2h 51m",
+      "deep": "1h 25m",
+      "rem": "2h 22m",
+      "wake": "0h 44m",
+      "recovery": "3h 48m"
+    },
+    {
+      "start": "2026年3月17日 22:39:34",
+      "end": "2026年3月18日 05:19:07",
+      "total": "6h 39m",
+      "core": "3h 23m",
+      "deep": "0h 33m",
+      "rem": "2h 30m",
+      "wake": "0h 11m",
+      "recovery": "3h 4m"
+    },
+    {
+      "start": "2026年3月16日 22:43:46",
+      "end": "2026年3月17日 06:47:13",
+      "total": "8h 3m",
+      "core": "4h 25m",
+      "deep": "0h 43m",
+      "rem": "2h 8m",
+      "wake": "0h 46m",
+      "recovery": "2h 51m"
+    },
+    {
+      "start": "2026年3月15日 22:22:25",
+      "end": "2026年3月16日 05:49:06",
+      "total": "7h 11m",
+      "core": "3h 1m",
+      "deep": "1h 11m",
+      "rem": "2h 51m",
+      "wake": "0h 7m",
+      "recovery": "4h 2m"
+    },
+    {
+      "start": "2026年3月14日 22:11:55",
+      "end": "2026年3月15日 05:34:24",
+      "total": "6h 40m",
+      "core": "3h 44m",
+      "deep": "1h 0m",
+      "rem": "1h 53m",
+      "wake": "0h 1m",
+      "recovery": "2h 54m"
+    },
+    {
+      "start": "2026年3月13日 22:24:40",
+      "end": "2026年3月14日 05:54:31",
+      "total": "6h 56m",
+      "core": "3h 24m",
+      "deep": "0h 57m",
+      "rem": "2h 34m",
+      "wake": "0h 0m",
+      "recovery": "3h 31m"
+    },
+    {
+      "start": "2026年3月12日 22:18:54",
+      "end": "2026年3月13日 06:34:21",
+      "total": "7h 40m",
+      "core": "3h 7m",
+      "deep": "1h 40m",
+      "rem": "2h 47m",
+      "wake": "0h 4m",
+      "recovery": "4h 28m"
+    },
+    {
+      "start": "2026年3月11日 22:18:51",
+      "end": "2026年3月12日 06:09:27",
+      "total": "7h 14m",
+      "core": "4h 5m",
+      "deep": "0h 41m",
+      "rem": "2h 23m",
+      "wake": "0h 3m",
+      "recovery": "3h 5m"
+    },
+    {
+      "start": "2026年3月10日 22:35:46",
+      "end": "2026年3月11日 05:55:17",
+      "total": "7h 19m",
+      "core": "3h 52m",
+      "deep": "0h 29m",
+      "rem": "2h 55m",
+      "wake": "0h 1m",
+      "recovery": "3h 24m"
+    },
+    {
+      "start": "2026年3月9日 22:41:28",
+      "end": "2026年3月10日 04:59:03",
+      "total": "6h 17m",
+      "core": "2h 58m",
+      "deep": "0h 52m",
+      "rem": "2h 14m",
+      "wake": "0h 10m",
+      "recovery": "3h 7m"
+    },
+    {
+      "start": "2026年3月8日 21:46:23",
+      "end": "2026年3月9日 06:27:22",
+      "total": "7h 55m",
+      "core": "3h 49m",
+      "deep": "1h 39m",
+      "rem": "2h 19m",
+      "wake": "0h 7m",
+      "recovery": "3h 58m"
+    },
+    {
+      "start": "2026年3月7日 22:11:46",
+      "end": "2026年3月8日 05:40:58",
+      "total": "6h 58m",
+      "core": "3h 20m",
+      "deep": "1h 35m",
+      "rem": "2h 0m",
+      "wake": "0h 1m",
+      "recovery": "3h 36m"
+    },
+    {
+      "start": "2026年3月6日 21:53:00",
+      "end": "2026年3月7日 05:57:52",
+      "total": "7h 18m",
+      "core": "3h 39m",
+      "deep": "1h 10m",
+      "rem": "2h 21m",
+      "wake": "0h 6m",
+      "recovery": "3h 32m"
+    },
+    {
+      "start": "2026年3月5日 21:41:03",
+      "end": "2026年3月6日 06:12:14",
+      "total": "7h 27m",
+      "core": "3h 51m",
+      "deep": "0h 47m",
+      "rem": "2h 36m",
+      "wake": "0h 11m",
+      "recovery": "3h 24m"
+    },
+    {
+      "start": "2026年3月4日 21:42:21",
+      "end": "2026年3月5日 06:13:16",
+      "total": "7h 27m",
+      "core": "3h 57m",
+      "deep": "1h 1m",
+      "rem": "2h 9m",
+      "wake": "0h 18m",
+      "recovery": "3h 10m"
+    },
+    {
+      "start": "2026年3月3日 21:45:16",
+      "end": "2026年3月4日 06:25:16",
+      "total": "7h 48m",
+      "core": "4h 37m",
+      "deep": "0h 42m",
+      "rem": "2h 20m",
+      "wake": "0h 8m",
+      "recovery": "3h 3m"
+    },
+    {
+      "start": "2026年3月2日 22:52:27",
+      "end": "2026年3月3日 06:59:54",
+      "total": "8h 7m",
+      "core": "3h 31m",
+      "deep": "1h 29m",
+      "rem": "2h 47m",
+      "wake": "0h 18m",
+      "recovery": "4h 17m"
+    },
+    {
+      "start": "2026年3月1日 21:52:42",
+      "end": "2026年3月2日 07:16:40",
+      "total": "8h 45m",
+      "core": "4h 34m",
+      "deep": "0h 27m",
+      "rem": "2h 30m",
+      "wake": "1h 12m",
+      "recovery": "2h 58m"
+    },
+    {
+      "start": "2026年2月28日 22:41:51",
+      "end": "2026年3月1日 07:17:46",
+      "total": "8h 35m",
+      "core": "4h 27m",
+      "deep": "1h 4m",
+      "rem": "2h 50m",
+      "wake": "0h 12m",
+      "recovery": "3h 55m"
+    },
+    {
+      "start": "2026年2月27日 23:01:01",
+      "end": "2026年2月28日 06:45:29",
+      "total": "7h 44m",
+      "core": "4h 36m",
+      "deep": "0h 38m",
+      "rem": "2h 20m",
+      "wake": "0h 7m",
+      "recovery": "2h 59m"
+    },
+    {
+      "start": "2026年2月26日 22:47:45",
+      "end": "2026年2月27日 06:15:15",
+      "total": "7h 27m",
+      "core": "4h 37m",
+      "deep": "0h 50m",
+      "rem": "1h 38m",
+      "wake": "0h 19m",
+      "recovery": "2h 29m"
+    },
+    {
+      "start": "2026年2月25日 22:39:16",
+      "end": "2026年2月26日 07:34:39",
+      "total": "8h 55m",
+      "core": "4h 44m",
+      "deep": "0h 45m",
+      "rem": "2h 16m",
+      "wake": "1h 8m",
+      "recovery": "3h 2m"
+    },
+    {
+      "start": "2026年2月24日 22:45:05",
+      "end": "2026年2月25日 06:38:03",
+      "total": "7h 52m",
+      "core": "4h 20m",
+      "deep": "0h 25m",
+      "rem": "2h 55m",
+      "wake": "0h 11m",
+      "recovery": "3h 21m"
+    },
+    {
+      "start": "2026年2月23日 22:34:27",
+      "end": "2026年2月24日 07:02:23",
+      "total": "8h 27m",
+      "core": "4h 56m",
+      "deep": "0h 46m",
+      "rem": "2h 10m",
+      "wake": "0h 33m",
+      "recovery": "2h 57m"
+    },
+    {
+      "start": "2026年2月22日 23:18:48",
+      "end": "2026年2月23日 06:34:49",
+      "total": "7h 16m",
+      "core": "4h 16m",
+      "deep": "0h 34m",
+      "rem": "2h 3m",
+      "wake": "0h 20m",
+      "recovery": "2h 38m"
+    },
+    {
+      "start": "2026年2月21日 22:24:54",
+      "end": "2026年2月22日 07:04:49",
+      "total": "8h 39m",
+      "core": "3h 51m",
+      "deep": "1h 7m",
+      "rem": "2h 32m",
+      "wake": "1h 8m",
+      "recovery": "3h 39m"
+    },
+    {
+      "start": "2026年2月20日 22:35:56",
+      "end": "2026年2月21日 07:49:19",
+      "total": "9h 13m",
+      "core": "3h 39m",
+      "deep": "1h 14m",
+      "rem": "2h 7m",
+      "wake": "2h 11m",
+      "recovery": "3h 21m"
+    },
+    {
+      "start": "2026年2月19日 23:11:23",
+      "end": "2026年2月20日 06:05:54",
+      "total": "6h 54m",
+      "core": "3h 18m",
+      "deep": "1h 20m",
+      "rem": "2h 11m",
+      "wake": "0h 2m",
+      "recovery": "3h 32m"
+    },
+    {
+      "start": "2026年2月18日 23:43:11",
+      "end": "2026年2月19日 07:29:40",
+      "total": "7h 46m",
+      "core": "4h 16m",
+      "deep": "1h 18m",
+      "rem": "2h 2m",
+      "wake": "0h 8m",
+      "recovery": "3h 21m"
+    },
+    {
+      "start": "2026年2月17日 22:50:02",
+      "end": "2026年2月18日 07:02:28",
+      "total": "8h 12m",
+      "core": "4h 0m",
+      "deep": "1h 15m",
+      "rem": "2h 37m",
+      "wake": "0h 18m",
+      "recovery": "3h 53m"
+    },
+    {
+      "start": "2026年2月16日 22:53:22",
+      "end": "2026年2月17日 05:29:55",
+      "total": "6h 36m",
+      "core": "3h 27m",
+      "deep": "1h 6m",
+      "rem": "1h 57m",
+      "wake": "0h 4m",
+      "recovery": "3h 4m"
+    },
+    {
+      "start": "2026年2月15日 23:06:52",
+      "end": "2026年2月16日 06:49:20",
+      "total": "7h 42m",
+      "core": "3h 41m",
+      "deep": "1h 27m",
+      "rem": "2h 19m",
+      "wake": "0h 13m",
+      "recovery": "3h 47m"
+    },
+    {
+      "start": "2026年2月14日 22:33:27",
+      "end": "2026年2月15日 06:19:56",
+      "total": "7h 46m",
+      "core": "4h 54m",
+      "deep": "0h 39m",
+      "rem": "2h 9m",
+      "wake": "0h 1m",
+      "recovery": "2h 49m"
+    },
+    {
+      "start": "2026年2月13日 22:48:25",
+      "end": "2026年2月14日 05:38:27",
+      "total": "6h 50m",
+      "core": "3h 22m",
+      "deep": "0h 51m",
+      "rem": "1h 51m",
+      "wake": "0h 43m",
+      "recovery": "2h 43m"
+    },
+    {
+      "start": "2026年2月12日 23:01:47",
+      "end": "2026年2月13日 07:39:42",
+      "total": "8h 37m",
+      "core": "2h 48m",
+      "deep": "0h 57m",
+      "rem": "2h 18m",
+      "wake": "2h 33m",
+      "recovery": "3h 16m"
+    },
+    {
+      "start": "2026年2月11日 22:30:52",
+      "end": "2026年2月12日 07:07:47",
+      "total": "8h 36m",
+      "core": "4h 0m",
+      "deep": "0h 53m",
+      "rem": "2h 43m",
+      "wake": "0h 59m",
+      "recovery": "3h 37m"
+    },
+    {
+      "start": "2026年2月10日 22:33:34",
+      "end": "2026年2月11日 06:53:31",
+      "total": "8h 19m",
+      "core": "5h 28m",
+      "deep": "0h 39m",
+      "rem": "2h 10m",
+      "wake": "0h 1m",
+      "recovery": "2h 49m"
+    },
+    {
+      "start": "2026年2月9日 22:44:16",
+      "end": "2026年2月10日 06:37:14",
+      "total": "7h 52m",
+      "core": "4h 16m",
+      "deep": "0h 38m",
+      "rem": "2h 44m",
+      "wake": "0h 12m",
+      "recovery": "3h 23m"
+    },
+    {
+      "start": "2026年2月8日 22:47:31",
+      "end": "2026年2月9日 06:38:29",
+      "total": "7h 50m",
+      "core": "4h 29m",
+      "deep": "0h 28m",
+      "rem": "2h 32m",
+      "wake": "0h 20m",
+      "recovery": "3h 0m"
+    },
+    {
+      "start": "2026年2月7日 22:45:42",
+      "end": "2026年2月8日 06:13:13",
+      "total": "7h 27m",
+      "core": "4h 9m",
+      "deep": "0h 56m",
+      "rem": "1h 43m",
+      "wake": "0h 37m",
+      "recovery": "2h 40m"
+    },
+    {
+      "start": "2026年2月6日 22:32:35",
+      "end": "2026年2月7日 08:04:27",
+      "total": "9h 31m",
+      "core": "4h 15m",
+      "deep": "1h 2m",
+      "rem": "3h 3m",
+      "wake": "1h 9m",
+      "recovery": "4h 6m"
+    },
+    {
+      "start": "2026年2月5日 22:34:45",
+      "end": "2026年2月6日 05:19:47",
+      "total": "6h 45m",
+      "core": "3h 29m",
+      "deep": "0h 41m",
+      "rem": "2h 27m",
+      "wake": "0h 6m",
+      "recovery": "3h 9m"
+    },
+    {
+      "start": "2026年2月4日 22:34:45",
+      "end": "2026年2月5日 06:07:14",
+      "total": "7h 32m",
+      "core": "4h 16m",
+      "deep": "0h 26m",
+      "rem": "2h 25m",
+      "wake": "0h 23m",
+      "recovery": "2h 52m"
+    },
+    {
+      "start": "2026年2月3日 22:36:14",
+      "end": "2026年2月4日 05:03:17",
+      "total": "6h 27m",
+      "core": "4h 0m",
+      "deep": "0h 42m",
+      "rem": "1h 39m",
+      "wake": "0h 4m",
+      "recovery": "2h 22m"
+    },
+    {
+      "start": "2026年2月2日 22:47:46",
+      "end": "2026年2月3日 06:23:16",
+      "total": "7h 35m",
+      "core": "4h 3m",
+      "deep": "0h 55m",
+      "rem": "2h 22m",
+      "wake": "0h 13m",
+      "recovery": "3h 18m"
+    },
+    {
+      "start": "2026年2月1日 23:00:33",
+      "end": "2026年2月2日 07:12:29",
+      "total": "8h 11m",
+      "core": "4h 21m",
+      "deep": "1h 23m",
+      "rem": "2h 24m",
+      "wake": "0h 1m",
+      "recovery": "3h 48m"
+    },
+    {
+      "start": "2026年1月31日 22:52:29",
+      "end": "2026年2月1日 06:38:28",
+      "total": "7h 45m",
+      "core": "3h 55m",
+      "deep": "0h 33m",
+      "rem": "2h 34m",
+      "wake": "0h 42m",
+      "recovery": "3h 8m"
+    }
+  ]
+}
