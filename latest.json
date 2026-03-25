@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-03-25T02:55:27.760393",
+    "last_updated": "2026-03-25T05:01:35.029777",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -175,8 +175,8 @@
       "fitness_source": "Decayed from yesterday (today's planned workouts not yet completed)"
     },
     "thresholds": {
-      "eftp": 76.9,
-      "w_prime": 5787,
+      "eftp": 76.8,
+      "w_prime": 5782,
       "w_prime_kj": 5.8,
       "p_max": 324,
       "vo2max": null,
@@ -411,7 +411,7 @@
           "weeks_available": 4
         },
         "stream_2": {
-          "planned_tss_delta": 1.99,
+          "planned_tss_delta": 0.76,
           "hard_sessions_planned": 3,
           "race_proximity": null,
           "next_week_load": 0.38,
@@ -419,7 +419,7 @@
           "plan_coverage_next_week": 0.4
         },
         "data_quality": "good",
-        "stream_agreement": null
+        "stream_agreement": false
       },
       "previous_phase": "Base",
       "phase_duration_weeks": 5,
@@ -443,13 +443,13 @@
       "benchmark_percentage": null,
       "seasonal_expected": null
     },
-    "eftp": 76.9,
-    "w_prime": 5787,
+    "eftp": 76.8,
+    "w_prime": 5782,
     "w_prime_kj": 5.8,
     "p_max": 324,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-03-25T02:55:27.759488",
+    "calculation_timestamp": "2026-03-25T05:01:35.028887",
     "data_quality": {
       "hrv_data_points": 0,
       "rhr_data_points": 59,
@@ -4810,14 +4810,14 @@
     {
       "id": 100355892,
       "date": "2026-03-25",
-      "name": "IntervalCoach - VO2max Intervals",
+      "name": "IntervalCoach - \u4f4e\u5f3a\u5ea6\u8282\u594f\u9a91\uff08\u6e29\u548c\u523a\u6fc0\uff09",
       "type": "WORKOUT",
       "sport_type": "Ride",
-      "planned_tss": 92,
-      "duration_hours": 1.17,
-      "duration_formatted": "1h10m",
-      "workout_summary": "11m @48W | 5m @56W | 8\u00d73m @90W / 3m rec | 6m @56W",
-      "description": "Warmup\n- Hey Jason! VO2max intervals are next 11m ramp 45-75% 85rpm\n\nMain Set\n- Endurance 5m 65-75% 85rpm\n\n8x\n- VO2max 3m 106-120% 100rpm\n- Recovery 3m 55% 80rpm\n\nRecovery\n- Endurance 6m 65-75% 85rpm\n\n\n[Weekly Plan - Build]"
+      "planned_tss": 7,
+      "duration_hours": 1.0,
+      "duration_formatted": "1h",
+      "workout_summary": null,
+      "description": "\u7c7b\u578b\uff1a\u4f4e\u5f3a\u5ea6\u8282\u594f\u9a91\uff08\u6e29\u548c\u523a\u6fc0\uff09\n\uff08\u53c2\u8003\u6a21\u677f\uff1aSS-4\uff0c\u4f46\u505a\u201c\u65b0\u624b\u964d\u7ea7\u201d\uff09\n\t\u2022\t\u65f6\u957f\uff1a60\u201370 min\n\t\u2022\t\u5f3a\u5ea6\uff1a\n\t\u2022\t\u4e3b\u4f53\uff1aZ3\u4e0b\u6cbf\uff08\u7ea6130\u2013140 bpm\uff09\n\t\u2022\t\u7ed3\u6784\uff1a\n\t\u2022\tWU\uff1a10min Z1-Z2\n\t\u2022\t\u4e3b\u8bad\u7ec3\uff1a\n\t\u2022\t2 \u00d7 12 min Z3\n\t\u2022\t\u95f4\u9694\uff1a5 min Z1\n\t\u2022\tCD\uff1a10min\n\t\u2022\t\u76ee\u6807\uff1a\n\t\u2022\t\u63a7\u5236\u5728\u201c\u53ef\u6301\u7eed\u4f46\u7565\u5403\u529b\u201d\n\t\u2022\tRPE \u2248 5\u20136\uff08\u4e0d\u80fd\u52307+\uff09\n\n\n[Weekly Plan - Build]"
     },
     {
       "id": 100356504,
@@ -4869,11 +4869,11 @@
     }
   ],
   "workout_summary_stats": {
-    "attempted": 3,
-    "success": 2,
-    "patternA": 2,
+    "attempted": 2,
+    "success": 1,
+    "patternA": 1,
     "patternB": 0,
-    "bail_no_workout_doc": 2,
+    "bail_no_workout_doc": 3,
     "bail_no_match": 1
   },
   "weekly_summary": {
