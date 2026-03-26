@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-03-26T01:01:50.771837",
+    "last_updated": "2026-03-26T04:05:29.061757",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -451,7 +451,7 @@
     "p_max": 324,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-03-26T01:01:50.770926",
+    "calculation_timestamp": "2026-03-26T04:05:29.060870",
     "data_quality": {
       "hrv_data_points": 0,
       "rhr_data_points": 59,
@@ -4858,7 +4858,7 @@
       "description": "Warmup\n- Hey Jason! Time for some Criss-Cross. 11m ramp 45-75% 85rpm\n\nMain Set\n- Endurance 5m 65-75% 85rpm\n\n6x\n- Over 1m 105% 95rpm\n- Under 1m 95% 90rpm\n\nRecovery\n- Recovery 5m 55% 80rpm\n\n\n\n\n\n\n[Weekly Plan - Build]"
     },
     {
-      "id": 100637468,
+      "id": 100702940,
       "date": "2026-04-02",
       "name": "IntervalCoach - Lower Body Strength",
       "type": "WORKOUT",
