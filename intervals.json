@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-26T23:49:47.322398",
+  "generated_at": "2026-03-27T02:57:16.603623",
   "version": "3.86",
   "scan_hours": 72,
   "retention_days": 8,
@@ -19,25 +19,6 @@
           "duration_secs": 4419,
           "avg_hr": 117,
           "max_hr": 130,
-          "zone": 1
-        }
-      ]
-    },
-    {
-      "activity_id": "i132901470",
-      "date": "2026-03-18",
-      "type": "VirtualRide",
-      "name": "IntervalCoach - Endurance Build",
-      "interval_summary": [
-        "1x 1h6m 131bpm"
-      ],
-      "intervals": [
-        {
-          "type": "WORK",
-          "label": "4002s@131bpm",
-          "duration_secs": 4002,
-          "avg_hr": 131,
-          "max_hr": 144,
           "zone": 1
         }
       ]
