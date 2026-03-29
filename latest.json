@@ -62,30 +62,20 @@
       "menstrual": "menstrual_phase and menstrual_phase_predicted are not on the 1-4 scale. Values: PERIOD, FOLLICULAR, OVULATION, LUTEAL, etc."
     },
     "quick_stats": {
-      "total_training_hours": 18.65,
-      "total_training_formatted": "18h39m",
-      "total_activities": 20,
-      "total_tss": 711
+      "total_training_hours": 20.12,
+      "total_training_formatted": "20h6m",
+      "total_activities": 21,
+      "total_tss": 789
     }
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-03-29T05:24:43.051054",
+    "last_updated": "2026-03-29T06:43:16.089461",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
   },
-  "alerts": [
-    {
-      "metric": "acwr",
-      "value": 0.68,
-      "severity": "alarm",
-      "threshold": "0.75 / 1.35",
-      "context": "ACWR 0.68 outside safe range. Injury/overreach risk elevated.",
-      "persistence_days": null,
-      "tier": 2
-    }
-  ],
+  "alerts": [],
   "readiness_decision": {
     "recommendation": "go",
     "priority": 3,
@@ -108,8 +98,8 @@
         "quality": null
       },
       "acwr": {
-        "status": "amber",
-        "value": 0.68
+        "status": "green",
+        "value": 1.01
       },
       "ri": {
         "status": "unavailable",
@@ -117,12 +107,12 @@
       },
       "tsb": {
         "status": "green",
-        "value": 3.6
+        "value": -4.9
       }
     },
     "signal_summary": {
-      "green": 1,
-      "amber": 1,
+      "green": 2,
+      "amber": 0,
       "red": 0,
       "unavailable": 4
     },
@@ -134,7 +124,7 @@
     },
     "race_week_defers": false,
     "modification": null,
-    "reason": "P3 green light. 1 green, 1 amber (threshold 2), 0 red. Note: 4 signals unavailable \u2014 limited data.",
+    "reason": "P3 green light. 2 green, 0 amber (threshold 2), 0 red. Note: 4 signals unavailable \u2014 limited data.",
     "alarm_refs": []
   },
   "history": {
@@ -147,8 +137,8 @@
   "summary": {
     "period_description": "Last 90 days of training (including today)",
     "note": "Duration calculated from API moving_time field.",
-    "total_duration_decimal_hours": 18.65,
-    "total_activities": 20,
+    "total_duration_decimal_hours": 20.12,
+    "total_activities": 21,
     "by_activity_type": {
       "VirtualRide": {
         "duration_decimal_hours": 6.01,
@@ -157,9 +147,9 @@
         "distance_km": 0.0
       },
       "WeightTraining": {
-        "duration_decimal_hours": 12.28,
-        "count": 12,
-        "tss": 456,
+        "duration_decimal_hours": 13.74,
+        "count": 13,
+        "tss": 534,
         "distance_km": 0.0
       },
       "Workout": {
@@ -178,15 +168,15 @@
   },
   "current_status": {
     "fitness": {
-      "ctl": 23.84,
-      "atl": 20.19,
-      "tsb": 3.65,
-      "ramp_rate": -1.26,
+      "ctl": 25.67,
+      "atl": 30.57,
+      "tsb": -4.9,
+      "ramp_rate": 0.57,
       "fitness_source": "From Intervals.icu API (reflects completed workouts)"
     },
     "thresholds": {
-      "eftp": 76.7,
-      "w_prime": 5770,
+      "eftp": 76.8,
+      "w_prime": 5776,
       "w_prime_kj": 5.8,
       "p_max": 323,
       "vo2max": null,
@@ -260,77 +250,77 @@
     "rhr_baseline_28d": 66,
     "latest_hrv": null,
     "latest_rhr": null,
-    "acwr": 0.68,
-    "acwr_interpretation": "undertraining",
-    "monotony": 0.95,
-    "monotony_interpretation": "normal",
+    "acwr": 1.01,
+    "acwr_interpretation": "optimal",
+    "monotony": 1.04,
+    "monotony_interpretation": "normal (primary sport 0.69, total 1.04 inflated by multi-sport)",
     "primary_sport": "strength",
-    "primary_sport_monotony": null,
-    "primary_sport_tss_7d": 65.0,
-    "effective_monotony": 0.95,
+    "primary_sport_monotony": 0.69,
+    "primary_sport_tss_7d": 143.0,
+    "effective_monotony": 0.69,
     "multi_sport_detected": true,
-    "strain": 115.0,
-    "stress_tolerance": 1.2,
+    "strain": 207.0,
+    "stress_tolerance": 2.0,
     "load_recovery_ratio": null,
-    "tss_7d_total": 121.0,
-    "tss_28d_total": 711.0,
+    "tss_7d_total": 199.0,
+    "tss_28d_total": 789.0,
     "zone_distribution_7d": {
-      "z1_hours": 3.22,
-      "z2_hours": 8.86,
-      "z3_hours": 5.81,
-      "z4_plus_hours": 0.68,
-      "total_hours": 18.58,
+      "z1_hours": 3.33,
+      "z2_hours": 9.34,
+      "z3_hours": 6.44,
+      "z4_plus_hours": 0.93,
+      "total_hours": 20.04,
       "zone_basis": "hr"
     },
-    "grey_zone_percentage": 31.3,
+    "grey_zone_percentage": 32.2,
     "grey_zone_note": "Gray Zone % (Z3/tempo) - minimize in polarized training",
-    "quality_intensity_percentage": 3.7,
+    "quality_intensity_percentage": 4.6,
     "quality_intensity_note": "Quality Intensity % (Z4+/threshold+) - target ~20% in polarized training",
-    "polarisation_index": 0.65,
+    "polarisation_index": 0.63,
     "polarisation_note": "Easy time (Z1+Z2) / Total - target ~80% in polarized training",
-    "hard_days_this_week": 1,
+    "hard_days_this_week": 2,
     "hard_days_note": "Power ladder: z3+ >= 30min, z4+ >= 10min, z5+ >= 5min, z6+ >= 2min, z7 >= 1min. HR fallback (when no power): z4+ >= 10min, z5+ >= 5min. Per Seiler 3-zone model + Foster. HR-based days flagged with intensity_basis: hr",
     "seiler_tid_7d": {
-      "z1_seconds": 43503,
-      "z2_seconds": 20933,
-      "z3_seconds": 2460,
-      "z1_pct": 65.0,
-      "z2_pct": 31.3,
-      "z3_pct": 3.7,
+      "z1_seconds": 45594,
+      "z2_seconds": 23200,
+      "z3_seconds": 3345,
+      "z1_pct": 63.2,
+      "z2_pct": 32.2,
+      "z3_pct": 4.6,
       "polarization_index": null,
       "classification": "Pyramidal",
       "zone_basis": "hr"
     },
     "seiler_tid_7d_primary": {
-      "z1_seconds": 30029,
-      "z2_seconds": 12342,
-      "z3_seconds": 1659,
-      "z1_pct": 68.2,
-      "z2_pct": 28.0,
-      "z3_pct": 3.8,
+      "z1_seconds": 32120,
+      "z2_seconds": 14609,
+      "z3_seconds": 2544,
+      "z1_pct": 65.2,
+      "z2_pct": 29.6,
+      "z3_pct": 5.2,
       "polarization_index": null,
       "classification": "Pyramidal",
       "zone_basis": "hr",
       "sport": "strength"
     },
     "seiler_tid_28d": {
-      "z1_seconds": 43503,
-      "z2_seconds": 20933,
-      "z3_seconds": 2460,
-      "z1_pct": 65.0,
-      "z2_pct": 31.3,
-      "z3_pct": 3.7,
+      "z1_seconds": 45594,
+      "z2_seconds": 23200,
+      "z3_seconds": 3345,
+      "z1_pct": 63.2,
+      "z2_pct": 32.2,
+      "z3_pct": 4.6,
       "polarization_index": null,
       "classification": "Pyramidal",
       "zone_basis": "hr"
     },
     "seiler_tid_28d_primary": {
-      "z1_seconds": 30029,
-      "z2_seconds": 12342,
-      "z3_seconds": 1659,
-      "z1_pct": 68.2,
-      "z2_pct": 28.0,
-      "z3_pct": 3.8,
+      "z1_seconds": 32120,
+      "z2_seconds": 14609,
+      "z3_seconds": 2544,
+      "z1_pct": 65.2,
+      "z2_pct": 29.6,
+      "z3_pct": 5.2,
       "polarization_index": null,
       "classification": "Pyramidal",
       "zone_basis": "hr",
@@ -356,10 +346,10 @@
         "note": "Steady-state cycling sessions only (VI <= 1.05, VI > 0, >= 20min, power+HR data). Rising EF = improving aerobic efficiency. Compare like-for-like sessions only \u2014 EF varies with intensity. Trend compares 7d vs 28d mean (+/-0.03 = stable)."
       },
       "hrrc": {
-        "mean_hrrc_7d": 31.2,
-        "mean_hrrc_28d": 31.2,
-        "qualifying_sessions_7d": 4,
-        "qualifying_sessions_28d": 4,
+        "mean_hrrc_7d": 30.8,
+        "mean_hrrc_28d": 30.8,
+        "qualifying_sessions_7d": 5,
+        "qualifying_sessions_28d": 5,
         "trend": "stable",
         "note": "HRRc = heart rate recovery (largest 60s HR drop in bpm after exceeding threshold HR for >1 min). Higher = better parasympathetic recovery. Null when threshold not reached, recording stopped before cooldown, or no HR data. Trend: 7d mean vs 28d mean, >10% = meaningful (min 1 session/7d, 3 sessions/28d). Display only \u2014 not wired into readiness_decision signals."
       },
@@ -456,18 +446,18 @@
       "benchmark_percentage": null,
       "seasonal_expected": null
     },
-    "eftp": 76.7,
-    "w_prime": 5770,
+    "eftp": 76.8,
+    "w_prime": 5776,
     "w_prime_kj": 5.8,
     "p_max": 323,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-03-29T05:24:43.050142",
+    "calculation_timestamp": "2026-03-29T06:43:16.088614",
     "data_quality": {
       "hrv_data_points": 0,
       "rhr_data_points": 63,
-      "activities_7d": 20,
-      "activities_28d": 20,
+      "activities_7d": 21,
+      "activities_28d": 21,
       "planned_workouts_7d": 32,
       "ftp_history_days": {
         "indoor": 0,
@@ -476,6 +466,50 @@
     }
   },
   "recent_activities": [
+    {
+      "id": "i135561391",
+      "date": "2026-03-29T07:57:56",
+      "type": "WeightTraining",
+      "name": "Leg Day",
+      "duration_hours": 1.47,
+      "distance_km": 0.0,
+      "tss": 78,
+      "intensity_factor": 73.20368,
+      "avg_power": null,
+      "normalized_power": null,
+      "avg_hr": 128,
+      "max_hr": 165,
+      "avg_cadence": null,
+      "avg_speed": null,
+      "max_speed": null,
+      "avg_pace": null,
+      "avg_temp": null,
+      "weather": null,
+      "humidity": null,
+      "wind_speed": null,
+      "work_kj": null,
+      "calories": 581,
+      "carbs_used": null,
+      "carbs_ingested": null,
+      "variability_index": null,
+      "decoupling": null,
+      "efficiency_factor": null,
+      "hrrc": 29,
+      "elevation_m": null,
+      "feel": null,
+      "rpe": 7,
+      "zone_distribution": {
+        "hr_zones": {
+          "z1_time": 376,
+          "z2_time": 1715,
+          "z3_time": 2267,
+          "z4_time": 765,
+          "z5_time": 120
+        }
+      },
+      "has_intervals": false,
+      "description": "Leg Day\nSunday, Mar 29, 2026 at 7:57am\n\nSquat (Barbell)\nSet 1: 45 kg x 8 [Warmup]\nSet 2: 55 kg x 6 [Warmup]\nSet 3: 70 kg x 4 [Warmup]\nSet 4: 85 kg x 8 @ 8 rpe\nSet 5: 85 kg x 8 @ 8.5 rpe\nSet 6: 85 kg x 8 @ 9 rpe\nSet 7: 85 kg x 8 @ 9 rpe\n\nSingle Leg Romanian Deadlift (Dumbbell)\nSet 1: 20 kg x 12\nSet 2: 24 kg x 10\nSet 3: 24 kg x 10\nSet 4: 24 kg x 10\n\nStanding Leg Curls\nSet 1: 5 kg x 15\nSet 2: 5 kg x 15\nSet 3: 5 kg x 15\nSet 4: 5 kg x 15\n\nLeg Extension (Machine)\nSet 1: 20 kg x 15 [Warmup]\nSet 2: 20 kg x 15\nSet 3: 20 kg x 15\nSet 4: 20 kg x 15\n\nSingle Leg Standing Calf Raise (Dumbbell)\nSet 1: 0 kg x 12\nSet 2: 0 kg x 12\nSet 3: 0 kg x 12\nSet 4: 0 kg x 12\n\n@hevyapp\nhttps://hevy.com/workout/DRRw4KT8LfR\n\n---\n\n\ud83d\udcca IntervalCoach Analysis\nWorkout score: 7/10\nTSS: 78\nTraining stimulus: mixed\nEst. recovery: 24h\n\n\ud83d\udd17 https://www.intervalcoach.app/?ref=REF-ZMF3D5"
+    },
     {
       "id": "i135072610",
       "date": "2026-03-27T11:10:00",
@@ -4922,10 +4956,10 @@
     "bail_no_match": 1
   },
   "weekly_summary": {
-    "total_training_hours": 18.65,
-    "total_training_formatted": "18h39m",
-    "total_tss": 711,
-    "activities_count": 20,
+    "total_training_hours": 20.12,
+    "total_training_formatted": "20h6m",
+    "total_tss": 789,
+    "activities_count": 21,
     "avg_hrv": null,
     "avg_resting_hr": 65.4
   },
