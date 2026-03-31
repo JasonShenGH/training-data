@@ -1,13 +1,145 @@
 import { formatDate, formatNumber, formatPercent, formatValue } from './utils.js';
+import { METRIC_HELP } from './metricHelp.js';
 
 function metricCard(title, value, status) {
+    const hasHelp = Object.prototype.hasOwnProperty.call(METRIC_HELP, title);
+    const safeAttr = title.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+    const helpBtn = hasHelp
+        ? `<button type="button" class="metric-help-btn" data-metric-help="${encodeURIComponent(title)}" aria-label="Help: ${safeAttr}" title="About this metric"><svg class="metric-help-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg></button>`
+        : '';
+
     return `
         <div class="metric-card">
-            <p class="text-xs uppercase text-gray-500">${title}</p>
-            <p class="text-lg font-semibold text-gray-900 mt-1">${value}</p>
-            <p class="text-xs mt-1 ${status?.color || 'text-gray-500'}">${status?.label || ''}</p>
+            <div class="metric-card-header">
+                <p class="text-xs uppercase th-muted metric-card-title">${title}</p>
+                ${helpBtn}
+            </div>
+            <p class="text-lg font-semibold th-strong mt-1">${value}</p>
+            <p class="text-xs mt-1 ${status?.color || 'th-muted'}">${status?.label || ''}</p>
         </div>
     `;
+}
+
+export function setupMetricHelpModal() {
+    const modal = document.getElementById('metric-help-modal');
+    const titleEl = document.getElementById('metric-help-title');
+    const bodyEl = document.getElementById('metric-help-body');
+    const closeBtn = document.getElementById('metric-help-close');
+    if (!modal || !titleEl || !bodyEl) return;
+
+    function closeModal() {
+        modal.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+    }
+
+    function openModal(key) {
+        const help = METRIC_HELP[key];
+        if (!help) return;
+        titleEl.textContent = help.title;
+        bodyEl.replaceChildren();
+        help.paragraphs.forEach((text, i) => {
+            const p = document.createElement('p');
+            p.className = i === 0 ? 'text-sm th-modal-body leading-relaxed' : 'text-sm th-modal-body leading-relaxed mt-3';
+            p.textContent = text;
+            bodyEl.appendChild(p);
+        });
+        modal.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+        closeBtn?.focus();
+    }
+
+    document.body.addEventListener('click', (e) => {
+        const trigger = e.target.closest('[data-metric-help]');
+        if (trigger) {
+            e.preventDefault();
+            const raw = trigger.getAttribute('data-metric-help');
+            if (raw) openModal(decodeURIComponent(raw));
+            return;
+        }
+        if (e.target.closest('[data-metric-help-dismiss]')) {
+            closeModal();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+            closeModal();
+        }
+    });
+}
+
+/** localStorage key for which data sections are expanded (collapsed is default). */
+export const COLLAPSIBLE_SECTIONS_STORAGE_KEY = 'training-dashboard-collapsible-sections';
+
+/**
+ * Read persisted expanded flags: `{ [data-collapsible-id]: true }`. Omitted keys = collapsed.
+ */
+function readCollapsibleSectionState() {
+    try {
+        const raw = localStorage.getItem(COLLAPSIBLE_SECTIONS_STORAGE_KEY);
+        const parsed = raw ? JSON.parse(raw) : {};
+        return parsed && typeof parsed === 'object' ? parsed : {};
+    } catch {
+        return {};
+    }
+}
+
+function writeCollapsibleSectionState(state) {
+    try {
+        localStorage.setItem(COLLAPSIBLE_SECTIONS_STORAGE_KEY, JSON.stringify(state));
+    } catch {
+        /* quota / private mode */
+    }
+}
+
+/**
+ * Wire collapsible data sections: toggle on trigger click, smooth CSS animation,
+ * ARIA + optional `inert` when collapsed, localStorage persistence.
+ * Call once after DOM is ready (e.g. from app.js initialize).
+ */
+export function setupCollapsibleSections() {
+    const sections = document.querySelectorAll('.collapsible-section[data-collapsible-id]');
+    if (!sections.length) return;
+
+    const persisted = readCollapsibleSectionState();
+
+    function setSectionExpanded(section, expanded, persist) {
+        const id = section.getAttribute('data-collapsible-id');
+        const trigger = section.querySelector('.collapsible-section__trigger');
+        const panel = section.querySelector('.collapsible-section__panel');
+        if (!trigger || !panel) return;
+
+        section.classList.toggle('collapsible-section--expanded', expanded);
+        trigger.setAttribute('aria-expanded', String(expanded));
+        panel.setAttribute('aria-hidden', expanded ? 'false' : 'true');
+        if (expanded) {
+            panel.removeAttribute('inert');
+        } else {
+            panel.setAttribute('inert', '');
+        }
+
+        if (persist && id) {
+            const next = readCollapsibleSectionState();
+            if (expanded) {
+                next[id] = true;
+            } else {
+                delete next[id];
+            }
+            writeCollapsibleSectionState(next);
+        }
+    }
+
+    sections.forEach((section) => {
+        const id = section.getAttribute('data-collapsible-id');
+        const expanded = id ? persisted[id] === true : false;
+        setSectionExpanded(section, expanded, false);
+
+        const trigger = section.querySelector('.collapsible-section__trigger');
+        trigger?.addEventListener('click', () => {
+            const isOpen = section.classList.contains('collapsible-section--expanded');
+            setSectionExpanded(section, !isOpen, true);
+        });
+    });
 }
 
 function setMetricGrid(containerId, entries) {
@@ -21,23 +153,29 @@ function renderDynamicTable(headId, bodyId, rows) {
     body.innerHTML = '';
 
     if (!rows.length) {
-        head.innerHTML = '<tr><th class="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Info</th></tr>';
-        body.innerHTML = '<tr><td class="px-3 py-3 text-sm text-gray-500">No data.</td></tr>';
+        head.innerHTML = '<tr><th class="px-3 py-2 text-left text-xs font-semibold th-muted uppercase">Info</th></tr>';
+        body.innerHTML = '<tr><td class="px-3 py-3 text-sm th-muted">No data.</td></tr>';
         return;
     }
 
     const keys = Array.from(new Set(rows.flatMap((row) => Object.keys(row))));
-    head.innerHTML = `<tr>${keys.map((key) => `<th class="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">${key}</th>`).join('')}</tr>`;
-    body.innerHTML = rows.map((row) => `<tr>${keys.map((key) => `<td class="px-3 py-3 text-sm text-gray-700 align-top">${formatValue(row[key])}</td>`).join('')}</tr>`).join('');
+    head.innerHTML = `<tr>${keys.map((key) => `<th class="px-3 py-2 text-left text-xs font-semibold th-muted uppercase">${key}</th>`).join('')}</tr>`;
+    body.innerHTML = rows.map((row) => `<tr>${keys.map((key) => `<td class="px-3 py-3 text-sm th-primary align-top">${formatValue(row[key])}</td>`).join('')}</tr>`).join('');
 }
 
 function renderStructures(list) {
-    document.getElementById('training-structures').innerHTML = list.map((item) => `
-        <div class="p-4 rounded-lg border border-gray-200 bg-gray-50">
-            <p class="font-semibold text-gray-900">${item.name}</p>
-            <p class="text-sm text-gray-600 mt-1">${item.detail}</p>
+    const el = document.getElementById('training-structures');
+    const item = Array.isArray(list) ? list[0] : null;
+    if (!item) {
+        el.innerHTML = '<p class="text-sm th-muted">No training recommendation available.</p>';
+        return;
+    }
+    el.innerHTML = `
+        <div class="training-structure-card">
+            <p class="font-semibold th-strong">${item.name}</p>
+            <p class="text-sm th-secondary mt-1">${item.detail}</p>
         </div>
-    `).join('');
+    `;
 }
 
 export function renderDashboard(model, metrics) {
@@ -60,7 +198,7 @@ export function renderDashboard(model, metrics) {
     setMetricGrid('neural-system-metrics', [
         { title: 'HRV Z-score', value: formatNumber(metrics.neural.hrvZ, 2), status: metrics.neural.hrvZStatus },
         { title: 'Neural Readiness', value: metrics.neural.neuralReadiness === null ? 'N/A' : (metrics.neural.neuralReadiness ? 'Neural Ready' : 'Neural Limited') },
-        { title: 'CNS Fatigue', value: metrics.neural.cnsFatigue ? 'Yes' : 'No', status: metrics.neural.cnsFatigue ? { label: 'Warning', color: 'text-red-600' } : { label: 'Clear', color: 'text-green-600' } }
+        { title: 'CNS Fatigue', value: metrics.neural.cnsFatigue ? 'Yes' : 'No', status: metrics.neural.cnsFatigue ? { label: 'Warning', color: 'text-rose-400' } : { label: 'Clear', color: 'text-emerald-400' } }
     ]);
 
     setMetricGrid('training-load-metrics', [
@@ -129,6 +267,6 @@ export function renderDashboard(model, metrics) {
 
     const comments = model.comments || [];
     document.getElementById('comments-list').innerHTML = comments.length
-        ? `<ul class="space-y-2">${comments.map((comment) => `<li class="p-3 bg-gray-50 rounded">${formatValue(comment)}</li>`).join('')}</ul>`
-        : '<p class="text-gray-500">No comments in the JSON file.</p>';
+        ? `<ul class="space-y-2">${comments.map((comment) => `<li class="comment-item">${formatValue(comment)}</li>`).join('')}</ul>`
+        : '<p class="th-muted">No comments in the JSON file.</p>';
 }

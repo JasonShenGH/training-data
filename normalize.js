@@ -64,6 +64,18 @@ function buildSleepSeriesFromSessions(sessions) {
     }).filter(Boolean).sort((a, b) => a.date - b.date);
 }
 
+/** Daily training load (e.g. TSS) for monotony; zeros included for rest days. */
+function normalizeDailyLoadSeries(items, defaultYear) {
+    if (!Array.isArray(items)) return [];
+    const normalized = items.map((item) => {
+        const date = parseIsoDate(item?.date) || parseMonthDayDate(item?.date, defaultYear);
+        if (!date) return null;
+        const v = toNumber(item?.total_tss ?? item?.tss ?? item?.load);
+        return { date, value: v !== null ? v : 0, raw: item };
+    }).filter(Boolean);
+    return sortByDateAsc(normalized, (entry) => entry.date);
+}
+
 export function normalizeCustomData(raw) {
     const userName = String(raw?.user_name || '').trim();
     if (!userName) {
@@ -82,6 +94,7 @@ export function normalizeCustomData(raw) {
     const rhrSeries = normalizeSeries(raw?.rhr, 'date', 'rhr');
 
     const comments = Array.isArray(raw?.comments) ? raw.comments : [];
+    const dailyLoadSeries = normalizeDailyLoadSeries(raw?.daily, defaultYear);
 
     return {
         source: 'custom',
@@ -93,6 +106,7 @@ export function normalizeCustomData(raw) {
         sleepSeries,
         sleepSessions,
         workouts,
+        dailyLoadSeries,
         comments,
         raw
     };
@@ -150,6 +164,13 @@ export function normalizeGithubData(latest, history) {
         return { date, value, raw: entry };
     }).filter(Boolean);
 
+    const dailyLoadSeries = daily.map((row) => {
+        const date = parseIsoDate(row?.date);
+        if (!date) return null;
+        const v = toNumber(row?.total_tss);
+        return { date, value: v !== null ? v : 0, raw: row };
+    }).filter(Boolean);
+
     return {
         source: 'github',
         userName: latest?.metadata?.athlete_name || 'Athlete',
@@ -158,6 +179,7 @@ export function normalizeGithubData(latest, history) {
         hrvSeries: sortByDateAsc(hrvSeries, (entry) => entry.date),
         rhrSeries: sortByDateAsc(rhrSeries, (entry) => entry.date),
         sleepSeries: sortByDateAsc(sleepSeries, (entry) => entry.date),
+        dailyLoadSeries: sortByDateAsc(dailyLoadSeries, (entry) => entry.date),
         sleepSessions: [],
         workouts: normalizeGithubWorkouts(latest?.recent_activities),
         comments: [],

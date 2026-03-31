@@ -1,9 +1,53 @@
 let loadChart = null;
 let hrvRhrChart = null;
 
+function getChartColors() {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    return isDark
+        ? { text: '#94a3b8', grid: 'rgba(148, 163, 184, 0.12)' }
+        : { text: '#64748b', grid: 'rgba(100, 116, 139, 0.18)' };
+}
+
+function buildScales() {
+    const { text, grid } = getChartColors();
+    return {
+        x: {
+            type: 'time',
+            time: { unit: 'day' },
+            ticks: { color: text },
+            grid: { color: grid },
+            border: { color: grid }
+        },
+        y: {
+            ticks: { color: text },
+            grid: { color: grid },
+            border: { color: grid }
+        }
+    };
+}
+
 function destroyCharts() {
     if (loadChart) loadChart.destroy();
     if (hrvRhrChart) hrvRhrChart.destroy();
+}
+
+function applyColorsToChart(chart, text, grid) {
+    chart.options.plugins.legend.labels.color = text;
+    chart.options.scales.x.ticks.color = text;
+    chart.options.scales.x.grid.color = grid;
+    chart.options.scales.x.border.color = grid;
+    chart.options.scales.y.ticks.color = text;
+    chart.options.scales.y.grid.color = grid;
+    chart.options.scales.y.border.color = grid;
+    chart.update('none');
+}
+
+export function refreshChartsTheme() {
+    const { text, grid } = getChartColors();
+    [loadChart, hrvRhrChart].forEach((chart) => {
+        if (!chart) return;
+        applyColorsToChart(chart, text, grid);
+    });
 }
 
 export function renderCharts(model) {
@@ -11,6 +55,8 @@ export function renderCharts(model) {
 
     const loadCtx = document.getElementById('load-chart').getContext('2d');
     const hrvRhrCtx = document.getElementById('hrv-rhr-chart').getContext('2d');
+    const { text } = getChartColors();
+    const scales = buildScales();
 
     const atl = model.atlSeries.slice(-60);
     const ctl = model.ctlSeries.slice(-60);
@@ -39,11 +85,12 @@ export function renderCharts(model) {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-                legend: { position: 'bottom' }
+                legend: {
+                    position: 'bottom',
+                    labels: { color: text }
+                }
             },
-            scales: {
-                x: { type: 'time', time: { unit: 'day' } }
-            }
+            scales
         }
     });
 
@@ -73,11 +120,12 @@ export function renderCharts(model) {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-                legend: { position: 'bottom' }
+                legend: {
+                    position: 'bottom',
+                    labels: { color: text }
+                }
             },
-            scales: {
-                x: { type: 'time', time: { unit: 'day' } }
-            }
+            scales
         }
     });
 }

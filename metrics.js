@@ -5,7 +5,7 @@ import {
     recentItems,
     safeDivide,
     slope,
-    stdDev,
+    stdDevSample,
     isFiniteNumber
 } from './utils.js';
 
@@ -17,6 +17,63 @@ function getLatestValue(series) {
 
 function getRecentValues(series, count) {
     return recentItems(series || [], count).map((entry) => entry.value).filter(isFiniteNumber);
+}
+
+function localDateKey(d) {
+    if (!(d instanceof Date)) return null;
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+}
+
+/** Latest calendar day among primary series (avoids using browser "now" for historical data). */
+function getDataReferenceDate(model) {
+    const dates = [];
+    for (const s of [model.atlSeries, model.ctlSeries, model.hrvSeries]) {
+        if (s?.length) {
+            const d = s[s.length - 1].date;
+            if (d instanceof Date) dates.push(d.getTime());
+        }
+    }
+    if (!dates.length) return new Date();
+    return new Date(Math.max(...dates));
+}
+
+/** Seven daily loads (including zeros) for the reference day and prior 6 calendar days. */
+function getLastSevenCalendarDayLoads(model, refDate) {
+    const end = new Date(refDate.getFullYear(), refDate.getMonth(), refDate.getDate());
+    const keys = [];
+    for (let i = 6; i >= 0; i--) {
+        const d = new Date(end);
+        d.setDate(d.getDate() - i);
+        keys.push(localDateKey(d));
+    }
+    const fromSeries = new Map(
+        (model.dailyLoadSeries || []).map((e) => [localDateKey(e.date), e.value]).filter(([k]) => k)
+    );
+    return keys.map((key) => {
+        if (fromSeries.has(key)) return fromSeries.get(key);
+        let n = 0;
+        for (const w of model.workouts || []) {
+            if (w.parsedDate && localDateKey(w.parsedDate) === key) n += 1;
+        }
+        return n;
+    });
+}
+
+/** Last numeric value on a given local calendar day (series sorted ascending). */
+function valueOnLocalDay(series, dayDate) {
+    if (!(dayDate instanceof Date)) return null;
+    const key = localDateKey(dayDate);
+    if (!key) return null;
+    let last = null;
+    for (const e of series || []) {
+        if (e?.date instanceof Date && localDateKey(e.date) === key && isFiniteNumber(e.value)) {
+            last = e.value;
+        }
+    }
+    return last;
 }
 
 function levelFromScore(score) {
@@ -46,69 +103,69 @@ function statusByThreshold(value, ranges) {
 
 function formStatus(form) {
     return statusByThreshold(form, (v) => {
-        if (v > 15) return { label: 'Super Recovered', color: 'text-blue-600' };
-        if (v > 5) return { label: 'Fresh', color: 'text-green-600' };
-        if (v >= -5) return { label: 'Neutral', color: 'text-yellow-600' };
-        if (v >= -20) return { label: 'Fatigue', color: 'text-orange-600' };
+        if (v > 15) return { label: 'Super Recovered', color: 'text-cyan-400' };
+        if (v > 5) return { label: 'Fresh', color: 'text-emerald-400' };
+        if (v >= -5) return { label: 'Neutral', color: 'text-amber-400' };
+        if (v >= -20) return { label: 'Fatigue', color: 'text-orange-400' };
         return { label: 'High Fatigue', color: 'text-red-600' };
     });
 }
 
 function acwrStatus(acwr) {
     return statusByThreshold(acwr, (v) => {
-        if (v < 0.8) return { label: 'Under-training', color: 'text-blue-600' };
-        if (v <= 1.3) return { label: 'Optimal Zone', color: 'text-green-600' };
-        if (v <= 1.5) return { label: 'High Load', color: 'text-orange-600' };
+        if (v < 0.8) return { label: 'Under-training', color: 'text-cyan-400' };
+        if (v <= 1.3) return { label: 'Optimal Zone', color: 'text-emerald-400' };
+        if (v <= 1.5) return { label: 'High Load', color: 'text-orange-400' };
         return { label: 'Injury Risk', color: 'text-red-600' };
     });
 }
 
 function hrvRatioStatus(ratio) {
     return statusByThreshold(ratio, (v) => {
-        if (v > 1.1) return { label: 'Super Recovery', color: 'text-blue-600' };
-        if (v >= 0.95) return { label: 'Normal', color: 'text-green-600' };
-        if (v >= 0.85) return { label: 'Trainable', color: 'text-yellow-600' };
+        if (v > 1.1) return { label: 'Super Recovery', color: 'text-cyan-400' };
+        if (v >= 0.95) return { label: 'Normal', color: 'text-emerald-400' };
+        if (v >= 0.85) return { label: 'Trainable', color: 'text-amber-400' };
         return { label: 'Recovery Stress', color: 'text-red-600' };
     });
 }
 
 function trendStatus(value) {
     return statusByThreshold(value, (v) => {
-        if (v > 0.05) return { label: 'Improving', color: 'text-green-600' };
+        if (v > 0.05) return { label: 'Improving', color: 'text-emerald-400' };
         if (v < -0.05) return { label: 'Declining', color: 'text-red-600' };
-        return { label: 'Stable', color: 'text-yellow-600' };
+        return { label: 'Stable', color: 'text-amber-400' };
     });
 }
 
 function variabilityStatus(value) {
     return statusByThreshold(value, (v) => {
-        if (v < 6) return { label: 'Stable', color: 'text-green-600' };
-        if (v <= 12) return { label: 'Normal Variation', color: 'text-yellow-600' };
+        if (v < 6) return { label: 'Stable', color: 'text-emerald-400' };
+        if (v <= 12) return { label: 'Normal Variation', color: 'text-amber-400' };
         return { label: 'Autonomic Stress', color: 'text-red-600' };
     });
 }
 
 function sleepStatus(hours) {
     return statusByThreshold(hours, (v) => {
-        if (v > 7) return { label: 'Excellent', color: 'text-green-600' };
-        if (v >= 6) return { label: 'Good', color: 'text-yellow-600' };
+        if (v > 7) return { label: 'Excellent', color: 'text-emerald-400' };
+        if (v >= 6) return { label: 'Good', color: 'text-amber-400' };
         return { label: 'Poor', color: 'text-red-600' };
     });
 }
 
 function rhrDeltaStatus(delta) {
     return statusByThreshold(delta, (v) => {
-        if (v <= -2) return { label: 'Recovered', color: 'text-green-600' };
+        if (v <= -2) return { label: 'Recovered', color: 'text-emerald-400' };
         if (v >= 3) return { label: 'Fatigue', color: 'text-red-600' };
-        return { label: 'Normal', color: 'text-yellow-600' };
+        return { label: 'Normal', color: 'text-amber-400' };
     });
 }
 
 function zScoreStatus(value) {
     return statusByThreshold(value, (v) => {
-        if (v > 1) return { label: 'Super Recovery', color: 'text-blue-600' };
-        if (v < -1) return { label: 'Recovery Drop', color: 'text-orange-600' };
-        return { label: 'Normal', color: 'text-green-600' };
+        if (v > 1) return { label: 'Super Recovery', color: 'text-cyan-400' };
+        if (v < -1) return { label: 'Recovery Drop', color: 'text-orange-400' };
+        return { label: 'Normal', color: 'text-emerald-400' };
     });
 }
 
@@ -201,28 +258,82 @@ function intensityGuidance(readinessScore, cnsFatigue) {
     return { recommended: 'Quality training session', avoid: 'None specific, monitor fatigue', rpe: '6-8', zone: 'Z2-Z4', duration: '45-90 min' };
 }
 
+const TRAINING_TYPES = {
+    RECOVERY: 'Recovery',
+    AEROBIC_PRIORITY: 'Aerobic Priority',
+    MIXED: 'Mixed (Strength + Aerobic)',
+    AEROBIC_BASE: 'Aerobic Base'
+};
+
+function computeTrainingType({ hrvRatio, rhrDelta, acwr, strengthFatigue, hrvZ, form }) {
+    const recovery =
+        (isFiniteNumber(hrvRatio) && hrvRatio < 0.90)
+        || (isFiniteNumber(rhrDelta) && rhrDelta >= 3)
+        || (isFiniteNumber(acwr) && acwr > 1.3);
+    if (recovery) return TRAINING_TYPES.RECOVERY;
+    if (strengthFatigue) return TRAINING_TYPES.AEROBIC_PRIORITY;
+    const mixed =
+        isFiniteNumber(hrvRatio) && hrvRatio > 0.95
+        && isFiniteNumber(hrvZ) && hrvZ > -1
+        && isFiniteNumber(form) && form > 5;
+    if (mixed) return TRAINING_TYPES.MIXED;
+    return TRAINING_TYPES.AEROBIC_BASE;
+}
+
+function computeIntensityLevel(baseLevel, hrvTrend, form, acwr) {
+    let level = baseLevel;
+    if (isFiniteNumber(hrvTrend) && hrvTrend < -0.05) level -= 1;
+    if (isFiniteNumber(form) && form > 15) level += 1;
+    if (isFiniteNumber(acwr) && acwr > 1.2) level -= 1;
+    return clamp(level, 1, 5);
+}
+
+function sessionFocusForTrainingType(trainingType) {
+    switch (trainingType) {
+        case TRAINING_TYPES.RECOVERY:
+            return 'Z1 / Mobility / Rest';
+        case TRAINING_TYPES.AEROBIC_BASE:
+            return 'Z2 steady 45–75min';
+        case TRAINING_TYPES.AEROBIC_PRIORITY:
+            return 'Z2 + Z3 intervals (avoid heavy strength)';
+        case TRAINING_TYPES.MIXED:
+            return 'Strength (upper/full, non-max) + Z2 20min';
+        default:
+            return '';
+    }
+}
+
 export function calculateMetrics(model) {
+    const refDate = getDataReferenceDate(model);
+    const refCalEnd = new Date(refDate.getFullYear(), refDate.getMonth(), refDate.getDate());
+    const hrvThreeDaysAgoDate = new Date(refCalEnd);
+    hrvThreeDaysAgoDate.setDate(hrvThreeDaysAgoDate.getDate() - 3);
+    const atlYesterdayDate = new Date(refCalEnd);
+    atlYesterdayDate.setDate(atlYesterdayDate.getDate() - 1);
+    const atlThreeDaysAgoDate = new Date(refCalEnd);
+    atlThreeDaysAgoDate.setDate(atlThreeDaysAgoDate.getDate() - 3);
+
     const hrv7 = getRecentValues(model.hrvSeries, 7);
     const rhr7 = getRecentValues(model.rhrSeries, 7);
     const atl7 = getRecentValues(model.atlSeries, 7);
     const ctl7 = getRecentValues(model.ctlSeries, 7);
 
-    const todayHRV = getLatestValue(model.hrvSeries);
+    const todayHRV = valueOnLocalDay(model.hrvSeries, refCalEnd) ?? getLatestValue(model.hrvSeries);
     const hrvBaseline = median(hrv7);
     const hrvRatio = safeDivide(todayHRV, hrvBaseline);
-    const hrv3ago = model.hrvSeries.length >= 4 ? model.hrvSeries[model.hrvSeries.length - 4].value : null;
+    const hrv3ago = valueOnLocalDay(model.hrvSeries, hrvThreeDaysAgoDate);
     const hrvTrend = (isFiniteNumber(todayHRV) && isFiniteNumber(hrv3ago) && isFiniteNumber(hrvBaseline))
         ? safeDivide(todayHRV - hrv3ago, hrvBaseline)
         : null;
-    const hrvVariability = stdDev(hrv7);
+    const hrvVariability = stdDevSample(hrv7);
 
     const sleepToday = getLatestValue(model.sleepSeries);
-    const rhrToday = getLatestValue(model.rhrSeries);
+    const rhrToday = valueOnLocalDay(model.rhrSeries, refCalEnd) ?? getLatestValue(model.rhrSeries);
     const rhrAvg7 = average(rhr7);
     const rhrDelta = (isFiniteNumber(rhrToday) && isFiniteNumber(rhrAvg7)) ? (rhrToday - rhrAvg7) : null;
 
     const hrvMean7 = average(hrv7);
-    const hrvStd7 = stdDev(hrv7);
+    const hrvStd7 = stdDevSample(hrv7);
     const hrvZ = (isFiniteNumber(todayHRV) && isFiniteNumber(hrvMean7) && isFiniteNumber(hrvStd7) && hrvStd7 > 0)
         ? (todayHRV - hrvMean7) / hrvStd7
         : null;
@@ -235,13 +346,13 @@ export function calculateMetrics(model) {
     ].filter(Boolean).length;
     const cnsFatigue = cnsTriggers >= 2;
 
-    const atlToday = getLatestValue(model.atlSeries);
-    const ctlToday = getLatestValue(model.ctlSeries);
+    const atlToday = valueOnLocalDay(model.atlSeries, refCalEnd) ?? getLatestValue(model.atlSeries);
+    const ctlToday = valueOnLocalDay(model.ctlSeries, refCalEnd) ?? getLatestValue(model.ctlSeries);
     const form = (isFiniteNumber(atlToday) && isFiniteNumber(ctlToday)) ? (ctlToday - atlToday) : null;
     const acwr = safeDivide(atlToday, ctlToday);
 
-    const atlYesterday = model.atlSeries.length >= 2 ? model.atlSeries[model.atlSeries.length - 2].value : null;
-    const atl3daysAgo = model.atlSeries.length >= 4 ? model.atlSeries[model.atlSeries.length - 4].value : null;
+    const atlYesterday = valueOnLocalDay(model.atlSeries, atlYesterdayDate);
+    const atl3daysAgo = valueOnLocalDay(model.atlSeries, atlThreeDaysAgoDate);
     const atlSpike = (isFiniteNumber(atlToday) && isFiniteNumber(atlYesterday) && atlYesterday !== 0)
         ? (atlToday - atlYesterday) / atlYesterday
         : null;
@@ -249,17 +360,30 @@ export function calculateMetrics(model) {
         ? (atlToday - atl3daysAgo) / atl3daysAgo
         : null;
 
-    const loadProxy7 = atl7;
-    const loadMean7 = average(loadProxy7);
-    const loadSd7 = stdDev(loadProxy7);
-    const monotony = (isFiniteNumber(loadMean7) && isFiniteNumber(loadSd7) && loadSd7 > 0) ? (loadMean7 / loadSd7) : null;
-    const strain = (isFiniteNumber(loadMean7) && isFiniteNumber(monotony)) ? (loadMean7 * 7 * monotony) : null;
+    const dailyLoads7 = getLastSevenCalendarDayLoads(model, refDate);
+    const loadMean7 = average(dailyLoads7);
+    const loadSd7 = stdDevSample(dailyLoads7);
+    const monotony = (isFiniteNumber(loadMean7) && isFiniteNumber(loadSd7) && loadSd7 > 0)
+        ? (loadMean7 / loadSd7)
+        : null;
+    const tss7dTotal = dailyLoads7.reduce((s, v) => s + (isFiniteNumber(v) ? v : 0), 0);
+    const strain = (isFiniteNumber(monotony) && dailyLoads7.length === 7) ? (tss7dTotal * monotony) : null;
 
     const strength48h = model.workouts.some((workout) => strengthWorkout(workout) && inPastHours(workout.parsedDate, 48));
     const strength7d = model.workouts.filter((workout) => strengthWorkout(workout) && inPastHours(workout.parsedDate, 24 * 7)).length;
 
-    const workouts7d = model.workouts.filter((workout) => inPastHours(workout.parsedDate, 24 * 7)).length;
-    const trainingDensity = workouts7d / 7;
+    const trainingDensity = (() => {
+        const end = new Date(refDate.getFullYear(), refDate.getMonth(), refDate.getDate());
+        const start = new Date(end);
+        start.setDate(start.getDate() - 6);
+        let count = 0;
+        for (const w of model.workouts || []) {
+            if (!w.parsedDate) continue;
+            const wd = new Date(w.parsedDate.getFullYear(), w.parsedDate.getMonth(), w.parsedDate.getDate());
+            if (wd >= start && wd <= end) count += 1;
+        }
+        return count / 7;
+    })();
     const structuralFatigue = isFiniteNumber(monotony) && monotony > 2 && trainingDensity > 1.2;
     const fatigueRiskScore = riskFromFactors(acwr, monotony, atlSpike, trainingDensity);
 
@@ -306,6 +430,17 @@ export function calculateMetrics(model) {
     const readinessLevel = levelFromScore(readinessScore);
     const strengthReadiness = clamp((readinessScore * 0.6) + (strength48h ? -15 : 10), 0, 100);
     const aerobicReadiness = clamp((readinessScore * 0.7) + (isFiniteNumber(hrvRatio) ? (hrvRatio - 1) * 40 : 0), 0, 100);
+
+    const trainingType = computeTrainingType({
+        hrvRatio,
+        rhrDelta,
+        acwr,
+        strengthFatigue: strength48h,
+        hrvZ,
+        form
+    });
+    const intensityLevel = computeIntensityLevel(readinessLevel, hrvTrend, form, acwr);
+    const sessionFocus = sessionFocusForTrainingType(trainingType);
 
     const guidance = intensityGuidance(readinessScore, cnsFatigue);
     const atlSlope = slope(getRecentValues(model.atlSeries, 4));
@@ -364,10 +499,16 @@ export function calculateMetrics(model) {
             aerobicReadiness
         },
         guidance,
+        trainingRecommendation: {
+            trainingType,
+            intensityLevel,
+            sessionFocus
+        },
         structures: [
-            { name: 'Plan A Aerobic', detail: 'Z2 steady aerobic, keep cadence smooth and controlled.' },
-            { name: 'Plan B Strength + Aerobic', detail: 'Brief strength block then short aerobic cooldown.' },
-            { name: 'Plan C Recovery', detail: 'Mobility, easy spin/walk, and extra sleep emphasis.' }
+            {
+                name: trainingType,
+                detail: `Intensity level ${intensityLevel}/5 (from base ${readinessLevel}). ${sessionFocus}`
+            }
         ],
         trend: {
             fatigueTrend: isFiniteNumber(atlSlope) ? (atlSlope > 0 ? 'Accumulating' : atlSlope < 0 ? 'Releasing' : 'Stable') : 'N/A',

@@ -1,7 +1,7 @@
 import { normalizeCustomData, normalizeGithubData } from './normalize.js';
 import { calculateMetrics } from './metrics.js';
-import { renderDashboard } from './render.js';
-import { renderCharts } from './charts.js';
+import { renderDashboard, setupMetricHelpModal, setupCollapsibleSections } from './render.js';
+import { renderCharts, refreshChartsTheme } from './charts.js';
 import {
     clearStoredCustomJson,
     parseJsonText,
@@ -12,6 +12,31 @@ import {
 
 const LATEST_URL = 'https://raw.githubusercontent.com/JasonShenGH/training-data/main/latest.json';
 const HISTORY_URL = 'https://raw.githubusercontent.com/JasonShenGH/training-data/main/history.json';
+const THEME_STORAGE_KEY = 'training-dashboard-theme';
+
+function getStoredTheme() {
+    try {
+        const v = localStorage.getItem(THEME_STORAGE_KEY);
+        return v === 'dark' ? 'dark' : 'light';
+    } catch {
+        return 'light';
+    }
+}
+
+function applyTheme(theme) {
+    const next = theme === 'dark' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    try {
+        localStorage.setItem(THEME_STORAGE_KEY, next);
+    } catch {
+        /* ignore quota / private mode */
+    }
+    refreshChartsTheme();
+}
+
+function initTheme() {
+    applyTheme(getStoredTheme());
+}
 
 function showError(message) {
     document.getElementById('loading').classList.add('hidden');
@@ -57,14 +82,85 @@ function loadFromCustomObject(customObject, rawTextToStore = null) {
     renderFromModel(model);
 }
 
-function setupEvents() {
-    document.getElementById('load-github-btn').addEventListener('click', async () => {
+function setupHeaderMenu() {
+    const menuToggle = document.getElementById('menu-toggle');
+    const dropdown = document.getElementById('header-dropdown');
+    const wrap = document.querySelector('.header-menu-wrap');
+    const pastePanel = document.getElementById('paste-panel');
+
+    function setMenuOpen(open) {
+        if (open) {
+            dropdown.classList.remove('hidden');
+            menuToggle.setAttribute('aria-expanded', 'true');
+        } else {
+            dropdown.classList.add('hidden');
+            menuToggle.setAttribute('aria-expanded', 'false');
+        }
+    }
+
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const opening = dropdown.classList.contains('hidden');
+        setMenuOpen(opening);
+    });
+
+    document.addEventListener('click', (e) => {
+        if (wrap && !wrap.contains(e.target)) {
+            setMenuOpen(false);
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            setMenuOpen(false);
+        }
+    });
+
+    document.getElementById('menu-upload-json').addEventListener('click', () => {
+        setMenuOpen(false);
+        document.getElementById('json-file-input').click();
+    });
+
+    document.getElementById('menu-paste-json').addEventListener('click', () => {
+        setMenuOpen(false);
+        pastePanel.classList.toggle('hidden');
+        if (!pastePanel.classList.contains('hidden')) {
+            document.getElementById('json-paste-input').focus();
+        }
+    });
+
+    const pastePanelClose = document.getElementById('paste-panel-close');
+    if (pastePanelClose) {
+        pastePanelClose.addEventListener('click', () => {
+            pastePanel.classList.add('hidden');
+        });
+    }
+
+    document.getElementById('menu-clear-custom').addEventListener('click', async () => {
+        setMenuOpen(false);
         clearStoredCustomJson();
         await loadFromGithub();
     });
 
+    document.getElementById('menu-load-github').addEventListener('click', async () => {
+        setMenuOpen(false);
+        clearStoredCustomJson();
+        await loadFromGithub();
+    });
+
+    document.getElementById('menu-toggle-theme').addEventListener('click', () => {
+        setMenuOpen(false);
+        const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+}
+
+function setupEvents() {
+    setupHeaderMenu();
+
     document.getElementById('json-file-input').addEventListener('change', async (event) => {
         const file = event.target.files?.[0];
+        event.target.value = '';
         if (!file) return;
         const text = await readFileAsText(file);
         const json = parseJsonText(text);
@@ -80,15 +176,13 @@ function setupEvents() {
     document.getElementById('clear-paste-btn').addEventListener('click', () => {
         document.getElementById('json-paste-input').value = '';
     });
-
-    document.getElementById('clear-custom-btn').addEventListener('click', async () => {
-        clearStoredCustomJson();
-        await loadFromGithub();
-    });
 }
 
 async function initialize() {
     try {
+        initTheme();
+        setupMetricHelpModal();
+        setupCollapsibleSections();
         setupEvents();
         const stored = readStoredCustomJson();
         if (stored) {

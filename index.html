@@ -1,66 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recovery & Training Load Dashboard</title>
+    <title>LoadFit Dashboard</title>
     <meta name="description" content="Recovery and training-load dashboard for Intervals.icu-style JSON data.">
+    <script>
+        (function () {
+            try {
+                var k = 'training-dashboard-theme';
+                var v = localStorage.getItem(k);
+                document.documentElement.setAttribute('data-theme', v === 'dark' ? 'dark' : 'light');
+            } catch (e) { /* ignore */ }
+        })();
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gray-50 min-h-screen">
-    <div id="loading" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
-        <div class="bg-white rounded-lg p-8 shadow-xl text-center max-w-sm">
-            <div class="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-600 mx-auto mb-4"></div>
-            <p class="text-gray-700 text-lg font-medium mb-2">Loading dashboard...</p>
-            <p class="text-gray-500 text-sm">Preparing your data source</p>
+<body class="app-body min-h-screen">
+    <div id="loading" class="app-overlay fixed inset-0 backdrop-blur-sm flex items-center justify-center z-50">
+        <div class="loading-card rounded-2xl p-8 shadow-2xl text-center max-w-sm mx-4">
+            <div class="animate-spin rounded-full h-14 w-14 border-2 border-cyan-400/30 border-t-cyan-400 mx-auto mb-4"></div>
+            <p class="th-strong text-lg font-semibold mb-1">Loading dashboard</p>
+            <p class="th-muted text-sm">Preparing your data source</p>
         </div>
     </div>
 
-    <div id="error" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
-        <div class="bg-white rounded-lg p-8 shadow-xl max-w-md">
-            <h3 class="text-red-600 text-xl font-bold mb-4">Data Error</h3>
-            <p id="error-message" class="text-gray-700 mb-6"></p>
-            <button onclick="location.reload()" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg">
+    <div id="error" class="hidden app-overlay fixed inset-0 backdrop-blur-sm flex items-center justify-center z-50">
+        <div class="loading-card rounded-2xl p-8 shadow-2xl max-w-md mx-4">
+            <h3 class="text-rose-600 text-xl font-bold mb-3">Data error</h3>
+            <p id="error-message" class="th-primary mb-6"></p>
+            <button onclick="location.reload()" class="rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium py-2.5 px-6 shadow-lg hover:opacity-95 transition-opacity">
                 Reload
             </button>
         </div>
     </div>
 
     <div id="content" class="hidden pb-12">
-        <header class="bg-white shadow-sm border-b border-gray-200">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-                <div class="flex flex-col gap-6">
-                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                        <div>
-                            <h1 class="text-2xl sm:text-3xl font-bold text-gray-900">Recovery & Training Load Dashboard</h1>
-                            <p id="greeting-text" class="text-gray-700 mt-1"></p>
-                            <p id="source-status" class="text-sm text-gray-500 mt-1"></p>
+        <header class="app-header">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
+                <div class="flex items-start justify-between gap-4">
+                    <div class="min-w-0 flex-1">
+                        <h1 class="text-2xl sm:text-3xl font-bold tracking-tight th-strong drop-shadow-sm">
+                            LoadFit Dashboard
+                        </h1>
+                        <p id="greeting-text" class="th-primary mt-2 text-base sm:text-lg"></p>
+                        <p id="source-status" class="text-sm th-muted mt-1"></p>
+
+                        <div class="hero-metrics-grid mt-5 sm:mt-6">
+                            <div class="hero-metric hero-metric--recovery">
+                                <p class="hero-metric__label">Recovery score</p>
+                                <p id="recovery-score-value" class="hero-metric__value">--</p>
+                                <p class="hero-metric__suffix">/ 100</p>
+                            </div>
+                            <div class="hero-metric hero-metric--status">
+                                <p class="hero-metric__label">Status level</p>
+                                <p id="status-level-value" class="hero-metric__value">Level --</p>
+                                <p id="status-level-label" class="hero-metric__sub text-sm mt-1 opacity-90"></p>
+                            </div>
                         </div>
-                        <div class="flex flex-wrap gap-2">
-                            <button id="load-github-btn" class="bg-gray-700 hover:bg-gray-800 text-white font-medium py-2 px-4 rounded-lg text-sm">
+                    </div>
+
+                    <div class="header-menu-wrap relative shrink-0 z-30">
+                        <button
+                            type="button"
+                            id="menu-toggle"
+                            class="menu-icon-btn"
+                            aria-label="Open data menu"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            aria-controls="header-dropdown"
+                        >
+                            <span class="sr-only">Menu</span>
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            </svg>
+                        </button>
+                        <div
+                            id="header-dropdown"
+                            class="header-dropdown hidden"
+                            role="menu"
+                            aria-labelledby="menu-toggle"
+                        >
+                            <button type="button" role="menuitem" id="menu-upload-json" class="header-dropdown__item">
+                                Upload JSON File
+                            </button>
+                            <button type="button" role="menuitem" id="menu-paste-json" class="header-dropdown__item">
+                                Paste JSON Content
+                            </button>
+                            <button type="button" role="menuitem" id="menu-clear-custom" class="header-dropdown__item header-dropdown__item--danger">
+                                Clear Custom Data
+                            </button>
+                            <button type="button" role="menuitem" id="menu-load-github" class="header-dropdown__item">
                                 Load GitHub Data
                             </button>
-                            <label for="json-file-input" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg text-sm cursor-pointer">
-                                Upload JSON
-                            </label>
-                            <input id="json-file-input" type="file" accept=".json,application/json" class="hidden">
-                            <button id="clear-custom-btn" class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg text-sm">
-                                Clear Custom Data
+                            <button type="button" role="menuitem" id="menu-toggle-theme" class="header-dropdown__item">
+                                Toggle Dark/Light Theme
                             </button>
                         </div>
                     </div>
-                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-4">
-                        <label for="json-paste-input" class="block text-sm font-medium text-gray-700 mb-2">Paste JSON content</label>
-                        <textarea id="json-paste-input" class="w-full h-28 p-3 border border-gray-300 rounded-lg text-sm font-mono" placeholder='{"user_name":"Jason","atl":[...]}'></textarea>
-                        <div class="mt-3 flex gap-2">
-                            <button id="load-paste-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg text-sm">
-                                Load Pasted JSON
+                </div>
+
+                <input id="json-file-input" type="file" accept=".json,application/json" class="hidden" aria-hidden="true">
+
+                <div id="paste-panel" class="paste-panel hidden mt-6">
+                    <div class="paste-panel__inner">
+                        <label for="json-paste-input" class="block text-sm font-medium th-primary mb-2">Paste JSON content</label>
+                        <textarea id="json-paste-input" class="paste-textarea w-full h-28 p-3 rounded-xl text-sm font-mono" placeholder='{"user_name":"Jason","atl":[...]}'></textarea>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                            <button type="button" id="load-paste-btn" class="rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium py-2 px-4 text-sm shadow-md hover:opacity-95 transition-opacity">
+                                Load pasted JSON
                             </button>
-                            <button id="clear-paste-btn" class="bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium py-2 px-4 rounded-lg text-sm">
-                                Clear Text
+                            <button type="button" id="clear-paste-btn" class="rounded-xl border btn-ghost-outline font-medium py-2 px-4 text-sm transition-colors">
+                                Clear text
                             </button>
                         </div>
                     </div>
@@ -69,165 +123,233 @@
         </header>
 
         <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
-            <section class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div class="bg-white rounded-xl shadow p-6">
-                    <p class="text-sm text-gray-500 mb-1">Recovery Score</p>
-                    <p id="recovery-score-value" class="text-4xl font-bold text-gray-900">--</p>
-                    <p class="text-sm text-gray-500">/100</p>
-                </div>
-                <div class="bg-white rounded-xl shadow p-6">
-                    <p class="text-sm text-gray-500 mb-1">Status Level</p>
-                    <p id="status-level-value" class="text-4xl font-bold text-gray-900">Level --</p>
-                    <p id="status-level-label" class="text-sm text-gray-500 mt-1"></p>
-                </div>
-            </section>
-
-            <section class="bg-white rounded-xl shadow p-6 space-y-4">
-                <h2 class="text-xl font-bold text-gray-900">Recovery Dashboard</h2>
+            <section class="content-card rounded-2xl p-6 sm:p-8 space-y-4">
+                <h2 class="text-xl font-bold th-strong">Recovery dashboard</h2>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                     <div>
-                        <h3 class="font-semibold text-gray-800 mb-2">Recovery System</h3>
+                        <h3 class="font-semibold th-primary mb-2">Recovery System</h3>
                         <div id="recovery-system-metrics" class="metric-grid"></div>
                     </div>
                     <div>
-                        <h3 class="font-semibold text-gray-800 mb-2">Neural System</h3>
+                        <h3 class="font-semibold th-primary mb-2">Neural System</h3>
                         <div id="neural-system-metrics" class="metric-grid"></div>
                     </div>
                     <div>
-                        <h3 class="font-semibold text-gray-800 mb-2">Training Load</h3>
+                        <h3 class="font-semibold th-primary mb-2">Training Load</h3>
                         <div id="training-load-metrics" class="metric-grid"></div>
                     </div>
                     <div>
-                        <h3 class="font-semibold text-gray-800 mb-2">Training Structure</h3>
+                        <h3 class="font-semibold th-primary mb-2">Training Structure</h3>
                         <div id="training-structure-metrics" class="metric-grid"></div>
                     </div>
                     <div>
-                        <h3 class="font-semibold text-gray-800 mb-2">Fatigue Risk</h3>
+                        <h3 class="font-semibold th-primary mb-2">Fatigue Risk</h3>
                         <div id="fatigue-risk-metrics" class="metric-grid"></div>
                     </div>
                     <div>
-                        <h3 class="font-semibold text-gray-800 mb-2">Performance Readiness</h3>
+                        <h3 class="font-semibold th-primary mb-2">Performance Readiness</h3>
                         <div id="performance-readiness-metrics" class="metric-grid"></div>
                     </div>
                 </div>
             </section>
 
-            <section class="bg-white rounded-xl shadow p-6">
-                <h2 class="text-xl font-bold text-gray-900 mb-4">Today's Training Suggestions</h2>
+            <section class="content-card rounded-2xl p-6 sm:p-8">
+                <h2 class="text-xl font-bold th-strong mb-4">Today's training suggestions</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div class="p-4 bg-green-50 rounded-lg">
-                        <p class="text-xs uppercase text-gray-500">Recommended Training</p>
-                        <p id="suggest-recommended" class="mt-1 font-semibold text-gray-900"></p>
+                    <div class="suggestion-tile suggestion-tile--green">
+                        <p class="text-xs uppercase tracking-wide th-label">Recommended training</p>
+                        <p id="suggest-recommended" class="mt-1 font-semibold th-strong"></p>
                     </div>
-                    <div class="p-4 bg-red-50 rounded-lg">
-                        <p class="text-xs uppercase text-gray-500">Avoid Training</p>
-                        <p id="suggest-avoid" class="mt-1 font-semibold text-gray-900"></p>
+                    <div class="suggestion-tile suggestion-tile--rose">
+                        <p class="text-xs uppercase tracking-wide th-label">Avoid training</p>
+                        <p id="suggest-avoid" class="mt-1 font-semibold th-strong"></p>
                     </div>
-                    <div class="p-4 bg-blue-50 rounded-lg">
-                        <p class="text-xs uppercase text-gray-500">Intensity / RPE</p>
-                        <p id="suggest-intensity" class="mt-1 font-semibold text-gray-900"></p>
+                    <div class="suggestion-tile suggestion-tile--cyan">
+                        <p class="text-xs uppercase tracking-wide th-label">Intensity / RPE</p>
+                        <p id="suggest-intensity" class="mt-1 font-semibold th-strong"></p>
                     </div>
-                    <div class="p-4 bg-purple-50 rounded-lg">
-                        <p class="text-xs uppercase text-gray-500">HR Zone / Duration</p>
-                        <p id="suggest-zone-duration" class="mt-1 font-semibold text-gray-900"></p>
+                    <div class="suggestion-tile suggestion-tile--violet">
+                        <p class="text-xs uppercase tracking-wide th-label">HR zone / duration</p>
+                        <p id="suggest-zone-duration" class="mt-1 font-semibold th-strong"></p>
                     </div>
                 </div>
             </section>
 
-            <section class="bg-white rounded-xl shadow p-6">
-                <h2 class="text-xl font-bold text-gray-900 mb-4">Suggested Training Structures</h2>
+            <section class="content-card rounded-2xl p-6 sm:p-8">
+                <h2 class="text-xl font-bold th-strong mb-4">Suggested training structures</h2>
                 <div id="training-structures" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
             </section>
 
-            <section class="bg-white rounded-xl shadow p-6">
-                <h2 class="text-xl font-bold text-gray-900 mb-4">Trend Projection</h2>
+            <section class="content-card rounded-2xl p-6 sm:p-8">
+                <h2 class="text-xl font-bold th-strong mb-4">Trend projection</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div class="p-4 bg-gray-50 rounded-lg">
-                        <p class="text-xs uppercase text-gray-500">Fatigue Trend</p>
-                        <p id="trend-fatigue" class="mt-1 font-semibold text-gray-900"></p>
+                    <div class="mini-stat">
+                        <p class="text-xs uppercase th-label">Fatigue trend</p>
+                        <p id="trend-fatigue" class="mt-1 font-semibold th-strong"></p>
                     </div>
-                    <div class="p-4 bg-gray-50 rounded-lg">
-                        <p class="text-xs uppercase text-gray-500">CTL Trend</p>
-                        <p id="trend-ctl" class="mt-1 font-semibold text-gray-900"></p>
+                    <div class="mini-stat">
+                        <p class="text-xs uppercase th-label">CTL trend</p>
+                        <p id="trend-ctl" class="mt-1 font-semibold th-strong"></p>
                     </div>
-                    <div class="p-4 bg-gray-50 rounded-lg">
-                        <p class="text-xs uppercase text-gray-500">Next 48h Window</p>
-                        <p id="trend-window" class="mt-1 font-semibold text-gray-900"></p>
+                    <div class="mini-stat">
+                        <p class="text-xs uppercase th-label">Next 48h window</p>
+                        <p id="trend-window" class="mt-1 font-semibold th-strong"></p>
                     </div>
-                    <div class="p-4 bg-gray-50 rounded-lg">
-                        <p class="text-xs uppercase text-gray-500">Future Fatigue Risk</p>
-                        <p id="trend-risk" class="mt-1 font-semibold text-gray-900"></p>
+                    <div class="mini-stat">
+                        <p class="text-xs uppercase th-label">Future fatigue risk</p>
+                        <p id="trend-risk" class="mt-1 font-semibold th-strong"></p>
                     </div>
                 </div>
             </section>
 
             <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div class="bg-white rounded-xl shadow p-6">
-                    <h2 class="text-xl font-bold text-gray-900 mb-4">ATL / CTL Trend</h2>
+                <div class="content-card rounded-2xl p-6 sm:p-8">
+                    <h2 class="text-xl font-bold th-strong mb-4">ATL / CTL trend</h2>
                     <div class="relative h-72"><canvas id="load-chart"></canvas></div>
                 </div>
-                <div class="bg-white rounded-xl shadow p-6">
-                    <h2 class="text-xl font-bold text-gray-900 mb-4">HRV / RHR Trend</h2>
+                <div class="content-card rounded-2xl p-6 sm:p-8">
+                    <h2 class="text-xl font-bold th-strong mb-4">HRV / RHR trend</h2>
                     <div class="relative h-72"><canvas id="hrv-rhr-chart"></canvas></div>
                 </div>
             </section>
 
-            <section class="bg-white rounded-xl shadow p-6">
-                <h2 class="text-xl font-bold text-gray-900 mb-4">Workout Details</h2>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead id="workouts-head"></thead>
-                        <tbody id="workouts-body" class="divide-y divide-gray-100"></tbody>
-                    </table>
+            <!-- Collapsible tables: setupCollapsibleSections() in render.js; styles in styles.css -->
+            <section class="content-card rounded-2xl p-6 sm:p-8 collapsible-section" data-collapsible-id="workout-details">
+                <h2 class="m-0 text-xl font-bold th-strong">
+                    <button type="button" class="collapsible-section__trigger" id="collapsible-trigger-workout-details" aria-expanded="false" aria-controls="collapsible-panel-workout-details">
+                        <span class="collapsible-section__label">Workout details</span>
+                        <svg class="collapsible-section__chevron shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </h2>
+                <div id="collapsible-panel-workout-details" class="collapsible-section__panel" role="region" aria-labelledby="collapsible-trigger-workout-details" aria-hidden="true" inert>
+                    <div class="collapsible-section__panel-inner">
+                        <div class="overflow-x-auto rounded-xl border table-wrap mt-4">
+                            <table class="min-w-full data-table-divide-y data-table">
+                                <thead id="workouts-head"></thead>
+                                <tbody id="workouts-body" class="data-table-divide-y"></tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <section class="bg-white rounded-xl shadow p-6">
-                <h2 class="text-xl font-bold text-gray-900 mb-4">Sleep Sessions</h2>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead id="sleep-head"></thead>
-                        <tbody id="sleep-body" class="divide-y divide-gray-100"></tbody>
-                    </table>
+            <section class="content-card rounded-2xl p-6 sm:p-8 collapsible-section" data-collapsible-id="sleep-sessions">
+                <h2 class="m-0 text-xl font-bold th-strong">
+                    <button type="button" class="collapsible-section__trigger" id="collapsible-trigger-sleep-sessions" aria-expanded="false" aria-controls="collapsible-panel-sleep-sessions">
+                        <span class="collapsible-section__label">Sleep sessions</span>
+                        <svg class="collapsible-section__chevron shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </h2>
+                <div id="collapsible-panel-sleep-sessions" class="collapsible-section__panel" role="region" aria-labelledby="collapsible-trigger-sleep-sessions" aria-hidden="true" inert>
+                    <div class="collapsible-section__panel-inner">
+                        <div class="overflow-x-auto rounded-xl border table-wrap mt-4">
+                            <table class="min-w-full data-table-divide-y data-table">
+                                <thead id="sleep-head"></thead>
+                                <tbody id="sleep-body" class="data-table-divide-y"></tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div class="bg-white rounded-xl shadow p-6">
-                    <h2 class="text-xl font-bold text-gray-900 mb-4">HRV Series</h2>
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead id="hrv-head"></thead>
-                            <tbody id="hrv-body" class="divide-y divide-gray-100"></tbody>
-                        </table>
+                <div class="content-card rounded-2xl p-6 sm:p-8 collapsible-section" data-collapsible-id="hrv-series">
+                    <h2 class="m-0 text-xl font-bold th-strong">
+                        <button type="button" class="collapsible-section__trigger" id="collapsible-trigger-hrv-series" aria-expanded="false" aria-controls="collapsible-panel-hrv-series">
+                            <span class="collapsible-section__label">HRV series</span>
+                            <svg class="collapsible-section__chevron shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </h2>
+                    <div id="collapsible-panel-hrv-series" class="collapsible-section__panel" role="region" aria-labelledby="collapsible-trigger-hrv-series" aria-hidden="true" inert>
+                        <div class="collapsible-section__panel-inner">
+                            <div class="overflow-x-auto rounded-xl border table-wrap mt-4">
+                                <table class="min-w-full data-table-divide-y data-table">
+                                    <thead id="hrv-head"></thead>
+                                    <tbody id="hrv-body" class="data-table-divide-y"></tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="bg-white rounded-xl shadow p-6">
-                    <h2 class="text-xl font-bold text-gray-900 mb-4">RHR Series</h2>
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead id="rhr-head"></thead>
-                            <tbody id="rhr-body" class="divide-y divide-gray-100"></tbody>
-                        </table>
+                <div class="content-card rounded-2xl p-6 sm:p-8 collapsible-section" data-collapsible-id="rhr-series">
+                    <h2 class="m-0 text-xl font-bold th-strong">
+                        <button type="button" class="collapsible-section__trigger" id="collapsible-trigger-rhr-series" aria-expanded="false" aria-controls="collapsible-panel-rhr-series">
+                            <span class="collapsible-section__label">RHR series</span>
+                            <svg class="collapsible-section__chevron shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </h2>
+                    <div id="collapsible-panel-rhr-series" class="collapsible-section__panel" role="region" aria-labelledby="collapsible-trigger-rhr-series" aria-hidden="true" inert>
+                        <div class="collapsible-section__panel-inner">
+                            <div class="overflow-x-auto rounded-xl border table-wrap mt-4">
+                                <table class="min-w-full data-table-divide-y data-table">
+                                    <thead id="rhr-head"></thead>
+                                    <tbody id="rhr-body" class="data-table-divide-y"></tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <section class="bg-white rounded-xl shadow p-6">
-                <h2 class="text-xl font-bold text-gray-900 mb-4">ATL & CTL Series</h2>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead id="load-head"></thead>
-                        <tbody id="load-body" class="divide-y divide-gray-100"></tbody>
-                    </table>
+            <section class="content-card rounded-2xl p-6 sm:p-8 collapsible-section" data-collapsible-id="atl-ctl-series">
+                <h2 class="m-0 text-xl font-bold th-strong">
+                    <button type="button" class="collapsible-section__trigger" id="collapsible-trigger-atl-ctl-series" aria-expanded="false" aria-controls="collapsible-panel-atl-ctl-series">
+                        <span class="collapsible-section__label">ATL &amp; CTL series</span>
+                        <svg class="collapsible-section__chevron shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </h2>
+                <div id="collapsible-panel-atl-ctl-series" class="collapsible-section__panel" role="region" aria-labelledby="collapsible-trigger-atl-ctl-series" aria-hidden="true" inert>
+                    <div class="collapsible-section__panel-inner">
+                        <div class="overflow-x-auto rounded-xl border table-wrap mt-4">
+                            <table class="min-w-full data-table-divide-y data-table">
+                                <thead id="load-head"></thead>
+                                <tbody id="load-body" class="data-table-divide-y"></tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <section class="bg-white rounded-xl shadow p-6">
-                <h2 class="text-xl font-bold text-gray-900 mb-4">Comments</h2>
-                <div id="comments-list" class="text-gray-700"></div>
+            <section class="content-card rounded-2xl p-6 sm:p-8 collapsible-section" data-collapsible-id="comments">
+                <h2 class="m-0 text-xl font-bold th-strong">
+                    <button type="button" class="collapsible-section__trigger" id="collapsible-trigger-comments" aria-expanded="false" aria-controls="collapsible-panel-comments">
+                        <span class="collapsible-section__label">Comments</span>
+                        <svg class="collapsible-section__chevron shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </h2>
+                <div id="collapsible-panel-comments" class="collapsible-section__panel" role="region" aria-labelledby="collapsible-trigger-comments" aria-hidden="true" inert>
+                    <div class="collapsible-section__panel-inner">
+                        <div id="comments-list" class="th-primary mt-4"></div>
+                    </div>
+                </div>
             </section>
         </main>
+    </div>
+
+    <div id="metric-help-modal" class="hidden app-overlay fixed inset-0 backdrop-blur-sm flex items-center justify-center z-[60] p-4" role="dialog" aria-labelledby="metric-help-title" aria-modal="true">
+        <div class="loading-card rounded-2xl p-6 sm:p-8 max-w-2xl w-full max-h-[85vh] overflow-y-auto">
+            <div class="flex items-start justify-between mb-4">
+                <h3 id="metric-help-title" class="text-xl font-bold th-strong"></h3>
+                <button type="button" id="metric-help-close" data-metric-help-dismiss class="modal-close-btn rounded-lg p-1.5 transition-colors" aria-label="Close help">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div id="metric-help-body" class="space-y-3"></div>
+        </div>
     </div>
 
     <script type="module" src="app.js"></script>

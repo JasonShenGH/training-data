@@ -45,6 +45,14 @@ export function stdDev(values) {
     return Math.sqrt(variance);
 }
 
+export function stdDevSample(values) {
+    const valid = values.filter(isFiniteNumber);
+    if (valid.length < 2) return null;
+    const mean = average(valid);
+    const variance = valid.reduce((sum, value) => sum + ((value - mean) ** 2), 0) / (valid.length - 1);
+    return Math.sqrt(variance);
+}
+
 export function parseIsoDate(value) {
     if (typeof value !== 'string') return null;
     const date = new Date(value);
