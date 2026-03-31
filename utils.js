@@ -1,156 +1,146 @@
-// Utility functions for data parsing and formatting
-
-export function formatDuration(hours) {
-    if (!hours) return 'N/A';
-    const h = Math.floor(hours);
-    const m = Math.round((hours - h) * 60);
-    return `${h}h${m}m`;
+export function isFiniteNumber(value) {
+    return Number.isFinite(value);
 }
 
-export function formatDate(dateString) {
-    const date = new Date(dateString);
+export function toNumber(value) {
+    const n = Number(value);
+    return Number.isFinite(n) ? n : null;
+}
+
+export function safeDivide(numerator, denominator) {
+    if (!isFiniteNumber(numerator) || !isFiniteNumber(denominator) || denominator === 0) {
+        return null;
+    }
+    return numerator / denominator;
+}
+
+export function clamp(value, min, max) {
+    if (!isFiniteNumber(value)) {
+        return min;
+    }
+    return Math.max(min, Math.min(max, value));
+}
+
+export function average(values) {
+    const valid = values.filter(isFiniteNumber);
+    if (!valid.length) return null;
+    return valid.reduce((sum, v) => sum + v, 0) / valid.length;
+}
+
+export function median(values) {
+    const valid = values.filter(isFiniteNumber).slice().sort((a, b) => a - b);
+    if (!valid.length) return null;
+    const mid = Math.floor(valid.length / 2);
+    if (valid.length % 2) {
+        return valid[mid];
+    }
+    return (valid[mid - 1] + valid[mid]) / 2;
+}
+
+export function stdDev(values) {
+    const valid = values.filter(isFiniteNumber);
+    if (valid.length < 2) return null;
+    const mean = average(valid);
+    const variance = valid.reduce((sum, value) => sum + ((value - mean) ** 2), 0) / valid.length;
+    return Math.sqrt(variance);
+}
+
+export function parseIsoDate(value) {
+    if (typeof value !== 'string') return null;
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return null;
+    return date;
+}
+
+export function parseMonthDayDate(value, defaultYear = new Date().getFullYear()) {
+    if (typeof value !== 'string') return null;
+    const match = value.match(/^(\d{2})-(\d{2})\s+(\d{2}):(\d{2})$/);
+    if (!match) return null;
+    const month = Number(match[1]) - 1;
+    const day = Number(match[2]);
+    const hour = Number(match[3]);
+    const minute = Number(match[4]);
+    return new Date(defaultYear, month, day, hour, minute, 0, 0);
+}
+
+export function parseChineseDateTime(value) {
+    if (typeof value !== 'string') return null;
+    const match = value.match(/^(\d{4})年(\d{1,2})月(\d{1,2})日\s+(\d{1,2}):(\d{1,2}):(\d{1,2})$/);
+    if (!match) return null;
+    const year = Number(match[1]);
+    const month = Number(match[2]) - 1;
+    const day = Number(match[3]);
+    const hour = Number(match[4]);
+    const minute = Number(match[5]);
+    const second = Number(match[6]);
+    return new Date(year, month, day, hour, minute, second, 0);
+}
+
+export function parseDurationHoursFromText(value) {
+    if (typeof value !== 'string') return null;
+    const match = value.match(/(?:(\d+)h)?\s*(?:(\d+)m)?/i);
+    if (!match) return null;
+    const h = Number(match[1] || 0);
+    const m = Number(match[2] || 0);
+    if (!Number.isFinite(h) || !Number.isFinite(m)) return null;
+    return h + (m / 60);
+}
+
+export function formatDate(dateInput) {
+    const date = dateInput instanceof Date ? dateInput : parseIsoDate(dateInput);
+    if (!date) return 'N/A';
     return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 }
 
-export function formatTime(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+export function formatDateTime(dateInput) {
+    const date = dateInput instanceof Date ? dateInput : parseIsoDate(dateInput);
+    if (!date) return 'N/A';
+    return date.toLocaleString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
 }
 
-export function getTSBColor(tsb) {
-    if (tsb > -10) return { bg: 'bg-green-100', text: 'text-green-700', border: 'border-green-400' };
-    if (tsb > -30) return { bg: 'bg-yellow-100', text: 'text-yellow-700', border: 'border-yellow-400' };
-    return { bg: 'bg-red-100', text: 'text-red-700', border: 'border-red-400' };
+export function formatNumber(value, digits = 1, suffix = '') {
+    if (!isFiniteNumber(value)) return 'N/A';
+    return `${value.toFixed(digits)}${suffix}`;
 }
 
-export function getTSBLabel(tsb) {
-    if (tsb > -10) return 'Fresh';
-    if (tsb > -30) return 'Moderate Fatigue';
-    return 'High Fatigue';
+export function formatPercent(value, digits = 1) {
+    if (!isFiniteNumber(value)) return 'N/A';
+    return `${(value * 100).toFixed(digits)}%`;
 }
 
-export function getACWRColor(acwr) {
-    if (acwr >= 0.8 && acwr <= 1.3) return 'text-green-600';
-    if (acwr >= 0.5 && acwr < 0.8) return 'text-blue-600';
-    return 'text-red-600';
-}
-
-export function getACWRLabel(acwr) {
-    if (acwr >= 0.8 && acwr <= 1.3) return 'Optimal';
-    if (acwr >= 0.5 && acwr < 0.8) return 'Detraining';
-    return 'High Risk';
-}
-
-export function getReadinessConfig(recommendation) {
-    const configs = {
-        'go': {
-            icon: '✅',
-            color: 'text-green-600',
-            borderColor: 'border-green-500',
-            bgColor: 'bg-green-50',
-            label: 'GO'
-        },
-        'modify': {
-            icon: '⚠️',
-            color: 'text-yellow-600',
-            borderColor: 'border-yellow-500',
-            bgColor: 'bg-yellow-50',
-            label: 'MODIFY'
-        },
-        'skip': {
-            icon: '🛑',
-            color: 'text-red-600',
-            borderColor: 'border-red-500',
-            bgColor: 'bg-red-50',
-            label: 'SKIP'
-        }
-    };
-    return configs[recommendation] || configs['go'];
-}
-
-export function getPriorityLabel(priority) {
-    const labels = {
-        0: 'P0 - Safety',
-        1: 'P1 - Overload',
-        2: 'P2 - Fatigue',
-        3: 'P3 - Green Light'
-    };
-    return labels[priority] || `P${priority}`;
-}
-
-export function getActivityTypeColor(type) {
-    const colors = {
-        'WeightTraining': '#8b5cf6',
-        'VirtualRide': '#3b82f6',
-        'Ride': '#10b981',
-        'Run': '#ef4444',
-        'Swim': '#06b6d4',
-        'Hike': '#f59e0b',
-        'Badminton': '#ec4899'
-    };
-    return colors[type] || '#6b7280';
-}
-
-export function getActivityTypeLabel(type) {
-    const labels = {
-        'WeightTraining': 'Strength',
-        'VirtualRide': 'Indoor Cycling',
-        'Ride': 'Cycling',
-        'Run': 'Running',
-        'Swim': 'Swimming',
-        'Hike': 'Hiking',
-        'Badminton': 'Badminton'
-    };
-    return labels[type] || type;
-}
-
-export function secondsToFormatted(seconds) {
-    if (!seconds) return '0m';
-    const hours = Math.floor(seconds / 3600);
-    const minutes = Math.floor((seconds % 3600) / 60);
-    if (hours > 0) {
-        return `${hours}h${minutes}m`;
+export function formatValue(value) {
+    if (value === null || value === undefined || value === '') {
+        return 'N/A';
     }
-    return `${minutes}m`;
-}
-
-export function calculateZonePercentages(zones) {
-    const total = Object.values(zones).reduce((sum, val) => sum + val, 0);
-    if (total === 0) return {};
-    
-    const percentages = {};
-    for (const [zone, seconds] of Object.entries(zones)) {
-        percentages[zone] = (seconds / total) * 100;
+    if (typeof value === 'object') {
+        return JSON.stringify(value);
     }
-    return percentages;
+    return String(value);
 }
 
-export function getZoneColor(zone) {
-    const colors = {
-        'z1': '#22c55e',
-        'z2': '#84cc16',
-        'z3': '#eab308',
-        'z4': '#f97316',
-        'z5': '#ef4444',
-        'z6': '#dc2626',
-        'z7': '#991b1b'
-    };
-    return colors[zone] || '#6b7280';
+export function sortByDateAsc(list, getDate) {
+    return list.slice().sort((a, b) => {
+        const aDate = getDate(a)?.getTime() || 0;
+        const bDate = getDate(b)?.getTime() || 0;
+        return aDate - bDate;
+    });
 }
 
-export function getZoneLabel(zone) {
-    const labels = {
-        'z1': 'Z1 (Recovery)',
-        'z2': 'Z2 (Endurance)',
-        'z3': 'Z3 (Tempo)',
-        'z4': 'Z4 (Threshold)',
-        'z5': 'Z5 (VO2max)',
-        'z6': 'Z6 (Anaerobic)',
-        'z7': 'Z7 (Sprint)'
-    };
-    return labels[zone] || zone.toUpperCase();
+export function recentItems(list, count) {
+    if (count <= 0) return [];
+    return list.slice(Math.max(0, list.length - count));
 }
 
-export function normalizeZoneKey(key) {
-    return key && key.endsWith('_time') ? key.replace('_time', '') : key;
+export function slope(lastItems) {
+    if (!lastItems || lastItems.length < 2) return null;
+    const first = lastItems[0];
+    const last = lastItems[lastItems.length - 1];
+    if (!isFiniteNumber(first) || !isFiniteNumber(last)) return null;
+    return (last - first) / (lastItems.length - 1);
 }

@@ -3,282 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Training Data Dashboard - Intervals.icu</title>
-    <meta name="description" content="Interactive training data visualization dashboard for intervals.icu">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
-    
-    <!-- Tailwind CSS -->
+    <title>Recovery & Training Load Dashboard</title>
+    <meta name="description" content="Recovery and training-load dashboard for Intervals.icu-style JSON data.">
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
-    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-gray-50 min-h-screen">
-    <!-- Loading Overlay -->
     <div id="loading" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
         <div class="bg-white rounded-lg p-8 shadow-xl text-center max-w-sm">
             <div class="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-600 mx-auto mb-4"></div>
-            <p class="text-gray-700 text-lg font-medium mb-2">Loading training data...</p>
-            <p class="text-gray-500 text-sm">Fetching from GitHub</p>
+            <p class="text-gray-700 text-lg font-medium mb-2">Loading dashboard...</p>
+            <p class="text-gray-500 text-sm">Preparing your data source</p>
         </div>
     </div>
 
-    <!-- Error Message -->
     <div id="error" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
         <div class="bg-white rounded-lg p-8 shadow-xl max-w-md">
-            <h3 class="text-red-600 text-xl font-bold mb-4">Error Loading Data</h3>
+            <h3 class="text-red-600 text-xl font-bold mb-4">Data Error</h3>
             <p id="error-message" class="text-gray-700 mb-6"></p>
             <button onclick="location.reload()" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg">
-                Retry
+                Reload
             </button>
         </div>
     </div>
 
-    <!-- Main Content -->
-    <div id="content" class="hidden">
-        <!-- Header -->
+    <div id="content" class="hidden pb-12">
         <header class="bg-white shadow-sm border-b border-gray-200">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-                <div class="flex justify-between items-start">
-                    <div>
-                        <h1 class="text-2xl sm:text-3xl font-bold text-gray-900">Training Dashboard</h1>
-                        <p class="text-gray-600 mt-1">Intervals.icu Data Visualization</p>
-                        <p id="last-updated" class="text-sm text-gray-500 mt-2"></p>
+                <div class="flex flex-col gap-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                        <div>
+                            <h1 class="text-2xl sm:text-3xl font-bold text-gray-900">Recovery & Training Load Dashboard</h1>
+                            <p id="greeting-text" class="text-gray-700 mt-1"></p>
+                            <p id="source-status" class="text-sm text-gray-500 mt-1"></p>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <button id="load-github-btn" class="bg-gray-700 hover:bg-gray-800 text-white font-medium py-2 px-4 rounded-lg text-sm">
+                                Load GitHub Data
+                            </button>
+                            <label for="json-file-input" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg text-sm cursor-pointer">
+                                Upload JSON
+                            </label>
+                            <input id="json-file-input" type="file" accept=".json,application/json" class="hidden">
+                            <button id="clear-custom-btn" class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg text-sm">
+                                Clear Custom Data
+                            </button>
+                        </div>
                     </div>
-                    <div class="flex gap-2">
-                        <button id="refresh-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg text-sm transition-colors">
-                            Refresh Data
-                        </button>
+                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-4">
+                        <label for="json-paste-input" class="block text-sm font-medium text-gray-700 mb-2">Paste JSON content</label>
+                        <textarea id="json-paste-input" class="w-full h-28 p-3 border border-gray-300 rounded-lg text-sm font-mono" placeholder='{"user_name":"Jason","atl":[...]}'></textarea>
+                        <div class="mt-3 flex gap-2">
+                            <button id="load-paste-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg text-sm">
+                                Load Pasted JSON
+                            </button>
+                            <button id="clear-paste-btn" class="bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium py-2 px-4 rounded-lg text-sm">
+                                Clear Text
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </header>
 
-        <!-- Alert Banner -->
-        <div id="alert-banner" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
-                <div class="flex">
-                    <div class="flex-shrink-0">
-                        <svg class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <div class="ml-3">
-                        <h3 class="text-sm font-medium text-yellow-800">Training Alert</h3>
-                        <div id="alert-content" class="mt-2 text-sm text-yellow-700"></div>
-                    </div>
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+            <section class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="bg-white rounded-xl shadow p-6">
+                    <p class="text-sm text-gray-500 mb-1">Recovery Score</p>
+                    <p id="recovery-score-value" class="text-4xl font-bold text-gray-900">--</p>
+                    <p class="text-sm text-gray-500">/100</p>
                 </div>
-            </div>
-        </div>
-
-        <!-- Hero Section - Readiness & Quick Stats -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <!-- Readiness Card -->
-                <div id="readiness-card" class="lg:col-span-1 bg-white rounded-xl shadow-lg p-6 border-4">
-                    <h2 class="text-lg font-semibold text-gray-700 mb-4">Today's Readiness</h2>
-                    <div class="text-center">
-                        <div id="readiness-icon" class="text-6xl mb-3"></div>
-                        <div id="readiness-status" class="text-3xl font-bold mb-2"></div>
-                        <div id="readiness-priority" class="text-sm font-medium mb-3"></div>
-                        <div id="readiness-reason" class="text-sm text-gray-600 leading-relaxed"></div>
-                    </div>
-                    <div id="readiness-signals" class="mt-6 pt-4 border-t border-gray-200">
-                        <div class="flex justify-between text-sm">
-                            <span class="text-gray-600">Signals:</span>
-                            <div class="flex gap-2">
-                                <span id="signals-green" class="font-medium text-green-600"></span>
-                                <span id="signals-amber" class="font-medium text-yellow-600"></span>
-                                <span id="signals-red" class="font-medium text-red-600"></span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="bg-white rounded-xl shadow p-6">
+                    <p class="text-sm text-gray-500 mb-1">Status Level</p>
+                    <p id="status-level-value" class="text-4xl font-bold text-gray-900">Level --</p>
+                    <p id="status-level-label" class="text-sm text-gray-500 mt-1"></p>
                 </div>
+            </section>
 
-                <!-- Quick Stats Cards -->
-                <div class="lg:col-span-2 grid grid-cols-2 sm:grid-cols-4 gap-4">
-                    <div class="bg-white rounded-xl shadow p-6">
-                        <div class="text-sm text-gray-600 mb-1" title="Total training time in last 7 days">Training (7d)</div>
-                        <div id="stat-hours" class="text-2xl font-bold text-gray-900"></div>
-                        <div id="stat-tss" class="text-xs text-gray-500 mt-1"></div>
-                    </div>
-                    <div class="bg-white rounded-xl shadow p-6">
-                        <div class="text-sm text-gray-600 mb-1" title="Training Stress Balance: CTL - ATL">Form (TSB)</div>
-                        <div id="stat-tsb" class="text-2xl font-bold"></div>
-                        <div id="stat-tsb-label" class="text-xs text-gray-500 mt-1"></div>
-                    </div>
-                    <div class="bg-white rounded-xl shadow p-6">
-                        <div class="text-sm text-gray-600 mb-1" title="Acute:Chronic Workload Ratio - injury risk indicator">ACWR</div>
-                        <div id="stat-acwr" class="text-2xl font-bold text-gray-900"></div>
-                        <div id="stat-acwr-label" class="text-xs text-gray-500 mt-1"></div>
-                    </div>
-                    <div class="bg-white rounded-xl shadow p-6">
-                        <div class="text-sm text-gray-600 mb-1" title="Current training phase">Phase</div>
-                        <div id="stat-phase" class="text-2xl font-bold text-gray-900"></div>
-                        <div id="stat-phase-week" class="text-xs text-gray-500 mt-1"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Fitness Trends Chart -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div class="bg-white rounded-xl shadow-lg p-6">
-                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+            <section class="bg-white rounded-xl shadow p-6 space-y-4">
+                <h2 class="text-xl font-bold text-gray-900">Recovery Dashboard</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                     <div>
-                        <h2 class="text-xl font-bold text-gray-900">Fitness Trends</h2>
-                        <p class="text-sm text-gray-600 mt-1">CTL/ATL/TSB progression over time</p>
-                    </div>
-                    <div class="flex gap-2">
-                        <button id="btn-30d" class="px-4 py-2 text-sm font-medium rounded-lg bg-gray-100 hover:bg-gray-200">30d</button>
-                        <button id="btn-90d" class="px-4 py-2 text-sm font-medium rounded-lg bg-blue-600 text-white">90d</button>
-                    </div>
-                </div>
-                <div class="relative h-80">
-                    <canvas id="fitness-chart"></canvas>
-                </div>
-                <div class="mt-4 flex flex-wrap gap-4 text-sm">
-                    <div class="flex items-center gap-2">
-                        <div class="w-4 h-4 bg-blue-500 rounded"></div>
-                        <span class="text-gray-700">CTL (Fitness) - 42d avg</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <div class="w-4 h-4 bg-orange-500 rounded"></div>
-                        <span class="text-gray-700">ATL (Fatigue) - 7d avg</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <div class="w-4 h-4 bg-green-500 rounded"></div>
-                        <span class="text-gray-700">TSB (Form) = CTL - ATL</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Activity Breakdown -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <!-- TSS by Day -->
-                <div class="bg-white rounded-xl shadow-lg p-6">
-                    <h2 class="text-xl font-bold text-gray-900 mb-6">Training Load (Last 7 Days)</h2>
-                    <div class="relative h-64">
-                        <canvas id="tss-chart"></canvas>
-                    </div>
-                </div>
-                
-                <!-- Activity Type Distribution -->
-                <div class="bg-white rounded-xl shadow-lg p-6">
-                    <h2 class="text-xl font-bold text-gray-900 mb-6">Activity Distribution</h2>
-                    <div class="relative h-64">
-                        <canvas id="activity-pie-chart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Recovery & Wellness -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div class="bg-white rounded-xl shadow-lg p-6">
-                <h2 class="text-xl font-bold text-gray-900 mb-6">Recovery & Wellness</h2>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div class="relative h-64">
-                        <canvas id="sleep-chart"></canvas>
-                    </div>
-                    <div class="relative h-64">
-                        <canvas id="rhr-chart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Training Zones (TID) -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div class="bg-white rounded-xl shadow-lg p-6">
-                <h2 class="text-xl font-bold text-gray-900 mb-2">Training Intensity Distribution</h2>
-                <p class="text-sm text-gray-600 mb-6">Seiler 3-Zone Model</p>
-                <div class="relative h-80">
-                    <canvas id="tid-chart"></canvas>
-                </div>
-                <div class="mt-4 grid grid-cols-2 gap-4 text-sm">
-                    <div>
-                        <span class="font-medium">7-day:</span>
-                        <span id="tid-7d-class" class="ml-2 px-2 py-1 rounded bg-gray-100"></span>
+                        <h3 class="font-semibold text-gray-800 mb-2">Recovery System</h3>
+                        <div id="recovery-system-metrics" class="metric-grid"></div>
                     </div>
                     <div>
-                        <span class="font-medium">28-day:</span>
-                        <span id="tid-28d-class" class="ml-2 px-2 py-1 rounded bg-gray-100"></span>
+                        <h3 class="font-semibold text-gray-800 mb-2">Neural System</h3>
+                        <div id="neural-system-metrics" class="metric-grid"></div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-2">Training Load</h3>
+                        <div id="training-load-metrics" class="metric-grid"></div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-2">Training Structure</h3>
+                        <div id="training-structure-metrics" class="metric-grid"></div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-2">Fatigue Risk</h3>
+                        <div id="fatigue-risk-metrics" class="metric-grid"></div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-2">Performance Readiness</h3>
+                        <div id="performance-readiness-metrics" class="metric-grid"></div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </section>
 
-        <!-- Historical Summary -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <h2 class="text-xl font-bold text-gray-900 mb-4">Historical Summary</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="bg-white rounded-xl shadow p-6">
-                    <div class="text-sm text-gray-600 mb-2">90 Days Average</div>
-                    <div id="hist-90d-tss" class="text-2xl font-bold text-gray-900"></div>
-                    <div id="hist-90d-hours" class="text-sm text-gray-600 mt-1"></div>
-                    <div id="hist-90d-rest" class="text-xs text-gray-500 mt-1"></div>
+            <section class="bg-white rounded-xl shadow p-6">
+                <h2 class="text-xl font-bold text-gray-900 mb-4">Today's Training Suggestions</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="p-4 bg-green-50 rounded-lg">
+                        <p class="text-xs uppercase text-gray-500">Recommended Training</p>
+                        <p id="suggest-recommended" class="mt-1 font-semibold text-gray-900"></p>
+                    </div>
+                    <div class="p-4 bg-red-50 rounded-lg">
+                        <p class="text-xs uppercase text-gray-500">Avoid Training</p>
+                        <p id="suggest-avoid" class="mt-1 font-semibold text-gray-900"></p>
+                    </div>
+                    <div class="p-4 bg-blue-50 rounded-lg">
+                        <p class="text-xs uppercase text-gray-500">Intensity / RPE</p>
+                        <p id="suggest-intensity" class="mt-1 font-semibold text-gray-900"></p>
+                    </div>
+                    <div class="p-4 bg-purple-50 rounded-lg">
+                        <p class="text-xs uppercase text-gray-500">HR Zone / Duration</p>
+                        <p id="suggest-zone-duration" class="mt-1 font-semibold text-gray-900"></p>
+                    </div>
                 </div>
-                <div class="bg-white rounded-xl shadow p-6">
-                    <div class="text-sm text-gray-600 mb-2">180 Days</div>
-                    <div id="hist-180d-tss" class="text-2xl font-bold text-gray-900"></div>
-                    <div id="hist-180d-ctl" class="text-sm text-gray-600 mt-1"></div>
-                </div>
-                <div class="bg-white rounded-xl shadow p-6">
-                    <div class="text-sm text-gray-600 mb-2">1 Year Peak</div>
-                    <div id="hist-1y-peak" class="text-2xl font-bold text-gray-900"></div>
-                    <div id="hist-1y-low" class="text-sm text-gray-600 mt-1"></div>
-                </div>
-                <div class="bg-white rounded-xl shadow p-6">
-                    <div class="text-sm text-gray-600 mb-2">Total Activities</div>
-                    <div id="hist-total-activities" class="text-2xl font-bold text-gray-900"></div>
-                    <div id="hist-data-range" class="text-sm text-gray-600 mt-1"></div>
-                </div>
-            </div>
-        </div>
+            </section>
 
-        <!-- Recent Activities -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 pb-12">
-            <div class="bg-white rounded-xl shadow-lg p-6">
-                <h2 class="text-xl font-bold text-gray-900 mb-6">Recent Activities</h2>
+            <section class="bg-white rounded-xl shadow p-6">
+                <h2 class="text-xl font-bold text-gray-900 mb-4">Suggested Training Structures</h2>
+                <div id="training-structures" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+            </section>
+
+            <section class="bg-white rounded-xl shadow p-6">
+                <h2 class="text-xl font-bold text-gray-900 mb-4">Trend Projection</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="p-4 bg-gray-50 rounded-lg">
+                        <p class="text-xs uppercase text-gray-500">Fatigue Trend</p>
+                        <p id="trend-fatigue" class="mt-1 font-semibold text-gray-900"></p>
+                    </div>
+                    <div class="p-4 bg-gray-50 rounded-lg">
+                        <p class="text-xs uppercase text-gray-500">CTL Trend</p>
+                        <p id="trend-ctl" class="mt-1 font-semibold text-gray-900"></p>
+                    </div>
+                    <div class="p-4 bg-gray-50 rounded-lg">
+                        <p class="text-xs uppercase text-gray-500">Next 48h Window</p>
+                        <p id="trend-window" class="mt-1 font-semibold text-gray-900"></p>
+                    </div>
+                    <div class="p-4 bg-gray-50 rounded-lg">
+                        <p class="text-xs uppercase text-gray-500">Future Fatigue Risk</p>
+                        <p id="trend-risk" class="mt-1 font-semibold text-gray-900"></p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-white rounded-xl shadow p-6">
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">ATL / CTL Trend</h2>
+                    <div class="relative h-72"><canvas id="load-chart"></canvas></div>
+                </div>
+                <div class="bg-white rounded-xl shadow p-6">
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">HRV / RHR Trend</h2>
+                    <div class="relative h-72"><canvas id="hrv-rhr-chart"></canvas></div>
+                </div>
+            </section>
+
+            <section class="bg-white rounded-xl shadow p-6">
+                <h2 class="text-xl font-bold text-gray-900 mb-4">Workout Details</h2>
                 <div class="overflow-x-auto">
                     <table class="min-w-full divide-y divide-gray-200">
-                        <thead>
-                            <tr>
-                                <th class="px-2 sm:px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-                                <th class="px-2 sm:px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Activity</th>
-                                <th class="px-2 sm:px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
-                                <th class="px-2 sm:px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Duration</th>
-                                <th class="px-2 sm:px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">TSS</th>
-                                <th class="px-2 sm:px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Avg HR</th>
-                                <th class="px-2 sm:px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
-                            </tr>
-                        </thead>
-                        <tbody id="activities-table" class="bg-white divide-y divide-gray-200">
-                        </tbody>
+                        <thead id="workouts-head"></thead>
+                        <tbody id="workouts-body" class="divide-y divide-gray-100"></tbody>
                     </table>
                 </div>
-            </div>
-        </div>
+            </section>
 
-        <!-- Footer -->
-        <footer class="bg-white border-t border-gray-200 mt-8">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-                <div class="text-center text-sm text-gray-600">
-                    <p>Data sourced from <a href="https://intervals.icu" target="_blank" class="text-blue-600 hover:text-blue-800">Intervals.icu</a></p>
-                    <p class="mt-2">Dashboard auto-refreshes data every 5 minutes</p>
+            <section class="bg-white rounded-xl shadow p-6">
+                <h2 class="text-xl font-bold text-gray-900 mb-4">Sleep Sessions</h2>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead id="sleep-head"></thead>
+                        <tbody id="sleep-body" class="divide-y divide-gray-100"></tbody>
+                    </table>
                 </div>
-            </div>
-        </footer>
+            </section>
+
+            <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-white rounded-xl shadow p-6">
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">HRV Series</h2>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead id="hrv-head"></thead>
+                            <tbody id="hrv-body" class="divide-y divide-gray-100"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow p-6">
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">RHR Series</h2>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead id="rhr-head"></thead>
+                            <tbody id="rhr-body" class="divide-y divide-gray-100"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-white rounded-xl shadow p-6">
+                <h2 class="text-xl font-bold text-gray-900 mb-4">ATL & CTL Series</h2>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead id="load-head"></thead>
+                        <tbody id="load-body" class="divide-y divide-gray-100"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="bg-white rounded-xl shadow p-6">
+                <h2 class="text-xl font-bold text-gray-900 mb-4">Comments</h2>
+                <div id="comments-list" class="text-gray-700"></div>
+            </section>
+        </main>
     </div>
 
-    <script type="module" src="utils.js"></script>
-    <script type="module" src="charts.js"></script>
     <script type="module" src="app.js"></script>
 </body>
 </html>
