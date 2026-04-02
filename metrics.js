@@ -28,7 +28,7 @@ function localDateKey(d) {
 }
 
 /** Latest calendar day among primary series (avoids using browser "now" for historical data). */
-function getDataReferenceDate(model) {
+export function getDataReferenceDate(model) {
     const dates = [];
     for (const s of [model.atlSeries, model.ctlSeries, model.hrvSeries]) {
         if (s?.length) {

@@ -1,5 +1,7 @@
-import { formatDate, formatNumber, formatPercent, formatValue } from './utils.js';
+import { formatDate, formatNumber, formatPercent, formatValue, isFiniteNumber } from './utils.js';
 import { METRIC_HELP } from './metricHelp.js';
+import { getDataReferenceDate } from './metrics.js';
+import { paintCockpitGauges } from './cockpit.js';
 
 function metricCard(title, value, status) {
     const hasHelp = Object.prototype.hasOwnProperty.call(METRIC_HELP, title);
@@ -269,4 +271,184 @@ export function renderDashboard(model, metrics) {
     document.getElementById('comments-list').innerHTML = comments.length
         ? `<ul class="space-y-2">${comments.map((comment) => `<li class="comment-item">${formatValue(comment)}</li>`).join('')}</ul>`
         : '<p class="th-muted">No comments in the JSON file.</p>';
+}
+
+function cockpitIcon(kind) {
+    switch (kind) {
+        case 'ok':
+            return '<svg class="cockpit-icon--ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>';
+        case 'warn':
+            return '<svg class="cockpit-icon--warn" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L2 20h20L12 2zm1 14h-2v-2h2v2zm0-4h-2V8h2v4z"/></svg>';
+        case 'bad':
+            return '<svg class="cockpit-icon--bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>';
+        case 'up':
+            return '<svg class="cockpit-icon--ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12l7-7 7 7"/></svg>';
+        case 'down':
+            return '<svg class="cockpit-icon--bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5M5 12l7 7 7-7"/></svg>';
+        default:
+            return '<svg class="cockpit-icon--neutral" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="2"/></svg>';
+    }
+}
+
+function statusToCockpitIcon(status) {
+    if (!status || !status.label) return 'neutral';
+    const l = status.label.toLowerCase();
+    const c = (status.color || '').toLowerCase();
+    if (c.includes('rose') || c.includes('red')) return 'bad';
+    if (c.includes('amber') || c.includes('yellow')) return 'warn';
+    if (c.includes('emerald') || c.includes('green')) return 'ok';
+    if (l.includes('improving') || l.includes('super')) return 'up';
+    if (l.includes('declining')) return 'down';
+    if (l.includes('warning') || l.includes('high') || l.includes('unstable') || l.includes('limited')) return 'warn';
+    if (l.includes('stable') || l.includes('normal') || l.includes('clear') || l.includes('optimal')) return 'ok';
+    return 'neutral';
+}
+
+function escapeHtml(text) {
+    return String(text)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
+
+function cockpitMetricRow(label, valueText, iconKind) {
+    const safeBody = escapeHtml(formatValue(valueText));
+    const safeAttr = safeBody.replace(/"/g, '&quot;');
+    return `
+        <div class="cockpit-metric-row">
+            <span class="cockpit-metric-icon">${cockpitIcon(iconKind)}</span>
+            <span class="cockpit-metric-label">${escapeHtml(label)}</span>
+            <span class="cockpit-metric-value" title="${safeAttr}">${safeBody}</span>
+        </div>
+    `;
+}
+
+function cockpitRowFromStatus(label, valueText, status) {
+    return cockpitMetricRow(label, valueText, statusToCockpitIcon(status));
+}
+
+function iconForAtlSpike(spike) {
+    if (!isFiniteNumber(spike)) return 'neutral';
+    if (spike > 0.25) return 'bad';
+    if (spike >= 0.1) return 'warn';
+    return 'ok';
+}
+
+/**
+ * Populate the Training Status cockpit modal from the same `calculateMetrics()` output as the main dashboard.
+ */
+export function renderCockpit(model, metrics) {
+    const root = document.getElementById('cockpit-root');
+    const dateEl = document.getElementById('cockpit-header-date');
+    if (!root) return;
+
+    const refDate = getDataReferenceDate(model);
+    if (dateEl) {
+        dateEl.textContent = refDate.toLocaleDateString('en-US', {
+            weekday: 'short',
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+        });
+    }
+
+    const rs = metrics.top.recoveryScore;
+    const recoveryDisplay = Number.isFinite(rs) ? String(Math.round(rs)) : '—';
+
+    const neuralIcon = metrics.neural.neuralReadiness === true ? 'ok' : metrics.neural.neuralReadiness === false ? 'warn' : 'neutral';
+    const neuralLabel = metrics.neural.neuralReadiness === null ? 'N/A' : (metrics.neural.neuralReadiness ? 'Ready' : 'Limited');
+    const cnsIcon = metrics.neural.cnsFatigue ? 'bad' : 'ok';
+
+    const strengthFatigueIcon = metrics.structure.strengthFatigue ? 'warn' : 'ok';
+
+    root.innerHTML = `
+        <div class="cockpit-recovery-block">
+            <div class="cockpit-recovery-wrap">
+                <div id="cockpit-gauge-recovery" class="cockpit-gauge cockpit-gauge--large" aria-hidden="true"></div>
+                <div class="cockpit-recovery-score">
+                    <div id="cockpit-recovery-value" class="cockpit-recovery-score__value">${recoveryDisplay}</div>
+                    <div class="cockpit-recovery-score__suffix">RECOVERY SCORE</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cockpit-panels-grid">
+            <div class="cockpit-panel">
+                <h3 class="cockpit-panel__title">Recovery System</h3>
+                ${cockpitRowFromStatus('HRV Ratio', formatNumber(metrics.recoverySystem.hrvRatio, 2), metrics.recoverySystem.hrvRatioStatus)}
+                ${cockpitRowFromStatus('HRV Trend', formatPercent(metrics.recoverySystem.hrvTrend, 1), metrics.recoverySystem.hrvTrendStatus)}
+                ${cockpitRowFromStatus('HRV Variability', formatNumber(metrics.recoverySystem.hrvVariability, 2), metrics.recoverySystem.hrvVariabilityStatus)}
+                ${cockpitRowFromStatus('Sleep Duration', formatNumber(metrics.recoverySystem.sleep, 2, ' h'), metrics.recoverySystem.sleepStatus)}
+                ${cockpitRowFromStatus('RHR Delta', formatNumber(metrics.recoverySystem.rhrDelta, 1), metrics.recoverySystem.rhrStatus)}
+            </div>
+            <div class="cockpit-panel">
+                <h3 class="cockpit-panel__title">Neural System</h3>
+                ${cockpitRowFromStatus('HRV Z-Score', formatNumber(metrics.neural.hrvZ, 2), metrics.neural.hrvZStatus)}
+                ${cockpitMetricRow('Neural Readiness', neuralLabel, neuralIcon)}
+                ${cockpitMetricRow('CNS Fatigue', metrics.neural.cnsFatigue ? 'Yes' : 'No', cnsIcon)}
+            </div>
+            <div class="cockpit-panel">
+                <h3 class="cockpit-panel__title">Training Load</h3>
+                ${cockpitMetricRow('ATL', formatNumber(metrics.load.atl, 1), 'neutral')}
+                ${cockpitMetricRow('CTL', formatNumber(metrics.load.ctl, 1), 'neutral')}
+                ${cockpitRowFromStatus('Form', formatNumber(metrics.load.form, 1), metrics.load.formStatus)}
+                ${cockpitRowFromStatus('ACWR', formatNumber(metrics.load.acwr, 2), metrics.load.acwrStatus)}
+                ${cockpitMetricRow('ATL Spike', formatPercent(metrics.load.atlSpike, 1), iconForAtlSpike(metrics.load.atlSpike))}
+                ${cockpitRowFromStatus('Fatigue Momentum', formatPercent(metrics.load.fatigueMomentum, 1), metrics.load.fatigueMomentumStatus)}
+            </div>
+            <div class="cockpit-panel">
+                <h3 class="cockpit-panel__title">Training Structure</h3>
+                ${cockpitMetricRow('Monotony', formatNumber(metrics.structure.monotony, 2), statusToCockpitIcon(
+                    isFiniteNumber(metrics.structure.monotony) && metrics.structure.monotony > 2
+                        ? { label: 'High', color: 'text-amber-400' }
+                        : { label: 'Normal', color: 'text-emerald-400' }
+                ))}
+                ${cockpitMetricRow('Strength Fatigue', metrics.structure.strengthFatigue ? 'Yes' : 'No', strengthFatigueIcon)}
+                ${cockpitMetricRow('Training Density', formatNumber(metrics.fatigueRisk.trainingDensity, 2), statusToCockpitIcon(
+                    isFiniteNumber(metrics.fatigueRisk.trainingDensity) && metrics.fatigueRisk.trainingDensity > 1.2
+                        ? { label: 'High', color: 'text-amber-400' }
+                        : { label: 'Normal', color: 'text-emerald-400' }
+                ))}
+            </div>
+        </div>
+
+        <div class="cockpit-readiness-row">
+            <div class="cockpit-readiness-card">
+                <div class="cockpit-readiness-card__label">Strength Readiness</div>
+                <div id="cockpit-gauge-strength" class="cockpit-gauge cockpit-gauge--sm" aria-hidden="true"></div>
+                <div id="cockpit-strength-readiness-value" class="cockpit-readiness-value">${formatNumber(metrics.performance.strengthReadiness, 0)}</div>
+            </div>
+            <div class="cockpit-readiness-card">
+                <div class="cockpit-readiness-card__label">Aerobic Readiness</div>
+                <div id="cockpit-gauge-aerobic" class="cockpit-gauge cockpit-gauge--sm" aria-hidden="true"></div>
+                <div id="cockpit-aerobic-readiness-value" class="cockpit-readiness-value">${formatNumber(metrics.performance.aerobicReadiness, 0)}</div>
+            </div>
+        </div>
+
+        <div class="cockpit-rec-table-wrap">
+            <table class="cockpit-rec-table">
+                <thead>
+                    <tr>
+                        <th>Recommended Training</th>
+                        <th>Avoid Training</th>
+                        <th>RPE Range</th>
+                        <th>Heart Rate Zone</th>
+                        <th>Duration</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>${escapeHtml(formatValue(metrics.guidance.recommended))}</td>
+                        <td>${escapeHtml(formatValue(metrics.guidance.avoid))}</td>
+                        <td>${escapeHtml(formatValue(metrics.guidance.rpe))}</td>
+                        <td>${escapeHtml(formatValue(metrics.guidance.zone))}</td>
+                        <td>${escapeHtml(formatValue(metrics.guidance.duration))}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    `;
+
+    paintCockpitGauges(metrics);
 }

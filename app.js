@@ -1,6 +1,7 @@
 import { normalizeCustomData, normalizeGithubData } from './normalize.js';
 import { calculateMetrics } from './metrics.js';
-import { renderDashboard, setupMetricHelpModal, setupCollapsibleSections } from './render.js';
+import { renderDashboard, renderCockpit, setupMetricHelpModal, setupCollapsibleSections } from './render.js';
+import { setupCockpitModal } from './cockpit.js';
 import { renderCharts, refreshChartsTheme } from './charts.js';
 import {
     clearStoredCustomJson,
@@ -62,6 +63,7 @@ async function fetchGithubData() {
 function renderFromModel(model) {
     const metrics = calculateMetrics(model);
     renderDashboard(model, metrics);
+    renderCockpit(model, metrics);
     renderCharts(model);
     showDashboard();
 }
@@ -153,6 +155,13 @@ function setupHeaderMenu() {
         const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
         applyTheme(current === 'dark' ? 'light' : 'dark');
     });
+
+    document.getElementById('menu-open-cockpit')?.addEventListener('click', () => {
+        setMenuOpen(false);
+        document.getElementById('cockpit-modal')?.classList.remove('hidden');
+        document.body.classList.add('cockpit-modal-open');
+        document.getElementById('cockpit-close')?.focus();
+    });
 }
 
 function setupEvents() {
@@ -182,6 +191,7 @@ async function initialize() {
     try {
         initTheme();
         setupMetricHelpModal();
+        setupCockpitModal();
         setupCollapsibleSections();
         setupEvents();
         const stored = readStoredCustomJson();

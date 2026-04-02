@@ -18,6 +18,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cockpit.css">
 </head>
 <body class="app-body min-h-screen">
     <div id="loading" class="app-overlay fixed inset-0 backdrop-blur-sm flex items-center justify-center z-50">
@@ -48,19 +49,6 @@
                         </h1>
                         <p id="greeting-text" class="th-primary mt-2 text-base sm:text-lg"></p>
                         <p id="source-status" class="text-sm th-muted mt-1"></p>
-
-                        <div class="hero-metrics-grid mt-5 sm:mt-6">
-                            <div class="hero-metric hero-metric--recovery">
-                                <p class="hero-metric__label">Recovery score</p>
-                                <p id="recovery-score-value" class="hero-metric__value">--</p>
-                                <p class="hero-metric__suffix">/ 100</p>
-                            </div>
-                            <div class="hero-metric hero-metric--status">
-                                <p class="hero-metric__label">Status level</p>
-                                <p id="status-level-value" class="hero-metric__value">Level --</p>
-                                <p id="status-level-label" class="hero-metric__sub text-sm mt-1 opacity-90"></p>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="header-menu-wrap relative shrink-0 z-30">
@@ -96,10 +84,26 @@
                             <button type="button" role="menuitem" id="menu-load-github" class="header-dropdown__item">
                                 Load GitHub Data
                             </button>
+                            <button type="button" role="menuitem" id="menu-open-cockpit" class="header-dropdown__item">
+                                Training Status Dashboard
+                            </button>
                             <button type="button" role="menuitem" id="menu-toggle-theme" class="header-dropdown__item">
                                 Toggle Dark/Light Theme
                             </button>
                         </div>
+                    </div>
+                </div>
+
+                <div class="hero-metrics-grid mt-5 sm:mt-6 w-full min-w-0">
+                    <div class="hero-metric hero-metric--recovery">
+                        <p class="hero-metric__label">Recovery score</p>
+                        <p id="recovery-score-value" class="hero-metric__value">--</p>
+                        <p class="hero-metric__suffix">/ 100</p>
+                    </div>
+                    <div class="hero-metric hero-metric--status">
+                        <p class="hero-metric__label">Status level</p>
+                        <p id="status-level-value" class="hero-metric__value">Level --</p>
+                        <p id="status-level-label" class="hero-metric__sub text-sm mt-1 opacity-90"></p>
                     </div>
                 </div>
 
@@ -338,6 +342,38 @@
         </main>
     </div>
 
+    <div id="cockpit-modal" class="hidden app-overlay fixed inset-0 backdrop-blur-sm flex items-center justify-center p-4 z-[62]" role="dialog" aria-modal="true" aria-labelledby="cockpit-dialog-title">
+        <div class="absolute inset-0" data-cockpit-dismiss aria-hidden="true"></div>
+        <div class="cockpit-modal__dialog relative z-10 w-full">
+            <div id="cockpit-capture-overlay" class="cockpit-capture-overlay" hidden aria-hidden="true" role="status">
+                <span class="cockpit-capture-overlay__spinner" aria-hidden="true"></span>
+                <span class="cockpit-capture-overlay__text">Generating image…</span>
+            </div>
+            <header class="cockpit-modal__header">
+                <div>
+                    <h2 id="cockpit-dialog-title" class="cockpit-modal__title">TRAINING STATUS DASHBOARD</h2>
+                    <p id="cockpit-header-date" class="cockpit-modal__date"></p>
+                </div>
+                <div class="cockpit-modal__header-actions">
+                    <button type="button" id="cockpit-save-picture" class="cockpit-close-btn cockpit-save-picture-btn" aria-label="Save dashboard as PNG image">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </button>
+                    <button type="button" id="cockpit-close" class="cockpit-close-btn" aria-label="Close training status dashboard">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+            </header>
+            <div class="cockpit-modal__body">
+                <div id="cockpit-root"></div>
+            </div>
+        </div>
+    </div>
+
     <div id="metric-help-modal" class="hidden app-overlay fixed inset-0 backdrop-blur-sm flex items-center justify-center z-[60] p-4" role="dialog" aria-labelledby="metric-help-title" aria-modal="true">
         <div class="loading-card rounded-2xl p-6 sm:p-8 max-w-2xl w-full max-h-[85vh] overflow-y-auto">
             <div class="flex items-start justify-between mb-4">
@@ -352,6 +388,7 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script type="module" src="app.js"></script>
 </body>
 </html>
