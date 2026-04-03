@@ -233,6 +233,7 @@ html[data-theme='dark'] .cockpit-recovery-score__value {
     border: 1px solid var(--cockpit-panel-border);
     border-radius: 0.65rem;
     padding: 0.5rem 0.6rem;
+    min-width: 0;
     min-height: 0;
 }
 
@@ -249,7 +250,8 @@ html[data-theme='dark'] .cockpit-recovery-score__value {
 
 .cockpit-metric-row {
     display: grid;
-    grid-template-columns: 1.1rem 1fr auto;
+    /* Label may shrink/wrap; value column sizes to full number (no ellipsis). */
+    grid-template-columns: 1.1rem minmax(0, 1fr) max-content;
     gap: 0.35rem 0.5rem;
     align-items: center;
     font-size: 0.72rem;
@@ -294,17 +296,20 @@ html[data-theme='dark'] .cockpit-recovery-score__value {
 .cockpit-metric-label {
     color: var(--cockpit-text-muted);
     font-weight: 500;
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-break: normal;
 }
 
 .cockpit-metric-value {
     font-weight: 700;
     font-variant-numeric: tabular-nums;
     text-align: right;
+    justify-self: end;
     color: var(--cockpit-text);
-    max-width: 7rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
     white-space: nowrap;
+    overflow: visible;
+    min-width: min-content;
 }
 
 /* Row 3 — readiness gauges */
@@ -356,14 +361,19 @@ html[data-theme='dark'] .cockpit-recovery-score__value {
 .cockpit-rec-table-wrap {
     border: 1px solid var(--cockpit-panel-border);
     border-radius: 0.65rem;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
     background: var(--cockpit-panel-bg);
 }
 
 .cockpit-rec-table {
     width: 100%;
+    min-width: 0;
     border-collapse: collapse;
     font-size: 0.72rem;
+    table-layout: fixed;
 }
 
 .cockpit-rec-table th {
@@ -373,17 +383,57 @@ html[data-theme='dark'] .cockpit-recovery-score__value {
     text-transform: uppercase;
     color: var(--cockpit-text-muted);
     background: var(--cockpit-table-head);
-    padding: 0.45rem 0.6rem;
+    padding: 0.45rem 0.5rem;
     border-bottom: 1px solid var(--cockpit-table-border);
-    white-space: nowrap;
+    white-space: normal;
+    line-height: 1.25;
+    overflow-wrap: break-word;
+    word-break: normal;
+    hyphens: auto;
+    vertical-align: bottom;
+}
+
+/* Flexible column shares (table-layout: fixed); keeps headers readable on narrow modals. */
+.cockpit-rec-col--recommended {
+    width: 22%;
+}
+
+.cockpit-rec-col--avoid {
+    width: 20%;
+}
+
+.cockpit-rec-col--rpe {
+    width: 14%;
+}
+
+.cockpit-rec-col--zone {
+    width: 24%;
+}
+
+.cockpit-rec-col--duration {
+    width: 20%;
 }
 
 .cockpit-rec-table td {
-    padding: 0.5rem 0.6rem;
+    padding: 0.5rem 0.5rem;
     color: var(--cockpit-text);
     font-weight: 600;
     border-bottom: 1px solid var(--cockpit-table-border);
     vertical-align: top;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: normal;
+}
+
+@media (max-width: 480px) {
+    .cockpit-rec-table {
+        font-size: 0.65rem;
+    }
+
+    .cockpit-rec-table th,
+    .cockpit-rec-table td {
+        padding: 0.4rem 0.4rem;
+    }
 }
 
 .cockpit-rec-table tr:last-child td {

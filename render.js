@@ -428,13 +428,20 @@ export function renderCockpit(model, metrics) {
 
         <div class="cockpit-rec-table-wrap">
             <table class="cockpit-rec-table">
+                <colgroup>
+                    <col class="cockpit-rec-col cockpit-rec-col--recommended" />
+                    <col class="cockpit-rec-col cockpit-rec-col--avoid" />
+                    <col class="cockpit-rec-col cockpit-rec-col--rpe" />
+                    <col class="cockpit-rec-col cockpit-rec-col--zone" />
+                    <col class="cockpit-rec-col cockpit-rec-col--duration" />
+                </colgroup>
                 <thead>
                     <tr>
-                        <th>Recommended Training</th>
-                        <th>Avoid Training</th>
-                        <th>RPE Range</th>
-                        <th>Heart Rate Zone</th>
-                        <th>Duration</th>
+                        <th scope="col">Recommended Training</th>
+                        <th scope="col">Avoid Training</th>
+                        <th scope="col">RPE Range</th>
+                        <th scope="col">Heart Rate Zone</th>
+                        <th scope="col">Duration</th>
                     </tr>
                 </thead>
                 <tbody>
