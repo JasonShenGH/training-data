@@ -1,3 +1,5 @@
+import { getLocale, t } from './i18n.js';
+
 export function isFiniteNumber(value) {
     return Number.isFinite(value);
 }
@@ -96,14 +98,14 @@ export function parseDurationHoursFromText(value) {
 
 export function formatDate(dateInput) {
     const date = dateInput instanceof Date ? dateInput : parseIsoDate(dateInput);
-    if (!date) return 'N/A';
-    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    if (!date) return t('statuses.nA');
+    return date.toLocaleDateString(getLocale() === 'en' ? 'en-US' : 'zh-CN', { month: 'short', day: 'numeric', year: 'numeric' });
 }
 
 export function formatDateTime(dateInput) {
     const date = dateInput instanceof Date ? dateInput : parseIsoDate(dateInput);
-    if (!date) return 'N/A';
-    return date.toLocaleString('en-US', {
+    if (!date) return t('statuses.nA');
+    return date.toLocaleString(getLocale() === 'en' ? 'en-US' : 'zh-CN', {
         month: 'short',
         day: 'numeric',
         year: 'numeric',
@@ -113,18 +115,18 @@ export function formatDateTime(dateInput) {
 }
 
 export function formatNumber(value, digits = 1, suffix = '') {
-    if (!isFiniteNumber(value)) return 'N/A';
+    if (!isFiniteNumber(value)) return t('statuses.nA');
     return `${value.toFixed(digits)}${suffix}`;
 }
 
 export function formatPercent(value, digits = 1) {
-    if (!isFiniteNumber(value)) return 'N/A';
+    if (!isFiniteNumber(value)) return t('statuses.nA');
     return `${(value * 100).toFixed(digits)}%`;
 }
 
 export function formatValue(value) {
     if (value === null || value === undefined || value === '') {
-        return 'N/A';
+        return t('statuses.nA');
     }
     if (typeof value === 'object') {
         return JSON.stringify(value);

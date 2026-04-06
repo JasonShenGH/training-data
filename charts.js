@@ -1,3 +1,5 @@
+import { t } from './i18n.js';
+
 let loadChart = null;
 let hrvRhrChart = null;
 
@@ -68,13 +70,13 @@ export function renderCharts(model) {
             labels,
             datasets: [
                 {
-                    label: 'ATL',
+                    label: t('metricTitles.atl'),
                     data: atl.map((entry) => entry.value),
                     borderColor: '#f97316',
                     tension: 0.25
                 },
                 {
-                    label: 'CTL',
+                    label: t('metricTitles.ctl'),
                     data: ctl.slice(-labels.length).map((entry) => entry.value),
                     borderColor: '#3b82f6',
                     tension: 0.25
@@ -103,13 +105,13 @@ export function renderCharts(model) {
             labels: hrLabels,
             datasets: [
                 {
-                    label: 'HRV',
+                    label: t('table.hrv'),
                     data: hrv.map((entry) => entry.value),
                     borderColor: '#10b981',
                     tension: 0.25
                 },
                 {
-                    label: 'RHR',
+                    label: t('table.rhr'),
                     data: rhr.slice(-hrLabels.length).map((entry) => entry.value),
                     borderColor: '#ef4444',
                     tension: 0.25

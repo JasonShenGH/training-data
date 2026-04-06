@@ -1,13 +1,28 @@
-import { formatDate, formatNumber, formatPercent, formatValue, isFiniteNumber } from './utils.js';
-import { METRIC_HELP } from './metricHelp.js';
+import { formatNumber, formatPercent, formatValue, isFiniteNumber } from './utils.js';
 import { getDataReferenceDate } from './metrics.js';
 import { paintCockpitGauges } from './cockpit.js';
+import {
+    applyStaticTranslations,
+    getLocale,
+    getMetricHelp,
+    getMetricTitle,
+    getTrainingStructureDetail,
+    getTrainingStructureName,
+    localizeStatus,
+    t,
+    translateGuidanceText,
+    translatePhrase,
+    translateReadinessBand,
+    translateTableHeader,
+    translateTrendText
+} from './i18n.js';
 
-function metricCard(title, value, status) {
-    const hasHelp = Object.prototype.hasOwnProperty.call(METRIC_HELP, title);
+function metricCard(metricKey, value, status) {
+    const title = getMetricTitle(metricKey);
+    const hasHelp = Boolean(getMetricHelp(getLocale(), metricKey)?.paragraphs?.length);
     const safeAttr = title.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
     const helpBtn = hasHelp
-        ? `<button type="button" class="metric-help-btn" data-metric-help="${encodeURIComponent(title)}" aria-label="Help: ${safeAttr}" title="About this metric"><svg class="metric-help-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg></button>`
+        ? `<button type="button" class="metric-help-btn" data-metric-help="${encodeURIComponent(metricKey)}" aria-label="${t('metricHelp.label', { title: safeAttr })}" title="${t('metricHelp.about')}"><svg class="metric-help-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg></button>`
         : '';
 
     return `
@@ -16,7 +31,7 @@ function metricCard(title, value, status) {
                 <p class="text-xs uppercase th-muted metric-card-title">${title}</p>
                 ${helpBtn}
             </div>
-            <p class="text-lg font-semibold th-strong mt-1">${value}</p>
+            <p class="text-lg font-semibold th-strong mt-1">${formatLocalizedValue(value)}</p>
             <p class="text-xs mt-1 ${status?.color || 'th-muted'}">${status?.label || ''}</p>
         </div>
     `;
@@ -35,7 +50,7 @@ export function setupMetricHelpModal() {
     }
 
     function openModal(key) {
-        const help = METRIC_HELP[key];
+        const help = getMetricHelp(getLocale(), key);
         if (!help) return;
         titleEl.textContent = help.title;
         bodyEl.replaceChildren();
@@ -146,7 +161,12 @@ export function setupCollapsibleSections() {
 
 function setMetricGrid(containerId, entries) {
     const container = document.getElementById(containerId);
-    container.innerHTML = entries.map((entry) => metricCard(entry.title, entry.value, entry.status)).join('');
+    container.innerHTML = entries.map((entry) => metricCard(entry.metricKey, entry.value, entry.status)).join('');
+}
+
+function formatLocalizedValue(value) {
+    const text = formatValue(value);
+    return text === 'N/A' ? t('statuses.nA') : text;
 }
 
 function renderDynamicTable(headId, bodyId, rows) {
@@ -155,105 +175,126 @@ function renderDynamicTable(headId, bodyId, rows) {
     body.innerHTML = '';
 
     if (!rows.length) {
-        head.innerHTML = '<tr><th class="px-3 py-2 text-left text-xs font-semibold th-muted uppercase">Info</th></tr>';
-        body.innerHTML = '<tr><td class="px-3 py-3 text-sm th-muted">No data.</td></tr>';
+        head.innerHTML = `<tr><th class="px-3 py-2 text-left text-xs font-semibold th-muted uppercase">${t('table.info')}</th></tr>`;
+        body.innerHTML = `<tr><td class="px-3 py-3 text-sm th-muted">${t('table.noData')}</td></tr>`;
         return;
     }
 
     const keys = Array.from(new Set(rows.flatMap((row) => Object.keys(row))));
-    head.innerHTML = `<tr>${keys.map((key) => `<th class="px-3 py-2 text-left text-xs font-semibold th-muted uppercase">${key}</th>`).join('')}</tr>`;
-    body.innerHTML = rows.map((row) => `<tr>${keys.map((key) => `<td class="px-3 py-3 text-sm th-primary align-top">${formatValue(row[key])}</td>`).join('')}</tr>`).join('');
+    head.innerHTML = `<tr>${keys.map((key) => `<th class="px-3 py-2 text-left text-xs font-semibold th-muted uppercase">${translateTableHeader(key)}</th>`).join('')}</tr>`;
+    body.innerHTML = rows.map((row) => `<tr>${keys.map((key) => `<td class="px-3 py-3 text-sm th-primary align-top">${formatLocalizedValue(row[key])}</td>`).join('')}</tr>`).join('');
+}
+
+function formatLocalizedDate(dateInput) {
+    const date = dateInput instanceof Date ? dateInput : new Date(dateInput);
+    if (!(date instanceof Date) || Number.isNaN(date.getTime())) return t('statuses.nA');
+    const locale = getLocale() === 'en' ? 'en-US' : 'zh-CN';
+    return date.toLocaleDateString(locale, {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric'
+    });
 }
 
 function renderStructures(list) {
     const el = document.getElementById('training-structures');
     const item = Array.isArray(list) ? list[0] : null;
     if (!item) {
-        el.innerHTML = '<p class="text-sm th-muted">No training recommendation available.</p>';
+        el.innerHTML = `<p class="text-sm th-muted">${t('structure.noRecommendation')}</p>`;
         return;
     }
+    const type = item.trainingType || item.name;
     el.innerHTML = `
         <div class="training-structure-card">
-            <p class="font-semibold th-strong">${item.name}</p>
-            <p class="text-sm th-secondary mt-1">${item.detail}</p>
+            <p class="font-semibold th-strong">${getTrainingStructureName(type)}</p>
+            <p class="text-sm th-secondary mt-1">${getTrainingStructureDetail(type, item.intensityLevel, item.readinessLevel, item.sessionFocus)}</p>
         </div>
     `;
 }
 
 export function renderDashboard(model, metrics) {
-    document.getElementById('greeting-text').textContent = `Hi, ${model.userName}`;
-    document.getElementById('source-status').textContent = `Data source: ${model.source === 'custom' ? 'Custom JSON' : 'GitHub JSON'}${model.sourceNote ? ` | ${model.sourceNote}` : ''}`;
+    applyStaticTranslations(document);
+    document.getElementById('greeting-text').textContent = t('header.greeting', { name: model.userName });
+    document.getElementById('source-status').textContent = `${t('source.prefix')}${model.source === 'custom' ? t('source.customJson') : t('source.githubJson')}${model.sourceNote ? ` | ${translatePhrase(model.sourceNote)}` : ''}`;
 
     document.getElementById('recovery-score-value').textContent = Math.round(metrics.top.recoveryScore);
-    document.getElementById('status-level-value').textContent = `Level ${metrics.top.statusLevel}`;
-    document.getElementById('status-level-label').textContent = metrics.top.statusLabel;
+    document.getElementById('status-level-value').textContent = t('hero.level', { level: metrics.top.statusLevel });
+    document.getElementById('status-level-label').textContent = translateReadinessBand(metrics.top.statusLabel);
 
     setMetricGrid('recovery-system-metrics', [
-        { title: 'HRV Baseline', value: formatNumber(metrics.recoverySystem.hrvBaseline, 1) },
-        { title: 'HRV Ratio', value: formatNumber(metrics.recoverySystem.hrvRatio, 2), status: metrics.recoverySystem.hrvRatioStatus },
-        { title: 'HRV Trend', value: formatPercent(metrics.recoverySystem.hrvTrend, 1), status: metrics.recoverySystem.hrvTrendStatus },
-        { title: 'HRV Variability', value: formatNumber(metrics.recoverySystem.hrvVariability, 2), status: metrics.recoverySystem.hrvVariabilityStatus },
-        { title: 'Sleep', value: formatNumber(metrics.recoverySystem.sleep, 2, ' h'), status: metrics.recoverySystem.sleepStatus },
-        { title: 'RHR Delta', value: formatNumber(metrics.recoverySystem.rhrDelta, 1), status: metrics.recoverySystem.rhrStatus }
+        { metricKey: 'hrvBaseline', value: formatNumber(metrics.recoverySystem.hrvBaseline, 1) },
+        { metricKey: 'hrvRatio', value: formatNumber(metrics.recoverySystem.hrvRatio, 2), status: localizeStatus(metrics.recoverySystem.hrvRatioStatus) },
+        { metricKey: 'hrvTrend', value: formatPercent(metrics.recoverySystem.hrvTrend, 1), status: localizeStatus(metrics.recoverySystem.hrvTrendStatus) },
+        { metricKey: 'hrvVariability', value: formatNumber(metrics.recoverySystem.hrvVariability, 2), status: localizeStatus(metrics.recoverySystem.hrvVariabilityStatus) },
+        { metricKey: 'sleep', value: formatNumber(metrics.recoverySystem.sleep, 2, ' h'), status: localizeStatus(metrics.recoverySystem.sleepStatus) },
+        { metricKey: 'rhrDelta', value: formatNumber(metrics.recoverySystem.rhrDelta, 1), status: localizeStatus(metrics.recoverySystem.rhrStatus) }
     ]);
 
     setMetricGrid('neural-system-metrics', [
-        { title: 'HRV Z-score', value: formatNumber(metrics.neural.hrvZ, 2), status: metrics.neural.hrvZStatus },
-        { title: 'Neural Readiness', value: metrics.neural.neuralReadiness === null ? 'N/A' : (metrics.neural.neuralReadiness ? 'Neural Ready' : 'Neural Limited') },
-        { title: 'CNS Fatigue', value: metrics.neural.cnsFatigue ? 'Yes' : 'No', status: metrics.neural.cnsFatigue ? { label: 'Warning', color: 'text-rose-400' } : { label: 'Clear', color: 'text-emerald-400' } }
+        { metricKey: 'hrvZ', value: formatNumber(metrics.neural.hrvZ, 2), status: localizeStatus(metrics.neural.hrvZStatus) },
+        { metricKey: 'neuralReadiness', value: metrics.neural.neuralReadiness === null ? t('statuses.nA') : (metrics.neural.neuralReadiness ? t('statuses.ready') : t('statuses.limited')) },
+        { metricKey: 'cnsFatigue', value: metrics.neural.cnsFatigue ? t('statuses.yes') : t('statuses.no'), status: metrics.neural.cnsFatigue ? { label: t('statuses.warning'), color: 'text-rose-400' } : { label: t('statuses.clear'), color: 'text-emerald-400' } }
     ]);
 
     setMetricGrid('training-load-metrics', [
-        { title: 'ATL', value: formatNumber(metrics.load.atl, 1) },
-        { title: 'CTL', value: formatNumber(metrics.load.ctl, 1) },
-        { title: 'Form', value: formatNumber(metrics.load.form, 1), status: metrics.load.formStatus },
-        { title: 'ACWR', value: formatNumber(metrics.load.acwr, 2), status: metrics.load.acwrStatus },
-        { title: 'ATL Spike', value: formatPercent(metrics.load.atlSpike, 1) },
-        { title: 'Fatigue Momentum', value: formatPercent(metrics.load.fatigueMomentum, 1), status: metrics.load.fatigueMomentumStatus }
+        { metricKey: 'atl', value: formatNumber(metrics.load.atl, 1) },
+        { metricKey: 'ctl', value: formatNumber(metrics.load.ctl, 1) },
+        { metricKey: 'form', value: formatNumber(metrics.load.form, 1), status: localizeStatus(metrics.load.formStatus) },
+        { metricKey: 'acwr', value: formatNumber(metrics.load.acwr, 2), status: localizeStatus(metrics.load.acwrStatus) },
+        { metricKey: 'atlSpike', value: formatPercent(metrics.load.atlSpike, 1) },
+        { metricKey: 'fatigueMomentum', value: formatPercent(metrics.load.fatigueMomentum, 1), status: localizeStatus(metrics.load.fatigueMomentumStatus) }
     ]);
 
     setMetricGrid('training-structure-metrics', [
-        { title: 'Monotony', value: formatNumber(metrics.structure.monotony, 2) },
-        { title: 'Strain', value: formatNumber(metrics.structure.strain, 1) },
-        { title: 'Strength Fatigue', value: metrics.structure.strengthFatigue ? 'Yes' : 'No' },
-        { title: 'Strength Frequency (7d)', value: formatValue(metrics.structure.strengthFrequency) }
+        { metricKey: 'monotony', value: formatNumber(metrics.structure.monotony, 2) },
+        { metricKey: 'strain', value: formatNumber(metrics.structure.strain, 1) },
+        { metricKey: 'strengthFatigue', value: metrics.structure.strengthFatigue ? t('statuses.high') : t('statuses.normal') },
+        { metricKey: 'strengthFrequency', value: formatValue(metrics.structure.strengthFrequency) }
     ]);
 
     setMetricGrid('fatigue-risk-metrics', [
-        { title: 'Training Density', value: formatNumber(metrics.fatigueRisk.trainingDensity, 2) },
-        { title: 'Fatigue Risk Score', value: metrics.fatigueRisk.fatigueRiskScore },
-        { title: 'Structural Fatigue', value: metrics.fatigueRisk.structuralFatigue ? 'High' : 'Normal' }
+        { metricKey: 'trainingDensity', value: formatNumber(metrics.fatigueRisk.trainingDensity, 2) },
+        { metricKey: 'fatigueRiskScore', value: translateReadinessBand(metrics.fatigueRisk.fatigueRiskScore) },
+        { metricKey: 'structuralFatigue', value: metrics.fatigueRisk.structuralFatigue ? t('statuses.high') : t('statuses.normal') }
     ]);
 
     setMetricGrid('performance-readiness-metrics', [
-        { title: 'Readiness Score', value: formatNumber(metrics.performance.readinessScore, 1) },
-        { title: 'Strength Readiness', value: formatNumber(metrics.performance.strengthReadiness, 1) },
-        { title: 'Aerobic Readiness', value: formatNumber(metrics.performance.aerobicReadiness, 1) }
+        { metricKey: 'readinessScore', value: formatNumber(metrics.performance.readinessScore, 1) },
+        { metricKey: 'strengthReadiness', value: formatNumber(metrics.performance.strengthReadiness, 1) },
+        { metricKey: 'aerobicReadiness', value: formatNumber(metrics.performance.aerobicReadiness, 1) }
     ]);
 
-    document.getElementById('suggest-recommended').textContent = metrics.guidance.recommended;
-    document.getElementById('suggest-avoid').textContent = metrics.guidance.avoid;
-    document.getElementById('suggest-intensity').textContent = `RPE ${metrics.guidance.rpe}`;
-    document.getElementById('suggest-zone-duration').textContent = `${metrics.guidance.zone} | ${metrics.guidance.duration}`;
+    document.getElementById('suggest-recommended').textContent = translateGuidanceText(metrics.guidance.recommended);
+    document.getElementById('suggest-avoid').textContent = translateGuidanceText(metrics.guidance.avoid);
+    document.getElementById('suggest-intensity').textContent = t('guidance.rpe', { rpe: metrics.guidance.rpe });
+    document.getElementById('suggest-zone-duration').textContent = t('guidance.zoneDuration', {
+        zone: translateGuidanceText(metrics.guidance.zone),
+        duration: metrics.guidance.duration
+    });
 
-    renderStructures(metrics.structures);
-    document.getElementById('trend-fatigue').textContent = metrics.trend.fatigueTrend;
-    document.getElementById('trend-ctl').textContent = metrics.trend.ctlTrend;
-    document.getElementById('trend-window').textContent = metrics.trend.window48h;
-    document.getElementById('trend-risk').textContent = metrics.trend.futureRisk;
+    renderStructures([{
+        trainingType: metrics.trainingRecommendation.trainingType,
+        intensityLevel: metrics.trainingRecommendation.intensityLevel,
+        readinessLevel: metrics.top.statusLevel,
+        sessionFocus: metrics.trainingRecommendation.sessionFocus
+    }]);
+    document.getElementById('trend-fatigue').textContent = translateTrendText(metrics.trend.fatigueTrend);
+    document.getElementById('trend-ctl').textContent = translateTrendText(metrics.trend.ctlTrend);
+    document.getElementById('trend-window').textContent = translateTrendText(metrics.trend.window48h);
+    document.getElementById('trend-risk').textContent = translateTrendText(metrics.trend.futureRisk);
 
     renderDynamicTable('workouts-head', 'workouts-body', model.workouts.map((workout) => ({
-        parsed_date: workout.parsedDate ? formatDate(workout.parsedDate) : 'N/A',
+        parsed_date: workout.parsedDate ? formatLocalizedDate(workout.parsedDate) : t('statuses.nA'),
         ...workout.raw
     })));
     renderDynamicTable('sleep-head', 'sleep-body', model.sleepSessions.map((session) => ({
-        parsed_start: session.start ? formatDate(session.start) : 'N/A',
-        parsed_end: session.end ? formatDate(session.end) : 'N/A',
+        parsed_start: session.start ? formatLocalizedDate(session.start) : t('statuses.nA'),
+        parsed_end: session.end ? formatLocalizedDate(session.end) : t('statuses.nA'),
         total_hours: session.totalHours,
         ...session.raw
     })));
-    renderDynamicTable('hrv-head', 'hrv-body', model.hrvSeries.map((entry) => ({ date: formatDate(entry.date), hrv: entry.value, ...entry.raw })));
-    renderDynamicTable('rhr-head', 'rhr-body', model.rhrSeries.map((entry) => ({ date: formatDate(entry.date), rhr: entry.value, ...entry.raw })));
+    renderDynamicTable('hrv-head', 'hrv-body', model.hrvSeries.map((entry) => ({ date: formatLocalizedDate(entry.date), hrv: entry.value, ...entry.raw })));
+    renderDynamicTable('rhr-head', 'rhr-body', model.rhrSeries.map((entry) => ({ date: formatLocalizedDate(entry.date), rhr: entry.value, ...entry.raw })));
 
     const ctlByDate = new Map(model.ctlSeries.map((entry) => [entry.date.toISOString().slice(0, 10), entry.value]));
     renderDynamicTable('load-head', 'load-body', model.atlSeries.map((entry) => {
@@ -262,15 +303,15 @@ export function renderDashboard(model, metrics) {
         return {
             date: key,
             atl: entry.value,
-            ctl: ctl ?? 'N/A',
-            form: ctl !== undefined ? ctl - entry.value : 'N/A'
+            ctl: ctl ?? t('statuses.nA'),
+            form: ctl !== undefined ? ctl - entry.value : t('statuses.nA')
         };
     }));
 
     const comments = model.comments || [];
     document.getElementById('comments-list').innerHTML = comments.length
-        ? `<ul class="space-y-2">${comments.map((comment) => `<li class="comment-item">${formatValue(comment)}</li>`).join('')}</ul>`
-        : '<p class="th-muted">No comments in the JSON file.</p>';
+        ? `<ul class="space-y-2">${comments.map((comment) => `<li class="comment-item">${formatLocalizedValue(comment)}</li>`).join('')}</ul>`
+        : `<p class="th-muted">${t('comment.none')}</p>`;
 }
 
 function cockpitIcon(kind) {
@@ -313,7 +354,7 @@ function escapeHtml(text) {
 }
 
 function cockpitMetricRow(label, valueText, iconKind) {
-    const safeBody = escapeHtml(formatValue(valueText));
+    const safeBody = escapeHtml(formatLocalizedValue(valueText));
     const safeAttr = safeBody.replace(/"/g, '&quot;');
     return `
         <div class="cockpit-metric-row">
@@ -345,19 +386,14 @@ export function renderCockpit(model, metrics) {
 
     const refDate = getDataReferenceDate(model);
     if (dateEl) {
-        dateEl.textContent = refDate.toLocaleDateString('en-US', {
-            weekday: 'short',
-            month: 'short',
-            day: 'numeric',
-            year: 'numeric'
-        });
+        dateEl.textContent = formatLocalizedDate(refDate);
     }
 
     const rs = metrics.top.recoveryScore;
     const recoveryDisplay = Number.isFinite(rs) ? String(Math.round(rs)) : '—';
 
     const neuralIcon = metrics.neural.neuralReadiness === true ? 'ok' : metrics.neural.neuralReadiness === false ? 'warn' : 'neutral';
-    const neuralLabel = metrics.neural.neuralReadiness === null ? 'N/A' : (metrics.neural.neuralReadiness ? 'Ready' : 'Limited');
+    const neuralLabel = metrics.neural.neuralReadiness === null ? t('statuses.nA') : (metrics.neural.neuralReadiness ? t('statuses.ready') : t('statuses.limited'));
     const cnsIcon = metrics.neural.cnsFatigue ? 'bad' : 'ok';
 
     const strengthFatigueIcon = metrics.structure.strengthFatigue ? 'warn' : 'ok';
@@ -368,44 +404,44 @@ export function renderCockpit(model, metrics) {
                 <div id="cockpit-gauge-recovery" class="cockpit-gauge cockpit-gauge--large" aria-hidden="true"></div>
                 <div class="cockpit-recovery-score">
                     <div id="cockpit-recovery-value" class="cockpit-recovery-score__value">${recoveryDisplay}</div>
-                    <div class="cockpit-recovery-score__suffix">RECOVERY SCORE</div>
+                    <div class="cockpit-recovery-score__suffix">${t('cockpit.recoveryScore')}</div>
                 </div>
             </div>
         </div>
 
         <div class="cockpit-panels-grid">
             <div class="cockpit-panel">
-                <h3 class="cockpit-panel__title">Recovery System</h3>
-                ${cockpitRowFromStatus('HRV Ratio', formatNumber(metrics.recoverySystem.hrvRatio, 2), metrics.recoverySystem.hrvRatioStatus)}
-                ${cockpitRowFromStatus('HRV Trend', formatPercent(metrics.recoverySystem.hrvTrend, 1), metrics.recoverySystem.hrvTrendStatus)}
-                ${cockpitRowFromStatus('HRV Variability', formatNumber(metrics.recoverySystem.hrvVariability, 2), metrics.recoverySystem.hrvVariabilityStatus)}
-                ${cockpitRowFromStatus('Sleep Duration', formatNumber(metrics.recoverySystem.sleep, 2, ' h'), metrics.recoverySystem.sleepStatus)}
-                ${cockpitRowFromStatus('RHR Delta', formatNumber(metrics.recoverySystem.rhrDelta, 1), metrics.recoverySystem.rhrStatus)}
+                <h3 class="cockpit-panel__title">${t('cockpit.recoverySystem')}</h3>
+                ${cockpitRowFromStatus(t('metricTitles.hrvRatio'), formatNumber(metrics.recoverySystem.hrvRatio, 2), metrics.recoverySystem.hrvRatioStatus)}
+                ${cockpitRowFromStatus(t('metricTitles.hrvTrend'), formatPercent(metrics.recoverySystem.hrvTrend, 1), metrics.recoverySystem.hrvTrendStatus)}
+                ${cockpitRowFromStatus(t('metricTitles.hrvVariability'), formatNumber(metrics.recoverySystem.hrvVariability, 2), metrics.recoverySystem.hrvVariabilityStatus)}
+                ${cockpitRowFromStatus(t('metricTitles.sleep'), formatNumber(metrics.recoverySystem.sleep, 2, ' h'), metrics.recoverySystem.sleepStatus)}
+                ${cockpitRowFromStatus(t('metricTitles.rhrDelta'), formatNumber(metrics.recoverySystem.rhrDelta, 1), metrics.recoverySystem.rhrStatus)}
             </div>
             <div class="cockpit-panel">
-                <h3 class="cockpit-panel__title">Neural System</h3>
-                ${cockpitRowFromStatus('HRV Z-Score', formatNumber(metrics.neural.hrvZ, 2), metrics.neural.hrvZStatus)}
-                ${cockpitMetricRow('Neural Readiness', neuralLabel, neuralIcon)}
-                ${cockpitMetricRow('CNS Fatigue', metrics.neural.cnsFatigue ? 'Yes' : 'No', cnsIcon)}
+                <h3 class="cockpit-panel__title">${t('cockpit.neuralSystem')}</h3>
+                ${cockpitRowFromStatus(t('metricTitles.hrvZ'), formatNumber(metrics.neural.hrvZ, 2), metrics.neural.hrvZStatus)}
+                ${cockpitMetricRow(t('metricTitles.neuralReadiness'), neuralLabel, neuralIcon)}
+                ${cockpitMetricRow(t('metricTitles.cnsFatigue'), metrics.neural.cnsFatigue ? t('statuses.yes') : t('statuses.no'), cnsIcon)}
             </div>
             <div class="cockpit-panel">
-                <h3 class="cockpit-panel__title">Training Load</h3>
-                ${cockpitMetricRow('ATL', formatNumber(metrics.load.atl, 1), 'neutral')}
-                ${cockpitMetricRow('CTL', formatNumber(metrics.load.ctl, 1), 'neutral')}
-                ${cockpitRowFromStatus('Form', formatNumber(metrics.load.form, 1), metrics.load.formStatus)}
-                ${cockpitRowFromStatus('ACWR', formatNumber(metrics.load.acwr, 2), metrics.load.acwrStatus)}
-                ${cockpitMetricRow('ATL Spike', formatPercent(metrics.load.atlSpike, 1), iconForAtlSpike(metrics.load.atlSpike))}
-                ${cockpitRowFromStatus('Fatigue Momentum', formatPercent(metrics.load.fatigueMomentum, 1), metrics.load.fatigueMomentumStatus)}
+                <h3 class="cockpit-panel__title">${t('cockpit.trainingLoad')}</h3>
+                ${cockpitMetricRow(t('metricTitles.atl'), formatNumber(metrics.load.atl, 1), 'neutral')}
+                ${cockpitMetricRow(t('metricTitles.ctl'), formatNumber(metrics.load.ctl, 1), 'neutral')}
+                ${cockpitRowFromStatus(t('metricTitles.form'), formatNumber(metrics.load.form, 1), metrics.load.formStatus)}
+                ${cockpitRowFromStatus(t('metricTitles.acwr'), formatNumber(metrics.load.acwr, 2), metrics.load.acwrStatus)}
+                ${cockpitMetricRow(t('metricTitles.atlSpike'), formatPercent(metrics.load.atlSpike, 1), iconForAtlSpike(metrics.load.atlSpike))}
+                ${cockpitRowFromStatus(t('metricTitles.fatigueMomentum'), formatPercent(metrics.load.fatigueMomentum, 1), metrics.load.fatigueMomentumStatus)}
             </div>
             <div class="cockpit-panel">
-                <h3 class="cockpit-panel__title">Training Structure</h3>
-                ${cockpitMetricRow('Monotony', formatNumber(metrics.structure.monotony, 2), statusToCockpitIcon(
+                <h3 class="cockpit-panel__title">${t('cockpit.trainingStructure')}</h3>
+                ${cockpitMetricRow(t('metricTitles.monotony'), formatNumber(metrics.structure.monotony, 2), statusToCockpitIcon(
                     isFiniteNumber(metrics.structure.monotony) && metrics.structure.monotony > 2
                         ? { label: 'High', color: 'text-amber-400' }
                         : { label: 'Normal', color: 'text-emerald-400' }
                 ))}
-                ${cockpitMetricRow('Strength Fatigue', metrics.structure.strengthFatigue ? 'Yes' : 'No', strengthFatigueIcon)}
-                ${cockpitMetricRow('Training Density', formatNumber(metrics.fatigueRisk.trainingDensity, 2), statusToCockpitIcon(
+                ${cockpitMetricRow(t('metricTitles.strengthFatigue'), metrics.structure.strengthFatigue ? t('statuses.yes') : t('statuses.no'), strengthFatigueIcon)}
+                ${cockpitMetricRow(t('metricTitles.trainingDensity'), formatNumber(metrics.fatigueRisk.trainingDensity, 2), statusToCockpitIcon(
                     isFiniteNumber(metrics.fatigueRisk.trainingDensity) && metrics.fatigueRisk.trainingDensity > 1.2
                         ? { label: 'High', color: 'text-amber-400' }
                         : { label: 'Normal', color: 'text-emerald-400' }
@@ -415,12 +451,12 @@ export function renderCockpit(model, metrics) {
 
         <div class="cockpit-readiness-row">
             <div class="cockpit-readiness-card">
-                <div class="cockpit-readiness-card__label">Strength Readiness</div>
+                <div class="cockpit-readiness-card__label">${t('cockpit.strengthReadiness')}</div>
                 <div id="cockpit-gauge-strength" class="cockpit-gauge cockpit-gauge--sm" aria-hidden="true"></div>
                 <div id="cockpit-strength-readiness-value" class="cockpit-readiness-value">${formatNumber(metrics.performance.strengthReadiness, 0)}</div>
             </div>
             <div class="cockpit-readiness-card">
-                <div class="cockpit-readiness-card__label">Aerobic Readiness</div>
+                <div class="cockpit-readiness-card__label">${t('cockpit.aerobicReadiness')}</div>
                 <div id="cockpit-gauge-aerobic" class="cockpit-gauge cockpit-gauge--sm" aria-hidden="true"></div>
                 <div id="cockpit-aerobic-readiness-value" class="cockpit-readiness-value">${formatNumber(metrics.performance.aerobicReadiness, 0)}</div>
             </div>
@@ -437,19 +473,19 @@ export function renderCockpit(model, metrics) {
                 </colgroup>
                 <thead>
                     <tr>
-                        <th scope="col">Recommended Training</th>
-                        <th scope="col">Avoid Training</th>
-                        <th scope="col">RPE Range</th>
-                        <th scope="col">Heart Rate Zone</th>
-                        <th scope="col">Duration</th>
+                        <th scope="col">${t('cockpit.recommendedTraining')}</th>
+                        <th scope="col">${t('cockpit.avoidTraining')}</th>
+                        <th scope="col">${t('cockpit.rpeRange')}</th>
+                        <th scope="col">${t('cockpit.heartRateZone')}</th>
+                        <th scope="col">${t('cockpit.duration')}</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>${escapeHtml(formatValue(metrics.guidance.recommended))}</td>
-                        <td>${escapeHtml(formatValue(metrics.guidance.avoid))}</td>
+                        <td>${escapeHtml(formatValue(translateGuidanceText(metrics.guidance.recommended)))}</td>
+                        <td>${escapeHtml(formatValue(translateGuidanceText(metrics.guidance.avoid)))}</td>
                         <td>${escapeHtml(formatValue(metrics.guidance.rpe))}</td>
-                        <td>${escapeHtml(formatValue(metrics.guidance.zone))}</td>
+                        <td>${escapeHtml(formatValue(translateGuidanceText(metrics.guidance.zone)))}</td>
                         <td>${escapeHtml(formatValue(metrics.guidance.duration))}</td>
                     </tr>
                 </tbody>

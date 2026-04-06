@@ -1,4 +1,5 @@
 import { clamp, isFiniteNumber } from './utils.js';
+import { t } from './i18n.js';
 
 /**
  * Polar coords: angle 0 = right, PI/2 = top, PI = left (SVG y-down).
@@ -72,7 +73,7 @@ export function mountSemiGauge(container, value, options = {}) {
     const hub = `<circle cx="${cx}" cy="${cy}" r="${size === 'lg' ? 6 : 4}" class="cockpit-gauge-hub"/>`;
 
     container.innerHTML = `
-        <svg class="cockpit-gauge-svg cockpit-gauge-svg--${size}" viewBox="0 0 ${w} ${h}" width="100%" height="100%" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Gauge value ${Math.round(v)} out of 100">
+        <svg class="cockpit-gauge-svg cockpit-gauge-svg--${size}" viewBox="0 0 ${w} ${h}" width="100%" height="100%" preserveAspectRatio="xMidYMax meet" role="img" aria-label="${t('gauge.value', { value: Math.round(v) })}">
             ${zones}
             ${needle}
             ${hub}

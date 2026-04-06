@@ -1,16 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="zh" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LoadFit Insights</title>
-    <meta name="description" content="Recovery and training-load dashboard for Intervals.icu-style JSON data.">
+    <title>LoadFit 洞察</title>
+    <meta name="description" content="用于 Intervals.icu 风格 JSON 数据的恢复与训练负荷仪表盘。">
     <script>
         (function () {
             try {
                 var k = 'training-dashboard-theme';
                 var v = localStorage.getItem(k);
                 document.documentElement.setAttribute('data-theme', v === 'dark' ? 'dark' : 'light');
+            } catch (e) { /* ignore */ }
+        })();
+    </script>
+    <script>
+        (function () {
+            try {
+                var k = 'training-dashboard-language';
+                var v = localStorage.getItem(k);
+                document.documentElement.lang = v === 'en' ? 'en' : 'zh';
             } catch (e) { /* ignore */ }
         })();
     </script>
@@ -24,17 +33,17 @@
     <div id="loading" class="app-overlay fixed inset-0 backdrop-blur-sm flex items-center justify-center z-50">
         <div class="loading-card rounded-2xl p-8 shadow-2xl text-center max-w-sm mx-4">
             <div class="animate-spin rounded-full h-14 w-14 border-2 border-cyan-400/30 border-t-cyan-400 mx-auto mb-4"></div>
-            <p class="th-strong text-lg font-semibold mb-1">Loading dashboard</p>
-            <p class="th-muted text-sm">Preparing your data source</p>
+            <p class="th-strong text-lg font-semibold mb-1" data-i18n="loading.title">加载仪表盘</p>
+            <p class="th-muted text-sm" data-i18n="loading.subtitle">正在准备你的数据源</p>
         </div>
     </div>
 
     <div id="error" class="hidden app-overlay fixed inset-0 backdrop-blur-sm flex items-center justify-center z-50">
         <div class="loading-card rounded-2xl p-8 shadow-2xl max-w-md mx-4">
-            <h3 class="text-rose-600 text-xl font-bold mb-3">Data error</h3>
+            <h3 class="text-rose-600 text-xl font-bold mb-3" data-i18n="error.title">数据错误</h3>
             <p id="error-message" class="th-primary mb-6"></p>
-            <button onclick="location.reload()" class="rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium py-2.5 px-6 shadow-lg hover:opacity-95 transition-opacity">
-                Reload
+            <button onclick="location.reload()" class="rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium py-2.5 px-6 shadow-lg hover:opacity-95 transition-opacity" data-i18n="error.reload">
+                重新加载
             </button>
         </div>
     </div>
@@ -44,24 +53,36 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
                 <div class="flex items-start justify-between gap-4">
                     <div class="min-w-0 flex-1">
-                        <h1 class="text-2xl sm:text-3xl font-bold tracking-tight th-strong drop-shadow-sm">
-                            LoadFit Insights
+                        <h1 class="text-2xl sm:text-3xl font-bold tracking-tight th-strong drop-shadow-sm" data-i18n="app.brand">
+                            LoadFit 洞察
                         </h1>
                         <p id="greeting-text" class="th-primary mt-2 text-base sm:text-lg"></p>
                         <p id="source-status" class="text-sm th-muted mt-1"></p>
                     </div>
 
-                    <div class="header-menu-wrap relative shrink-0 z-30">
+                    <div class="header-menu-wrap relative flex shrink-0 items-start gap-2 z-30">
+                        <button
+                            type="button"
+                            id="language-toggle"
+                            class="menu-icon-btn"
+                            aria-label="切换语言"
+                            title="切换语言"
+                        >
+                            <span class="sr-only" id="locale-toggle-label">切换语言</span>
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 5h7M11 5c-1.8 4.7-4.2 8.7-7 12M8 15h7m-4-10 6 10m-2 4 2-4m-2 4h4"/>
+                            </svg>
+                        </button>
                         <button
                             type="button"
                             id="menu-toggle"
                             class="menu-icon-btn"
-                            aria-label="Open data menu"
+                            aria-label="打开数据菜单"
                             aria-haspopup="true"
                             aria-expanded="false"
                             aria-controls="header-dropdown"
                         >
-                            <span class="sr-only">Menu</span>
+                            <span class="sr-only" data-i18n="menu.open">打开数据菜单</span>
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                             </svg>
@@ -72,23 +93,23 @@
                             role="menu"
                             aria-labelledby="menu-toggle"
                         >
-                            <button type="button" role="menuitem" id="menu-upload-json" class="header-dropdown__item">
-                                Upload JSON File
+                            <button type="button" role="menuitem" id="menu-upload-json" class="header-dropdown__item" data-i18n="menu.uploadJson">
+                                上传 JSON 文件
                             </button>
-                            <button type="button" role="menuitem" id="menu-paste-json" class="header-dropdown__item">
-                                Paste JSON Content
+                            <button type="button" role="menuitem" id="menu-paste-json" class="header-dropdown__item" data-i18n="menu.pasteJson">
+                                粘贴 JSON 内容
                             </button>
-                            <button type="button" role="menuitem" id="menu-clear-custom" class="header-dropdown__item header-dropdown__item--danger">
-                                Clear Custom Data
+                            <button type="button" role="menuitem" id="menu-clear-custom" class="header-dropdown__item header-dropdown__item--danger" data-i18n="menu.clearCustom">
+                                清除自定义数据
                             </button>
-                            <button type="button" role="menuitem" id="menu-load-github" class="header-dropdown__item">
-                                Load Sample Data
+                            <button type="button" role="menuitem" id="menu-load-github" class="header-dropdown__item" data-i18n="menu.loadSample">
+                                加载示例数据
                             </button>
-                            <button type="button" role="menuitem" id="menu-open-cockpit" class="header-dropdown__item">
-                                Training Status Dashboard
+                            <button type="button" role="menuitem" id="menu-open-cockpit" class="header-dropdown__item" data-i18n="menu.trainingStatus">
+                                训练状态仪表盘
                             </button>
-                            <button type="button" role="menuitem" id="menu-toggle-theme" class="header-dropdown__item">
-                                Toggle Dark/Light Theme
+                            <button type="button" role="menuitem" id="menu-toggle-theme" class="header-dropdown__item" data-i18n="menu.toggleTheme">
+                                切换深色 / 浅色主题
                             </button>
                         </div>
                     </div>
@@ -96,13 +117,13 @@
 
                 <div class="hero-metrics-grid mt-5 sm:mt-6 w-full min-w-0">
                     <div class="hero-metric hero-metric--recovery">
-                        <p class="hero-metric__label">Recovery score</p>
+                        <p class="hero-metric__label" data-i18n="hero.recoveryScore">恢复分数</p>
                         <p id="recovery-score-value" class="hero-metric__value">--</p>
                         <p class="hero-metric__suffix">/ 100</p>
                     </div>
                     <div class="hero-metric hero-metric--status">
-                        <p class="hero-metric__label">Status level</p>
-                        <p id="status-level-value" class="hero-metric__value">Level --</p>
+                        <p class="hero-metric__label" data-i18n="hero.statusLevel">状态等级</p>
+                        <p id="status-level-value" class="hero-metric__value">等级 --</p>
                         <p id="status-level-label" class="hero-metric__sub text-sm mt-1 opacity-90"></p>
                     </div>
                 </div>
@@ -111,14 +132,15 @@
 
                 <div id="paste-panel" class="paste-panel hidden mt-6">
                     <div class="paste-panel__inner">
-                        <label for="json-paste-input" class="block text-sm font-medium th-primary mb-2">Paste JSON content</label>
-                        <textarea id="json-paste-input" class="paste-textarea w-full h-28 p-3 rounded-xl text-sm font-mono" placeholder='{"user_name":"Jason","atl":[...]}'></textarea>
+                        <label for="json-paste-input" class="block text-sm font-medium th-primary mb-2" data-i18n="menu.pasteJson">粘贴 JSON 内容</label>
+                        <p class="text-sm th-muted mb-3" data-i18n="paste.instructions">在下方粘贴 JSON 内容，然后点击加载。</p>
+                        <textarea id="json-paste-input" class="paste-textarea w-full h-28 p-3 rounded-xl text-sm font-mono" placeholder='{"user_name":"Jason","atl":[...]}' data-i18n-attr="placeholder:paste.placeholder"></textarea>
                         <div class="mt-3 flex flex-wrap gap-2">
-                            <button type="button" id="load-paste-btn" class="rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium py-2 px-4 text-sm shadow-md hover:opacity-95 transition-opacity">
-                                Load pasted JSON
+                            <button type="button" id="load-paste-btn" class="rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium py-2 px-4 text-sm shadow-md hover:opacity-95 transition-opacity" data-i18n="paste.load">
+                                加载粘贴的 JSON
                             </button>
-                            <button type="button" id="clear-paste-btn" class="rounded-xl border btn-ghost-outline font-medium py-2 px-4 text-sm transition-colors">
-                                Clear text
+                            <button type="button" id="clear-paste-btn" class="rounded-xl border btn-ghost-outline font-medium py-2 px-4 text-sm transition-colors" data-i18n="paste.clear">
+                                清空文本
                             </button>
                         </div>
                     </div>
@@ -128,79 +150,79 @@
 
         <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
             <section class="content-card rounded-2xl p-6 sm:p-8 space-y-4">
-                <h2 class="text-xl font-bold th-strong">Recovery dashboard</h2>
+                <h2 class="text-xl font-bold th-strong" data-i18n="dashboard.recovery">恢复仪表盘</h2>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                     <div>
-                        <h3 class="font-semibold th-primary mb-2">Recovery System</h3>
+                        <h3 class="font-semibold th-primary mb-2" data-i18n="cockpit.recoverySystem">恢复系统</h3>
                         <div id="recovery-system-metrics" class="metric-grid"></div>
                     </div>
                     <div>
-                        <h3 class="font-semibold th-primary mb-2">Neural System</h3>
+                        <h3 class="font-semibold th-primary mb-2" data-i18n="cockpit.neuralSystem">神经系统</h3>
                         <div id="neural-system-metrics" class="metric-grid"></div>
                     </div>
                     <div>
-                        <h3 class="font-semibold th-primary mb-2">Training Load</h3>
+                        <h3 class="font-semibold th-primary mb-2" data-i18n="cockpit.trainingLoad">训练负荷</h3>
                         <div id="training-load-metrics" class="metric-grid"></div>
                     </div>
                     <div>
-                        <h3 class="font-semibold th-primary mb-2">Training Structure</h3>
+                        <h3 class="font-semibold th-primary mb-2" data-i18n="cockpit.trainingStructure">训练结构</h3>
                         <div id="training-structure-metrics" class="metric-grid"></div>
                     </div>
                     <div>
-                        <h3 class="font-semibold th-primary mb-2">Fatigue Risk</h3>
+                        <h3 class="font-semibold th-primary mb-2" data-i18n="metricTitles.fatigueRiskScore">疲劳风险分数</h3>
                         <div id="fatigue-risk-metrics" class="metric-grid"></div>
                     </div>
                     <div>
-                        <h3 class="font-semibold th-primary mb-2">Performance Readiness</h3>
+                        <h3 class="font-semibold th-primary mb-2" data-i18n="metricTitles.readinessScore">准备度分数</h3>
                         <div id="performance-readiness-metrics" class="metric-grid"></div>
                     </div>
                 </div>
             </section>
 
             <section class="content-card rounded-2xl p-6 sm:p-8">
-                <h2 class="text-xl font-bold th-strong mb-4">Today's training suggestions</h2>
+                <h2 class="text-xl font-bold th-strong mb-4" data-i18n="dashboard.trainingSuggestions">今日训练建议</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     <div class="suggestion-tile suggestion-tile--green">
-                        <p class="text-xs uppercase tracking-wide th-label">Recommended training</p>
+                        <p class="text-xs uppercase tracking-wide th-label" data-i18n="suggest.recommended">推荐训练</p>
                         <p id="suggest-recommended" class="mt-1 font-semibold th-strong"></p>
                     </div>
                     <div class="suggestion-tile suggestion-tile--rose">
-                        <p class="text-xs uppercase tracking-wide th-label">Avoid training</p>
+                        <p class="text-xs uppercase tracking-wide th-label" data-i18n="suggest.avoid">避免训练</p>
                         <p id="suggest-avoid" class="mt-1 font-semibold th-strong"></p>
                     </div>
                     <div class="suggestion-tile suggestion-tile--cyan">
-                        <p class="text-xs uppercase tracking-wide th-label">Intensity / RPE</p>
+                        <p class="text-xs uppercase tracking-wide th-label" data-i18n="suggest.intensity">强度 / RPE</p>
                         <p id="suggest-intensity" class="mt-1 font-semibold th-strong"></p>
                     </div>
                     <div class="suggestion-tile suggestion-tile--violet">
-                        <p class="text-xs uppercase tracking-wide th-label">HR zone / duration</p>
+                        <p class="text-xs uppercase tracking-wide th-label" data-i18n="suggest.zoneDuration">心率区间 / 时长</p>
                         <p id="suggest-zone-duration" class="mt-1 font-semibold th-strong"></p>
                     </div>
                 </div>
             </section>
 
             <section class="content-card rounded-2xl p-6 sm:p-8">
-                <h2 class="text-xl font-bold th-strong mb-4">Suggested training structures</h2>
+                <h2 class="text-xl font-bold th-strong mb-4" data-i18n="dashboard.trainingStructures">建议训练结构</h2>
                 <div id="training-structures" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
             </section>
 
             <section class="content-card rounded-2xl p-6 sm:p-8">
-                <h2 class="text-xl font-bold th-strong mb-4">Trend projection</h2>
+                <h2 class="text-xl font-bold th-strong mb-4" data-i18n="dashboard.trendProjection">趋势预测</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     <div class="mini-stat">
-                        <p class="text-xs uppercase th-label">Fatigue trend</p>
+                        <p class="text-xs uppercase th-label" data-i18n="trend.fatigue">疲劳趋势</p>
                         <p id="trend-fatigue" class="mt-1 font-semibold th-strong"></p>
                     </div>
                     <div class="mini-stat">
-                        <p class="text-xs uppercase th-label">CTL trend</p>
+                        <p class="text-xs uppercase th-label" data-i18n="trend.ctl">CTL 趋势</p>
                         <p id="trend-ctl" class="mt-1 font-semibold th-strong"></p>
                     </div>
                     <div class="mini-stat">
-                        <p class="text-xs uppercase th-label">Next 48h window</p>
+                        <p class="text-xs uppercase th-label" data-i18n="trend.window">未来 48 小时窗口</p>
                         <p id="trend-window" class="mt-1 font-semibold th-strong"></p>
                     </div>
                     <div class="mini-stat">
-                        <p class="text-xs uppercase th-label">Future fatigue risk</p>
+                        <p class="text-xs uppercase th-label" data-i18n="trend.risk">未来疲劳风险</p>
                         <p id="trend-risk" class="mt-1 font-semibold th-strong"></p>
                     </div>
                 </div>
@@ -208,11 +230,11 @@
 
             <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div class="content-card rounded-2xl p-6 sm:p-8">
-                    <h2 class="text-xl font-bold th-strong mb-4">ATL / CTL trend</h2>
+                    <h2 class="text-xl font-bold th-strong mb-4" data-i18n="dashboard.atlCtlTrend">ATL / CTL 趋势</h2>
                     <div class="relative h-72"><canvas id="load-chart"></canvas></div>
                 </div>
                 <div class="content-card rounded-2xl p-6 sm:p-8">
-                    <h2 class="text-xl font-bold th-strong mb-4">HRV / RHR trend</h2>
+                    <h2 class="text-xl font-bold th-strong mb-4" data-i18n="dashboard.hrvRhrTrend">HRV / RHR 趋势</h2>
                     <div class="relative h-72"><canvas id="hrv-rhr-chart"></canvas></div>
                 </div>
             </section>
@@ -221,7 +243,7 @@
             <section class="content-card rounded-2xl p-6 sm:p-8 collapsible-section" data-collapsible-id="workout-details">
                 <h2 class="m-0 text-xl font-bold th-strong">
                     <button type="button" class="collapsible-section__trigger" id="collapsible-trigger-workout-details" aria-expanded="false" aria-controls="collapsible-panel-workout-details">
-                        <span class="collapsible-section__label">Workout details</span>
+                        <span class="collapsible-section__label" data-i18n="dashboard.workoutDetails">训练详情</span>
                         <svg class="collapsible-section__chevron shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
                         </svg>
@@ -242,7 +264,7 @@
             <section class="content-card rounded-2xl p-6 sm:p-8 collapsible-section" data-collapsible-id="sleep-sessions">
                 <h2 class="m-0 text-xl font-bold th-strong">
                     <button type="button" class="collapsible-section__trigger" id="collapsible-trigger-sleep-sessions" aria-expanded="false" aria-controls="collapsible-panel-sleep-sessions">
-                        <span class="collapsible-section__label">Sleep sessions</span>
+                        <span class="collapsible-section__label" data-i18n="dashboard.sleepSessions">睡眠记录</span>
                         <svg class="collapsible-section__chevron shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
                         </svg>
@@ -264,7 +286,7 @@
                 <div class="content-card rounded-2xl p-6 sm:p-8 collapsible-section" data-collapsible-id="hrv-series">
                     <h2 class="m-0 text-xl font-bold th-strong">
                         <button type="button" class="collapsible-section__trigger" id="collapsible-trigger-hrv-series" aria-expanded="false" aria-controls="collapsible-panel-hrv-series">
-                            <span class="collapsible-section__label">HRV series</span>
+                            <span class="collapsible-section__label" data-i18n="dashboard.hrvSeries">HRV 序列</span>
                             <svg class="collapsible-section__chevron shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
                             </svg>
@@ -284,7 +306,7 @@
                 <div class="content-card rounded-2xl p-6 sm:p-8 collapsible-section" data-collapsible-id="rhr-series">
                     <h2 class="m-0 text-xl font-bold th-strong">
                         <button type="button" class="collapsible-section__trigger" id="collapsible-trigger-rhr-series" aria-expanded="false" aria-controls="collapsible-panel-rhr-series">
-                            <span class="collapsible-section__label">RHR series</span>
+                            <span class="collapsible-section__label" data-i18n="dashboard.rhrSeries">RHR 序列</span>
                             <svg class="collapsible-section__chevron shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
                             </svg>
@@ -306,7 +328,7 @@
             <section class="content-card rounded-2xl p-6 sm:p-8 collapsible-section" data-collapsible-id="atl-ctl-series">
                 <h2 class="m-0 text-xl font-bold th-strong">
                     <button type="button" class="collapsible-section__trigger" id="collapsible-trigger-atl-ctl-series" aria-expanded="false" aria-controls="collapsible-panel-atl-ctl-series">
-                        <span class="collapsible-section__label">ATL &amp; CTL series</span>
+                        <span class="collapsible-section__label" data-i18n="dashboard.atlCtlSeries">ATL / CTL 序列</span>
                         <svg class="collapsible-section__chevron shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
                         </svg>
@@ -327,7 +349,7 @@
             <section class="content-card rounded-2xl p-6 sm:p-8 collapsible-section" data-collapsible-id="comments">
                 <h2 class="m-0 text-xl font-bold th-strong">
                     <button type="button" class="collapsible-section__trigger" id="collapsible-trigger-comments" aria-expanded="false" aria-controls="collapsible-panel-comments">
-                        <span class="collapsible-section__label">Comments</span>
+                        <span class="collapsible-section__label" data-i18n="dashboard.comments">备注</span>
                         <svg class="collapsible-section__chevron shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
                         </svg>
@@ -347,21 +369,21 @@
         <div class="cockpit-modal__dialog relative z-10 w-full">
             <div id="cockpit-capture-overlay" class="cockpit-capture-overlay" hidden aria-hidden="true" role="status">
                 <span class="cockpit-capture-overlay__spinner" aria-hidden="true"></span>
-                <span class="cockpit-capture-overlay__text">Generating image…</span>
+                <span class="cockpit-capture-overlay__text" data-i18n="cockpit.captureGenerating">正在生成图片…</span>
             </div>
             <header class="cockpit-modal__header">
                 <div>
-                    <h2 id="cockpit-dialog-title" class="cockpit-modal__title">TRAINING STATUS DASHBOARD</h2>
+                    <h2 id="cockpit-dialog-title" class="cockpit-modal__title" data-i18n="cockpit.title">训练状态仪表盘</h2>
                     <p id="cockpit-header-date" class="cockpit-modal__date"></p>
                 </div>
                 <div class="cockpit-modal__header-actions">
-                    <button type="button" id="cockpit-save-picture" class="cockpit-close-btn cockpit-save-picture-btn" aria-label="Save dashboard as PNG image">
+                    <button type="button" id="cockpit-save-picture" class="cockpit-close-btn cockpit-save-picture-btn" aria-label="保存仪表盘为 PNG 图片" data-i18n-attr="aria-label:cockpit.saveLabel">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
                         </svg>
                     </button>
-                    <button type="button" id="cockpit-close" class="cockpit-close-btn" aria-label="Close training status dashboard">
+                    <button type="button" id="cockpit-close" class="cockpit-close-btn" aria-label="关闭训练状态仪表盘" data-i18n-attr="aria-label:cockpit.closeLabel">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                         </svg>
@@ -378,7 +400,7 @@
         <div class="loading-card rounded-2xl p-6 sm:p-8 max-w-2xl w-full max-h-[85vh] overflow-y-auto">
             <div class="flex items-start justify-between mb-4">
                 <h3 id="metric-help-title" class="text-xl font-bold th-strong"></h3>
-                <button type="button" id="metric-help-close" data-metric-help-dismiss class="modal-close-btn rounded-lg p-1.5 transition-colors" aria-label="Close help">
+                <button type="button" id="metric-help-close" data-metric-help-dismiss class="modal-close-btn rounded-lg p-1.5 transition-colors" aria-label="关闭帮助" data-i18n-attr="aria-label:metricHelp.close">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                     </svg>

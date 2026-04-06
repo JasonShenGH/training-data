@@ -11,10 +11,10 @@
     --text-faint: #94a3b8;
 
     --bg-page: #f1f5f9;
-    --bg-page-radial-1: rgba(34, 211, 238, 0.12);
-    --bg-page-radial-2: rgba(139, 92, 246, 0.08);
-    --bg-page-radial-3: rgba(59, 130, 246, 0.1);
-    --bg-page-gradient: linear-gradient(165deg, #f8fafc 0%, #f1f5f9 45%, #e2e8f0 100%);
+    --bg-page-radial-1: rgba(16, 185, 129, 0.12);
+    --bg-page-radial-2: rgba(34, 211, 238, 0.1);
+    --bg-page-radial-3: rgba(59, 130, 246, 0.09);
+    --bg-page-gradient: linear-gradient(165deg, #f8fafc 0%, #f1f5f9 46%, #e2e8f0 100%);
 
     --header-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(248, 250, 252, 0.88) 100%);
     --header-border: rgba(15, 23, 42, 0.08);
@@ -30,15 +30,27 @@
     --loading-card-border: rgba(15, 23, 42, 0.1);
     --loading-card-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
 
-    --hero-metric-border: rgba(15, 23, 42, 0.1);
-    --hero-metric-shadow: 0 10px 25px -8px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.6) inset;
-    --hero-metric-shine: radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.65), transparent 55%);
+    --hero-metric-border: rgba(15, 23, 42, 0.09);
+    --hero-metric-shadow: 0 18px 40px -22px rgba(15, 23, 42, 0.22), 0 1px 0 rgba(255, 255, 255, 0.7) inset;
+    --hero-metric-shine: radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.6), transparent 52%);
     --hero-metric-label: rgba(15, 23, 42, 0.65);
     --hero-metric-value: #0f172a;
     --hero-metric-suffix: rgba(15, 23, 42, 0.55);
     --hero-metric-sub: rgba(15, 23, 42, 0.75);
-    --hero-recovery-bg: linear-gradient(135deg, rgba(6, 182, 212, 0.22) 0%, rgba(37, 99, 235, 0.2) 50%, rgba(79, 70, 229, 0.16) 100%);
-    --hero-status-bg: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.14) 55%, rgba(245, 158, 11, 0.12) 100%);
+    --hero-recovery-bg: linear-gradient(145deg, rgba(236, 253, 245, 0.98) 0%, rgba(167, 243, 208, 0.96) 38%, rgba(191, 219, 254, 0.94) 100%);
+    --hero-recovery-accent: rgba(16, 185, 129, 0.18);
+    --hero-recovery-border: rgba(16, 185, 129, 0.22);
+    --hero-recovery-label: rgba(15, 118, 110, 0.88);
+    --hero-recovery-value: #064e3b;
+    --hero-recovery-suffix: rgba(6, 95, 70, 0.76);
+    --hero-recovery-sub: rgba(4, 120, 87, 0.78);
+    --hero-status-bg: linear-gradient(145deg, rgba(239, 246, 255, 0.98) 0%, rgba(191, 219, 254, 0.96) 44%, rgba(187, 247, 208, 0.9) 100%);
+    --hero-status-accent: rgba(59, 130, 246, 0.18);
+    --hero-status-border: rgba(59, 130, 246, 0.22);
+    --hero-status-label: rgba(30, 64, 175, 0.9);
+    --hero-status-value: #1e3a8a;
+    --hero-status-suffix: rgba(37, 99, 235, 0.78);
+    --hero-status-sub: rgba(29, 78, 216, 0.8);
 
     --menu-btn-fg: var(--text-secondary);
     --menu-btn-bg: rgba(255, 255, 255, 0.85);
@@ -108,9 +120,9 @@ html[data-theme='dark'] {
     --text-faint: #64748b;
 
     --bg-page: #0f172a;
-    --bg-page-radial-1: rgba(34, 211, 238, 0.18);
-    --bg-page-radial-2: rgba(139, 92, 246, 0.12);
-    --bg-page-radial-3: rgba(59, 130, 246, 0.15);
+    --bg-page-radial-1: rgba(16, 185, 129, 0.2);
+    --bg-page-radial-2: rgba(34, 211, 238, 0.14);
+    --bg-page-radial-3: rgba(59, 130, 246, 0.16);
     --bg-page-gradient: linear-gradient(165deg, #0f172a 0%, #1e1b4b 45%, #0f172a 100%);
 
     --header-bg: linear-gradient(180deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 27, 75, 0.35) 100%);
@@ -127,15 +139,27 @@ html[data-theme='dark'] {
     --loading-card-border: rgba(148, 163, 184, 0.15);
     --loading-card-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
 
-    --hero-metric-border: rgba(255, 255, 255, 0.12);
-    --hero-metric-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
-    --hero-metric-shine: radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.12), transparent 55%);
+    --hero-metric-border: rgba(255, 255, 255, 0.1);
+    --hero-metric-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    --hero-metric-shine: radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.11), transparent 58%);
     --hero-metric-label: rgba(255, 255, 255, 0.75);
     --hero-metric-value: #fff;
     --hero-metric-suffix: rgba(255, 255, 255, 0.65);
     --hero-metric-sub: rgba(255, 255, 255, 0.85);
-    --hero-recovery-bg: linear-gradient(135deg, rgba(6, 182, 212, 0.35) 0%, rgba(37, 99, 235, 0.45) 50%, rgba(79, 70, 229, 0.3) 100%);
-    --hero-status-bg: linear-gradient(135deg, rgba(139, 92, 246, 0.35) 0%, rgba(236, 72, 153, 0.25) 55%, rgba(245, 158, 11, 0.2) 100%);
+    --hero-recovery-bg: linear-gradient(145deg, rgba(6, 95, 70, 0.9) 0%, rgba(14, 116, 144, 0.84) 46%, rgba(37, 99, 235, 0.8) 100%);
+    --hero-recovery-accent: rgba(110, 231, 183, 0.18);
+    --hero-recovery-border: rgba(110, 231, 183, 0.24);
+    --hero-recovery-label: rgba(236, 253, 245, 0.9);
+    --hero-recovery-value: #f8fffd;
+    --hero-recovery-suffix: rgba(204, 251, 241, 0.82);
+    --hero-recovery-sub: rgba(220, 252, 231, 0.86);
+    --hero-status-bg: linear-gradient(145deg, rgba(30, 64, 175, 0.92) 0%, rgba(37, 99, 235, 0.86) 48%, rgba(22, 163, 74, 0.72) 100%);
+    --hero-status-accent: rgba(125, 211, 252, 0.18);
+    --hero-status-border: rgba(125, 211, 252, 0.24);
+    --hero-status-label: rgba(224, 242, 254, 0.92);
+    --hero-status-value: #f8fbff;
+    --hero-status-suffix: rgba(191, 219, 254, 0.82);
+    --hero-status-sub: rgba(224, 242, 254, 0.86);
 
     --menu-btn-fg: #e2e8f0;
     --menu-btn-bg: rgba(255, 255, 255, 0.08);
@@ -273,6 +297,11 @@ body {
     padding: 1.25rem 1.5rem;
     border: 1px solid var(--hero-metric-border);
     box-shadow: var(--hero-metric-shadow);
+    isolation: isolate;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transform: translateZ(0);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .hero-metric::after {
@@ -283,12 +312,44 @@ body {
     pointer-events: none;
 }
 
+.hero-metric::before {
+    content: '';
+    position: absolute;
+    inset: auto -20% -35% auto;
+    width: 12rem;
+    height: 12rem;
+    border-radius: 999px;
+    filter: blur(18px);
+    pointer-events: none;
+    opacity: 0.75;
+}
+
+.hero-metric > * {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-metric:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 22px 48px -22px rgba(15, 23, 42, 0.26), 0 0 0 1px rgba(255, 255, 255, 0.75) inset;
+}
+
 .hero-metric--recovery {
     background: var(--hero-recovery-bg);
+    border-color: var(--hero-recovery-border);
 }
 
 .hero-metric--status {
     background: var(--hero-status-bg);
+    border-color: var(--hero-status-border);
+}
+
+.hero-metric--recovery::before {
+    background: radial-gradient(circle, var(--hero-recovery-accent) 0%, transparent 68%);
+}
+
+.hero-metric--status::before {
+    background: radial-gradient(circle, var(--hero-status-accent) 0%, transparent 68%);
 }
 
 .hero-metric__label {
@@ -298,6 +359,14 @@ body {
     text-transform: uppercase;
     color: var(--hero-metric-label);
     margin-bottom: 0.35rem;
+}
+
+.hero-metric--recovery .hero-metric__label {
+    color: var(--hero-recovery-label);
+}
+
+.hero-metric--status .hero-metric__label {
+    color: var(--hero-status-label);
 }
 
 .hero-metric__value {
@@ -313,14 +382,39 @@ html[data-theme='dark'] .hero-metric__value {
     text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
 }
 
+.hero-metric--recovery .hero-metric__value {
+    color: var(--hero-recovery-value);
+}
+
+.hero-metric--status .hero-metric__value {
+    color: var(--hero-status-value);
+}
+
 .hero-metric__suffix {
     font-size: 0.875rem;
     color: var(--hero-metric-suffix);
     margin-top: 0.25rem;
 }
 
+.hero-metric--recovery .hero-metric__suffix {
+    color: var(--hero-recovery-suffix);
+}
+
+.hero-metric--status .hero-metric__suffix {
+    color: var(--hero-status-suffix);
+}
+
 .hero-metric__sub {
     color: var(--hero-metric-sub);
+    font-weight: 600;
+}
+
+.hero-metric--recovery .hero-metric__sub {
+    color: var(--hero-recovery-sub);
+}
+
+.hero-metric--status .hero-metric__sub {
+    color: var(--hero-status-sub);
 }
 
 .menu-icon-btn {
