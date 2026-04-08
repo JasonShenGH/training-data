@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-08T09:45:59.728560",
+  "generated_at": "2026-04-08T11:05:52.959296",
   "version": "3.86",
   "scan_hours": 72,
   "retention_days": 8,
@@ -191,6 +191,25 @@
           "zone": 1,
           "training_load": 3.0922222,
           "decoupling": 12.287413
+        }
+      ]
+    },
+    {
+      "activity_id": "i138068923",
+      "date": "2026-04-08",
+      "type": "VirtualRide",
+      "name": "AE-2",
+      "interval_summary": [
+        "1x 1h20m 111bpm"
+      ],
+      "intervals": [
+        {
+          "type": "WORK",
+          "label": "4816s@111bpm",
+          "duration_secs": 4816,
+          "avg_hr": 111,
+          "max_hr": 122,
+          "zone": 2
         }
       ]
     }
