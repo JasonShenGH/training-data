@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-04-18T15:50:05.859831",
+    "last_updated": "2026-04-18T16:51:25.347118",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -107,7 +107,7 @@
       },
       "tsb": {
         "status": "green",
-        "value": -11.3
+        "value": -1.6
       }
     },
     "signal_summary": {
@@ -156,10 +156,10 @@
   },
   "current_status": {
     "fitness": {
-      "ctl": 28.81,
-      "atl": 40.07,
-      "tsb": -11.26,
-      "ramp_rate": 3.49,
+      "ctl": 26.43,
+      "atl": 28.07,
+      "tsb": -1.64,
+      "ramp_rate": 1.1,
       "fitness_source": "From Intervals.icu API (reflects completed workouts)"
     },
     "thresholds": {
@@ -418,9 +418,9 @@
           "planned_tss_delta": 2.42,
           "hard_sessions_planned": 1,
           "race_proximity": null,
-          "next_week_load": 2.28,
+          "next_week_load": 2.97,
           "plan_coverage_current_week": 0.2,
-          "plan_coverage_next_week": 0.8
+          "plan_coverage_next_week": 1.0
         },
         "data_quality": "good",
         "stream_agreement": null
@@ -453,7 +453,7 @@
     "p_max": 322,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-04-18T15:50:05.858952",
+    "calculation_timestamp": "2026-04-18T16:51:25.346210",
     "data_quality": {
       "hrv_data_points": 0,
       "rhr_data_points": 83,
@@ -4947,15 +4947,27 @@
       "duration_formatted": "1h30m",
       "workout_summary": null,
       "description": "Warmup\n- Hey Jason! Progressive threshold awaits 14m ramp 45-75% 85rpm\n\nMain Set\n- Build 1 15m 88% 88rpm\n- Recovery 3m 55% 80rpm\n- Build 2 15m 94% 90rpm\n- Recovery 3m 55% 80rpm\n- Build 3 15m 100% 93rpm\n- Recovery 3m 55% 80rpm\n- Build 4 15m 105% 95rpm\n\nCooldown\n- Awesome job, recover well 7m ramp 65-45% 85rpm\n\n[Weekly Plan - Build]"
+    },
+    {
+      "id": 105087817,
+      "date": "2026-04-26",
+      "name": "IntervalCoach - Endurance Build",
+      "type": "WORKOUT",
+      "sport_type": "Ride",
+      "planned_tss": 67,
+      "duration_hours": 1.5,
+      "duration_formatted": "1h30m",
+      "workout_summary": null,
+      "description_preview": "Warmup\n- Hey Jason! Endurance ride today 14m ramp 45-75% 85rpm\nMain Set"
     }
   ],
   "workout_summary_stats": {
-    "attempted": 3,
+    "attempted": 4,
     "success": 1,
     "patternA": 1,
     "patternB": 0,
     "bail_no_workout_doc": 2,
-    "bail_no_match": 2
+    "bail_no_match": 3
   },
   "weekly_summary": {
     "total_training_hours": 21.48,
