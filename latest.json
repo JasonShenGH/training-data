@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-04-21T15:44:36.390737",
+    "last_updated": "2026-04-21T16:44:07.813820",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -421,9 +421,9 @@
           "planned_tss_delta": 3.49,
           "hard_sessions_planned": 4,
           "race_proximity": null,
-          "next_week_load": null,
+          "next_week_load": 1.22,
           "plan_coverage_current_week": 0.8,
-          "plan_coverage_next_week": 0.2
+          "plan_coverage_next_week": 0.4
         },
         "data_quality": "good",
         "stream_agreement": null
@@ -456,7 +456,7 @@
     "p_max": 322,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-04-21T15:44:36.389843",
+    "calculation_timestamp": "2026-04-21T16:44:07.812913",
     "data_quality": {
       "hrv_data_points": 0,
       "rhr_data_points": 86,
@@ -5065,12 +5065,23 @@
       "duration_formatted": "45m",
       "workout_summary": null,
       "description": "Lower Body Strength\n\nLeg strength for cycling power and running economy\n\n1. Goblet Squat: 3 sets \u00d7 12 reps (Weight at chest, sit back into heels) [Rest: 60 sec]\n2. Romanian Deadlift: 3 sets \u00d7 10 reps (Hinge at hips, slight knee bend) [Rest: 60 sec]\n3. Walking Lunges: 3 sets \u00d7 10 reps each leg (Keep torso upright, knee tracks over toe) [Rest: 45 sec]\n4. Step-ups: 3 sets \u00d7 10 reps each leg (Use bench or box, drive through heel) [Rest: 45 sec]\n5. Calf Raises: 3 sets \u00d7 15 reps (Full range of motion, hold at top) [Rest: 30 sec]\n6. Single Leg Glute Bridge: 3 sets \u00d7 10 reps each leg (Keep hips level throughout) [Rest: 30 sec]\n\nBuild phase: increase weight, lower reps (6-10) for strength gains.\n\n[Duration: ~45 min]\n\n[Weekly Plan - Build]"
+    },
+    {
+      "id": 105762980,
+      "date": "2026-04-29",
+      "name": "IntervalCoach - VO2max Descending Intervals",
+      "type": "WORKOUT",
+      "sport_type": "Ride",
+      "planned_tss": 118,
+      "duration_hours": 1.5,
+      "duration_formatted": "1h30m",
+      "workout_summary": "14m @78W | 4m @156W | 3m @72W | 3m @158W | 3m @72W | 2m @160W | 3m @72W | 1m @159W | 5m @72W | 4m @156W | 3m @72W | 3m @158W | 3m @72W | 2m @160W | 3m @72W | 1m @159W | 4m @92W | 5\u00d71m @159W / 3m rec | 9m @72W"
     }
   ],
   "workout_summary_stats": {
-    "attempted": 3,
-    "success": 1,
-    "patternA": 1,
+    "attempted": 4,
+    "success": 2,
+    "patternA": 2,
     "patternB": 0,
     "bail_no_workout_doc": 2,
     "bail_no_match": 2
