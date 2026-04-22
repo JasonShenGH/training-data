@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-04-22T14:50:19.453159",
+    "last_updated": "2026-04-22T16:13:50.958976",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -423,7 +423,7 @@
           "race_proximity": null,
           "next_week_load": 1.22,
           "plan_coverage_current_week": 0.8,
-          "plan_coverage_next_week": 0.4
+          "plan_coverage_next_week": 0.6
         },
         "data_quality": "good",
         "stream_agreement": null
@@ -456,7 +456,7 @@
     "p_max": 322,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-04-22T14:50:19.452273",
+    "calculation_timestamp": "2026-04-22T16:13:50.958165",
     "data_quality": {
       "hrv_data_points": 0,
       "rhr_data_points": 87,
@@ -5033,6 +5033,18 @@
       "duration_formatted": "1h30m",
       "workout_summary": "14m @78W | 4m @156W | 3m @72W | 3m @158W | 3m @72W | 2m @160W | 3m @72W | 1m @159W | 5m @72W | 4m @156W | 3m @72W | 3m @158W | 3m @72W | 2m @160W | 3m @72W | 1m @159W | 4m @92W | 5\u00d71m @159W / 3m rec | 9m @72W",
       "description": "Warmup\n- Hey Jason, VO2max descending is here! 14m ramp 45-75% 85rpm\n\nMain Set\n- VO2max 4min 4m 115-125% 95rpm\n- Recovery 3m 55% 80rpm\n- VO2max 3min 3m 117-125% 100rpm\n- Recovery 3m 55% 80rpm\n- VO2max 2min 2m 120-125% 105rpm\n- Recovery 3m 55% 80rpm\n- VO2max 1min 1m 122% 110rpm\n- Set Recovery 5m 55% 80rpm\n- VO2max 4min 4m 115-125% 95rpm\n- Recovery 3m 55% 80rpm\n- VO2max 3min 3m 117-125% 100rpm\n- Recovery 3m 55% 80rpm\n- VO2max 2min 2m 120-125% 105rpm\n- Recovery 3m 55% 80rpm\n- VO2max 1min 1m 122% 110rpm\n- Endurance 4m 65-75% 85rpm\n\n5x\n- VO9max 1min 1m 122% 110rpm\n- Recovery 3m 55% 80rpm\n\nCooldown\n- Awesome job, enjoy the recovery 9m ramp 65-45% 85rpm\n\n[Weekly Plan - Build]"
+    },
+    {
+      "id": 105946784,
+      "date": "2026-04-30",
+      "name": "IntervalCoach - Lower Body Strength",
+      "type": "WORKOUT",
+      "sport_type": "WeightTraining",
+      "planned_tss": null,
+      "duration_hours": 0.75,
+      "duration_formatted": "45m",
+      "workout_summary": null,
+      "description_preview": "Lower Body Strength\nLeg strength for cycling power and running economy\n1. Goblet Squat: 3 sets \u00d7 12 reps (Weight at chest, sit back into heels) [Rest: 60 sec]"
     }
   ],
   "workout_summary_stats": {
@@ -5040,7 +5052,7 @@
     "success": 2,
     "patternA": 2,
     "patternB": 0,
-    "bail_no_workout_doc": 2,
+    "bail_no_workout_doc": 3,
     "bail_no_match": 2
   },
   "weekly_summary": {
