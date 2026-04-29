@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-29T04:04:40.921308",
+  "generated_at": "2026-04-29T06:38:47.600934",
   "version": "3.86",
   "scan_hours": 72,
   "retention_days": 8,
@@ -19,6 +19,25 @@
           "duration_secs": 4824,
           "avg_hr": 118,
           "max_hr": 130,
+          "zone": 2
+        }
+      ]
+    },
+    {
+      "activity_id": "i143915297",
+      "date": "2026-04-29",
+      "type": "VirtualRide",
+      "name": "Cycling AE-2",
+      "interval_summary": [
+        "1x 1h31m 115bpm"
+      ],
+      "intervals": [
+        {
+          "type": "WORK",
+          "label": "5469s@115bpm",
+          "duration_secs": 5469,
+          "avg_hr": 115,
+          "max_hr": 128,
           "zone": 2
         }
       ]
