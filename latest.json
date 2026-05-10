@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-05-10T19:46:54.841233",
+    "last_updated": "2026-05-10T20:56:25.465504",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -480,7 +480,7 @@
     "p_max": 315,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-05-10T19:46:54.839980",
+    "calculation_timestamp": "2026-05-10T20:56:25.464335",
     "data_quality": {
       "hrv_data_points": 3,
       "rhr_data_points": 88,
@@ -5021,6 +5021,18 @@
       "duration_formatted": "1h30m",
       "workout_summary": "14m @78W | 3m @92W | 1m @157W | 1m @72W | 2m @157W | 2m @72W | 3m @157W | 3m @72W | 4m @157W | 4m @72W | 3m @157W | 3m @72W | 2m @157W | 2m @72W | 1m @157W | 18m @92W | 5\u00d71m @157W / 2m rec | 9m @72W",
       "description": "Warmup\n- Hey Jason, VO2max pyramid time! 14m ramp 45-75% 85rpm\n\nMain Set\n- Endurance 3m 65-75% 85rpm\n- VO2max 1min 1m 120% 100rpm\n- Recovery 1m 55% 80rpm\n- VO2max 2min 2m 120% 100rpm\n- Recovery 2m 55% 80rpm\n- VO2max 3min 3m 120% 100rpm\n- Recovery 3m 55% 80rpm\n- VO2max 4min 4m 120% 100rpm\n- Recovery 4m 55% 80rpm\n- VO2max 3min 3m 120% 100rpm\n- Recovery 3m 55% 80rpm\n- VO2max 2min 2m 120% 100rpm\n- Recovery 2m 55% 80rpm\n- VO2max 1min 1m 120% 100rpm\n- Endurance 18m 65-75% 85rpm\n\n5x\n- VO8max 1min 1m 120% 100rpm\n- Recovery 2m 55% 80rpm\n\nCooldown\n- Fantastic effort, recover well 9m ramp 65-45% 85rpm\n\n[Weekly Plan - Build]"
+    },
+    {
+      "id": 109308024,
+      "date": "2026-05-18",
+      "name": "IntervalCoach - Core Stability",
+      "type": "WORKOUT",
+      "sport_type": "WeightTraining",
+      "planned_tss": null,
+      "duration_hours": 0.75,
+      "duration_formatted": "45m",
+      "workout_summary": null,
+      "description_preview": "Core Stability\nCore exercises to improve stability, posture, and power transfer\n1. Plank: 5 sets \u00d7 45-60 sec (Keep body in straight line, engage glutes) [Rest: 30 sec]"
     }
   ],
   "workout_summary_stats": {
@@ -5028,7 +5040,7 @@
     "success": 1,
     "patternA": 1,
     "patternB": 0,
-    "bail_no_workout_doc": 2,
+    "bail_no_workout_doc": 3,
     "bail_no_match": 3
   },
   "weekly_summary": {
