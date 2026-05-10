@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-10T09:07:12.715583",
+  "generated_at": "2026-05-10T10:39:13.369926",
   "version": "3.86",
   "scan_hours": 72,
   "retention_days": 8,
@@ -45,6 +45,80 @@
           "avg_hr": 106,
           "max_hr": 106,
           "zone": 1
+        }
+      ]
+    },
+    {
+      "activity_id": "i146910375",
+      "date": "2026-05-10",
+      "type": "Ride",
+      "name": "IntervalCoach - Aerobic Endurance Build",
+      "interval_summary": [
+        "1x 56s 145w",
+        "1x 98s 120w"
+      ],
+      "intervals": [
+        {
+          "type": "RECOVERY",
+          "duration_secs": 3971,
+          "avg_power": 72,
+          "max_power": 222,
+          "avg_hr": 137,
+          "max_hr": 152,
+          "avg_cadence": 78.85624,
+          "zone": 1,
+          "training_load": 36.028656,
+          "decoupling": 2.631513
+        },
+        {
+          "type": "WORK",
+          "label": "56s@145w84rpm",
+          "duration_secs": 56,
+          "avg_power": 145,
+          "max_power": 166,
+          "avg_hr": 148,
+          "max_hr": 150,
+          "avg_cadence": 83.94643,
+          "zone": 5,
+          "training_load": 1.8535957,
+          "decoupling": -9.866867
+        },
+        {
+          "type": "RECOVERY",
+          "duration_secs": 3263,
+          "avg_power": 76,
+          "max_power": 184,
+          "avg_hr": 138,
+          "max_hr": 158,
+          "avg_cadence": 78.55864,
+          "zone": 2,
+          "training_load": 37.22319,
+          "decoupling": 3.3857665
+        },
+        {
+          "type": "WORK",
+          "label": "98s@120w78rpm",
+          "duration_secs": 98,
+          "avg_power": 120,
+          "max_power": 144,
+          "avg_hr": 139,
+          "max_hr": 147,
+          "avg_cadence": 78.37755,
+          "zone": 4,
+          "training_load": 2.1345038,
+          "decoupling": 9.736445
+        },
+        {
+          "type": "RECOVERY",
+          "duration_secs": 222,
+          "avg_power": 36,
+          "max_power": 166,
+          "avg_hr": 135,
+          "max_hr": 150,
+          "avg_cadence": 67.938774,
+          "zone": 1,
+          "training_load": 2.0121934,
+          "decoupling": 8.817356
         }
       ]
     }
