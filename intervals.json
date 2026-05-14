@@ -1,53 +1,9 @@
 {
-  "generated_at": "2026-05-13T23:11:14.042239",
+  "generated_at": "2026-05-14T00:17:06.933277",
   "version": "3.86",
   "scan_hours": 72,
   "retention_days": 8,
   "activities": [
-    {
-      "activity_id": "i145541746",
-      "date": "2026-05-05",
-      "type": "Rowing",
-      "name": "Canoe",
-      "interval_summary": [
-        "1x 17m20s 100bpm",
-        "1x 20m43s 95bpm",
-        "1x 3m7s 98bpm"
-      ],
-      "intervals": [
-        {
-          "type": "WORK",
-          "label": "1040s@100bpm",
-          "duration_secs": 1040,
-          "avg_hr": 100,
-          "max_hr": 111,
-          "zone": 1
-        },
-        {
-          "type": "WORK",
-          "label": "1243s@95bpm",
-          "duration_secs": 1243,
-          "avg_hr": 95,
-          "max_hr": 105,
-          "zone": 1
-        },
-        {
-          "type": "WORK",
-          "label": "187s@98bpm",
-          "duration_secs": 187,
-          "avg_hr": 98,
-          "max_hr": 109,
-          "zone": 1
-        },
-        {
-          "type": "RECOVERY",
-          "duration_secs": 4,
-          "avg_hr": 106,
-          "max_hr": 106,
-          "zone": 1
-        }
-      ]
-    },
     {
       "activity_id": "i146910375",
       "date": "2026-05-10",
