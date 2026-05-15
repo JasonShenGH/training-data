@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-15T12:13:45.914556",
+  "generated_at": "2026-05-15T14:39:50.209221",
   "version": "3.86",
   "scan_hours": 72,
   "retention_days": 8,
@@ -93,6 +93,50 @@
           "duration_secs": 3686,
           "avg_hr": 115,
           "max_hr": 128,
+          "zone": 2
+        }
+      ]
+    },
+    {
+      "activity_id": "i148505617",
+      "date": "2026-05-15",
+      "type": "Ride",
+      "name": "Outdoor Cycling",
+      "interval_summary": [
+        "3x 21m2s 125bpm",
+        "1x 16m25s 125bpm"
+      ],
+      "intervals": [
+        {
+          "type": "WORK",
+          "label": "1262s@125bpm",
+          "duration_secs": 1167,
+          "avg_hr": 124,
+          "max_hr": 142,
+          "zone": 2
+        },
+        {
+          "type": "WORK",
+          "label": "1262s@125bpm",
+          "duration_secs": 1365,
+          "avg_hr": 128,
+          "max_hr": 141,
+          "zone": 2
+        },
+        {
+          "type": "WORK",
+          "label": "1262s@125bpm",
+          "duration_secs": 1253,
+          "avg_hr": 124,
+          "max_hr": 139,
+          "zone": 2
+        },
+        {
+          "type": "WORK",
+          "label": "985s@125bpm",
+          "duration_secs": 985,
+          "avg_hr": 125,
+          "max_hr": 136,
           "zone": 2
         }
       ]
