@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-05-17T15:10:05.622937",
+    "last_updated": "2026-05-17T16:13:35.665183",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -483,7 +483,7 @@
     "p_max": 315,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-05-17T15:10:05.621994",
+    "calculation_timestamp": "2026-05-17T16:13:35.663955",
     "data_quality": {
       "hrv_data_points": 3,
       "rhr_data_points": 88,
@@ -4918,6 +4918,18 @@
       "duration_formatted": "1h30m",
       "workout_summary": "14m @78W | 2m @92W | 6\u00d71m @137W / 1m rec | 5m @72W | 6\u00d71m @137W / 1m rec | 5m @72W | 6\u00d71m @137W / 1m rec | 5m @72W | 6\u00d71m @137W / 1m rec | 2m @92W | 9m @72W",
       "description": "Warmup\n- Hey Jason! Criss-Cross workout awaits 14m ramp 45-75% 85rpm\n\nMain Set\n- Endurance 2m 65-75% 85rpm\n\n6x\n- Over 1m 105% 95rpm\n- Under 1m 95% 90rpm\n\nRecovery\n- Recovery 5m 55% 80rpm\n\n6x\n- Over 1m 105% 95rpm\n- Under 1m 95% 90rpm\n\nRecovery\n- Recovery 5m 55% 80rpm\n\n6x\n- Over 1m 105% 95rpm\n- Under 1m 95% 90rpm\n\nRecovery\n- Recovery 5m 55% 80rpm\n\n6x\n- Over 1m 105% 95rpm\n- Under 1m 95% 90rpm\n\nRecovery\n- Endurance 2m 65-75% 85rpm\n\nCooldown\n- Awesome effort, Jason. Spin easy now 9m ramp 65-45% 85rpm\n\n[Weekly Plan - Build]"
+    },
+    {
+      "id": 110635528,
+      "date": "2026-05-25",
+      "name": "IntervalCoach - Lower Body Strength",
+      "type": "WORKOUT",
+      "sport_type": "WeightTraining",
+      "planned_tss": null,
+      "duration_hours": 0.75,
+      "duration_formatted": "45m",
+      "workout_summary": null,
+      "description_preview": "Lower Body Strength\nLeg strength for cycling power and running economy\n1. Goblet Squat: 3 sets \u00d7 12 reps (Weight at chest, sit back into heels) [Rest: 60 sec]"
     }
   ],
   "workout_summary_stats": {
@@ -4925,7 +4937,7 @@
     "success": 2,
     "patternA": 2,
     "patternB": 0,
-    "bail_no_workout_doc": 2,
+    "bail_no_workout_doc": 3,
     "bail_no_match": 2
   },
   "weekly_summary": {
