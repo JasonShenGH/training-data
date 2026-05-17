@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-17T00:02:02.641842",
+  "generated_at": "2026-05-17T04:33:24.433316",
   "version": "3.86",
   "scan_hours": 72,
   "retention_days": 8,
@@ -138,6 +138,54 @@
           "avg_hr": 125,
           "max_hr": 136,
           "zone": 2
+        }
+      ]
+    },
+    {
+      "activity_id": "i148936126",
+      "date": "2026-05-17",
+      "type": "Ride",
+      "name": "Outdoor Cycling (Recovery)",
+      "interval_summary": [
+        "1x 51s 142w"
+      ],
+      "intervals": [
+        {
+          "type": "RECOVERY",
+          "duration_secs": 4373,
+          "avg_power": 52,
+          "max_power": 172,
+          "avg_hr": 129,
+          "max_hr": 149,
+          "avg_cadence": 66.9716,
+          "zone": 1,
+          "training_load": 23.002058,
+          "decoupling": 7.6534505
+        },
+        {
+          "type": "WORK",
+          "label": "51s@142w62rpm",
+          "duration_secs": 51,
+          "avg_power": 142,
+          "max_power": 158,
+          "avg_hr": 135,
+          "max_hr": 138,
+          "avg_cadence": 62.106384,
+          "zone": 5,
+          "training_load": 1.4602538,
+          "decoupling": 14.700758
+        },
+        {
+          "type": "RECOVERY",
+          "duration_secs": 836,
+          "avg_power": 59,
+          "max_power": 178,
+          "avg_hr": 129,
+          "max_hr": 142,
+          "avg_cadence": 67.0883,
+          "zone": 1,
+          "training_load": 8.023108,
+          "decoupling": -12.56091
         }
       ]
     }
