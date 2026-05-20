@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-05-19T23:46:06.576883",
+    "last_updated": "2026-05-20T04:11:31.485284",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -78,10 +78,10 @@
   "alerts": [
     {
       "metric": "acwr",
-      "value": 0.8,
-      "severity": "warning",
-      "threshold": "0.8 / 1.3",
-      "context": "ACWR 0.8 at edge of optimal range. Monitor closely. Alarm at 0.75/1.35.",
+      "value": 0.63,
+      "severity": "alarm",
+      "threshold": "0.75 / 1.35",
+      "context": "ACWR 0.63 outside safe range. Injury/overreach risk elevated.",
       "persistence_days": null,
       "tier": 2
     }
@@ -108,8 +108,8 @@
         "quality": null
       },
       "acwr": {
-        "status": "green",
-        "value": 0.8
+        "status": "amber",
+        "value": 0.63
       },
       "ri": {
         "status": "unavailable",
@@ -117,12 +117,12 @@
       },
       "tsb": {
         "status": "green",
-        "value": 6.2
+        "value": 7.8
       }
     },
     "signal_summary": {
-      "green": 2,
-      "amber": 0,
+      "green": 1,
+      "amber": 1,
       "red": 0,
       "unavailable": 4
     },
@@ -134,13 +134,13 @@
     },
     "race_week_defers": false,
     "modification": null,
-    "reason": "P3 green light. 2 green, 0 amber (threshold 2), 0 red. Note: 4 signals unavailable \u2014 limited data.",
+    "reason": "P3 green light. 1 green, 1 amber (threshold 2), 0 red. Note: 4 signals unavailable \u2014 limited data.",
     "alarm_refs": []
   },
   "history": {
     "available": true,
     "last_generated": "2026-05-03",
-    "age_days": 16,
+    "age_days": 17,
     "total_months": 23,
     "history_confidence": "high"
   },
@@ -178,17 +178,17 @@
   },
   "current_status": {
     "fitness": {
-      "ctl": 21.99,
-      "atl": 15.77,
-      "tsb": 6.22,
-      "ramp_rate": -1.49,
-      "fitness_source": "From Intervals.icu API (reflects completed workouts)"
+      "ctl": 21.47,
+      "atl": 13.67,
+      "tsb": 7.8,
+      "ramp_rate": -1.46,
+      "fitness_source": "Decayed from yesterday (today's planned workouts not yet completed)"
     },
     "thresholds": {
-      "eftp": 125.8,
-      "w_prime": 9457,
-      "w_prime_kj": 9.5,
-      "p_max": 314,
+      "eftp": 125.7,
+      "w_prime": 9448,
+      "w_prime_kj": 9.4,
+      "p_max": 313,
       "vo2max": null,
       "sports": {
         "cycling": {
@@ -260,19 +260,19 @@
     "rhr_baseline_28d": 64.8,
     "latest_hrv": null,
     "latest_rhr": null,
-    "acwr": 0.8,
-    "acwr_interpretation": "optimal",
-    "monotony": 0.75,
+    "acwr": 0.63,
+    "acwr_interpretation": "undertraining",
+    "monotony": 0.58,
     "monotony_interpretation": "normal",
     "primary_sport": "cycling",
-    "primary_sport_monotony": 0.78,
-    "primary_sport_tss_7d": 86.0,
-    "effective_monotony": 0.78,
+    "primary_sport_monotony": null,
+    "primary_sport_tss_7d": 65.0,
+    "effective_monotony": 0.58,
     "multi_sport_detected": true,
-    "strain": 74.0,
-    "stress_tolerance": 1.0,
+    "strain": 45.0,
+    "stress_tolerance": 0.8,
     "load_recovery_ratio": null,
-    "tss_7d_total": 98.0,
+    "tss_7d_total": 77.0,
     "tss_28d_total": 491.0,
     "zone_distribution_7d": {
       "z1_hours": 8.09,
@@ -379,7 +379,6 @@
       "completed_days": 9,
       "matched_days": 9,
       "planned_dates": [
-        "2026-02-19",
         "2026-02-21",
         "2026-02-22",
         "2026-02-23",
@@ -429,7 +428,8 @@
         "2026-05-14",
         "2026-05-15",
         "2026-05-17",
-        "2026-05-18"
+        "2026-05-18",
+        "2026-05-20"
       ],
       "completed_dates": [
         "2026-04-23",
@@ -455,7 +455,7 @@
           "weeks_available": 4
         },
         "stream_2": {
-          "planned_tss_delta": 3.54,
+          "planned_tss_delta": 4.25,
           "hard_sessions_planned": 4,
           "race_proximity": null,
           "next_week_load": 1.37,
@@ -487,13 +487,13 @@
       "benchmark_percentage": null,
       "seasonal_expected": null
     },
-    "eftp": 125.8,
-    "w_prime": 9457,
-    "w_prime_kj": 9.5,
-    "p_max": 314,
+    "eftp": 125.7,
+    "w_prime": 9448,
+    "w_prime_kj": 9.4,
+    "p_max": 313,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-05-19T23:46:06.575751",
+    "calculation_timestamp": "2026-05-20T04:11:31.484156",
     "data_quality": {
       "hrv_data_points": 3,
       "rhr_data_points": 88,
@@ -1301,45 +1301,6 @@
     }
   ],
   "wellness_data": [
-    {
-      "date": "2026-02-19",
-      "weight_kg": null,
-      "resting_hr": 59,
-      "hrv_rmssd": null,
-      "hrv_sdnn": 52.683353,
-      "sleep_hours": 7.63,
-      "sleep_formatted": "7h37m",
-      "sleep_quality": null,
-      "sleep_score": null,
-      "mental_energy": null,
-      "avg_sleeping_hr": null,
-      "vo2max": null,
-      "fatigue": null,
-      "soreness": null,
-      "stress": null,
-      "mood": null,
-      "motivation": null,
-      "injury": null,
-      "hydration": null,
-      "spO2": 96.0,
-      "blood_glucose": null,
-      "systolic": null,
-      "diastolic": null,
-      "baevsky_si": null,
-      "lactate": null,
-      "respiration": null,
-      "body_fat_pct": null,
-      "abdomen_cm": null,
-      "steps": 8615,
-      "hydration_volume_l": null,
-      "kcal_consumed": null,
-      "carbohydrates_g": null,
-      "protein_g": null,
-      "fat_g": null,
-      "menstrual_phase": null,
-      "menstrual_phase_predicted": null,
-      "readiness": null
-    },
     {
       "date": "2026-02-20",
       "weight_kg": 66.5,
@@ -4775,6 +4736,45 @@
     {
       "date": "2026-05-19",
       "weight_kg": null,
+      "resting_hr": 63,
+      "hrv_rmssd": null,
+      "hrv_sdnn": 39.70383,
+      "sleep_hours": 7.22,
+      "sleep_formatted": "7h13m",
+      "sleep_quality": null,
+      "sleep_score": null,
+      "mental_energy": null,
+      "avg_sleeping_hr": null,
+      "vo2max": null,
+      "fatigue": null,
+      "soreness": null,
+      "stress": null,
+      "mood": null,
+      "motivation": null,
+      "injury": null,
+      "hydration": null,
+      "spO2": 96.0,
+      "blood_glucose": null,
+      "systolic": null,
+      "diastolic": null,
+      "baevsky_si": null,
+      "lactate": null,
+      "respiration": null,
+      "body_fat_pct": null,
+      "abdomen_cm": null,
+      "steps": 5508,
+      "hydration_volume_l": null,
+      "kcal_consumed": null,
+      "carbohydrates_g": null,
+      "protein_g": null,
+      "fat_g": null,
+      "menstrual_phase": null,
+      "menstrual_phase_predicted": null,
+      "readiness": null
+    },
+    {
+      "date": "2026-05-20",
+      "weight_kg": null,
       "resting_hr": null,
       "hrv_rmssd": null,
       "hrv_sdnn": null,
@@ -4882,7 +4882,8 @@
       "planned_tss": 118,
       "duration_hours": 1.5,
       "duration_formatted": "1h30m",
-      "workout_summary": "14m @78W | 4m @156W | 3m @72W | 3m @158W | 3m @72W | 2m @160W | 3m @72W | 1m @159W | 5m @72W | 4m @156W | 3m @72W | 3m @158W | 3m @72W | 2m @160W | 3m @72W | 1m @159W | 4m @92W | 5\u00d71m @159W / 3m rec | 9m @72W"
+      "workout_summary": "14m @78W | 4m @156W | 3m @72W | 3m @158W | 3m @72W | 2m @160W | 3m @72W | 1m @159W | 5m @72W | 4m @156W | 3m @72W | 3m @158W | 3m @72W | 2m @160W | 3m @72W | 1m @159W | 4m @92W | 5\u00d71m @159W / 3m rec | 9m @72W",
+      "description": "Warmup\n- Hey Jason, let's get warmed up for this VO2max challenge! 14m ramp 45-75% 85rpm\n\nMain Set\n- VO2max 4min 4m 115-125% 95rpm\n- Recovery 3m 55% 80rpm\n- VO2max 3min 3m 117-125% 100rpm\n- Recovery 3m 55% 80rpm\n- VO2max 2min 2m 120-125% 105rpm\n- Recovery 3m 55% 80rpm\n- VO2max 1min 1m 122% 110rpm\n- Set Recovery 5m 55% 80rpm\n- VO2max 4min 4m 115-125% 95rpm\n- Recovery 3m 55% 80rpm\n- VO2max 3min 3m 117-125% 100rpm\n- Recovery 3m 55% 80rpm\n- VO2max 2min 2m 120-125% 105rpm\n- Recovery 3m 55% 80rpm\n- VO2max 1min 1m 122% 110rpm\n- Endurance 4m 65-75% 85rpm\n\n5x\n- VO9max 1min 1m 122% 110rpm\n- Recovery 3m 55% 80rpm\n\nCooldown\n- Fantastic work, Jason! Enjoy the recovery spin. 9m ramp 65-45% 85rpm\n\n[Weekly Plan - Build]"
     }
   ],
   "workout_summary_stats": {
