@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-05-24T11:03:36.917996",
+    "last_updated": "2026-05-24T12:12:16.067100",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -459,7 +459,7 @@
           "race_proximity": null,
           "next_week_load": null,
           "plan_coverage_current_week": 0.2,
-          "plan_coverage_next_week": 1.0
+          "plan_coverage_next_week": 0.0
         },
         "data_quality": "good",
         "stream_agreement": null
@@ -492,7 +492,7 @@
     "p_max": 312,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-05-24T11:03:36.916697",
+    "calculation_timestamp": "2026-05-24T12:12:16.065967",
     "data_quality": {
       "hrv_data_points": 3,
       "rhr_data_points": 88,
@@ -4779,75 +4779,15 @@
       "duration_formatted": "1h30m",
       "workout_summary": "14m @78W | 2m @92W | 6\u00d71m @137W / 1m rec | 5m @72W | 6\u00d71m @137W / 1m rec | 5m @72W | 6\u00d71m @137W / 1m rec | 5m @72W | 6\u00d71m @137W / 1m rec | 2m @92W | 9m @72W",
       "description": "Warmup\n- Hey Jason! Criss-Cross workout awaits 14m ramp 45-75% 85rpm\n\nMain Set\n- Endurance 2m 65-75% 85rpm\n\n6x\n- Over 1m 105% 95rpm\n- Under 1m 95% 90rpm\n\nRecovery\n- Recovery 5m 55% 80rpm\n\n6x\n- Over 1m 105% 95rpm\n- Under 1m 95% 90rpm\n\nRecovery\n- Recovery 5m 55% 80rpm\n\n6x\n- Over 1m 105% 95rpm\n- Under 1m 95% 90rpm\n\nRecovery\n- Recovery 5m 55% 80rpm\n\n6x\n- Over 1m 105% 95rpm\n- Under 1m 95% 90rpm\n\nRecovery\n- Endurance 2m 65-75% 85rpm\n\nCooldown\n- Awesome effort, Jason. Spin easy now 9m ramp 65-45% 85rpm\n\n[Weekly Plan - Build]"
-    },
-    {
-      "id": 110635528,
-      "date": "2026-05-25",
-      "name": "IntervalCoach - Lower Body Strength",
-      "type": "WORKOUT",
-      "sport_type": "WeightTraining",
-      "planned_tss": null,
-      "duration_hours": 0.75,
-      "duration_formatted": "45m",
-      "workout_summary": null,
-      "description": "Lower Body Strength\n\nLeg strength for cycling power and running economy\n\n1. Goblet Squat: 3 sets \u00d7 12 reps (Weight at chest, sit back into heels) [Rest: 60 sec]\n2. Romanian Deadlift: 3 sets \u00d7 10 reps (Hinge at hips, slight knee bend) [Rest: 60 sec]\n3. Walking Lunges: 3 sets \u00d7 10 reps each leg (Keep torso upright, knee tracks over toe) [Rest: 45 sec]\n4. Step-ups: 3 sets \u00d7 10 reps each leg (Use bench or box, drive through heel) [Rest: 45 sec]\n5. Calf Raises: 3 sets \u00d7 15 reps (Full range of motion, hold at top) [Rest: 30 sec]\n6. Single Leg Glute Bridge: 3 sets \u00d7 10 reps each leg (Keep hips level throughout) [Rest: 30 sec]\n\nBuild phase: increase weight, lower reps (6-10) for strength gains.\n\n[Duration: ~45 min]\n\n[Weekly Plan - Build]"
-    },
-    {
-      "id": 111189772,
-      "date": "2026-05-27",
-      "name": "IntervalCoach - VO2max Intervals",
-      "type": "WORKOUT",
-      "sport_type": "Ride",
-      "planned_tss": 118,
-      "duration_hours": 1.5,
-      "duration_formatted": "1h30m",
-      "workout_summary": "14m @78W | 4m @156W | 3m @72W | 3m @158W | 3m @72W | 2m @160W | 3m @72W | 1m @159W | 5m @72W | 4m @156W | 3m @72W | 3m @158W | 3m @72W | 2m @160W | 3m @72W | 1m @159W | 4m @92W | 5\u00d71m @159W / 3m rec | 9m @72W",
-      "description": "Warmup\n- Hey Jason, let's get warmed up for this VO2max challenge! 14m ramp 45-75% 85rpm\n\nMain Set\n- VO2max 4min 4m 115-125% 95rpm\n- Recovery 3m 55% 80rpm\n- VO2max 3min 3m 117-125% 100rpm\n- Recovery 3m 55% 80rpm\n- VO2max 2min 2m 120-125% 105rpm\n- Recovery 3m 55% 80rpm\n- VO2max 1min 1m 122% 110rpm\n- Set Recovery 5m 55% 80rpm\n- VO2max 4min 4m 115-125% 95rpm\n- Recovery 3m 55% 80rpm\n- VO2max 3min 3m 117-125% 100rpm\n- Recovery 3m 55% 80rpm\n- VO2max 2min 2m 120-125% 105rpm\n- Recovery 3m 55% 80rpm\n- VO2max 1min 1m 122% 110rpm\n- Endurance 4m 65-75% 85rpm\n\n5x\n- VO9max 1min 1m 122% 110rpm\n- Recovery 3m 55% 80rpm\n\nCooldown\n- Fantastic work, Jason! Enjoy the recovery spin. 9m ramp 65-45% 85rpm\n\n[Weekly Plan - Build]"
-    },
-    {
-      "id": 111381074,
-      "date": "2026-05-28",
-      "name": "IntervalCoach - Lower Body Strength",
-      "type": "WORKOUT",
-      "sport_type": "WeightTraining",
-      "planned_tss": null,
-      "duration_hours": 0.75,
-      "duration_formatted": "45m",
-      "workout_summary": null,
-      "description": "Lower Body Strength\n\nLeg strength for cycling power and running economy\n\n1. Goblet Squat: 3 sets \u00d7 12 reps (Weight at chest, sit back into heels) [Rest: 60 sec]\n2. Romanian Deadlift: 3 sets \u00d7 10 reps (Hinge at hips, slight knee bend) [Rest: 60 sec]\n3. Walking Lunges: 3 sets \u00d7 10 reps each leg (Keep torso upright, knee tracks over toe) [Rest: 45 sec]\n4. Step-ups: 3 sets \u00d7 10 reps each leg (Use bench or box, drive through heel) [Rest: 45 sec]\n5. Calf Raises: 3 sets \u00d7 15 reps (Full range of motion, hold at top) [Rest: 30 sec]\n6. Single Leg Glute Bridge: 3 sets \u00d7 10 reps each leg (Keep hips level throughout) [Rest: 30 sec]\n\nBuild phase: increase weight, lower reps (6-10) for strength gains.\n\n[Duration: ~45 min]\n\n[Weekly Plan - Build]"
-    },
-    {
-      "id": 111558900,
-      "date": "2026-05-29",
-      "name": "IntervalCoach - Threshold Repeats",
-      "type": "WORKOUT",
-      "sport_type": "Ride",
-      "planned_tss": 110,
-      "duration_hours": 1.5,
-      "duration_formatted": "1h30m",
-      "workout_summary": null,
-      "description": "Warmup\n- Hey Jason! Threshold repeats are on deck. 14m ramp 45-75% 85rpm\n\nMain Set\n- Endurance 3m 65-75% 85rpm\n- Threshold 1 12m 95-102% 90rpm\n- Recovery 4m 55% 80rpm\n- Threshold 2 10m 96-103% 91rpm\n- Recovery 4m 55% 80rpm\n- Threshold 3 8m 97-104% 93rpm\n- Recovery 4m 55% 80rpm\n- Threshold 4 7m 97-104% 94rpm\n- Recovery 4m 55% 80rpm\n- Threshold 5 7m 98-105% 95rpm\n- Endurance 4m 65-75% 85rpm\n\nCooldown\n- Awesome job, Jason. Spin easy now. 9m ramp 65-45% 85rpm\n\n[Weekly Plan - Build]"
-    },
-    {
-      "id": 111867296,
-      "date": "2026-05-31",
-      "name": "IntervalCoach - Aerobic Endurance",
-      "type": "WORKOUT",
-      "sport_type": "Ride",
-      "planned_tss": 68,
-      "duration_hours": 1.5,
-      "duration_formatted": "1h30m",
-      "workout_summary": null,
-      "description": "Warmup\n- Hey Jason! Progressive aerobic challenge awaits 14m ramp 45-75% 85rpm\n\nMain Set\n- Z2 Low 22m 65% 85rpm\n- Z2 Mid 22m 69% 88rpm\n- Z2 Upper 23m 73% 90rpm\n\nCooldown\n- Fantastic ride, enjoy the recovery spin 9m ramp 65-45% 85rpm\n\n[Weekly Plan - Build]"
     }
   ],
   "workout_summary_stats": {
-    "attempted": 4,
-    "success": 2,
-    "patternA": 2,
+    "attempted": 1,
+    "success": 1,
+    "patternA": 1,
     "patternB": 0,
-    "bail_no_workout_doc": 2,
-    "bail_no_match": 2
+    "bail_no_workout_doc": 0,
+    "bail_no_match": 0
   },
   "weekly_summary": {
     "total_training_hours": 16.61,
