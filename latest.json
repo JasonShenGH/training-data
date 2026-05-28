@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-05-28T12:35:43.703762",
+    "last_updated": "2026-05-28T16:43:46.993435",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -457,9 +457,9 @@
           "planned_tss_delta": null,
           "hard_sessions_planned": 1,
           "race_proximity": null,
-          "next_week_load": 1.25,
+          "next_week_load": 2.57,
           "plan_coverage_current_week": 0.2,
-          "plan_coverage_next_week": 0.6
+          "plan_coverage_next_week": 0.8
         },
         "data_quality": "good",
         "stream_agreement": null
@@ -492,7 +492,7 @@
     "p_max": 311,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-05-28T12:35:43.702603",
+    "calculation_timestamp": "2026-05-28T16:43:46.992244",
     "data_quality": {
       "hrv_data_points": 3,
       "rhr_data_points": 88,
@@ -4727,13 +4727,24 @@
       "duration_formatted": "45m",
       "workout_summary": null,
       "description": "Lower Body Strength\n\nLeg strength for cycling power and running economy\n\n1. Goblet Squat: 3 sets \u00d7 12 reps (Weight at chest, sit back into heels) [Rest: 60 sec]\n2. Romanian Deadlift: 3 sets \u00d7 10 reps (Hinge at hips, slight knee bend) [Rest: 60 sec]\n3. Walking Lunges: 3 sets \u00d7 10 reps each leg (Keep torso upright, knee tracks over toe) [Rest: 45 sec]\n4. Step-ups: 3 sets \u00d7 10 reps each leg (Use bench or box, drive through heel) [Rest: 45 sec]\n5. Calf Raises: 3 sets \u00d7 15 reps (Full range of motion, hold at top) [Rest: 30 sec]\n6. Single Leg Glute Bridge: 3 sets \u00d7 10 reps each leg (Keep hips level throughout) [Rest: 30 sec]\n\nBuild phase: increase weight, lower reps (6-10) for strength gains.\n\n[Duration: ~45 min]\n\n[Weekly Plan - Build]"
+    },
+    {
+      "id": 112879890,
+      "date": "2026-06-05",
+      "name": "IntervalCoach - Threshold Climbs",
+      "type": "WORKOUT",
+      "sport_type": "Ride",
+      "planned_tss": 114,
+      "duration_hours": 1.5,
+      "duration_formatted": "1h30m",
+      "workout_summary": "11m @78W | 3\u00d730s @107W / 45s rec | 5m @72W | 10m @127W | 5m @72W | 10m @128W | 5m @72W | 10m @132W | 5m @72W | 10m @134W | 6m @72W"
     }
   ],
   "workout_summary_stats": {
-    "attempted": 1,
-    "success": 0,
+    "attempted": 2,
+    "success": 1,
     "patternA": 0,
-    "patternB": 0,
+    "patternB": 1,
     "bail_no_workout_doc": 3,
     "bail_no_match": 1
   },
