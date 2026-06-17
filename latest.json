@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-06-17T13:48:03.782584",
+    "last_updated": "2026-06-17T17:11:24.670367",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -447,9 +447,9 @@
           "planned_tss_delta": 0.6,
           "hard_sessions_planned": 1,
           "race_proximity": null,
-          "next_week_load": 0.43,
+          "next_week_load": 0.86,
           "plan_coverage_current_week": 0.2,
-          "plan_coverage_next_week": 0.4
+          "plan_coverage_next_week": 0.6
         },
         "data_quality": "good",
         "stream_agreement": false
@@ -482,7 +482,7 @@
     "p_max": 307,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-06-17T13:48:03.555963",
+    "calculation_timestamp": "2026-06-17T17:11:24.669105",
     "data_quality": {
       "hrv_data_points": 3,
       "rhr_data_points": 87,
@@ -4827,6 +4827,18 @@
       "duration_formatted": "1h33m",
       "workout_summary": "11m @78W | 1m @148W | 30s @72W | 1m @148W | 30s @72W | 11m @92W | 8\u00d73m @148W / 3m rec | 11m @92W | 9m @72W",
       "description": "Warmup\n- Hey Jason, time for some VO2max! 11m ramp 45-75% 85rpm\n- Primer 1 1m 113% 90rpm\n- Primer recovery 30s 55% 85rpm\n- Primer 2 1m 113% 90rpm\n- Primer recovery 30s 55% 85rpm\n\nMain Set\n- Endurance 11m 65-75% 85rpm\n\n8x\n- VO2max 3m 106-120% 100rpm\n- Recovery 3m 55% 80rpm\n\nRecovery\n- Endurance 11m 65-75% 85rpm\n\nCooldown\n- Awesome job, Jason! Spin easy now. 9m ramp 65-45% 85rpm\n\n[Weekly Plan - Build]"
+    },
+    {
+      "id": 116698278,
+      "date": "2026-06-25",
+      "name": "IntervalCoach - Lower Body Strength",
+      "type": "WORKOUT",
+      "sport_type": "WeightTraining",
+      "planned_tss": 37,
+      "duration_hours": 0.75,
+      "duration_formatted": "45m",
+      "workout_summary": null,
+      "description_preview": "Lower Body Strength\nLeg strength for cycling power and running economy\n1. Goblet Squat: 3 sets \u00d7 12 reps (Weight at chest, sit back into heels) [Rest: 60 sec]"
     }
   ],
   "workout_summary_stats": {
@@ -4834,7 +4846,7 @@
     "success": 1,
     "patternA": 1,
     "patternB": 0,
-    "bail_no_workout_doc": 2,
+    "bail_no_workout_doc": 3,
     "bail_no_match": 0
   },
   "weekly_summary": {
