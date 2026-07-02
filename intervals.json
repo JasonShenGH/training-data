@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-02T10:46:53.138716",
+  "generated_at": "2026-07-02T13:01:12.826031",
   "version": "3.86",
   "scan_hours": 72,
   "retention_days": 8,
@@ -281,6 +281,25 @@
           "avg_hr": 107,
           "max_hr": 119,
           "zone": 1
+        }
+      ]
+    },
+    {
+      "activity_id": "i162050184",
+      "date": "2026-07-02",
+      "type": "VirtualRide",
+      "name": "Indoor Cycling",
+      "interval_summary": [
+        "1x 30m14s 118bpm"
+      ],
+      "intervals": [
+        {
+          "type": "WORK",
+          "label": "1814s@118bpm",
+          "duration_secs": 1814,
+          "avg_hr": 118,
+          "max_hr": 130,
+          "zone": 2
         }
       ]
     }
