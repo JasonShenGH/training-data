@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-07-07T05:44:28.680818",
+    "last_updated": "2026-07-07T08:55:55.712419",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -88,9 +88,9 @@
       },
       "rhr": {
         "status": "amber",
-        "value": 69,
+        "value": 70,
         "baseline_7d": 65.7,
-        "delta_bpm": 3.3
+        "delta_bpm": 4.3
       },
       "sleep": {
         "status": "green",
@@ -103,7 +103,7 @@
       },
       "ri": {
         "status": "green",
-        "value": 1.01
+        "value": 1.0
       },
       "tsb": {
         "status": "green",
@@ -209,7 +209,7 @@
     },
     "current_metrics": {
       "weight_kg": 62.4,
-      "resting_hr": 69,
+      "resting_hr": 70,
       "hrv": 39.235416,
       "sleep_quality": null,
       "sleep_hours": 7.52,
@@ -243,13 +243,13 @@
     }
   },
   "derived_metrics": {
-    "recovery_index": 1.01,
+    "recovery_index": 1.0,
     "hrv_baseline_7d": 36.9,
     "rhr_baseline_7d": 65.7,
     "hrv_baseline_28d": 37.7,
     "rhr_baseline_28d": 66.2,
     "latest_hrv": 39.235416,
-    "latest_rhr": 69,
+    "latest_rhr": 70,
     "acwr": 0.83,
     "acwr_interpretation": "optimal",
     "monotony": 1.25,
@@ -261,7 +261,7 @@
     "multi_sport_detected": true,
     "strain": 132.0,
     "stress_tolerance": 1.1,
-    "load_recovery_ratio": 1.0,
+    "load_recovery_ratio": 1.1,
     "tss_7d_total": 106.0,
     "tss_28d_total": 513.0,
     "zone_distribution_7d": {
@@ -484,7 +484,7 @@
     "p_max": 302,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-07-07T05:44:28.679588",
+    "calculation_timestamp": "2026-07-07T08:55:55.711255",
     "data_quality": {
       "hrv_data_points": 6,
       "rhr_data_points": 88,
@@ -4986,7 +4986,7 @@
     {
       "date": "2026-07-07",
       "weight_kg": 62.4,
-      "resting_hr": 69,
+      "resting_hr": 70,
       "hrv_rmssd": 39.235416,
       "hrv_sdnn": null,
       "sleep_hours": 7.52,
