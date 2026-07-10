@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-10T05:41:30.972880",
+  "generated_at": "2026-07-10T12:00:29.083089",
   "version": "3.86",
   "scan_hours": 72,
   "retention_days": 8,
@@ -39,6 +39,93 @@
           "avg_hr": 120,
           "max_hr": 128,
           "zone": 2
+        }
+      ]
+    },
+    {
+      "activity_id": "i164420087",
+      "date": "2026-07-10",
+      "type": "Ride",
+      "name": "IntervalCoach - Neuromuscular Sprints",
+      "interval_summary": [
+        "4x 16m4s 139bpm",
+        "1x 2m48s 146bpm"
+      ],
+      "intervals": [
+        {
+          "type": "WORK",
+          "label": "964s@139bpm",
+          "duration_secs": 932,
+          "avg_hr": 135,
+          "max_hr": 147,
+          "zone": 3
+        },
+        {
+          "type": "RECOVERY",
+          "duration_secs": 111,
+          "avg_hr": 143,
+          "max_hr": 148,
+          "zone": 3
+        },
+        {
+          "type": "WORK",
+          "label": "964s@139bpm",
+          "duration_secs": 1009,
+          "avg_hr": 140,
+          "max_hr": 149,
+          "zone": 3
+        },
+        {
+          "type": "RECOVERY",
+          "duration_secs": 251,
+          "avg_hr": 141,
+          "max_hr": 147,
+          "zone": 3
+        },
+        {
+          "type": "WORK",
+          "label": "964s@139bpm",
+          "duration_secs": 971,
+          "avg_hr": 137,
+          "max_hr": 148,
+          "zone": 3
+        },
+        {
+          "type": "RECOVERY",
+          "duration_secs": 358,
+          "avg_hr": 134,
+          "max_hr": 140,
+          "zone": 3
+        },
+        {
+          "type": "WORK",
+          "label": "964s@139bpm",
+          "duration_secs": 944,
+          "avg_hr": 144,
+          "max_hr": 155,
+          "zone": 3
+        },
+        {
+          "type": "RECOVERY",
+          "duration_secs": 56,
+          "avg_hr": 143,
+          "max_hr": 152,
+          "zone": 3
+        },
+        {
+          "type": "WORK",
+          "label": "168s@146bpm",
+          "duration_secs": 168,
+          "avg_hr": 146,
+          "max_hr": 158,
+          "zone": 3
+        },
+        {
+          "type": "RECOVERY",
+          "duration_secs": 6,
+          "avg_hr": 142,
+          "max_hr": 143,
+          "zone": 3
         }
       ]
     }
