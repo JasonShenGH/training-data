@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-07-13T23:14:58.166637",
+    "last_updated": "2026-07-14T00:10:53.648254",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -82,19 +82,19 @@
     "signals": {
       "hrv": {
         "status": "green",
-        "value": 40.9,
-        "baseline_7d": 37.0,
-        "delta_pct": 10.5
+        "value": 42.3,
+        "baseline_7d": 37.4,
+        "delta_pct": 13.2
       },
       "rhr": {
-        "status": "green",
-        "value": 67,
+        "status": "unavailable",
+        "value": null,
         "baseline_7d": 65.7,
-        "delta_bpm": 1.3
+        "delta_bpm": null
       },
       "sleep": {
         "status": "green",
-        "hours": 7.72,
+        "hours": 7.28,
         "quality": null
       },
       "acwr": {
@@ -102,19 +102,19 @@
         "value": 1.08
       },
       "ri": {
-        "status": "green",
-        "value": 1.08
+        "status": "unavailable",
+        "value": null
       },
       "tsb": {
         "status": "green",
-        "value": -4.3
+        "value": -4.7
       }
     },
     "signal_summary": {
-      "green": 6,
+      "green": 4,
       "amber": 0,
       "red": 0,
-      "unavailable": 0
+      "unavailable": 2
     },
     "phase_context": {
       "phase": "Base",
@@ -124,7 +124,7 @@
     },
     "race_week_defers": false,
     "modification": null,
-    "reason": "P3 green light. 6 green, 0 amber (threshold 2), 0 red.",
+    "reason": "P3 green light. 4 green, 0 amber (threshold 2), 0 red.",
     "alarm_refs": []
   },
   "history": {
@@ -162,11 +162,11 @@
   },
   "current_status": {
     "fitness": {
-      "ctl": 21.88,
-      "atl": 26.15,
-      "tsb": -4.27,
-      "ramp_rate": 1.78,
-      "fitness_source": "Decayed from yesterday (today's planned workouts not yet completed)"
+      "ctl": 22.21,
+      "atl": 26.94,
+      "tsb": -4.73,
+      "ramp_rate": 2.13,
+      "fitness_source": "From Intervals.icu API (reflects completed workouts)"
     },
     "thresholds": {
       "eftp": 120.6,
@@ -204,10 +204,10 @@
     "current_metrics": {
       "weight_kg": 62.5,
       "resting_hr": 67,
-      "hrv": 40.902767,
+      "hrv": 42.320534,
       "sleep_quality": null,
-      "sleep_hours": 7.72,
-      "sleep_formatted": "7h43m",
+      "sleep_hours": 7.28,
+      "sleep_formatted": "7h17m",
       "sleep_score": null,
       "fatigue": null,
       "soreness": null,
@@ -216,13 +216,13 @@
       "motivation": null,
       "injury": null,
       "hydration": null,
-      "spO2": 92.0,
+      "spO2": 98.0,
       "blood_glucose": null,
       "systolic": null,
       "diastolic": null,
       "baevsky_si": null,
       "lactate": null,
-      "respiration": 15.0,
+      "respiration": 16.0,
       "body_fat_pct": null,
       "abdomen_cm": null,
       "steps": null,
@@ -237,13 +237,13 @@
     }
   },
   "derived_metrics": {
-    "recovery_index": 1.08,
-    "hrv_baseline_7d": 37.0,
+    "recovery_index": null,
+    "hrv_baseline_7d": 37.4,
     "rhr_baseline_7d": 65.7,
-    "hrv_baseline_28d": 37.3,
-    "rhr_baseline_28d": 66,
-    "latest_hrv": 40.902767,
-    "latest_rhr": 67,
+    "hrv_baseline_28d": 37.8,
+    "rhr_baseline_28d": 66.1,
+    "latest_hrv": 42.320534,
+    "latest_rhr": null,
     "acwr": 1.08,
     "acwr_interpretation": "optimal",
     "monotony": 0.98,
@@ -255,7 +255,7 @@
     "multi_sport_detected": true,
     "strain": 131.0,
     "stress_tolerance": 1.3,
-    "load_recovery_ratio": 1.2,
+    "load_recovery_ratio": null,
     "tss_7d_total": 134.0,
     "tss_28d_total": 497.0,
     "zone_distribution_7d": {
@@ -359,11 +359,10 @@
     },
     "consistency_index": 0.14,
     "consistency_details": {
-      "planned_days": 50,
+      "planned_days": 49,
       "completed_days": 14,
       "matched_days": 7,
       "planned_dates": [
-        "2026-04-15",
         "2026-04-16",
         "2026-04-17",
         "2026-04-19",
@@ -443,11 +442,11 @@
           "weeks_available": 4
         },
         "stream_2": {
-          "planned_tss_delta": 2.04,
-          "hard_sessions_planned": 5,
+          "planned_tss_delta": 2.38,
+          "hard_sessions_planned": 4,
           "race_proximity": null,
           "next_week_load": 3.25,
-          "plan_coverage_current_week": 1.0,
+          "plan_coverage_current_week": 0.8,
           "plan_coverage_next_week": 1.0
         },
         "data_quality": "good",
@@ -481,13 +480,13 @@
     "p_max": 301,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-07-13T23:14:58.165713",
+    "calculation_timestamp": "2026-07-14T00:10:53.647057",
     "data_quality": {
-      "hrv_data_points": 12,
-      "rhr_data_points": 88,
+      "hrv_data_points": 13,
+      "rhr_data_points": 87,
       "activities_7d": 21,
       "activities_28d": 21,
-      "planned_workouts_7d": 50,
+      "planned_workouts_7d": 49,
       "ftp_history_days": {
         "indoor": 0,
         "outdoor": 0
@@ -1474,45 +1473,6 @@
     }
   ],
   "wellness_data": [
-    {
-      "date": "2026-04-15",
-      "weight_kg": null,
-      "resting_hr": 60,
-      "hrv_rmssd": null,
-      "hrv_sdnn": 37.329903,
-      "sleep_hours": 7.46,
-      "sleep_formatted": "7h27m",
-      "sleep_quality": null,
-      "sleep_score": null,
-      "mental_energy": null,
-      "avg_sleeping_hr": null,
-      "vo2max": null,
-      "fatigue": null,
-      "soreness": null,
-      "stress": null,
-      "mood": null,
-      "motivation": null,
-      "injury": null,
-      "hydration": null,
-      "spO2": 95.0,
-      "blood_glucose": null,
-      "systolic": null,
-      "diastolic": null,
-      "baevsky_si": null,
-      "lactate": null,
-      "respiration": null,
-      "body_fat_pct": null,
-      "abdomen_cm": null,
-      "steps": 8100,
-      "hydration_volume_l": null,
-      "kcal_consumed": null,
-      "carbohydrates_g": null,
-      "protein_g": null,
-      "fat_g": null,
-      "menstrual_phase": null,
-      "menstrual_phase_predicted": null,
-      "readiness": null
-    },
     {
       "date": "2026-04-16",
       "weight_kg": null,
@@ -4983,21 +4943,48 @@
       "menstrual_phase": null,
       "menstrual_phase_predicted": null,
       "readiness": null
+    },
+    {
+      "date": "2026-07-14",
+      "weight_kg": 62.5,
+      "resting_hr": null,
+      "hrv_rmssd": 42.320534,
+      "hrv_sdnn": null,
+      "sleep_hours": 7.28,
+      "sleep_formatted": "7h17m",
+      "sleep_quality": null,
+      "sleep_score": null,
+      "mental_energy": null,
+      "avg_sleeping_hr": null,
+      "vo2max": null,
+      "fatigue": null,
+      "soreness": null,
+      "stress": null,
+      "mood": null,
+      "motivation": null,
+      "injury": null,
+      "hydration": null,
+      "spO2": 98.0,
+      "blood_glucose": null,
+      "systolic": null,
+      "diastolic": null,
+      "baevsky_si": null,
+      "lactate": null,
+      "respiration": 16.0,
+      "body_fat_pct": null,
+      "abdomen_cm": null,
+      "steps": null,
+      "hydration_volume_l": null,
+      "kcal_consumed": null,
+      "carbohydrates_g": null,
+      "protein_g": null,
+      "fat_g": null,
+      "menstrual_phase": null,
+      "menstrual_phase_predicted": null,
+      "readiness": null
     }
   ],
   "planned_workouts": [
-    {
-      "id": 122102163,
-      "date": "2026-07-13",
-      "name": "IntervalCoach - Lower Body Strength",
-      "type": "WORKOUT",
-      "sport_type": "WeightTraining",
-      "planned_tss": 37,
-      "duration_hours": 0.75,
-      "duration_formatted": "45m",
-      "workout_summary": null,
-      "description": "Lower Body Strength\n\nLeg strength for cycling power and running economy\n\n1. Goblet Squat: 3 sets \u00d7 12 reps (Weight at chest, sit back into heels) [Rest: 60 sec]\n2. Romanian Deadlift: 3 sets \u00d7 10 reps (Hinge at hips, slight knee bend) [Rest: 60 sec]\n3. Walking Lunges: 3 sets \u00d7 10 reps each leg (Keep torso upright, knee tracks over toe) [Rest: 45 sec]\n4. Step-ups: 3 sets \u00d7 10 reps each leg (Use bench or box, drive through heel) [Rest: 45 sec]\n5. Calf Raises: 3 sets \u00d7 15 reps (Full range of motion, hold at top) [Rest: 30 sec]\n6. Single Leg Glute Bridge: 3 sets \u00d7 10 reps each leg (Keep hips level throughout) [Rest: 30 sec]\n\nBuild phase: increase weight, lower reps (6-10) for strength gains.\n\n[Duration: ~45 min]\n\n[Weekly Plan - Build]"
-    },
     {
       "id": 122102203,
       "date": "2026-07-15",
@@ -5111,7 +5098,7 @@
     "success": 2,
     "patternA": 2,
     "patternB": 0,
-    "bail_no_workout_doc": 4,
+    "bail_no_workout_doc": 3,
     "bail_no_match": 4
   },
   "weekly_summary": {
@@ -5119,7 +5106,7 @@
     "total_training_formatted": "18h27m",
     "total_tss": 497,
     "activities_count": 21,
-    "avg_hrv": 37.0,
+    "avg_hrv": 37.4,
     "avg_resting_hr": 65.7
   },
   "race_calendar": {
