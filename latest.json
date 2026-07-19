@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-07-19T08:57:53.485710",
+    "last_updated": "2026-07-19T10:39:58.128438",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -78,10 +78,10 @@
   "alerts": [
     {
       "metric": "rhr",
-      "value": 71,
+      "value": 74,
       "severity": "warning",
       "threshold": "\u2191\u22655bpm vs baseline (65.9)",
-      "context": "RHR 71 is 5.1bpm above baseline. Monitor \u2014 alarm if persists >2 days.",
+      "context": "RHR 74 is 8.1bpm above baseline. Monitor \u2014 alarm if persists >2 days.",
       "persistence_days": 2,
       "tier": 1
     },
@@ -107,9 +107,9 @@
       },
       "rhr": {
         "status": "red",
-        "value": 71,
+        "value": 74,
         "baseline_7d": 65.9,
-        "delta_bpm": 5.1
+        "delta_bpm": 8.1
       },
       "sleep": {
         "status": "green",
@@ -122,7 +122,7 @@
       },
       "ri": {
         "status": "green",
-        "value": 0.88
+        "value": 0.85
       },
       "tsb": {
         "status": "green",
@@ -232,7 +232,7 @@
     },
     "current_metrics": {
       "weight_kg": 61.9,
-      "resting_hr": 71,
+      "resting_hr": 74,
       "hrv": 35.4312,
       "sleep_quality": null,
       "sleep_hours": 8.0,
@@ -245,7 +245,7 @@
       "motivation": null,
       "injury": null,
       "hydration": null,
-      "spO2": 95.0,
+      "spO2": 97.0,
       "blood_glucose": null,
       "systolic": null,
       "diastolic": null,
@@ -266,13 +266,13 @@
     }
   },
   "derived_metrics": {
-    "recovery_index": 0.88,
+    "recovery_index": 0.85,
     "hrv_baseline_7d": 37.3,
     "rhr_baseline_7d": 65.9,
     "hrv_baseline_28d": 37.6,
-    "rhr_baseline_28d": 66.5,
+    "rhr_baseline_28d": 66.6,
     "latest_hrv": 35.4312,
-    "latest_rhr": 71,
+    "latest_rhr": 74,
     "acwr": 0.26,
     "acwr_interpretation": "undertraining",
     "monotony": 0.38,
@@ -506,7 +506,7 @@
     "p_max": 299,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-07-19T08:57:53.484543",
+    "calculation_timestamp": "2026-07-19T10:39:58.127203",
     "data_quality": {
       "hrv_data_points": 18,
       "rhr_data_points": 88,
@@ -4824,7 +4824,7 @@
     {
       "date": "2026-07-19",
       "weight_kg": 61.9,
-      "resting_hr": 71,
+      "resting_hr": 74,
       "hrv_rmssd": 35.4312,
       "hrv_sdnn": null,
       "sleep_hours": 8.0,
@@ -4841,7 +4841,7 @@
       "motivation": null,
       "injury": null,
       "hydration": null,
-      "spO2": 95.0,
+      "spO2": 97.0,
       "blood_glucose": null,
       "systolic": null,
       "diastolic": null,
