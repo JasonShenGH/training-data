@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-07-25T21:04:09.069147",
+    "last_updated": "2026-07-25T22:11:41.261808",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -117,7 +117,7 @@
       },
       "tsb": {
         "status": "green",
-        "value": -0.4
+        "value": 6.8
       }
     },
     "signal_summary": {
@@ -178,15 +178,15 @@
   },
   "current_status": {
     "fitness": {
-      "ctl": 20.06,
-      "atl": 20.5,
-      "tsb": -0.44,
-      "ramp_rate": -0.06,
+      "ctl": 18.27,
+      "atl": 11.5,
+      "tsb": 6.77,
+      "ramp_rate": -1.85,
       "fitness_source": "From Intervals.icu API (reflects completed workouts)"
     },
     "thresholds": {
-      "eftp": 119.3,
-      "w_prime": 8969,
+      "eftp": 119.2,
+      "w_prime": 8960,
       "w_prime_kj": 9.0,
       "p_max": 297,
       "vo2max": null,
@@ -454,7 +454,7 @@
           "race_proximity": null,
           "next_week_load": null,
           "plan_coverage_current_week": 0.2,
-          "plan_coverage_next_week": 0.0
+          "plan_coverage_next_week": 0.8
         },
         "data_quality": "good",
         "stream_agreement": null
@@ -481,13 +481,13 @@
       "benchmark_percentage": null,
       "seasonal_expected": null
     },
-    "eftp": 119.3,
-    "w_prime": 8969,
+    "eftp": 119.2,
+    "w_prime": 8960,
     "w_prime_kj": 9.0,
     "p_max": 297,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-07-25T21:04:09.068305",
+    "calculation_timestamp": "2026-07-25T22:11:41.260557",
     "data_quality": {
       "hrv_data_points": 22,
       "rhr_data_points": 87,
@@ -4979,15 +4979,62 @@
       "duration_formatted": "1h33m",
       "workout_summary": null,
       "description": "Warmup\n- Hey Jason! Endurance and strength await. 14m ramp 45-75% 85rpm\n\nMain Set\n- Endurance 19m 65-75% 88rpm\n\n4x\n- Strength 1 (low cadence) 3m 82% 60rpm\n- Threshold 2m 95-100% 92rpm\n- Recovery 3m 55% 85rpm\n\nRecovery\n- Cruise 19m 65-75% 88rpm\n\nCooldown\n- Great job, Jason! Recover strong. 9m ramp 65-45% 85rpm\n\n[Weekly Plan - Build]"
+    },
+    {
+      "id": 125099996,
+      "date": "2026-07-27",
+      "name": "IntervalCoach - Core Stability",
+      "type": "WORKOUT",
+      "sport_type": "WeightTraining",
+      "planned_tss": 37,
+      "duration_hours": 0.75,
+      "duration_formatted": "45m",
+      "workout_summary": null,
+      "description": "Core Stability\n\nCore exercises to improve stability, posture, and power transfer\n\n1. Plank: 5 sets \u00d7 45-60 sec (Keep body in straight line, engage glutes) [Rest: 30 sec]\n2. Side Plank: 3 sets \u00d7 30 sec each side (Stack feet or stagger for stability) [Rest: 15 sec]\n3. Dead Bug: 5 sets \u00d7 10 reps each side (Keep lower back pressed to floor) [Rest: 30 sec]\n4. Bird Dog: 5 sets \u00d7 10 reps each side (Extend opposite arm and leg, hold 2s) [Rest: 30 sec]\n5. Glute Bridge: 5 sets \u00d7 15 reps (Squeeze glutes at top, hold 2s) [Rest: 30 sec]\n6. Pallof Press: 5 sets \u00d7 10 reps each side (Band at chest height, press and hold, resist rotation) [Rest: 30 sec]\n\n[Duration: ~45 min]\n\n[Weekly Plan - Recovery]"
+    },
+    {
+      "id": 125100022,
+      "date": "2026-07-29",
+      "name": "IntervalCoach - Aerobic Cruise",
+      "type": "WORKOUT",
+      "sport_type": "Ride",
+      "planned_tss": 31,
+      "duration_hours": 0.7,
+      "duration_formatted": "42m",
+      "workout_summary": null,
+      "description": "Main Set\n- Hey Jason, easy aerobic spin ahead! 7m 45-75%\n- Low 10m 65%\n- Mid 10m 69%\n- Upper 11m 73%\n\nCooldown\n- Fantastic work, enjoy the cool down 4m ramp 65-45%"
+    },
+    {
+      "id": 125100053,
+      "date": "2026-07-31",
+      "name": "IntervalCoach - Sprint Intervals",
+      "type": "WORKOUT",
+      "sport_type": "Ride",
+      "planned_tss": 30,
+      "duration_hours": 0.64,
+      "duration_formatted": "38m35s",
+      "workout_summary": "6m @78W | 5\u00d75m @92W / 7s rec | 3m @84W | 4m @72W",
+      "description": "Main Set\n- Hey Jason! Endurance and sprints await. 6m 45-75%\n\n5x\n- Endurance 5m 65-75%\n- Sprint 7s 150%\n\nRecovery\n- Endurance 3m 60-70%\n- Fantastic work, Jason! Enjoy the recovery. 4m 65-45%"
+    },
+    {
+      "id": 125100087,
+      "date": "2026-08-02",
+      "name": "IntervalCoach - Sprint Intervals",
+      "type": "WORKOUT",
+      "sport_type": "Ride",
+      "planned_tss": 30,
+      "duration_hours": 0.64,
+      "duration_formatted": "38m35s",
+      "workout_summary": "6m @78W | 5\u00d75m @92W / 7s rec | 3m @84W | 4m @72W"
     }
   ],
   "workout_summary_stats": {
-    "attempted": 1,
-    "success": 0,
-    "patternA": 0,
+    "attempted": 4,
+    "success": 2,
+    "patternA": 2,
     "patternB": 0,
-    "bail_no_workout_doc": 0,
-    "bail_no_match": 1
+    "bail_no_workout_doc": 1,
+    "bail_no_match": 2
   },
   "weekly_summary": {
     "total_training_hours": 17.75,
