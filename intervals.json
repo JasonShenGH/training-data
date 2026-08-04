@@ -1,56 +1,9 @@
 {
-  "generated_at": "2026-08-03T23:51:17.765748",
+  "generated_at": "2026-08-04T03:18:46.990206",
   "version": "3.86",
   "scan_hours": 72,
   "retention_days": 8,
   "activities": [
-    {
-      "activity_id": "i169223806",
-      "date": "2026-07-26",
-      "type": "Ride",
-      "name": "IntervalCoach - Threshold Repeats",
-      "interval_summary": [
-        "1x 50s 149w"
-      ],
-      "intervals": [
-        {
-          "type": "RECOVERY",
-          "duration_secs": 5962,
-          "avg_power": 86,
-          "max_power": 374,
-          "avg_hr": 137,
-          "max_hr": 155,
-          "avg_cadence": 72.106514,
-          "zone": 2,
-          "training_load": 76.303246
-        },
-        {
-          "type": "WORK",
-          "label": "50s@149w69rpm",
-          "duration_secs": 50,
-          "avg_power": 149,
-          "max_power": 173,
-          "avg_hr": 144,
-          "max_hr": 147,
-          "avg_cadence": 68.94,
-          "zone": 5,
-          "training_load": 1.5862842,
-          "decoupling": 0.94161785
-        },
-        {
-          "type": "RECOVERY",
-          "duration_secs": 255,
-          "avg_power": 51,
-          "max_power": 187,
-          "avg_hr": 138,
-          "max_hr": 150,
-          "avg_cadence": 64.73913,
-          "zone": 1,
-          "training_load": 3.710529,
-          "decoupling": 22.923262
-        }
-      ]
-    },
     {
       "activity_id": "i171579134",
       "date": "2026-08-02",
