@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-08-08T21:35:40.754566",
+    "last_updated": "2026-08-08T22:03:37.941272",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -183,10 +183,10 @@
   },
   "current_status": {
     "fitness": {
-      "ctl": 19.87,
-      "atl": 23.39,
-      "tsb": -3.52,
-      "ramp_rate": 2.06,
+      "ctl": 18.42,
+      "atl": 16.12,
+      "tsb": 2.3,
+      "ramp_rate": 0.62,
       "fitness_source": "From Intervals.icu API (reflects completed workouts)"
     },
     "thresholds": {
@@ -453,9 +453,9 @@
           "planned_tss_delta": 3.0,
           "hard_sessions_planned": 1,
           "race_proximity": null,
-          "next_week_load": null,
+          "next_week_load": 1.89,
           "plan_coverage_current_week": 0.2,
-          "plan_coverage_next_week": 0.0
+          "plan_coverage_next_week": 1.0
         },
         "data_quality": "good",
         "stream_agreement": null
@@ -488,7 +488,7 @@
     "p_max": 371,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-08-08T21:35:40.753391",
+    "calculation_timestamp": "2026-08-08T22:03:37.939934",
     "data_quality": {
       "hrv_data_points": 19,
       "rhr_data_points": 87,
@@ -4795,15 +4795,75 @@
       "duration_formatted": "1h30m",
       "workout_summary": "14m @78W | 5\u00d76m @91W / 6m rec | 7m @91W | 9m @72W",
       "description": "Warmup\n- Hey Jason! Endurance and cadence await. 14m ramp 45-75% 85rpm\n\nMain Set\n5x\n- High Cadence 6m 70% 100rpm\n- Low Cadence 6m 70% 70rpm\n\nRecovery\n- High Cadence 6 7m 70% 100rpm\n\nCooldown\n- Fantastic ride, Jason. Recover well now. 9m ramp 65-45%\n\n\n[Weekly Plan - Build]"
+    },
+    {
+      "id": 127987387,
+      "date": "2026-08-10",
+      "name": "IntervalCoach - Lower-Body-Strength",
+      "type": "WORKOUT",
+      "sport_type": "WeightTraining",
+      "planned_tss": 37,
+      "duration_hours": 0.75,
+      "duration_formatted": "45m",
+      "workout_summary": null,
+      "description": "Lower Body Strength\n\nLeg strength for cycling power and running economy\n\n1. Goblet Squat: 3 sets \u00d7 12 reps (Weight at chest, sit back into heels) [Rest: 60 sec]\n2. Romanian Deadlift: 3 sets \u00d7 10 reps (Hinge at hips, slight knee bend) [Rest: 60 sec]\n3. Walking Lunges: 3 sets \u00d7 10 reps each leg (Keep torso upright, knee tracks over toe) [Rest: 45 sec]\n4. Step-ups: 3 sets \u00d7 10 reps each leg (Use bench or box, drive through heel) [Rest: 45 sec]\n5. Calf Raises: 3 sets \u00d7 15 reps (Full range of motion, hold at top) [Rest: 30 sec]\n6. Single Leg Glute Bridge: 3 sets \u00d7 10 reps each leg (Keep hips level throughout) [Rest: 30 sec]\n\nBuild phase: increase weight, lower reps (6-10) for strength gains.\n\n[Duration: ~45 min]\n\n[Weekly Plan - Build]"
+    },
+    {
+      "id": 127987413,
+      "date": "2026-08-12",
+      "name": "IntervalCoach - 7x3 Sweet Spot Intervals",
+      "type": "WORKOUT",
+      "sport_type": "Ride",
+      "planned_tss": 47,
+      "duration_hours": 0.75,
+      "duration_formatted": "45m",
+      "workout_summary": "5m @78W | 40s @119W | 20s @72W | 40s @119W | 20s @72W | 2m @92W | 7\u00d73m @119W / 1m rec | 3m @92W | 5m @72W",
+      "description": "Main Set\n- Hey Jason! Sweet spot intervals are up 5m 45-75%\n- Primer 1 40s 91%\n- Primer recovery 20s 55%\n- Primer 2 40s 91%\n- Primer recovery 20s 55%\n- Endurance 2m 65-75%\n\n7x\n- SS Interval 3m 88-94%\n- Recovery 1m 55%\n\nRecovery\n- Endurance 3m 65-75%\n- Awesome job, Jason! Recover strong 5m 65-45%"
+    },
+    {
+      "id": 127987426,
+      "date": "2026-08-13",
+      "name": "IntervalCoach - Lower-Body-Strength",
+      "type": "WORKOUT",
+      "sport_type": "WeightTraining",
+      "planned_tss": 37,
+      "duration_hours": 0.75,
+      "duration_formatted": "45m",
+      "workout_summary": null,
+      "description": "Lower Body Strength\n\nLeg strength for cycling power and running economy\n\n1. Goblet Squat: 3 sets \u00d7 12 reps (Weight at chest, sit back into heels) [Rest: 60 sec]\n2. Romanian Deadlift: 3 sets \u00d7 10 reps (Hinge at hips, slight knee bend) [Rest: 60 sec]\n3. Walking Lunges: 3 sets \u00d7 10 reps each leg (Keep torso upright, knee tracks over toe) [Rest: 45 sec]\n4. Step-ups: 3 sets \u00d7 10 reps each leg (Use bench or box, drive through heel) [Rest: 45 sec]\n5. Calf Raises: 3 sets \u00d7 15 reps (Full range of motion, hold at top) [Rest: 30 sec]\n6. Single Leg Glute Bridge: 3 sets \u00d7 10 reps each leg (Keep hips level throughout) [Rest: 30 sec]\n\nBuild phase: increase weight, lower reps (6-10) for strength gains.\n\n[Duration: ~45 min]\n\n[Weekly Plan - Build]"
+    },
+    {
+      "id": 127987458,
+      "date": "2026-08-14",
+      "name": "IntervalCoach - VO2max Descending",
+      "type": "WORKOUT",
+      "sport_type": "Ride",
+      "planned_tss": 52,
+      "duration_hours": 0.76,
+      "duration_formatted": "45m32s",
+      "workout_summary": null,
+      "description": "Main Set\n- Hey Jason, get ready for some VO2max! 6m 45-75%\n- Primer 1 19s 115%\n- Primer recovery 19s 55%\n- Primer 2 19s 115%\n- Primer recovery 19s 55%\n- Endurance 3m 65-75%\n- VO2max 3m 100-114%\n- Recovery 2m 55%\n- VO2max 2m 102-116%\n- Recovery 2m 55%\n- VO2max 1m 104-118%\n- Recovery 2m 55%\n- VO2max 38s 106-120%\n- Set Recovery 3m 55%\n- VO2max 3m 100-114%\n- Recovery 2m 55%\n- VO2max 2m 102-116%\n- Recovery 2m 55%\n- VO2max 1m 104-118%\n- Recovery 2m 55%\n- VO2max 38s 106-120%\n- Endurance 3m 65-75%\n- Awesome work, Jason! Enjoy the recovery. 4m 65-45%"
+    },
+    {
+      "id": 127987488,
+      "date": "2026-08-16",
+      "name": "IntervalCoach - 3x2 Endurance Strength Threshold",
+      "type": "WORKOUT",
+      "sport_type": "Ride",
+      "planned_tss": 51,
+      "duration_hours": 0.95,
+      "duration_formatted": "57m",
+      "workout_summary": null,
+      "description_preview": "Main Set\n- Hey Jason! Ready for endurance and strength today. 9m 45-75%\n- Endurance 14m 65-75%"
     }
   ],
   "workout_summary_stats": {
-    "attempted": 1,
-    "success": 1,
-    "patternA": 1,
+    "attempted": 4,
+    "success": 2,
+    "patternA": 2,
     "patternB": 0,
-    "bail_no_workout_doc": 0,
-    "bail_no_match": 0
+    "bail_no_workout_doc": 2,
+    "bail_no_match": 2
   },
   "weekly_summary": {
     "total_training_hours": 16.25,
