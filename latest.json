@@ -62,30 +62,20 @@
       "menstrual": "menstrual_phase and menstrual_phase_predicted are not on the 1-4 scale. Values: PERIOD, FOLLICULAR, OVULATION, LUTEAL, etc."
     },
     "quick_stats": {
-      "total_training_hours": 14.73,
-      "total_training_formatted": "14h44m",
-      "total_activities": 16,
-      "total_tss": 412
+      "total_training_hours": 15.56,
+      "total_training_formatted": "15h33m",
+      "total_activities": 17,
+      "total_tss": 429
     }
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-08-11T10:12:35.944067",
+    "last_updated": "2026-08-11T11:07:22.394267",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
   },
-  "alerts": [
-    {
-      "metric": "acwr",
-      "value": 0.74,
-      "severity": "alarm",
-      "threshold": "0.75 / 1.35",
-      "context": "ACWR 0.74 outside safe range. Injury/overreach risk elevated.",
-      "persistence_days": null,
-      "tier": 2
-    }
-  ],
+  "alerts": [],
   "readiness_decision": {
     "recommendation": "go",
     "priority": 3,
@@ -108,8 +98,8 @@
         "quality": null
       },
       "acwr": {
-        "status": "amber",
-        "value": 0.74
+        "status": "green",
+        "value": 0.87
       },
       "ri": {
         "status": "unavailable",
@@ -117,12 +107,12 @@
       },
       "tsb": {
         "status": "green",
-        "value": 4.9
+        "value": 3.1
       }
     },
     "signal_summary": {
-      "green": 1,
-      "amber": 1,
+      "green": 2,
+      "amber": 0,
       "red": 0,
       "unavailable": 4
     },
@@ -134,7 +124,7 @@
     },
     "race_week_defers": false,
     "modification": null,
-    "reason": "P3 green light. 1 green, 1 amber (threshold 2), 0 red. Note: 4 signals unavailable \u2014 limited data.",
+    "reason": "P3 green light. 2 green, 0 amber (threshold 2), 0 red. Note: 4 signals unavailable \u2014 limited data.",
     "alarm_refs": []
   },
   "history": {
@@ -147,8 +137,8 @@
   "summary": {
     "period_description": "Last 90 days of training (including today)",
     "note": "Duration calculated from API moving_time field.",
-    "total_duration_decimal_hours": 14.73,
-    "total_activities": 16,
+    "total_duration_decimal_hours": 15.56,
+    "total_activities": 17,
     "by_activity_type": {
       "Hike": {
         "duration_decimal_hours": 5.79,
@@ -169,19 +159,19 @@
         "distance_km": 21.2
       },
       "WeightTraining": {
-        "duration_decimal_hours": 3.21,
-        "count": 4,
-        "tss": 75,
+        "duration_decimal_hours": 4.04,
+        "count": 5,
+        "tss": 92,
         "distance_km": 0.0
       }
     }
   },
   "current_status": {
     "fitness": {
-      "ctl": 17.64,
-      "atl": 12.7,
-      "tsb": 4.94,
-      "ramp_rate": -1.28,
+      "ctl": 18.04,
+      "atl": 14.97,
+      "tsb": 3.07,
+      "ramp_rate": -0.88,
       "fitness_source": "From Intervals.icu API (reflects completed workouts)"
     },
     "thresholds": {
@@ -260,43 +250,43 @@
     "rhr_baseline_28d": 65.0,
     "latest_hrv": null,
     "latest_rhr": null,
-    "acwr": 0.74,
-    "acwr_interpretation": "undertraining",
-    "monotony": 0.8,
-    "monotony_interpretation": "normal (primary sport 0.77, total 0.8 inflated by multi-sport)",
+    "acwr": 0.87,
+    "acwr_interpretation": "optimal",
+    "monotony": 1.03,
+    "monotony_interpretation": "normal (primary sport 0.77, total 1.03 inflated by multi-sport)",
     "primary_sport": "cycling",
     "primary_sport_monotony": 0.77,
     "primary_sport_tss_7d": 65.0,
     "effective_monotony": 0.77,
     "multi_sport_detected": true,
-    "strain": 61.0,
-    "stress_tolerance": 0.8,
+    "strain": 96.0,
+    "stress_tolerance": 0.9,
     "load_recovery_ratio": null,
-    "tss_7d_total": 76.0,
-    "tss_28d_total": 412.0,
+    "tss_7d_total": 93.0,
+    "tss_28d_total": 429.0,
     "zone_distribution_7d": {
-      "z1_hours": 6.99,
-      "z2_hours": 5.17,
-      "z3_hours": 1.26,
+      "z1_hours": 7.52,
+      "z2_hours": 5.45,
+      "z3_hours": 1.27,
       "z4_plus_hours": 0.64,
-      "total_hours": 14.05,
+      "total_hours": 14.87,
       "zone_basis": "mixed"
     },
-    "grey_zone_percentage": 8.9,
+    "grey_zone_percentage": 8.5,
     "grey_zone_note": "Gray Zone % (Z3/tempo) - minimize in polarized training",
-    "quality_intensity_percentage": 4.5,
+    "quality_intensity_percentage": 4.3,
     "quality_intensity_note": "Quality Intensity % (Z4+/threshold+) - target ~20% in polarized training",
     "polarisation_index": 0.87,
     "polarisation_note": "Easy time (Z1+Z2) / Total - target ~80% in polarized training",
     "hard_days_this_week": 2,
     "hard_days_note": "Power ladder: z3+ >= 30min, z4+ >= 10min, z5+ >= 5min, z6+ >= 2min, z7 >= 1min. HR fallback (when no power): z4+ >= 10min, z5+ >= 5min. Per Seiler 3-zone model + Foster. HR-based days flagged with intensity_basis: hr",
     "seiler_tid_7d": {
-      "z1_seconds": 43760,
-      "z2_seconds": 4521,
+      "z1_seconds": 46680,
+      "z2_seconds": 4570,
       "z3_seconds": 2294,
-      "z1_pct": 86.5,
-      "z2_pct": 8.9,
-      "z3_pct": 4.5,
+      "z1_pct": 87.2,
+      "z2_pct": 8.5,
+      "z3_pct": 4.3,
       "polarization_index": null,
       "classification": "Pyramidal",
       "zone_basis": "mixed"
@@ -314,12 +304,12 @@
       "sport": "cycling"
     },
     "seiler_tid_28d": {
-      "z1_seconds": 43760,
-      "z2_seconds": 4521,
+      "z1_seconds": 46680,
+      "z2_seconds": 4570,
       "z3_seconds": 2294,
-      "z1_pct": 86.5,
-      "z2_pct": 8.9,
-      "z3_pct": 4.5,
+      "z1_pct": 87.2,
+      "z2_pct": 8.5,
+      "z3_pct": 4.3,
       "polarization_index": null,
       "classification": "Pyramidal",
       "zone_basis": "mixed"
@@ -483,12 +473,12 @@
     "p_max": 370,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-08-11T10:12:35.942928",
+    "calculation_timestamp": "2026-08-11T11:07:22.393244",
     "data_quality": {
       "hrv_data_points": 19,
       "rhr_data_points": 87,
-      "activities_7d": 16,
-      "activities_28d": 16,
+      "activities_7d": 17,
+      "activities_28d": 17,
       "planned_workouts_7d": 45,
       "ftp_history_days": {
         "indoor": 0,
@@ -497,6 +487,50 @@
     }
   },
   "recent_activities": [
+    {
+      "id": "i174697168",
+      "date": "2026-08-11T15:38:59",
+      "type": "WeightTraining",
+      "name": "GYM- Upper Body",
+      "duration_hours": 0.82,
+      "distance_km": 0.0,
+      "tss": 17,
+      "intensity_factor": 45.416843,
+      "avg_power": null,
+      "normalized_power": null,
+      "avg_hr": 103,
+      "max_hr": 130,
+      "avg_cadence": null,
+      "avg_speed": null,
+      "max_speed": null,
+      "avg_pace": null,
+      "avg_temp": null,
+      "weather": null,
+      "humidity": null,
+      "wind_speed": null,
+      "work_kj": null,
+      "calories": 173,
+      "carbs_used": null,
+      "carbs_ingested": null,
+      "variability_index": null,
+      "decoupling": null,
+      "efficiency_factor": null,
+      "hrrc": null,
+      "elevation_m": null,
+      "feel": null,
+      "rpe": 5,
+      "zone_distribution": {
+        "hr_zones": {
+          "z1_time": 1917,
+          "z2_time": 1003,
+          "z3_time": 49,
+          "z4_time": 0,
+          "z5_time": 0
+        }
+      },
+      "has_intervals": false,
+      "description": "GYM- Upper Body\nTuesday, Aug 11, 2026 at 3:38pm\n\nBench Press (Smith Machine)\nSet 1: 57 kg x 8\nSet 2: 57 kg x 8\nSet 3: 57 kg x 8\nSet 4: 57 kg x 7\n\nIncline Bench Press (Smith Machine)\nSet 1: 42 kg x 8\nSet 2: 42 kg x 8\nSet 3: 42 kg x 8\nSet 4: 42 kg x 8\n\nSeated Cable Row - V Grip (Cable)\nSet 1: 52 kg x 8\nSet 2: 52 kg x 8\nSet 3: 52 kg x 8\nSet 4: 52 kg x 8\n\nLat Pulldown (Cable)\nSet 1: 38 kg x 8\nSet 2: 38 kg x 8\nSet 3: 38 kg x 7\nSet 4: 38 kg x 7\n\n@hevyapp\nhttps://hevy.com/workout/VrOwBNquXWN\n\n---\n\n\ud83d\udcca IntervalCoach Analysis\nWorkout score: 7/10\nTSS: 17\nTraining stimulus: mixed\nEst. recovery: 12h\n\n\ud83d\udd17 https://www.intervalcoach.app/?ref=REF-ZMF3D5"
+    },
     {
       "id": "i173908382",
       "date": "2026-08-09T07:14:00",
@@ -4793,10 +4827,10 @@
     "bail_no_match": 2
   },
   "weekly_summary": {
-    "total_training_hours": 14.73,
-    "total_training_formatted": "14h44m",
-    "total_tss": 412,
-    "activities_count": 16,
+    "total_training_hours": 15.56,
+    "total_training_formatted": "15h33m",
+    "total_tss": 429,
+    "activities_count": 17,
     "avg_hrv": 37.2,
     "avg_resting_hr": 65.9
   },
