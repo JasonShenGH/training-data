@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-08-15T21:57:59.655985",
+    "last_updated": "2026-08-15T22:32:00.250983",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -441,9 +441,9 @@
           "planned_tss_delta": 2.25,
           "hard_sessions_planned": 1,
           "race_proximity": null,
-          "next_week_load": null,
+          "next_week_load": 0.88,
           "plan_coverage_current_week": 0.2,
-          "plan_coverage_next_week": 0.0
+          "plan_coverage_next_week": 0.8
         },
         "data_quality": "good",
         "stream_agreement": null
@@ -476,7 +476,7 @@
     "p_max": 368,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-08-15T21:57:59.654789",
+    "calculation_timestamp": "2026-08-15T22:32:00.249833",
     "data_quality": {
       "hrv_data_points": 19,
       "rhr_data_points": 87,
@@ -4753,15 +4753,62 @@
       "duration_formatted": "57m",
       "workout_summary": null,
       "description": "Main Set\n- Hey Jason! Ready for endurance and strength today. 9m 45-75%\n- Endurance 14m 65-75%\n- Strength 1 (low cadence) 2m 82%\n- Threshold 1 2m 95-100%\n- Recovery 2m 55%\n- Strength 2 (low cadence) 2m 82%\n- Threshold 2 2m 95-100%\n- Recovery 2m 55%\n- Strength 3 (low cadence) 2m 82%\n- Threshold 3 2m 95-100%\n- Cruise 13m 65-75%\n- Fantastic work, Jason! Recover well. 5m 65-45%"
+    },
+    {
+      "id": 129407398,
+      "date": "2026-08-17",
+      "name": "IntervalCoach - Core-Stability",
+      "type": "WORKOUT",
+      "sport_type": "WeightTraining",
+      "planned_tss": 37,
+      "duration_hours": 0.75,
+      "duration_formatted": "45m",
+      "workout_summary": null,
+      "description": "Core Stability\n\nCore exercises to improve stability, posture, and power transfer\n\n1. Plank: 5 sets \u00d7 45-60 sec (Keep body in straight line, engage glutes) [Rest: 30 sec]\n2. Side Plank: 3 sets \u00d7 30 sec each side (Stack feet or stagger for stability) [Rest: 15 sec]\n3. Dead Bug: 5 sets \u00d7 10 reps each side (Keep lower back pressed to floor) [Rest: 30 sec]\n4. Bird Dog: 5 sets \u00d7 10 reps each side (Extend opposite arm and leg, hold 2s) [Rest: 30 sec]\n5. Glute Bridge: 5 sets \u00d7 15 reps (Squeeze glutes at top, hold 2s) [Rest: 30 sec]\n6. Pallof Press: 5 sets \u00d7 10 reps each side (Band at chest height, press and hold, resist rotation) [Rest: 30 sec]\n\n[Duration: ~45 min]\n\n[Weekly Plan - Recovery]"
+    },
+    {
+      "id": 129407444,
+      "date": "2026-08-19",
+      "name": "IntervalCoach - Endurance Spin",
+      "type": "WORKOUT",
+      "sport_type": "Ride",
+      "planned_tss": 23,
+      "duration_hours": 0.52,
+      "duration_formatted": "31m",
+      "workout_summary": null,
+      "description": "Main Set\n- Hey Jason! Easy recovery spin ahead. 4m 45-75%\n- Endurance 23m 65-75%\n- Great job Jason, enjoy the spin. 4m 65-45%"
+    },
+    {
+      "id": 129407467,
+      "date": "2026-08-21",
+      "name": "IntervalCoach - Progressive Aerobic",
+      "type": "WORKOUT",
+      "sport_type": "Ride",
+      "planned_tss": 23,
+      "duration_hours": 0.52,
+      "duration_formatted": "31m",
+      "workout_summary": null,
+      "description": "Main Set\n- Hey Jason! Easy aerobic recovery ride. 4m 45-75%\n- Low 8m 65%\n- Mid 8m 69%\n- Upper 7m 73%\n- Nice job, Jason. Enjoy the spin. 4m 65-45%"
+    },
+    {
+      "id": 129407519,
+      "date": "2026-08-23",
+      "name": "IntervalCoach - 4x2 Endurance Pickups",
+      "type": "WORKOUT",
+      "sport_type": "Ride",
+      "planned_tss": 24,
+      "duration_hours": 0.47,
+      "duration_formatted": "28m",
+      "workout_summary": "4m @78W | 4\u00d72m @92W / 2m rec | 6m @92W | 2m @72W"
     }
   ],
   "workout_summary_stats": {
-    "attempted": 1,
-    "success": 0,
-    "patternA": 0,
+    "attempted": 4,
+    "success": 1,
+    "patternA": 1,
     "patternB": 0,
-    "bail_no_workout_doc": 0,
-    "bail_no_match": 1
+    "bail_no_workout_doc": 1,
+    "bail_no_match": 3
   },
   "weekly_summary": {
     "total_training_hours": 15.46,
