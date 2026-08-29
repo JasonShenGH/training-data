@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-08-29T21:18:01.921376",
+    "last_updated": "2026-08-29T23:32:52.688416",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -446,9 +446,9 @@
           "planned_tss_delta": null,
           "hard_sessions_planned": 1,
           "race_proximity": null,
-          "next_week_load": null,
+          "next_week_load": 0.93,
           "plan_coverage_current_week": 0.2,
-          "plan_coverage_next_week": 0.0
+          "plan_coverage_next_week": 1.0
         },
         "data_quality": "good",
         "stream_agreement": null
@@ -481,7 +481,7 @@
     "p_max": 364,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-08-29T21:18:01.920162",
+    "calculation_timestamp": "2026-08-29T23:32:52.687218",
     "data_quality": {
       "hrv_data_points": 19,
       "rhr_data_points": 88,
@@ -4628,15 +4628,75 @@
       "duration_formatted": "1h20m",
       "workout_summary": "12m @78W | 4\u00d711m @92W / 4m rec | 8m @72W",
       "description": "Main Set\n- Hey Jason! Endurance and tempo pushes await. 12m 45-75%\n\n4x\n- Endurance 11m 65-75%\n- Tempo 4m 76-82%\n\nCooldown\n- Fantastic work, Jason! Enjoy the cool-down. 8m ramp 65-45%"
+    },
+    {
+      "id": 132506843,
+      "date": "2026-08-31",
+      "name": "IntervalCoach - Lower-Body-Strength",
+      "type": "WORKOUT",
+      "sport_type": "WeightTraining",
+      "planned_tss": 37,
+      "duration_hours": 0.75,
+      "duration_formatted": "45m",
+      "workout_summary": null,
+      "description": "Lower Body Strength\n\nLeg strength for cycling power and running economy\n\n1. Goblet Squat: 3 sets \u00d7 12 reps (Weight at chest, sit back into heels) [Rest: 60 sec]\n2. Romanian Deadlift: 3 sets \u00d7 10 reps (Hinge at hips, slight knee bend) [Rest: 60 sec]\n3. Walking Lunges: 3 sets \u00d7 10 reps each leg (Keep torso upright, knee tracks over toe) [Rest: 45 sec]\n4. Step-ups: 3 sets \u00d7 10 reps each leg (Use bench or box, drive through heel) [Rest: 45 sec]\n5. Calf Raises: 3 sets \u00d7 15 reps (Full range of motion, hold at top) [Rest: 30 sec]\n6. Single Leg Glute Bridge: 3 sets \u00d7 10 reps each leg (Keep hips level throughout) [Rest: 30 sec]\n\nBuild phase: increase weight, lower reps (6-10) for strength gains.\n\n[Duration: ~45 min]\n\n[Weekly Plan - Build]"
+    },
+    {
+      "id": 132506909,
+      "date": "2026-09-02",
+      "name": "IntervalCoach - Threshold Intervals",
+      "type": "WORKOUT",
+      "sport_type": "Ride",
+      "planned_tss": 67,
+      "duration_hours": 0.89,
+      "duration_formatted": "53m8s",
+      "workout_summary": "7m @78W | 23s @128W | 23s @72W | 23s @128W | 23s @72W | 2m @92W | 6\u00d746s @137W / 46s rec | 4m @72W | 6\u00d746s @137W / 46s rec | 4m @72W | 6\u00d746s @137W / 46s rec | 2m @92W | 5m @72W",
+      "description": "Main Set\n- Hey Jason! Let's crush this Criss-Cross 7m 45-75% 85rpm\n- Primer 1 23s 98% 90rpm\n- Primer recovery 23s 55%\n- Primer 2 23s 98% 90rpm\n- Primer recovery 23s 55%\n- Endurance 2m 65-75% 85rpm\n\n6x\n- Over 46s 105% 95rpm\n- Under 46s 95% 90rpm\n\nRecovery\n- Recovery 4m 55%\n\n6x\n- Over 46s 105% 95rpm\n- Under 46s 95% 90rpm\n\nRecovery\n- Recovery 4m 55%\n\n6x\n- Over 46s 105% 95rpm\n- Under 46s 95% 90rpm\n\nRecovery\n- Endurance 2m 65-75% 85rpm\n- Awesome job, Jason! Spin easy now 5m 65-45%"
+    },
+    {
+      "id": 132506952,
+      "date": "2026-09-03",
+      "name": "IntervalCoach - Lower-Body-Strength",
+      "type": "WORKOUT",
+      "sport_type": "WeightTraining",
+      "planned_tss": 37,
+      "duration_hours": 0.75,
+      "duration_formatted": "45m",
+      "workout_summary": null,
+      "description": "Lower Body Strength\n\nLeg strength for cycling power and running economy\n\n1. Goblet Squat: 3 sets \u00d7 12 reps (Weight at chest, sit back into heels) [Rest: 60 sec]\n2. Romanian Deadlift: 3 sets \u00d7 10 reps (Hinge at hips, slight knee bend) [Rest: 60 sec]\n3. Walking Lunges: 3 sets \u00d7 10 reps each leg (Keep torso upright, knee tracks over toe) [Rest: 45 sec]\n4. Step-ups: 3 sets \u00d7 10 reps each leg (Use bench or box, drive through heel) [Rest: 45 sec]\n5. Calf Raises: 3 sets \u00d7 15 reps (Full range of motion, hold at top) [Rest: 30 sec]\n6. Single Leg Glute Bridge: 3 sets \u00d7 10 reps each leg (Keep hips level throughout) [Rest: 30 sec]\n\nBuild phase: increase weight, lower reps (6-10) for strength gains.\n\n[Duration: ~45 min]\n\n[Weekly Plan - Build]"
+    },
+    {
+      "id": 132506968,
+      "date": "2026-09-04",
+      "name": "IntervalCoach - 8x2 VO2max Intervals",
+      "type": "WORKOUT",
+      "sport_type": "Ride",
+      "planned_tss": 63,
+      "duration_hours": 0.8,
+      "duration_formatted": "48m10s",
+      "workout_summary": "5m @78W | 43s @148W | 22s @72W | 43s @148W | 22s @72W | 2m @92W | 8\u00d72m @148W / 2m rec | 2m @92W | 5m @72W",
+      "description": "Main Set\n- Hey Jason! VO2max power awaits! 5m 45-75% 85rpm\n- Primer 1 43s 113% 90rpm\n- Primer recovery 22s 55%\n- Primer 2 43s 113% 90rpm\n- Primer recovery 22s 55%\n- Endurance 2m 65-75% 85rpm\n\n8x\n- VO2max 2m 106-120% 100rpm\n- Recovery 2m 55%\n\nRecovery\n- Endurance 2m 65-75% 85rpm\n- Fantastic work, enjoy the recovery spin 5m 65-45%"
+    },
+    {
+      "id": 132506983,
+      "date": "2026-09-06",
+      "name": "IntervalCoach - Aerobic Endurance",
+      "type": "WORKOUT",
+      "sport_type": "Ride",
+      "planned_tss": 66,
+      "duration_hours": 1.5,
+      "duration_formatted": "1h30m",
+      "workout_summary": null,
+      "description_preview": "Warmup\n- Hey Jason! Endurance ride today 14m ramp 45-75% 85rpm\nMain Set"
     }
   ],
   "workout_summary_stats": {
-    "attempted": 1,
-    "success": 1,
-    "patternA": 1,
+    "attempted": 4,
+    "success": 3,
+    "patternA": 3,
     "patternB": 0,
-    "bail_no_workout_doc": 0,
-    "bail_no_match": 0
+    "bail_no_workout_doc": 2,
+    "bail_no_match": 1
   },
   "weekly_summary": {
     "total_training_hours": 11.48,
