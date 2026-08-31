@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-08-30T22:46:50.556318",
+    "last_updated": "2026-08-31T01:17:42.158603",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -117,7 +117,7 @@
       },
       "tsb": {
         "status": "green",
-        "value": 10.4
+        "value": 4.6
       }
     },
     "signal_summary": {
@@ -140,7 +140,7 @@
   "history": {
     "available": true,
     "last_generated": "2026-07-12",
-    "age_days": 49,
+    "age_days": 50,
     "total_months": 25,
     "history_confidence": "high"
   },
@@ -166,17 +166,17 @@
   },
   "current_status": {
     "fitness": {
-      "ctl": 13.74,
-      "atl": 3.34,
-      "tsb": 10.4,
-      "ramp_rate": -2.49,
+      "ctl": 14.88,
+      "atl": 10.28,
+      "tsb": 4.6,
+      "ramp_rate": -0.96,
       "fitness_source": "Decayed from yesterday (today's planned workouts not yet completed)"
     },
     "thresholds": {
-      "eftp": 115.8,
-      "w_prime": 8704,
+      "eftp": 115.7,
+      "w_prime": 8695,
       "w_prime_kj": 8.7,
-      "p_max": 364,
+      "p_max": 363,
       "vo2max": null,
       "sports": {
         "cycling": {
@@ -245,7 +245,7 @@
     "hrv_baseline_7d": 37.2,
     "rhr_baseline_7d": 65.9,
     "hrv_baseline_28d": null,
-    "rhr_baseline_28d": 66.1,
+    "rhr_baseline_28d": 66.2,
     "latest_hrv": null,
     "latest_rhr": null,
     "acwr": 0.0,
@@ -363,7 +363,7 @@
     },
     "consistency_index": 0.13,
     "consistency_details": {
-      "planned_days": 46,
+      "planned_days": 47,
       "completed_days": 7,
       "matched_days": 6,
       "planned_dates": [
@@ -412,7 +412,8 @@
         "2026-08-26",
         "2026-08-27",
         "2026-08-28",
-        "2026-08-30"
+        "2026-08-30",
+        "2026-08-31"
       ],
       "completed_dates": [
         "2026-08-05",
@@ -426,7 +427,7 @@
     },
     "phase_detection": {
       "phase": "Base",
-      "confidence": "high",
+      "confidence": "medium",
       "reason_codes": [],
       "basis": {
         "stream_1": {
@@ -436,12 +437,12 @@
           "weeks_available": 4
         },
         "stream_2": {
-          "planned_tss_delta": null,
-          "hard_sessions_planned": 1,
+          "planned_tss_delta": 0.93,
+          "hard_sessions_planned": 5,
           "race_proximity": null,
-          "next_week_load": 0.93,
-          "plan_coverage_current_week": 0.2,
-          "plan_coverage_next_week": 1.0
+          "next_week_load": null,
+          "plan_coverage_current_week": 1.0,
+          "plan_coverage_next_week": 0.0
         },
         "data_quality": "good",
         "stream_agreement": null
@@ -468,19 +469,19 @@
       "benchmark_percentage": null,
       "seasonal_expected": null
     },
-    "eftp": 115.8,
-    "w_prime": 8704,
+    "eftp": 115.7,
+    "w_prime": 8695,
     "w_prime_kj": 8.7,
-    "p_max": 364,
+    "p_max": 363,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-08-30T22:46:50.555077",
+    "calculation_timestamp": "2026-08-31T01:17:42.157330",
     "data_quality": {
       "hrv_data_points": 19,
       "rhr_data_points": 88,
       "activities_7d": 12,
       "activities_28d": 12,
-      "planned_workouts_7d": 47,
+      "planned_workouts_7d": 48,
       "ftp_history_days": {
         "indoor": 0,
         "outdoor": 0
@@ -1045,45 +1046,6 @@
     }
   ],
   "wellness_data": [
-    {
-      "date": "2026-06-02",
-      "weight_kg": null,
-      "resting_hr": null,
-      "hrv_rmssd": null,
-      "hrv_sdnn": 42.47118,
-      "sleep_hours": 7.7,
-      "sleep_formatted": "7h41m",
-      "sleep_quality": null,
-      "sleep_score": null,
-      "mental_energy": null,
-      "avg_sleeping_hr": null,
-      "vo2max": null,
-      "fatigue": null,
-      "soreness": null,
-      "stress": null,
-      "mood": null,
-      "motivation": null,
-      "injury": null,
-      "hydration": null,
-      "spO2": 91.0,
-      "blood_glucose": null,
-      "systolic": null,
-      "diastolic": null,
-      "baevsky_si": null,
-      "lactate": null,
-      "respiration": null,
-      "body_fat_pct": null,
-      "abdomen_cm": null,
-      "steps": 7688,
-      "hydration_volume_l": null,
-      "kcal_consumed": null,
-      "carbohydrates_g": null,
-      "protein_g": null,
-      "fat_g": null,
-      "menstrual_phase": null,
-      "menstrual_phase_predicted": null,
-      "readiness": null
-    },
     {
       "date": "2026-06-03",
       "weight_kg": null,
@@ -4554,21 +4516,48 @@
       "menstrual_phase": null,
       "menstrual_phase_predicted": null,
       "readiness": null
+    },
+    {
+      "date": "2026-08-31",
+      "weight_kg": null,
+      "resting_hr": null,
+      "hrv_rmssd": null,
+      "hrv_sdnn": null,
+      "sleep_hours": null,
+      "sleep_formatted": null,
+      "sleep_quality": null,
+      "sleep_score": null,
+      "mental_energy": null,
+      "avg_sleeping_hr": null,
+      "vo2max": null,
+      "fatigue": null,
+      "soreness": null,
+      "stress": null,
+      "mood": null,
+      "motivation": null,
+      "injury": null,
+      "hydration": null,
+      "spO2": null,
+      "blood_glucose": null,
+      "systolic": null,
+      "diastolic": null,
+      "baevsky_si": null,
+      "lactate": null,
+      "respiration": null,
+      "body_fat_pct": null,
+      "abdomen_cm": null,
+      "steps": null,
+      "hydration_volume_l": null,
+      "kcal_consumed": null,
+      "carbohydrates_g": null,
+      "protein_g": null,
+      "fat_g": null,
+      "menstrual_phase": null,
+      "menstrual_phase_predicted": null,
+      "readiness": null
     }
   ],
   "planned_workouts": [
-    {
-      "id": 130965869,
-      "date": "2026-08-30",
-      "name": "IntervalCoach - Endurance + Tempo Pushes",
-      "type": "WORKOUT",
-      "sport_type": "Ride",
-      "planned_tss": 64,
-      "duration_hours": 1.33,
-      "duration_formatted": "1h20m",
-      "workout_summary": "12m @78W | 4\u00d711m @92W / 4m rec | 8m @72W",
-      "description": "Main Set\n- Hey Jason! Endurance and tempo pushes await. 12m 45-75%\n\n4x\n- Endurance 11m 65-75%\n- Tempo 4m 76-82%\n\nCooldown\n- Fantastic work, Jason! Enjoy the cool-down. 8m ramp 65-45%"
-    },
     {
       "id": 132506843,
       "date": "2026-08-31",
@@ -4631,9 +4620,9 @@
     }
   ],
   "workout_summary_stats": {
-    "attempted": 4,
-    "success": 3,
-    "patternA": 3,
+    "attempted": 3,
+    "success": 2,
+    "patternA": 2,
     "patternB": 0,
     "bail_no_workout_doc": 2,
     "bail_no_match": 1
