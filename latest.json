@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-09-04T22:58:58.501304",
+    "last_updated": "2026-09-05T00:50:55.276861",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -107,7 +107,7 @@
       },
       "tsb": {
         "status": "green",
-        "value": 1.5
+        "value": 5.8
       }
     },
     "signal_summary": {
@@ -130,7 +130,7 @@
   "history": {
     "available": true,
     "last_generated": "2026-07-12",
-    "age_days": 54,
+    "age_days": 55,
     "total_months": 25,
     "history_confidence": "high"
   },
@@ -168,17 +168,17 @@
   },
   "current_status": {
     "fitness": {
-      "ctl": 15.13,
-      "atl": 13.62,
-      "tsb": 1.51,
-      "ramp_rate": 0.02,
-      "fitness_source": "Decayed from yesterday (today's planned workouts not yet completed)"
+      "ctl": 13.95,
+      "atl": 8.11,
+      "tsb": 5.84,
+      "ramp_rate": -0.81,
+      "fitness_source": "From Intervals.icu API (reflects completed workouts)"
     },
     "thresholds": {
-      "eftp": 115.4,
-      "w_prime": 8678,
+      "eftp": 115.1,
+      "w_prime": 8652,
       "w_prime_kj": 8.7,
-      "p_max": 363,
+      "p_max": 361,
       "vo2max": null,
       "sports": {
         "cycling": {
@@ -247,7 +247,7 @@
     "hrv_baseline_7d": 37.2,
     "rhr_baseline_7d": 65.8,
     "hrv_baseline_28d": null,
-    "rhr_baseline_28d": 66.2,
+    "rhr_baseline_28d": 66.4,
     "latest_hrv": null,
     "latest_rhr": null,
     "acwr": 0.98,
@@ -441,11 +441,11 @@
           "weeks_available": 4
         },
         "stream_2": {
-          "planned_tss_delta": 3.79,
-          "hard_sessions_planned": 2,
+          "planned_tss_delta": 2.91,
+          "hard_sessions_planned": 1,
           "race_proximity": null,
           "next_week_load": null,
-          "plan_coverage_current_week": 0.4,
+          "plan_coverage_current_week": 0.2,
           "plan_coverage_next_week": 0.0
         },
         "data_quality": "good",
@@ -473,16 +473,16 @@
       "benchmark_percentage": null,
       "seasonal_expected": null
     },
-    "eftp": 115.4,
-    "w_prime": 8678,
+    "eftp": 115.1,
+    "w_prime": 8652,
     "w_prime_kj": 8.7,
-    "p_max": 363,
+    "p_max": 361,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-09-04T22:58:58.500164",
+    "calculation_timestamp": "2026-09-05T00:50:55.275841",
     "data_quality": {
       "hrv_data_points": 19,
-      "rhr_data_points": 89,
+      "rhr_data_points": 88,
       "activities_7d": 15,
       "activities_28d": 15,
       "planned_workouts_7d": 50,
@@ -1180,45 +1180,6 @@
     }
   ],
   "wellness_data": [
-    {
-      "date": "2026-06-07",
-      "weight_kg": null,
-      "resting_hr": 72,
-      "hrv_rmssd": null,
-      "hrv_sdnn": 32.169323,
-      "sleep_hours": 5.46,
-      "sleep_formatted": "5h27m",
-      "sleep_quality": null,
-      "sleep_score": null,
-      "mental_energy": null,
-      "avg_sleeping_hr": null,
-      "vo2max": null,
-      "fatigue": null,
-      "soreness": null,
-      "stress": null,
-      "mood": null,
-      "motivation": null,
-      "injury": null,
-      "hydration": null,
-      "spO2": 93.0,
-      "blood_glucose": null,
-      "systolic": null,
-      "diastolic": null,
-      "baevsky_si": null,
-      "lactate": null,
-      "respiration": null,
-      "body_fat_pct": null,
-      "abdomen_cm": null,
-      "steps": 6897,
-      "hydration_volume_l": null,
-      "kcal_consumed": null,
-      "carbohydrates_g": null,
-      "protein_g": null,
-      "fat_g": null,
-      "menstrual_phase": null,
-      "menstrual_phase_predicted": null,
-      "readiness": null
-    },
     {
       "date": "2026-06-08",
       "weight_kg": null,
@@ -4689,21 +4650,48 @@
       "menstrual_phase": null,
       "menstrual_phase_predicted": null,
       "readiness": null
+    },
+    {
+      "date": "2026-09-05",
+      "weight_kg": null,
+      "resting_hr": null,
+      "hrv_rmssd": null,
+      "hrv_sdnn": null,
+      "sleep_hours": null,
+      "sleep_formatted": null,
+      "sleep_quality": null,
+      "sleep_score": null,
+      "mental_energy": null,
+      "avg_sleeping_hr": null,
+      "vo2max": null,
+      "fatigue": null,
+      "soreness": null,
+      "stress": null,
+      "mood": null,
+      "motivation": null,
+      "injury": null,
+      "hydration": null,
+      "spO2": null,
+      "blood_glucose": null,
+      "systolic": null,
+      "diastolic": null,
+      "baevsky_si": null,
+      "lactate": null,
+      "respiration": null,
+      "body_fat_pct": null,
+      "abdomen_cm": null,
+      "steps": null,
+      "hydration_volume_l": null,
+      "kcal_consumed": null,
+      "carbohydrates_g": null,
+      "protein_g": null,
+      "fat_g": null,
+      "menstrual_phase": null,
+      "menstrual_phase_predicted": null,
+      "readiness": null
     }
   ],
   "planned_workouts": [
-    {
-      "id": 132506968,
-      "date": "2026-09-04",
-      "name": "IntervalCoach - 8x2 VO2max Intervals",
-      "type": "WORKOUT",
-      "sport_type": "Ride",
-      "planned_tss": 63,
-      "duration_hours": 0.8,
-      "duration_formatted": "48m10s",
-      "workout_summary": "5m @78W | 43s @148W | 22s @72W | 43s @148W | 22s @72W | 2m @92W | 8\u00d72m @148W / 2m rec | 2m @92W | 5m @72W",
-      "description": "Main Set\n- Hey Jason! VO2max power awaits! 5m 45-75% 85rpm\n- Primer 1 43s 113% 90rpm\n- Primer recovery 22s 55%\n- Primer 2 43s 113% 90rpm\n- Primer recovery 22s 55%\n- Endurance 2m 65-75% 85rpm\n\n8x\n- VO2max 2m 106-120% 100rpm\n- Recovery 2m 55%\n\nRecovery\n- Endurance 2m 65-75% 85rpm\n- Fantastic work, enjoy the recovery spin 5m 65-45%"
-    },
     {
       "id": 132506983,
       "date": "2026-09-06",
@@ -4718,9 +4706,9 @@
     }
   ],
   "workout_summary_stats": {
-    "attempted": 2,
-    "success": 1,
-    "patternA": 1,
+    "attempted": 1,
+    "success": 0,
+    "patternA": 0,
     "patternB": 0,
     "bail_no_workout_doc": 0,
     "bail_no_match": 1
