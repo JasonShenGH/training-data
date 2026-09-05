@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-09-05T20:24:42.476715",
+    "last_updated": "2026-09-05T22:11:26.890960",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -444,9 +444,9 @@
           "planned_tss_delta": 2.91,
           "hard_sessions_planned": 1,
           "race_proximity": null,
-          "next_week_load": null,
+          "next_week_load": 2.52,
           "plan_coverage_current_week": 0.2,
-          "plan_coverage_next_week": 0.0
+          "plan_coverage_next_week": 1.0
         },
         "data_quality": "good",
         "stream_agreement": null
@@ -479,7 +479,7 @@
     "p_max": 361,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-09-05T20:24:42.475584",
+    "calculation_timestamp": "2026-09-05T22:11:26.889721",
     "data_quality": {
       "hrv_data_points": 19,
       "rhr_data_points": 89,
@@ -4703,15 +4703,74 @@
       "duration_formatted": "1h30m",
       "workout_summary": null,
       "description": "Warmup\n- Hey Jason! Endurance ride today 14m ramp 45-75% 85rpm\n\nMain Set\n- Settle In 17m 65% 85rpm\n- Build 17m 67% 88rpm\n- Upper 17m 70-74% 90rpm\n- Cruise 16m 70-74% 88rpm\n\nCooldown\n- Great ride, recover well 9m ramp 65-45%\n\n[Weekly Plan - Build]"
+    },
+    {
+      "id": 134092597,
+      "date": "2026-09-07",
+      "name": "IntervalCoach - Lower-Body-Strength",
+      "type": "WORKOUT",
+      "sport_type": "WeightTraining",
+      "planned_tss": 37,
+      "duration_hours": 0.75,
+      "duration_formatted": "45m",
+      "workout_summary": null,
+      "description": "Lower Body Strength\n\nLeg strength for cycling power and running economy\n\n1. Goblet Squat: 3 sets \u00d7 12 reps (Weight at chest, sit back into heels) [Rest: 60 sec]\n2. Romanian Deadlift: 3 sets \u00d7 10 reps (Hinge at hips, slight knee bend) [Rest: 60 sec]\n3. Walking Lunges: 3 sets \u00d7 10 reps each leg (Keep torso upright, knee tracks over toe) [Rest: 45 sec]\n4. Step-ups: 3 sets \u00d7 10 reps each leg (Use bench or box, drive through heel) [Rest: 45 sec]\n5. Calf Raises: 3 sets \u00d7 15 reps (Full range of motion, hold at top) [Rest: 30 sec]\n6. Single Leg Glute Bridge: 3 sets \u00d7 10 reps each leg (Keep hips level throughout) [Rest: 30 sec]\n\nBuild phase: increase weight, lower reps (6-10) for strength gains.\n\n[Duration: ~45 min]\n\n[Weekly Plan - Build \u00b7 type:lower-body-strength]"
+    },
+    {
+      "id": 134092634,
+      "date": "2026-09-09",
+      "name": "IntervalCoach - 4x8 Progressive Threshold",
+      "type": "WORKOUT",
+      "sport_type": "Ride",
+      "planned_tss": 66,
+      "duration_hours": 0.85,
+      "duration_formatted": "51m",
+      "workout_summary": null,
+      "description": "Main Set\n- Hey Jason! Progressive threshold awaits. 8m 45-75% 85rpm\n- Build 1 8m 88% 88rpm\n- Recovery 2m 55%\n- Build 2 8m 94% 90rpm\n- Recovery 2m 55%\n- Build 3 8m 100% 93rpm\n- Recovery 2m 55%\n- Build 4 8m 105% 95rpm\n- Fantastic work, Jason. Spin easy now. 5m 65-45%"
+    },
+    {
+      "id": 134092650,
+      "date": "2026-09-10",
+      "name": "IntervalCoach - Lower-Body-Strength",
+      "type": "WORKOUT",
+      "sport_type": "WeightTraining",
+      "planned_tss": 37,
+      "duration_hours": 0.75,
+      "duration_formatted": "45m",
+      "workout_summary": null,
+      "description": "Lower Body Strength\n\nLeg strength for cycling power and running economy\n\n1. Goblet Squat: 3 sets \u00d7 12 reps (Weight at chest, sit back into heels) [Rest: 60 sec]\n2. Romanian Deadlift: 3 sets \u00d7 10 reps (Hinge at hips, slight knee bend) [Rest: 60 sec]\n3. Walking Lunges: 3 sets \u00d7 10 reps each leg (Keep torso upright, knee tracks over toe) [Rest: 45 sec]\n4. Step-ups: 3 sets \u00d7 10 reps each leg (Use bench or box, drive through heel) [Rest: 45 sec]\n5. Calf Raises: 3 sets \u00d7 15 reps (Full range of motion, hold at top) [Rest: 30 sec]\n6. Single Leg Glute Bridge: 3 sets \u00d7 10 reps each leg (Keep hips level throughout) [Rest: 30 sec]\n\nBuild phase: increase weight, lower reps (6-10) for strength gains.\n\n[Duration: ~45 min]\n\n[Weekly Plan - Build \u00b7 type:lower-body-strength]"
+    },
+    {
+      "id": 134092682,
+      "date": "2026-09-11",
+      "name": "IntervalCoach - 4x4 VO2max Intervals",
+      "type": "WORKOUT",
+      "sport_type": "Ride",
+      "planned_tss": 66,
+      "duration_hours": 0.91,
+      "duration_formatted": "54m18s",
+      "workout_summary": "5m @78W | 46s @144W | 23s @72W | 46s @144W | 23s @72W | 5m @92W | 4\u00d74m @143W / 4m rec | 5m @92W | 5m @72W",
+      "description": "Main Set\n- Hey Jason! VO2max time, let's go! 5m 45-75% 85rpm\n- Primer 1 46s 110% 90rpm\n- Primer recovery 23s 55%\n- Primer 2 46s 110% 90rpm\n- Primer recovery 23s 55%\n- Endurance 5m 65-75% 85rpm\n\n4x\n- VO2max 4m 106-113% 95rpm\n- Recovery 4m 55%\n\nRecovery\n- Endurance 5m 65-75% 85rpm\n- Awesome effort, Jason! Spin it easy. 5m 65-45%"
+    },
+    {
+      "id": 134092702,
+      "date": "2026-09-13",
+      "name": "IntervalCoach - 5x6 Endurance Cadence",
+      "type": "WORKOUT",
+      "sport_type": "Ride",
+      "planned_tss": 68,
+      "duration_hours": 1.52,
+      "duration_formatted": "1h31m",
+      "workout_summary": "13m @78W | 5\u00d76m @91W / 6m rec | 9m @91W | 9m @72W"
     }
   ],
   "workout_summary_stats": {
-    "attempted": 1,
-    "success": 0,
-    "patternA": 0,
+    "attempted": 4,
+    "success": 2,
+    "patternA": 2,
     "patternB": 0,
-    "bail_no_workout_doc": 0,
-    "bail_no_match": 1
+    "bail_no_workout_doc": 2,
+    "bail_no_match": 2
   },
   "weekly_summary": {
     "total_training_hours": 11.22,
