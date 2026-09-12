@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-09-12T21:20:25.795539",
+    "last_updated": "2026-09-12T23:12:48.343552",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -453,9 +453,9 @@
           "planned_tss_delta": 2.16,
           "hard_sessions_planned": 1,
           "race_proximity": null,
-          "next_week_load": null,
+          "next_week_load": 0.55,
           "plan_coverage_current_week": 0.2,
-          "plan_coverage_next_week": 0.0
+          "plan_coverage_next_week": 0.6
         },
         "data_quality": "good",
         "stream_agreement": null
@@ -490,7 +490,7 @@
     "p_max": 407,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-09-12T21:20:25.794072",
+    "calculation_timestamp": "2026-09-12T23:12:48.342213",
     "data_quality": {
       "hrv_data_points": 19,
       "rhr_data_points": 89,
@@ -4538,14 +4538,49 @@
       "duration_formatted": "1h31m",
       "workout_summary": "13m @78W | 5\u00d76m @91W / 6m rec | 9m @91W | 9m @72W",
       "description": "Warmup\n- Hey Jason! Endurance and cadence await. 13m ramp 45-75% 85rpm\n\nMain Set\n5x\n- High Cadence 6m 70% 100rpm\n- Low Cadence 6m 70% 70rpm\n\nRecovery\n- Low Cadence 5 9m 70% 70rpm\n\nCooldown\n- Excellent work, Jason. Recover well. 9m ramp 65-45%\n\n\n[Weekly Plan - Build \u00b7 type:enduranceCadence]"
+    },
+    {
+      "id": 135700356,
+      "date": "2026-09-14",
+      "name": "IntervalCoach - Core-Stability",
+      "type": "WORKOUT",
+      "sport_type": "WeightTraining",
+      "planned_tss": null,
+      "duration_hours": 0.75,
+      "duration_formatted": "45m",
+      "workout_summary": null,
+      "description": "Core Stability\n\nCore exercises to improve stability, posture, and power transfer\n\n1. Plank: 5 sets \u00d7 45-60 sec (Keep body in straight line, engage glutes) [Rest: 30 sec]\n2. Side Plank: 3 sets \u00d7 30 sec each side (Stack feet or stagger for stability) [Rest: 15 sec]\n3. Dead Bug: 5 sets \u00d7 10 reps each side (Keep lower back pressed to floor) [Rest: 30 sec]\n4. Bird Dog: 5 sets \u00d7 10 reps each side (Extend opposite arm and leg, hold 2s) [Rest: 30 sec]\n5. Glute Bridge: 5 sets \u00d7 15 reps (Squeeze glutes at top, hold 2s) [Rest: 30 sec]\n6. Pallof Press: 5 sets \u00d7 10 reps each side (Band at chest height, press and hold, resist rotation) [Rest: 30 sec]\n\n[Duration: ~45 min]\n\n[Weekly Plan - Recovery \u00b7 type:core-stability]"
+    },
+    {
+      "id": 135700382,
+      "date": "2026-09-18",
+      "name": "IntervalCoach - Endurance Spin-Ups",
+      "type": "WORKOUT",
+      "sport_type": "Ride",
+      "planned_tss": 30,
+      "duration_hours": 0.64,
+      "duration_formatted": "38m32s",
+      "workout_summary": "6m @78W | 4\u00d74m17s @92W / 51s rec | 7m43s @92W | 4m17s @72W",
+      "description": "Main Set\n- Hey Jason! Endurance and spin-ups await. 6m 45-75% 85rpm\n\n4x\n- Endurance 257s 65-75% 88rpm\n- Spin-Up 51s 75% 110rpm\n\nRecovery\n- Endurance 5 463s 65-75% 88rpm\n- Nice work, Jason. Enjoy the spin. 257s 65-45%"
+    },
+    {
+      "id": 135700420,
+      "date": "2026-09-20",
+      "name": "IntervalCoach - Endurance Pickups",
+      "type": "WORKOUT",
+      "sport_type": "Ride",
+      "planned_tss": 30,
+      "duration_hours": 0.63,
+      "duration_formatted": "37m42s",
+      "workout_summary": "6m @78W | 4\u00d74m17s @92W / 1m17s rec | 6m @92W | 3m26s @72W"
     }
   ],
   "workout_summary_stats": {
-    "attempted": 1,
-    "success": 1,
-    "patternA": 1,
+    "attempted": 3,
+    "success": 3,
+    "patternA": 3,
     "patternB": 0,
-    "bail_no_workout_doc": 0,
+    "bail_no_workout_doc": 1,
     "bail_no_match": 0
   },
   "weekly_summary": {
