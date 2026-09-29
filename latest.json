@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-09-28T21:23:17.318968",
+    "last_updated": "2026-09-29T01:11:40.300682",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -117,7 +117,7 @@
       },
       "tsb": {
         "status": "green",
-        "value": 4.3
+        "value": 5.2
       }
     },
     "signal_summary": {
@@ -127,20 +127,20 @@
       "unavailable": 4
     },
     "phase_context": {
-      "phase": "Build",
-      "phase_week": 1,
-      "amber_threshold": 3,
-      "modifier_applied": "build_loosened"
+      "phase": null,
+      "phase_week": 0,
+      "amber_threshold": 2,
+      "modifier_applied": "default"
     },
     "race_week_defers": false,
     "modification": null,
-    "reason": "P3 green light. 1 green, 1 amber (threshold 3), 0 red. Note: 4 signals unavailable \u2014 limited data.",
+    "reason": "P3 green light. 1 green, 1 amber (threshold 2), 0 red. Note: 4 signals unavailable \u2014 limited data.",
     "alarm_refs": []
   },
   "history": {
     "available": true,
     "last_generated": "2026-09-07",
-    "age_days": 21,
+    "age_days": 22,
     "total_months": 27,
     "history_confidence": "high"
   },
@@ -184,15 +184,15 @@
   },
   "current_status": {
     "fitness": {
-      "ctl": 13.64,
-      "atl": 9.33,
-      "tsb": 4.31,
-      "ramp_rate": -0.16,
-      "fitness_source": "Decayed from yesterday (today's planned workouts not yet completed)"
+      "ctl": 13.32,
+      "atl": 8.08,
+      "tsb": 5.24,
+      "ramp_rate": -0.73,
+      "fitness_source": "From Intervals.icu API (reflects completed workouts)"
     },
     "thresholds": {
-      "eftp": 128.2,
-      "w_prime": 9614,
+      "eftp": 128.1,
+      "w_prime": 9605,
       "w_prime_kj": 9.6,
       "p_max": 401,
       "vo2max": null,
@@ -263,7 +263,7 @@
     "hrv_baseline_7d": 37.3,
     "rhr_baseline_7d": 65.8,
     "hrv_baseline_28d": null,
-    "rhr_baseline_28d": 66.4,
+    "rhr_baseline_28d": 66.5,
     "latest_hrv": null,
     "latest_rhr": null,
     "acwr": 0.68,
@@ -381,11 +381,10 @@
     },
     "consistency_index": 0.04,
     "consistency_details": {
-      "planned_days": 50,
+      "planned_days": 49,
       "completed_days": 4,
       "matched_days": 2,
       "planned_dates": [
-        "2026-07-01",
         "2026-07-02",
         "2026-07-03",
         "2026-07-05",
@@ -444,9 +443,11 @@
       ]
     },
     "phase_detection": {
-      "phase": "Build",
-      "confidence": "medium",
-      "reason_codes": [],
+      "phase": null,
+      "confidence": "low",
+      "reason_codes": [
+        "BUILD_BASE_AMBIGUOUS"
+      ],
       "basis": {
         "stream_1": {
           "ctl_slope": 0.15,
@@ -456,22 +457,24 @@
         },
         "stream_2": {
           "planned_tss_delta": null,
-          "hard_sessions_planned": 3,
+          "hard_sessions_planned": 2,
           "race_proximity": null,
           "next_week_load": null,
-          "plan_coverage_current_week": 0.6,
+          "plan_coverage_current_week": 0.4,
           "plan_coverage_next_week": 0.2
         },
         "data_quality": "good",
         "stream_agreement": null
       },
       "previous_phase": null,
-      "phase_duration_weeks": 1,
+      "phase_duration_weeks": 0,
       "dossier_declared": null,
       "dossier_agreement": null
     },
-    "phase_detected": "Build",
-    "phase_triggers": [],
+    "phase_detected": null,
+    "phase_triggers": [
+      "BUILD_BASE_AMBIGUOUS"
+    ],
     "seasonal_context": "Late Season / Transition",
     "benchmark_indoor": {
       "current_ftp": null,
@@ -487,19 +490,19 @@
       "benchmark_percentage": null,
       "seasonal_expected": null
     },
-    "eftp": 128.2,
-    "w_prime": 9614,
+    "eftp": 128.1,
+    "w_prime": 9605,
     "w_prime_kj": 9.6,
     "p_max": 401,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-09-28T21:23:17.318062",
+    "calculation_timestamp": "2026-09-29T01:11:40.299758",
     "data_quality": {
       "hrv_data_points": 18,
-      "rhr_data_points": 89,
+      "rhr_data_points": 88,
       "activities_7d": 12,
       "activities_28d": 12,
-      "planned_workouts_7d": 51,
+      "planned_workouts_7d": 50,
       "ftp_history_days": {
         "indoor": 0,
         "outdoor": 0
@@ -1052,45 +1055,6 @@
     }
   ],
   "wellness_data": [
-    {
-      "date": "2026-07-01",
-      "weight_kg": null,
-      "resting_hr": 66,
-      "hrv_rmssd": null,
-      "hrv_sdnn": 39.59067,
-      "sleep_hours": 7.62,
-      "sleep_formatted": "7h36m",
-      "sleep_quality": null,
-      "sleep_score": null,
-      "mental_energy": null,
-      "avg_sleeping_hr": null,
-      "vo2max": null,
-      "fatigue": null,
-      "soreness": null,
-      "stress": null,
-      "mood": null,
-      "motivation": null,
-      "injury": null,
-      "hydration": null,
-      "spO2": 95.0,
-      "blood_glucose": null,
-      "systolic": null,
-      "diastolic": null,
-      "baevsky_si": null,
-      "lactate": null,
-      "respiration": null,
-      "body_fat_pct": null,
-      "abdomen_cm": null,
-      "steps": 7229,
-      "hydration_volume_l": null,
-      "kcal_consumed": null,
-      "carbohydrates_g": null,
-      "protein_g": null,
-      "fat_g": null,
-      "menstrual_phase": null,
-      "menstrual_phase_predicted": null,
-      "readiness": null
-    },
     {
       "date": "2026-07-02",
       "weight_kg": null,
@@ -4561,21 +4525,48 @@
       "menstrual_phase": null,
       "menstrual_phase_predicted": null,
       "readiness": null
+    },
+    {
+      "date": "2026-09-29",
+      "weight_kg": null,
+      "resting_hr": null,
+      "hrv_rmssd": null,
+      "hrv_sdnn": null,
+      "sleep_hours": null,
+      "sleep_formatted": null,
+      "sleep_quality": null,
+      "sleep_score": null,
+      "mental_energy": null,
+      "avg_sleeping_hr": null,
+      "vo2max": null,
+      "fatigue": null,
+      "soreness": null,
+      "stress": null,
+      "mood": null,
+      "motivation": null,
+      "injury": null,
+      "hydration": null,
+      "spO2": null,
+      "blood_glucose": null,
+      "systolic": null,
+      "diastolic": null,
+      "baevsky_si": null,
+      "lactate": null,
+      "respiration": null,
+      "body_fat_pct": null,
+      "abdomen_cm": null,
+      "steps": null,
+      "hydration_volume_l": null,
+      "kcal_consumed": null,
+      "carbohydrates_g": null,
+      "protein_g": null,
+      "fat_g": null,
+      "menstrual_phase": null,
+      "menstrual_phase_predicted": null,
+      "readiness": null
     }
   ],
   "planned_workouts": [
-    {
-      "id": 139065071,
-      "date": "2026-09-28",
-      "name": "IntervalCoach - Core Stability",
-      "type": "WORKOUT",
-      "sport_type": "WeightTraining",
-      "planned_tss": 19,
-      "duration_hours": 0.75,
-      "duration_formatted": "45m",
-      "workout_summary": null,
-      "description": "Core Stability\n\nCore exercises to improve stability, posture, and power transfer\n\n1. Plank: 5 sets \u00d7 45-60 sec (Keep body in straight line, engage glutes) [Rest: 30 sec]\n2. Side Plank: 3 sets \u00d7 30 sec each side (Stack feet or stagger for stability) [Rest: 15 sec]\n3. Dead Bug: 5 sets \u00d7 10 reps each side (Keep lower back pressed to floor) [Rest: 30 sec]\n4. Bird Dog: 5 sets \u00d7 10 reps each side (Extend opposite arm and leg, hold 2s) [Rest: 30 sec]\n5. Glute Bridge: 5 sets \u00d7 15 reps (Squeeze glutes at top, hold 2s) [Rest: 30 sec]\n6. Pallof Press: 5 sets \u00d7 10 reps each side (Band at chest height, press and hold, resist rotation) [Rest: 30 sec]\n\n[Duration: ~45 min]\n\n[Weekly Plan - Recovery \u00b7 type:core-stability]"
-    },
     {
       "id": 139065096,
       "date": "2026-10-02",
@@ -4618,7 +4609,7 @@
     "success": 0,
     "patternA": 0,
     "patternB": 0,
-    "bail_no_workout_doc": 2,
+    "bail_no_workout_doc": 1,
     "bail_no_match": 2
   },
   "weekly_summary": {
