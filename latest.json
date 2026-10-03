@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-10-03T20:13:26.706846",
+    "last_updated": "2026-10-03T23:08:49.236761",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -117,7 +117,7 @@
       },
       "tsb": {
         "status": "green",
-        "value": 6.4
+        "value": 7.5
       }
     },
     "signal_summary": {
@@ -184,10 +184,10 @@
   },
   "current_status": {
     "fitness": {
-      "ctl": 12.38,
-      "atl": 5.95,
-      "tsb": 6.43,
-      "ramp_rate": -1.73,
+      "ctl": 12.11,
+      "atl": 4.57,
+      "tsb": 7.54,
+      "ramp_rate": -2.0,
       "fitness_source": "From Intervals.icu API (reflects completed workouts)"
     },
     "thresholds": {
@@ -457,7 +457,7 @@
           "race_proximity": null,
           "next_week_load": 0.17,
           "plan_coverage_current_week": 0.2,
-          "plan_coverage_next_week": 0.2
+          "plan_coverage_next_week": 0.8
         },
         "data_quality": "good",
         "stream_agreement": null
@@ -492,7 +492,7 @@
     "p_max": 399,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-10-03T20:13:26.705576",
+    "calculation_timestamp": "2026-10-03T23:08:49.235945",
     "data_quality": {
       "hrv_data_points": 18,
       "rhr_data_points": 89,
@@ -4445,15 +4445,50 @@
       "duration_formatted": "45m",
       "workout_summary": null,
       "description": "Lower Body Strength\n\nLeg strength for cycling power and running economy\n\n1. Goblet Squat: 3 sets \u00d7 12 reps (Weight at chest, sit back into heels) [Rest: 60 sec]\n2. Romanian Deadlift: 3 sets \u00d7 10 reps (Hinge at hips, slight knee bend) [Rest: 60 sec]\n3. Walking Lunges: 3 sets \u00d7 10 reps each leg (Keep torso upright, knee tracks over toe) [Rest: 45 sec]\n4. Step-ups: 3 sets \u00d7 10 reps each leg (Use bench or box, drive through heel) [Rest: 45 sec]\n5. Calf Raises: 3 sets \u00d7 15 reps (Full range of motion, hold at top) [Rest: 30 sec]\n6. Single Leg Glute Bridge: 3 sets \u00d7 10 reps each leg (Keep hips level throughout) [Rest: 30 sec]\n\nBuild phase: increase weight, lower reps (6-10) for strength gains.\n\n[Duration: ~45 min]\n\n[Weekly Plan - Build \u00b7 type:lower-body-strength]"
+    },
+    {
+      "id": 141155936,
+      "date": "2026-10-07",
+      "name": "IntervalCoach - Tempo",
+      "type": "WORKOUT",
+      "sport_type": "Ride",
+      "planned_tss": 69,
+      "duration_hours": 1.26,
+      "duration_formatted": "1h15m54s",
+      "workout_summary": "9m7s @78W | 50s @106W | 25s @72W | 50s @106W | 25s @72W | 3\u00d717m @103W / 4m9s rec",
+      "description": "Warmup\n- Hey Jason, Tempo ride today! 547s ramp 45-75% 85rpm\n- Primer 1 50s 81% 90rpm\n- Primer recovery 25s 55%\n- Primer 2 50s 81% 90rpm\n- Primer recovery 25s 55%\n\nMain Set\n- Tempo 1 90rpm 17m 76-82% 90rpm\n- Recovery 249s 55%\n- Tempo 2 90rpm 17m 76-82% 90rpm\n- Recovery 249s 55%\n- Tempo 3 90rpm 17m 76-82% 90rpm\n\nCooldown\n- Nice work, Jason. Spin easy now. 299s ramp 65-45%\n\n[Weekly Plan - Build \u00b7 type:tempo]"
+    },
+    {
+      "id": 141155947,
+      "date": "2026-10-09",
+      "name": "IntervalCoach - Endurance",
+      "type": "WORKOUT",
+      "sport_type": "Ride",
+      "planned_tss": 21,
+      "duration_hours": 0.5,
+      "duration_formatted": "30m",
+      "workout_summary": null,
+      "description": "Warmup\n- Hey Jason! Time for Fat Max 5m ramp 45-75% 85rpm\n\nMain Set\n- Fat Max 85rpm 22m 63-68% 85rpm\n\nCooldown\n- Great job, Jason! Recover well 3m ramp 65-45%\n\n[Weekly Plan - Build \u00b7 type:enduranceFatMax]"
+    },
+    {
+      "id": 141156000,
+      "date": "2026-10-11",
+      "name": "IntervalCoach - Endurance + Tempo Pushes",
+      "type": "WORKOUT",
+      "sport_type": "Ride",
+      "planned_tss": 72,
+      "duration_hours": 1.5,
+      "duration_formatted": "1h30m",
+      "workout_summary": "14m @78W | 3\u00d713m @92W / 5m rec | 13m @92W | 9m @72W"
     }
   ],
   "workout_summary_stats": {
-    "attempted": 1,
-    "success": 0,
-    "patternA": 0,
-    "patternB": 0,
+    "attempted": 4,
+    "success": 2,
+    "patternA": 1,
+    "patternB": 1,
     "bail_no_workout_doc": 1,
-    "bail_no_match": 1
+    "bail_no_match": 2
   },
   "weekly_summary": {
     "total_training_hours": 6.11,
