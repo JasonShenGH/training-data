@@ -1,96 +1,9 @@
 {
-  "generated_at": "2026-10-23T22:13:35.356817",
+  "generated_at": "2026-10-24T00:47:24.168888",
   "version": "3.86",
   "scan_hours": 72,
   "retention_days": 8,
   "activities": [
-    {
-      "activity_id": "i198581183",
-      "date": "2026-10-15",
-      "type": "Ride",
-      "name": "\u4e0a\u6d77\u5e02",
-      "interval_summary": [
-        "1x 19m48s 116bpm",
-        "4x 16m19s 125bpm"
-      ],
-      "intervals": [
-        {
-          "type": "WORK",
-          "label": "1188s@116bpm",
-          "duration_secs": 1188,
-          "avg_hr": 116,
-          "max_hr": 147,
-          "zone": 2
-        },
-        {
-          "type": "RECOVERY",
-          "duration_secs": 211,
-          "avg_hr": 124,
-          "max_hr": 131,
-          "zone": 2
-        },
-        {
-          "type": "WORK",
-          "label": "979s@125bpm",
-          "duration_secs": 1039,
-          "avg_hr": 124,
-          "max_hr": 140,
-          "zone": 2
-        },
-        {
-          "type": "RECOVERY",
-          "duration_secs": 238,
-          "avg_hr": 125,
-          "max_hr": 130,
-          "zone": 2
-        },
-        {
-          "type": "WORK",
-          "label": "979s@125bpm",
-          "duration_secs": 997,
-          "avg_hr": 127,
-          "max_hr": 138,
-          "zone": 2
-        },
-        {
-          "type": "RECOVERY",
-          "duration_secs": 196,
-          "avg_hr": 124,
-          "max_hr": 132,
-          "zone": 2
-        },
-        {
-          "type": "WORK",
-          "label": "979s@125bpm",
-          "duration_secs": 984,
-          "avg_hr": 124,
-          "max_hr": 133,
-          "zone": 2
-        },
-        {
-          "type": "RECOVERY",
-          "duration_secs": 97,
-          "avg_hr": 131,
-          "max_hr": 139,
-          "zone": 3
-        },
-        {
-          "type": "WORK",
-          "label": "979s@125bpm",
-          "duration_secs": 894,
-          "avg_hr": 126,
-          "max_hr": 130,
-          "zone": 2
-        },
-        {
-          "type": "RECOVERY",
-          "duration_secs": 262,
-          "avg_hr": 108,
-          "max_hr": 124,
-          "zone": 1
-        }
-      ]
-    },
     {
       "activity_id": "i199296683",
       "date": "2026-10-20",
