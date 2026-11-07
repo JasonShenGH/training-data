@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-11-06T20:55:11.506959",
+    "last_updated": "2026-11-07T00:47:38.167473",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -107,7 +107,7 @@
       },
       "tsb": {
         "status": "green",
-        "value": -1.0
+        "value": 0.7
       }
     },
     "signal_summary": {
@@ -130,7 +130,7 @@
   "history": {
     "available": true,
     "last_generated": "2026-10-19",
-    "age_days": 18,
+    "age_days": 19,
     "total_months": 29,
     "history_confidence": "high"
   },
@@ -156,11 +156,11 @@
   },
   "current_status": {
     "fitness": {
-      "ctl": 14.64,
-      "atl": 15.64,
-      "tsb": -1.0,
-      "ramp_rate": 0.93,
-      "fitness_source": "Decayed from yesterday (today's planned workouts not yet completed)"
+      "ctl": 14.29,
+      "atl": 13.56,
+      "tsb": 0.73,
+      "ramp_rate": 0.29,
+      "fitness_source": "From Intervals.icu API (reflects completed workouts)"
     },
     "thresholds": {
       "eftp": 125.9,
@@ -235,7 +235,7 @@
     "hrv_baseline_7d": null,
     "rhr_baseline_7d": 65.6,
     "hrv_baseline_28d": null,
-    "rhr_baseline_28d": 64.1,
+    "rhr_baseline_28d": 64,
     "latest_hrv": null,
     "latest_rhr": null,
     "acwr": 1.08,
@@ -353,11 +353,10 @@
     },
     "consistency_index": 0.06,
     "consistency_details": {
-      "planned_days": 49,
+      "planned_days": 48,
       "completed_days": 6,
       "matched_days": 3,
       "planned_dates": [
-        "2026-08-09",
         "2026-08-10",
         "2026-08-12",
         "2026-08-13",
@@ -429,10 +428,10 @@
         },
         "stream_2": {
           "planned_tss_delta": null,
-          "hard_sessions_planned": 2,
+          "hard_sessions_planned": 1,
           "race_proximity": null,
           "next_week_load": 0.55,
-          "plan_coverage_current_week": 0.4,
+          "plan_coverage_current_week": 0.2,
           "plan_coverage_next_week": 0.2
         },
         "data_quality": "good",
@@ -466,13 +465,13 @@
     "p_max": 394,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-11-06T20:55:11.506007",
+    "calculation_timestamp": "2026-11-07T00:47:38.166207",
     "data_quality": {
       "hrv_data_points": 0,
-      "rhr_data_points": 89,
+      "rhr_data_points": 88,
       "activities_7d": 12,
       "activities_28d": 12,
-      "planned_workouts_7d": 50,
+      "planned_workouts_7d": 49,
       "ftp_history_days": {
         "indoor": 0,
         "outdoor": 0
@@ -1035,45 +1034,6 @@
     }
   ],
   "wellness_data": [
-    {
-      "date": "2026-08-09",
-      "weight_kg": null,
-      "resting_hr": 63,
-      "hrv_rmssd": null,
-      "hrv_sdnn": 36.51926,
-      "sleep_hours": 5.48,
-      "sleep_formatted": "5h28m",
-      "sleep_quality": null,
-      "sleep_score": null,
-      "mental_energy": null,
-      "avg_sleeping_hr": null,
-      "vo2max": null,
-      "fatigue": null,
-      "soreness": null,
-      "stress": null,
-      "mood": null,
-      "motivation": null,
-      "injury": null,
-      "hydration": null,
-      "spO2": 95.0,
-      "blood_glucose": null,
-      "systolic": null,
-      "diastolic": null,
-      "baevsky_si": null,
-      "lactate": null,
-      "respiration": null,
-      "body_fat_pct": null,
-      "abdomen_cm": null,
-      "steps": 4095,
-      "hydration_volume_l": null,
-      "kcal_consumed": null,
-      "carbohydrates_g": null,
-      "protein_g": null,
-      "fat_g": null,
-      "menstrual_phase": null,
-      "menstrual_phase_predicted": null,
-      "readiness": null
-    },
     {
       "date": "2026-08-10",
       "weight_kg": null,
@@ -4544,21 +4504,48 @@
       "menstrual_phase": null,
       "menstrual_phase_predicted": null,
       "readiness": null
+    },
+    {
+      "date": "2026-11-07",
+      "weight_kg": null,
+      "resting_hr": null,
+      "hrv_rmssd": null,
+      "hrv_sdnn": null,
+      "sleep_hours": null,
+      "sleep_formatted": null,
+      "sleep_quality": null,
+      "sleep_score": null,
+      "mental_energy": null,
+      "avg_sleeping_hr": null,
+      "vo2max": null,
+      "fatigue": null,
+      "soreness": null,
+      "stress": null,
+      "mood": null,
+      "motivation": null,
+      "injury": null,
+      "hydration": null,
+      "spO2": null,
+      "blood_glucose": null,
+      "systolic": null,
+      "diastolic": null,
+      "baevsky_si": null,
+      "lactate": null,
+      "respiration": null,
+      "body_fat_pct": null,
+      "abdomen_cm": null,
+      "steps": null,
+      "hydration_volume_l": null,
+      "kcal_consumed": null,
+      "carbohydrates_g": null,
+      "protein_g": null,
+      "fat_g": null,
+      "menstrual_phase": null,
+      "menstrual_phase_predicted": null,
+      "readiness": null
     }
   ],
   "planned_workouts": [
-    {
-      "id": 149843113,
-      "date": "2026-11-06",
-      "name": "IntervalCoach - Ramp Test",
-      "type": "WORKOUT",
-      "sport_type": "Ride",
-      "planned_tss": 57,
-      "duration_hours": 0.34,
-      "duration_formatted": "20m10s",
-      "workout_summary": null,
-      "description": "Warmup\n- 3m ramp 45-75% 85rpm\n\nMain Set\n- Step 52% 90rpm 35s 52% 90rpm\n- Step 58% 90rpm 35s 58% 90rpm\n- Step 64% 90rpm 35s 64% 90rpm\n- Step 70% 90rpm 35s 70% 90rpm\n- Step 76% 90rpm 35s 76% 90rpm\n- Step 82% 90rpm 35s 82% 90rpm\n- Step 88% 90rpm 35s 88% 90rpm\n- Step 94% 90rpm 35s 94% 90rpm\n- Step 100% 90rpm 35s 100% 90rpm\n- Step 106% 90rpm 35s 106% 90rpm\n- Step 112% 90rpm 35s 112% 90rpm\n- Step 118% 90rpm 35s 118% 90rpm\n- Step 124% 90rpm 35s 124% 90rpm\n- Step 130% 90rpm 35s 130% 90rpm\n- Step 136% 90rpm 35s 136% 90rpm\n- Step 142% 90rpm 35s 142% 90rpm\n- Step 148% 90rpm 35s 148% 90rpm\n- Step 154% 90rpm 35s 154% 90rpm\n- Step 160% 90rpm 35s 160% 90rpm\n- Step 166% 90rpm 35s 166% 90rpm\n- Step 172% 90rpm 35s 172% 90rpm\n- Step 178% 90rpm 35s 178% 90rpm\n- Step 184% 90rpm 35s 184% 90rpm\n- Step 190% 90rpm 35s 190% 90rpm\n- Step 196% 90rpm 35s 196% 90rpm\n- Easy Spin 85rpm 35s 45-55% 85rpm\n\nCooldown\n- 2m ramp 65-45%\n\n[Weekly Plan - Build \u00b7 type:rampTest]"
-    },
     {
       "id": 150357097,
       "date": "2026-11-08",
@@ -4585,12 +4572,12 @@
     }
   ],
   "workout_summary_stats": {
-    "attempted": 2,
+    "attempted": 1,
     "success": 0,
     "patternA": 0,
     "patternB": 0,
     "bail_no_workout_doc": 1,
-    "bail_no_match": 2
+    "bail_no_match": 1
   },
   "weekly_summary": {
     "total_training_hours": 13.09,
