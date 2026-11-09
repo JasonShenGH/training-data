@@ -62,15 +62,15 @@
       "menstrual": "menstrual_phase and menstrual_phase_predicted are not on the 1-4 scale. Values: PERIOD, FOLLICULAR, OVULATION, LUTEAL, etc."
     },
     "quick_stats": {
-      "total_training_hours": 12.73,
-      "total_training_formatted": "12h43m",
-      "total_activities": 13,
-      "total_tss": 405
+      "total_training_hours": 13.75,
+      "total_training_formatted": "13h44m",
+      "total_activities": 15,
+      "total_tss": 426
     }
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-11-09T02:59:48.733312",
+    "last_updated": "2026-11-09T11:19:53.548490",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -78,10 +78,10 @@
   "alerts": [
     {
       "metric": "acwr",
-      "value": 0.63,
-      "severity": "alarm",
-      "threshold": "0.75 / 1.35",
-      "context": "ACWR 0.63 outside safe range. Injury/overreach risk elevated.",
+      "value": 0.8,
+      "severity": "warning",
+      "threshold": "0.8 / 1.3",
+      "context": "ACWR 0.8 at edge of optimal range. Monitor closely. Alarm at 0.75/1.35.",
       "persistence_days": null,
       "tier": 2
     }
@@ -108,8 +108,8 @@
         "quality": null
       },
       "acwr": {
-        "status": "amber",
-        "value": 0.63
+        "status": "green",
+        "value": 0.8
       },
       "ri": {
         "status": "unavailable",
@@ -117,12 +117,12 @@
       },
       "tsb": {
         "status": "green",
-        "value": 1.0
+        "value": 0.3
       }
     },
     "signal_summary": {
-      "green": 1,
-      "amber": 1,
+      "green": 2,
+      "amber": 0,
       "red": 0,
       "unavailable": 4
     },
@@ -134,7 +134,7 @@
     },
     "race_week_defers": false,
     "modification": null,
-    "reason": "P3 green light. 1 green, 1 amber (threshold 2), 0 red. Note: 4 signals unavailable \u2014 limited data.",
+    "reason": "P3 green light. 2 green, 0 amber (threshold 2), 0 red. Note: 4 signals unavailable \u2014 limited data.",
     "alarm_refs": []
   },
   "history": {
@@ -147,8 +147,8 @@
   "summary": {
     "period_description": "Last 90 days of training (including today)",
     "note": "Duration calculated from API moving_time field.",
-    "total_duration_decimal_hours": 12.73,
-    "total_activities": 13,
+    "total_duration_decimal_hours": 13.75,
+    "total_activities": 15,
     "by_activity_type": {
       "Ride": {
         "duration_decimal_hours": 6.1,
@@ -156,27 +156,33 @@
         "tss": 188,
         "distance_km": 105.3
       },
+      "VirtualRide": {
+        "duration_decimal_hours": 0.37,
+        "count": 1,
+        "tss": 7,
+        "distance_km": 0.0
+      },
       "WeightTraining": {
-        "duration_decimal_hours": 6.63,
-        "count": 7,
-        "tss": 217,
+        "duration_decimal_hours": 7.27,
+        "count": 8,
+        "tss": 231,
         "distance_km": 0.0
       }
     }
   },
   "current_status": {
     "fitness": {
-      "ctl": 14.25,
-      "atl": 13.27,
-      "tsb": 0.98,
-      "ramp_rate": 0.07,
-      "fitness_source": "Decayed from yesterday (today's planned workouts not yet completed)"
+      "ctl": 14.33,
+      "atl": 13.99,
+      "tsb": 0.34,
+      "ramp_rate": -0.41,
+      "fitness_source": "From Intervals.icu API (reflects completed workouts)"
     },
     "thresholds": {
-      "eftp": 125.9,
-      "w_prime": 9443,
+      "eftp": 125.7,
+      "w_prime": 9424,
       "w_prime_kj": 9.4,
-      "p_max": 394,
+      "p_max": 393,
       "vo2max": null,
       "sports": {
         "cycling": {
@@ -248,77 +254,77 @@
     "rhr_baseline_28d": 64.1,
     "latest_hrv": null,
     "latest_rhr": null,
-    "acwr": 0.63,
-    "acwr_interpretation": "undertraining",
-    "monotony": 0.45,
-    "monotony_interpretation": "normal",
+    "acwr": 0.8,
+    "acwr_interpretation": "optimal",
+    "monotony": 0.6,
+    "monotony_interpretation": "normal (primary sport 0.54, total 0.6 inflated by multi-sport)",
     "primary_sport": "strength",
-    "primary_sport_monotony": null,
-    "primary_sport_tss_7d": 62.0,
-    "effective_monotony": 0.45,
+    "primary_sport_monotony": 0.54,
+    "primary_sport_tss_7d": 76.0,
+    "effective_monotony": 0.54,
     "multi_sport_detected": true,
-    "strain": 29.0,
-    "stress_tolerance": 0.6,
+    "strain": 51.0,
+    "stress_tolerance": 0.8,
     "load_recovery_ratio": null,
-    "tss_7d_total": 64.0,
-    "tss_28d_total": 405.0,
+    "tss_7d_total": 85.0,
+    "tss_28d_total": 426.0,
     "zone_distribution_7d": {
-      "z1_hours": 4.3,
-      "z2_hours": 5.4,
-      "z3_hours": 2.57,
+      "z1_hours": 4.75,
+      "z2_hours": 5.94,
+      "z3_hours": 2.59,
       "z4_plus_hours": 0.36,
-      "total_hours": 12.62,
+      "total_hours": 13.64,
       "zone_basis": "mixed"
     },
-    "grey_zone_percentage": 20.4,
+    "grey_zone_percentage": 19.0,
     "grey_zone_note": "Gray Zone % (Z3/tempo) - minimize in polarized training",
-    "quality_intensity_percentage": 2.8,
+    "quality_intensity_percentage": 2.6,
     "quality_intensity_note": "Quality Intensity % (Z4+/threshold+) - target ~20% in polarized training",
-    "polarisation_index": 0.77,
+    "polarisation_index": 0.78,
     "polarisation_note": "Easy time (Z1+Z2) / Total - target ~80% in polarized training",
     "hard_days_this_week": 0,
     "hard_days_note": "Power ladder: z3+ >= 30min, z4+ >= 10min, z5+ >= 5min, z6+ >= 2min, z7 >= 1min. HR fallback (when no power): z4+ >= 10min, z5+ >= 5min. Per Seiler 3-zone model + Foster. HR-based days flagged with intensity_basis: hr",
     "seiler_tid_7d": {
-      "z1_seconds": 34900,
-      "z2_seconds": 9250,
+      "z1_seconds": 38476,
+      "z2_seconds": 9333,
       "z3_seconds": 1295,
-      "z1_pct": 76.8,
-      "z2_pct": 20.4,
-      "z3_pct": 2.8,
+      "z1_pct": 78.4,
+      "z2_pct": 19.0,
+      "z3_pct": 2.6,
       "polarization_index": null,
       "classification": "Pyramidal",
       "zone_basis": "mixed"
     },
     "seiler_tid_7d_primary": {
-      "z1_seconds": 18787,
-      "z2_seconds": 4075,
+      "z1_seconds": 21020,
+      "z2_seconds": 4158,
       "z3_seconds": 748,
-      "z1_pct": 79.6,
-      "z2_pct": 17.3,
-      "z3_pct": 3.2,
+      "z1_pct": 81.1,
+      "z2_pct": 16.0,
+      "z3_pct": 2.9,
       "polarization_index": null,
       "classification": "Pyramidal",
       "zone_basis": "hr",
       "sport": "strength"
     },
     "seiler_tid_28d": {
-      "z1_seconds": 34900,
-      "z2_seconds": 9250,
+      "z1_seconds": 38476,
+      "z2_seconds": 9333,
       "z3_seconds": 1295,
-      "z1_pct": 76.8,
-      "z2_pct": 20.4,
-      "z3_pct": 2.8,
+      "z1_pct": 78.4,
+      "z2_pct": 19.0,
+      "z3_pct": 2.6,
       "polarization_index": null,
       "classification": "Pyramidal",
       "zone_basis": "mixed"
     },
     "seiler_tid_28d_primary": {
-      "z1_seconds": 18787,
-      "z2_seconds": 4075,
+      "z1_seconds": 21020,
+      "z2_seconds": 4158,
       "z3_seconds": 748,
-      "z1_pct": 79.6,
-      "z2_pct": 17.3,
-      "z3_pct": 3.2,
+      "z1_pct": 81.1,
+      "z2_pct": 16.0,
+      "z3_pct": 2.9,
       "polarization_index": null,
       "classification": "Pyramidal",
       "zone_basis": "hr",
@@ -361,11 +367,11 @@
         "note": "Compares 7d vs 28d Seiler TID to detect distribution shifts. pi_delta positive = more polarized acutely."
       }
     },
-    "consistency_index": 0.04,
+    "consistency_index": 0.06,
     "consistency_details": {
       "planned_days": 49,
-      "completed_days": 6,
-      "matched_days": 2,
+      "completed_days": 7,
+      "matched_days": 3,
       "planned_dates": [
         "2026-08-12",
         "2026-08-13",
@@ -423,7 +429,8 @@
         "2026-10-20",
         "2026-10-22",
         "2026-11-01",
-        "2026-11-07"
+        "2026-11-07",
+        "2026-11-09"
       ]
     },
     "phase_detection": {
@@ -439,11 +446,11 @@
         },
         "stream_2": {
           "planned_tss_delta": 1.11,
-          "hard_sessions_planned": 3,
+          "hard_sessions_planned": 5,
           "race_proximity": null,
-          "next_week_load": null,
-          "plan_coverage_current_week": 0.6,
-          "plan_coverage_next_week": 0.0
+          "next_week_load": 0.55,
+          "plan_coverage_current_week": 1.0,
+          "plan_coverage_next_week": 0.2
         },
         "data_quality": "good",
         "stream_agreement": null
@@ -470,18 +477,18 @@
       "benchmark_percentage": null,
       "seasonal_expected": null
     },
-    "eftp": 125.9,
-    "w_prime": 9443,
+    "eftp": 125.7,
+    "w_prime": 9424,
     "w_prime_kj": 9.4,
-    "p_max": 394,
+    "p_max": 393,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-11-09T02:59:48.732661",
+    "calculation_timestamp": "2026-11-09T11:19:53.377864",
     "data_quality": {
       "hrv_data_points": 0,
       "rhr_data_points": 89,
-      "activities_7d": 13,
-      "activities_28d": 13,
+      "activities_7d": 15,
+      "activities_28d": 15,
       "planned_workouts_7d": 50,
       "ftp_history_days": {
         "indoor": 0,
@@ -490,6 +497,94 @@
     }
   },
   "recent_activities": [
+    {
+      "id": "i207652240",
+      "date": "2026-11-09T12:13:08",
+      "type": "VirtualRide",
+      "name": "Indoor Cycling",
+      "duration_hours": 0.37,
+      "distance_km": 0.0,
+      "tss": 7,
+      "intensity_factor": 43.349678,
+      "avg_power": null,
+      "normalized_power": null,
+      "avg_hr": 112,
+      "max_hr": 122,
+      "avg_cadence": null,
+      "avg_speed": null,
+      "max_speed": null,
+      "avg_pace": null,
+      "avg_temp": 12.0,
+      "weather": null,
+      "humidity": null,
+      "wind_speed": null,
+      "work_kj": null,
+      "calories": 84,
+      "carbs_used": null,
+      "carbs_ingested": null,
+      "variability_index": null,
+      "decoupling": null,
+      "efficiency_factor": null,
+      "hrrc": null,
+      "elevation_m": null,
+      "feel": null,
+      "rpe": 2,
+      "zone_distribution": {
+        "hr_zones": {
+          "z1_time": 472,
+          "z2_time": 871,
+          "z3_time": 0,
+          "z4_time": 0,
+          "z5_time": 0
+        }
+      },
+      "has_intervals": true,
+      "description": "\ud83d\udcca IntervalCoach Analysis\nTSS: 7\nTraining stimulus: endurance\n\n\ud83d\udd17 interval.coach/r/ZMF3D5"
+    },
+    {
+      "id": "i207652156",
+      "date": "2026-11-09T11:33:38",
+      "type": "WeightTraining",
+      "name": "IntervalCoach - Lower Body Strength",
+      "duration_hours": 0.64,
+      "distance_km": 0.0,
+      "tss": 14,
+      "intensity_factor": 46.669548,
+      "avg_power": null,
+      "normalized_power": null,
+      "avg_hr": 105,
+      "max_hr": 132,
+      "avg_cadence": null,
+      "avg_speed": null,
+      "max_speed": null,
+      "avg_pace": null,
+      "avg_temp": null,
+      "weather": null,
+      "humidity": null,
+      "wind_speed": null,
+      "work_kj": null,
+      "calories": 136,
+      "carbs_used": null,
+      "carbs_ingested": null,
+      "variability_index": null,
+      "decoupling": null,
+      "efficiency_factor": null,
+      "hrrc": null,
+      "elevation_m": null,
+      "feel": null,
+      "rpe": 5,
+      "zone_distribution": {
+        "hr_zones": {
+          "z1_time": 1166,
+          "z2_time": 1067,
+          "z3_time": 83,
+          "z4_time": 0,
+          "z5_time": 0
+        }
+      },
+      "has_intervals": false,
+      "description": "GYM-Pull-Primary\nMonday, Nov 09, 2026 at 11:33am\n\nPull Up\nSet 1: 6 reps\nSet 2: 6 reps\nSet 3: 6 reps\nSet 4: 5 reps\n\nSeated Cable Row - V Grip (Cable)\nSet 1: 45 kg x 8\nSet 2: 45 kg x 8\nSet 3: 45 kg x 7\nSet 4: 45 kg x 7\n\nLat Pulldown (Cable)\nSet 1: 31.5 kg x 8\nSet 2: 31.5 kg x 8\nSet 3: 31.5 kg x 8\nSet 4: 31.5 kg x 8\n\nStraight Arm Lat Pulldown (Cable)\nSet 1: 20 kg x 8\nSet 2: 20 kg x 8\nSet 3: 20 kg x 8\nSet 4: 20 kg x 8\n\n@hevyapp\nhttps://hevy.com/workout/5KqQ9cMWTQk\n\n---\n\n\ud83d\udcca IntervalCoach Analysis\nWorkout score: 7/10\nTSS: 14\nTraining stimulus: mixed\nEst. recovery: 36h\n\n\ud83d\udd17 interval.coach/r/ZMF3D5"
+    },
     {
       "id": "i207211194",
       "date": "2026-11-08T08:11:43",
@@ -4605,6 +4700,18 @@
       "description": "Lower Body Strength\n\nLeg strength for cycling power and running economy\n\n1. Goblet Squat: 5 sets \u00d7 12 reps (Weight at chest, sit back into heels) [Rest: 60 sec]\n2. Romanian Deadlift: 5 sets \u00d7 10 reps (Hinge at hips, slight knee bend) [Rest: 60 sec]\n3. Walking Lunges: 5 sets \u00d7 10 reps each leg (Keep torso upright, knee tracks over toe) [Rest: 45 sec]\n4. Step-ups: 5 sets \u00d7 10 reps each leg (Use bench or box, drive through heel) [Rest: 45 sec]\n5. Calf Raises: 5 sets \u00d7 15 reps (Full range of motion, hold at top) [Rest: 30 sec]\n6. Single Leg Glute Bridge: 5 sets \u00d7 10 reps each leg (Keep hips level throughout) [Rest: 30 sec]\n\nBuild phase: increase weight, lower reps (6-10) for strength gains.\n\n[Duration: ~75 min]\n[Exercises \u00b7 gobletSquat 5x12 rest 60 sec \u00b7 romanianDeadlift 5x10 rest 60 sec \u00b7 walkingLunges 5x10 side rest 45 sec \u00b7 stepUps 5x10 side rest 45 sec \u00b7 calfRaises 5x15 rest 30 sec \u00b7 singleLegGluteBridge 5x10 side rest 30 sec]\n\n[Weekly Plan - Build \u00b7 type:lower-body-strength]"
     },
     {
+      "id": 153571516,
+      "date": "2026-11-11",
+      "name": "IntervalCoach - Endurance Pickups",
+      "type": "WORKOUT",
+      "sport_type": "Ride",
+      "planned_tss": 23,
+      "duration_hours": 0.48,
+      "duration_formatted": "28m54s",
+      "workout_summary": "4m36s @78W | 4\u00d73m17s @92W / 59s rec | 4m36s @92W | 2m38s @72W",
+      "description": "Warmup\n- 276s ramp 45-75% 85rpm\n\nMain Set\n4x\n- Endurance 88rpm 197s 65-75% 88rpm\n- Pickup 92rpm 59s 76-82% 92rpm\n\nRecovery\n- Endurance 88rpm 276s 65-75% 88rpm\n\nCooldown\n- 158s ramp 65-45%\n\n[Weekly Plan - Build \u00b7 type:enduranceWithPickups]"
+    },
+    {
       "id": 153010491,
       "date": "2026-11-12",
       "name": "IntervalCoach - Lower Body Strength",
@@ -4617,6 +4724,18 @@
       "description": "Lower Body Strength\n\nLeg strength for cycling power and running economy\n\n1. Goblet Squat: 5 sets \u00d7 12 reps (Weight at chest, sit back into heels) [Rest: 60 sec]\n2. Romanian Deadlift: 5 sets \u00d7 10 reps (Hinge at hips, slight knee bend) [Rest: 60 sec]\n3. Walking Lunges: 5 sets \u00d7 10 reps each leg (Keep torso upright, knee tracks over toe) [Rest: 45 sec]\n4. Step-ups: 5 sets \u00d7 10 reps each leg (Use bench or box, drive through heel) [Rest: 45 sec]\n5. Calf Raises: 5 sets \u00d7 15 reps (Full range of motion, hold at top) [Rest: 30 sec]\n6. Single Leg Glute Bridge: 5 sets \u00d7 10 reps each leg (Keep hips level throughout) [Rest: 30 sec]\n\nBuild phase: increase weight, lower reps (6-10) for strength gains.\n\n[Duration: ~75 min]\n[Exercises \u00b7 gobletSquat 5x12 rest 60 sec \u00b7 romanianDeadlift 5x10 rest 60 sec \u00b7 walkingLunges 5x10 side rest 45 sec \u00b7 stepUps 5x10 side rest 45 sec \u00b7 calfRaises 5x15 rest 30 sec \u00b7 singleLegGluteBridge 5x10 side rest 30 sec]\n\n[Weekly Plan - Build \u00b7 type:lower-body-strength]"
     },
     {
+      "id": 153571531,
+      "date": "2026-11-13",
+      "name": "IntervalCoach - Endurance Spin-Ups",
+      "type": "WORKOUT",
+      "sport_type": "Ride",
+      "planned_tss": 20,
+      "duration_hours": 0.43,
+      "duration_formatted": "26m",
+      "workout_summary": "4m @78W | 4\u00d73m20s @92W / 40s rec | 3m20s @92W | 2m40s @72W",
+      "description": "Warmup\n- 4m ramp 45-75% 85rpm\n\nMain Set\n4x\n- Endurance 88rpm 200s 65-75% 88rpm\n- Spin-Up 110rpm 40s 75% 110rpm\n\nRecovery\n- Endurance 88rpm 200s 65-75% 88rpm\n\nCooldown\n- 160s ramp 65-45%\n\n[Weekly Plan - Build \u00b7 type:enduranceSpinUps]"
+    },
+    {
       "id": 153010542,
       "date": "2026-11-15",
       "name": "IntervalCoach - Progressive Endurance",
@@ -4627,21 +4746,33 @@
       "duration_formatted": "26m40s",
       "workout_summary": null,
       "description": "Warmup\n- 4m ramp 45-75% 85rpm\n\nMain Set\n- Low 85rpm 400s 65% 85rpm\n- Mid 88rpm 400s 69% 88rpm\n- Upper 90rpm 400s 73% 90rpm\n\nCooldown\n- 160s ramp 65-45%\n\n[Weekly Plan - Build \u00b7 type:enduranceProgressive]"
+    },
+    {
+      "id": 153571533,
+      "date": "2026-11-16",
+      "name": "IntervalCoach - Lower Body Strength",
+      "type": "WORKOUT",
+      "sport_type": "WeightTraining",
+      "planned_tss": 31,
+      "duration_hours": 1.25,
+      "duration_formatted": "1h15m",
+      "workout_summary": null,
+      "description": "Lower Body Strength\n\nLeg strength for cycling power and running economy\n\n1. Goblet Squat: 5 sets \u00d7 12 reps (Weight at chest, sit back into heels) [Rest: 60 sec]\n2. Romanian Deadlift: 5 sets \u00d7 10 reps (Hinge at hips, slight knee bend) [Rest: 60 sec]\n3. Walking Lunges: 5 sets \u00d7 10 reps each leg (Keep torso upright, knee tracks over toe) [Rest: 45 sec]\n4. Step-ups: 5 sets \u00d7 10 reps each leg (Use bench or box, drive through heel) [Rest: 45 sec]\n5. Calf Raises: 5 sets \u00d7 15 reps (Full range of motion, hold at top) [Rest: 30 sec]\n6. Single Leg Glute Bridge: 5 sets \u00d7 10 reps each leg (Keep hips level throughout) [Rest: 30 sec]\n\nBuild phase: increase weight, lower reps (6-10) for strength gains.\n\n[Duration: ~75 min]\n[Exercises \u00b7 gobletSquat 5x12 rest 60 sec \u00b7 romanianDeadlift 5x10 rest 60 sec \u00b7 walkingLunges 5x10 side rest 45 sec \u00b7 stepUps 5x10 side rest 45 sec \u00b7 calfRaises 5x15 rest 30 sec \u00b7 singleLegGluteBridge 5x10 side rest 30 sec]\n\n[Weekly Plan - Build \u00b7 type:lower-body-strength]"
     }
   ],
   "workout_summary_stats": {
-    "attempted": 1,
-    "success": 0,
-    "patternA": 0,
+    "attempted": 3,
+    "success": 2,
+    "patternA": 2,
     "patternB": 0,
-    "bail_no_workout_doc": 2,
+    "bail_no_workout_doc": 3,
     "bail_no_match": 1
   },
   "weekly_summary": {
-    "total_training_hours": 12.73,
-    "total_training_formatted": "12h43m",
-    "total_tss": 405,
-    "activities_count": 13,
+    "total_training_hours": 13.75,
+    "total_training_formatted": "13h44m",
+    "total_tss": 426,
+    "activities_count": 15,
     "avg_hrv": null,
     "avg_resting_hr": 65.6
   },
