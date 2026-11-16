@@ -1,35 +1,9 @@
 {
-  "generated_at": "2026-11-15T23:31:53.627133",
+  "generated_at": "2026-11-16T03:11:59.028345",
   "version": "3.86",
   "scan_hours": 72,
   "retention_days": 8,
   "activities": [
-    {
-      "activity_id": "i207211164",
-      "date": "2026-11-07",
-      "type": "Ride",
-      "name": "\u4e0a\u6d77\u5e02",
-      "interval_summary": [
-        "1x 20m8s 90bpm"
-      ],
-      "intervals": [
-        {
-          "type": "WORK",
-          "label": "1208s@90bpm",
-          "duration_secs": 1208,
-          "avg_hr": 90,
-          "max_hr": 104,
-          "zone": 1
-        },
-        {
-          "type": "RECOVERY",
-          "duration_secs": 398,
-          "avg_hr": 91,
-          "max_hr": 106,
-          "zone": 1
-        }
-      ]
-    },
     {
       "activity_id": "i207652240",
       "date": "2026-11-09",
