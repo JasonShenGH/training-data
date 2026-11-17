@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-11-17T13:08:28.843341",
+    "last_updated": "2026-11-17T21:47:43.311569",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -480,7 +480,7 @@
     "p_max": 392,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-11-17T13:08:28.842467",
+    "calculation_timestamp": "2026-11-17T21:47:43.310432",
     "data_quality": {
       "hrv_data_points": 0,
       "rhr_data_points": 89,
@@ -4725,11 +4725,11 @@
       "name": "IntervalCoach - Endurance + Tempo Pushes",
       "type": "WORKOUT",
       "sport_type": "Ride",
-      "planned_tss": 23,
-      "duration_hours": 0.47,
-      "duration_formatted": "28m15s",
+      "planned_tss": 25,
+      "duration_hours": 0.5,
+      "duration_formatted": "30m",
       "workout_summary": null,
-      "description": "Warmup\n- 276s ramp 45-75% 85rpm\n\nMain Set\n- Endurance 1 88rpm 276s 65-75% 88rpm\n- Tempo 1 90rpm 197s 76-82% 90rpm\n- Endurance 2 88rpm 276s 65-75% 88rpm\n- Tempo 2 90rpm 197s 76-82% 90rpm\n- Endurance 3 88rpm 276s 65-75% 88rpm\n\nCooldown\n- 197s ramp 65-45%\n\n[Weekly Plan - Build \u00b7 type:enduranceWithTempo]"
+      "description": "Warmup\n- 5m ramp 45-75% 85rpm\n\nMain Set\n- Endurance 1 88rpm 4m 65-75% 88rpm\n- Tempo 1 90rpm 5m 76-82% 90rpm\n- Endurance 2 88rpm 4m 65-75% 88rpm\n- Tempo 2 90rpm 5m 76-82% 90rpm\n- Endurance 3 88rpm 4m 65-75% 88rpm\n\nCooldown\n- 3m ramp 65-45%\n\n[Weekly Plan - Build \u00b7 type:enduranceWithTempo \u00b7 v:1]"
     },
     {
       "id": 155885024,
