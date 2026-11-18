@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-11-17T21:47:43.311453",
+  "generated_at": "2026-11-18T12:17:23.962071",
   "version": "3.86",
   "scan_hours": 72,
   "retention_days": 8,
   "activities": [
     {
-      "activity_id": "i207652240",
-      "date": "2026-11-09",
+      "activity_id": "i211594340",
+      "date": "2026-11-18",
       "type": "VirtualRide",
-      "name": "Indoor Cycling",
+      "name": "IntervalCoach - Steady Endurance",
       "interval_summary": [
-        "1x 22m23s 112bpm"
+        "1x 15m2s 120bpm"
       ],
       "intervals": [
         {
           "type": "WORK",
-          "label": "1343s@112bpm",
-          "duration_secs": 1343,
-          "avg_hr": 112,
-          "max_hr": 122,
+          "label": "902s@120bpm",
+          "duration_secs": 902,
+          "avg_hr": 120,
+          "max_hr": 131,
           "zone": 2
         }
       ]
