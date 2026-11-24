@@ -70,7 +70,7 @@
   },
   "metadata": {
     "athlete_id": "REDACTED",
-    "last_updated": "2026-11-23T22:40:48.093947",
+    "last_updated": "2026-11-24T06:27:45.291574",
     "data_range_days": 90,
     "extended_range_days": 28,
     "version": "3.86"
@@ -89,7 +89,7 @@
       "rhr": {
         "status": "unavailable",
         "value": null,
-        "baseline_7d": 65.2,
+        "baseline_7d": 65.0,
         "delta_bpm": null
       },
       "sleep": {
@@ -107,7 +107,7 @@
       },
       "tsb": {
         "status": "green",
-        "value": -6.4
+        "value": -3.7
       }
     },
     "signal_summary": {
@@ -130,7 +130,7 @@
   "history": {
     "available": true,
     "last_generated": "2026-10-19",
-    "age_days": 35,
+    "age_days": 36,
     "total_months": 29,
     "history_confidence": "high"
   },
@@ -162,10 +162,10 @@
   },
   "current_status": {
     "fitness": {
-      "ctl": 16.58,
-      "atl": 22.99,
-      "tsb": -6.41,
-      "ramp_rate": 1.25,
+      "ctl": 16.19,
+      "atl": 19.93,
+      "tsb": -3.74,
+      "ramp_rate": 1.22,
       "fitness_source": "From Intervals.icu API (reflects completed workouts)"
     },
     "thresholds": {
@@ -203,7 +203,7 @@
     },
     "current_metrics": {
       "weight_kg": 59.1,
-      "resting_hr": 60,
+      "resting_hr": 63,
       "hrv": null,
       "sleep_quality": null,
       "sleep_hours": null,
@@ -239,9 +239,9 @@
   "derived_metrics": {
     "recovery_index": null,
     "hrv_baseline_7d": null,
-    "rhr_baseline_7d": 65.2,
+    "rhr_baseline_7d": 65.0,
     "hrv_baseline_28d": null,
-    "rhr_baseline_28d": 62.9,
+    "rhr_baseline_28d": 63,
     "latest_hrv": null,
     "latest_rhr": null,
     "acwr": 1.25,
@@ -359,11 +359,10 @@
     },
     "consistency_index": 0.12,
     "consistency_details": {
-      "planned_days": 51,
+      "planned_days": 50,
       "completed_days": 7,
       "matched_days": 6,
       "planned_dates": [
-        "2026-08-26",
         "2026-08-27",
         "2026-08-28",
         "2026-08-30",
@@ -437,11 +436,11 @@
           "weeks_available": 4
         },
         "stream_2": {
-          "planned_tss_delta": 0.34,
-          "hard_sessions_planned": 4,
+          "planned_tss_delta": null,
+          "hard_sessions_planned": 3,
           "race_proximity": null,
           "next_week_load": 0.55,
-          "plan_coverage_current_week": 0.8,
+          "plan_coverage_current_week": 0.6,
           "plan_coverage_next_week": 0.2
         },
         "data_quality": "good",
@@ -475,13 +474,13 @@
     "p_max": 392,
     "power_model_source": "wellness.sportInfo",
     "vo2max": null,
-    "calculation_timestamp": "2026-11-23T22:40:48.092738",
+    "calculation_timestamp": "2026-11-24T06:27:45.290369",
     "data_quality": {
       "hrv_data_points": 0,
       "rhr_data_points": 89,
       "activities_7d": 20,
       "activities_28d": 20,
-      "planned_workouts_7d": 52,
+      "planned_workouts_7d": 51,
       "ftp_history_days": {
         "indoor": 0,
         "outdoor": 0
@@ -1387,45 +1386,6 @@
     }
   ],
   "wellness_data": [
-    {
-      "date": "2026-08-26",
-      "weight_kg": null,
-      "resting_hr": 78,
-      "hrv_rmssd": null,
-      "hrv_sdnn": 33.461185,
-      "sleep_hours": 7.39,
-      "sleep_formatted": "7h23m",
-      "sleep_quality": null,
-      "sleep_score": null,
-      "mental_energy": null,
-      "avg_sleeping_hr": null,
-      "vo2max": 30.49,
-      "fatigue": null,
-      "soreness": null,
-      "stress": null,
-      "mood": null,
-      "motivation": null,
-      "injury": null,
-      "hydration": null,
-      "spO2": 96.0,
-      "blood_glucose": null,
-      "systolic": null,
-      "diastolic": null,
-      "baevsky_si": null,
-      "lactate": null,
-      "respiration": null,
-      "body_fat_pct": null,
-      "abdomen_cm": null,
-      "steps": 14703,
-      "hydration_volume_l": null,
-      "kcal_consumed": null,
-      "carbohydrates_g": null,
-      "protein_g": null,
-      "fat_g": null,
-      "menstrual_phase": null,
-      "menstrual_phase_predicted": null,
-      "readiness": null
-    },
     {
       "date": "2026-08-27",
       "weight_kg": null,
@@ -4861,6 +4821,45 @@
     {
       "date": "2026-11-23",
       "weight_kg": null,
+      "resting_hr": 63,
+      "hrv_rmssd": null,
+      "hrv_sdnn": 41.791775,
+      "sleep_hours": 8.03,
+      "sleep_formatted": "8h1m",
+      "sleep_quality": null,
+      "sleep_score": null,
+      "mental_energy": null,
+      "avg_sleeping_hr": null,
+      "vo2max": null,
+      "fatigue": null,
+      "soreness": null,
+      "stress": null,
+      "mood": null,
+      "motivation": null,
+      "injury": null,
+      "hydration": null,
+      "spO2": 97.0,
+      "blood_glucose": null,
+      "systolic": null,
+      "diastolic": null,
+      "baevsky_si": null,
+      "lactate": null,
+      "respiration": null,
+      "body_fat_pct": null,
+      "abdomen_cm": null,
+      "steps": 7972,
+      "hydration_volume_l": 0.6790816,
+      "kcal_consumed": 2144,
+      "carbohydrates_g": 274.66583,
+      "protein_g": 129.7673,
+      "fat_g": 63.011387,
+      "menstrual_phase": null,
+      "menstrual_phase_predicted": null,
+      "readiness": null
+    },
+    {
+      "date": "2026-11-24",
+      "weight_kg": null,
       "resting_hr": null,
       "hrv_rmssd": null,
       "hrv_sdnn": null,
@@ -4899,18 +4898,6 @@
     }
   ],
   "planned_workouts": [
-    {
-      "id": 156665793,
-      "date": "2026-11-23",
-      "name": "IntervalCoach - Core Stability",
-      "type": "WORKOUT",
-      "sport_type": "WeightTraining",
-      "planned_tss": 19,
-      "duration_hours": 0.75,
-      "duration_formatted": "45m",
-      "workout_summary": null,
-      "description": "Core Stability\n\nCore exercises to improve stability, posture, and power transfer\n\n1. Plank: 5 sets \u00d7 45-60 sec (Keep body in straight line, engage glutes) [Rest: 30 sec]\n2. Side Plank: 3 sets \u00d7 30 sec each side (Stack feet or stagger for stability) [Rest: 15 sec]\n3. Dead Bug: 5 sets \u00d7 10 reps each side (Keep lower back pressed to floor) [Rest: 30 sec]\n4. Bird Dog: 5 sets \u00d7 10 reps each side (Extend opposite arm and leg, hold 2 sec) [Rest: 30 sec]\n5. Glute Bridge: 5 sets \u00d7 15 reps (Squeeze glutes at top, hold 2 sec) [Rest: 30 sec]\n6. Pallof Press: 5 sets \u00d7 10 reps each side (Band at chest height, press and hold, resist rotation) [Rest: 30 sec]\n\n[Duration: ~45 min]\n[Exercises \u00b7 plank 5x45-60 sec rest 30 sec \u00b7 sidePlank 3x30 sec side rest 15 sec \u00b7 deadBug 5x10 side rest 30 sec \u00b7 birdDog 5x10 side rest 30 sec \u00b7 gluteBridge 5x15 rest 30 sec \u00b7 pallofPress 5x10 side rest 30 sec]\n\n[Weekly Plan - Recovery \u00b7 type:core-stability]"
-    },
     {
       "id": 158930679,
       "date": "2026-11-25",
@@ -4965,7 +4952,7 @@
     "success": 2,
     "patternA": 2,
     "patternB": 0,
-    "bail_no_workout_doc": 2,
+    "bail_no_workout_doc": 1,
     "bail_no_match": 1
   },
   "weekly_summary": {
@@ -4974,7 +4961,7 @@
     "total_tss": 520,
     "activities_count": 20,
     "avg_hrv": null,
-    "avg_resting_hr": 65.2
+    "avg_resting_hr": 65.0
   },
   "race_calendar": {
     "next_race": null,
