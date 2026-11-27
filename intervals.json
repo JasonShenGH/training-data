@@ -1,28 +1,9 @@
 {
-  "generated_at": "2026-11-26T22:25:32.323717",
+  "generated_at": "2026-11-27T04:26:56.531535",
   "version": "3.86",
   "scan_hours": 72,
   "retention_days": 8,
   "activities": [
-    {
-      "activity_id": "i211594340",
-      "date": "2026-11-18",
-      "type": "VirtualRide",
-      "name": "IntervalCoach - Steady Endurance",
-      "interval_summary": [
-        "1x 15m2s 120bpm"
-      ],
-      "intervals": [
-        {
-          "type": "WORK",
-          "label": "902s@120bpm",
-          "duration_secs": 902,
-          "avg_hr": 120,
-          "max_hr": 131,
-          "zone": 2
-        }
-      ]
-    },
     {
       "activity_id": "i212342216",
       "date": "2026-11-20",
